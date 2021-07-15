@@ -13,7 +13,7 @@
 		<c:forEach var="list" items="${list }">
 			
 			<tr>
-				<td rowspan="13"> <img alt="" src="${list.file }" width="300" height="300"></td>
+				<td rowspan="13"><a href="BoardServlet_picnic?command=abandonment_view&num=${list.desertionNo }"> <img src="${list.popfile }" width="300" height="300"></a></td>
 			</tr>
 			<tr>
 				<td>유기 번호 : ${list.desertionNo }</td>

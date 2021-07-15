@@ -12,7 +12,7 @@ import com.picnic.controller.action.Action;
 /**
  * Servlet implementation class BoardServlet
  */
-@WebServlet("/BoardServlet")
+@WebServlet("/BoardServlet_picnic")	
 public class BoardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

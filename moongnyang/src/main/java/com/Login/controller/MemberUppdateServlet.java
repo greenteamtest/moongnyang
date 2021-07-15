@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.Team.dao.MemberDAO;
-import com.Team.dto.MemberVO;
+import com.team.dto.MemberVO;
 
 /**
  * Servlet implementation class MemberUppdateServlet

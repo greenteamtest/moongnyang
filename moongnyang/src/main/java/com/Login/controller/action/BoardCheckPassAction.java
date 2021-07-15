@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.Team.dao.BoardDAO;
-import com.Team.dto.BoardVO;
+import com.team.dto.BoardVO;
 
 public class BoardCheckPassAction implements Action {
 

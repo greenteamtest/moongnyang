@@ -1,7 +1,8 @@
 package com.picnic.controller;
 
 import com.picnic.controller.action.Action;
-import com.picnic.controller.action.abandonment_Action;
+import com.picnic.controller.action.Abandonment_Action;
+import com.picnic.controller.action.Abandonment_View_Action;
 
 
 public class ActionFactory {
@@ -22,8 +23,10 @@ public class ActionFactory {
 		if(command.equals("cafe_list")) {
 			
 		} else if(command.equals("abandonment")) {
-			action = new abandonment_Action();
-		}
+			action = new Abandonment_Action();
+		} else if(command.equals("abandonment_view")) {
+			action = new Abandonment_View_Action();
+		}				 
 		
 		else {
 			System.out.println("ActionFactroy : action이 선택되지 않았어!!");
