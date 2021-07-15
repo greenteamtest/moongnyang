@@ -1,4 +1,4 @@
-package com.rest.controller.action;
+package com.picnic.controller.action;
 
 import java.io.IOException;
 import java.net.URLEncoder;
