@@ -8,5 +8,6 @@
 </head>
 <body>
 	<a href="BoardServlet?command=abandonment">페이지로 이동</a>
+		<!-- 임시적으로 특정 서블릿 커맨드 전송 -->
 </body>
 </html>
