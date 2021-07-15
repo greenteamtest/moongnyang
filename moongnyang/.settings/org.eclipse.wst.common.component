@@ -10,12 +10,10 @@
                         
         
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
-                
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
                         
         
         <property name="java-output-path" value="/Hompage/build/classes"/>
-        <property name="context-root" value="Hompage"/>
+        <property name="context-root" value="moongnyang"/>
                     
     
     </wb-module>
