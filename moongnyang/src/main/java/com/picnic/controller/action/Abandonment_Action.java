@@ -23,11 +23,25 @@ public class Abandonment_Action implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "picnic/abandonment/abandonment.jsp";
+		String sKey = "=MHijCewxZVm%2F%2BYHcu%2BV4EPh3gx9YgCMkq7l6bp0y2j5kMNVUObecIzmLdQeU8uzx7p1vXbUyw%2BqXLCNFbJXL3g%3D%3D";
+		String pageNo = null;
+		String up_kind_cd = null;
 		
 		StringBuilder urlBuilder = new StringBuilder(
 				"http://openapi.animal.go.kr/openapi/service/rest/abandonmentPublicSrvc/abandonmentPublic"); /* URL */
-		String sKey = "=MHijCewxZVm%2F%2BYHcu%2BV4EPh3gx9YgCMkq7l6bp0y2j5kMNVUObecIzmLdQeU8uzx7p1vXbUyw%2BqXLCNFbJXL3g%3D%3D";
-		urlBuilder.append("?" + URLEncoder.encode("ServiceKey", "UTF-8") + sKey); /* Service Key */
+		
+		
+		if(request.getParameter("pageNo") != null) {
+			pageNo = request.getParameter("pageNo");
+			urlBuilder.append("?pageNo=" + pageNo); /* 페이지 번호 */
+		}
+		if(request.getParameter("up_kind_cd") != null) {
+			pageNo = request.getParameter("up_kind_cd");
+			urlBuilder.append("?up_kind_cd=" + up_kind_cd); /* 축종코드 */
+		}
+		
+		urlBuilder.append("&" + URLEncoder.encode("ServiceKey", "UTF-8") + sKey); /* Service Key */
+		System.out.println(urlBuilder.toString());
 		DocumentBuilderFactory dbFactoty = DocumentBuilderFactory.newInstance();
 		List<BoardVO> list = new ArrayList<BoardVO>();
 		try {

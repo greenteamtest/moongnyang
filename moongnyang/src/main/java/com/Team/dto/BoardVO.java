@@ -28,6 +28,10 @@ public class BoardVO {
 	private String popfile;			//이미지
 	private String processState;	//상태
 	private String sexCd;			//성별
+	//유실 동물 DB용
+	private String orgCd;			//지역 코드
+	private String uprCd;			//지역 코드
+	private String orgdownNm;		//지역 명
 	
 	public String getDesertionNo() {
 		return desertionNo;

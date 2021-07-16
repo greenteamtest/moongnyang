@@ -19,15 +19,17 @@ import org.w3c.dom.NodeList;
 
 import com.Team.dto.BoardVO;
 
-public class Abandonment_View_Action implements Action {
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "rest/abandonment/abandonment.jsp";
+public class Picnic_Action implements Action{
+	public void execute(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException{
+		
+		String url = "picnic/picnic.jsp";
+		
 		String sKey = "=MHijCewxZVm%2F%2BYHcu%2BV4EPh3gx9YgCMkq7l6bp0y2j5kMNVUObecIzmLdQeU8uzx7p1vXbUyw%2BqXLCNFbJXL3g%3D%3D";
 		StringBuilder urlBuilder = new StringBuilder(
-				"http://openapi.animal.go.kr/openapi/service/rest/abandonmentPublicSrvc/abandonmentPublic"); /* URL */
-		urlBuilder.append("?" + URLEncoder.encode("bgnde", "UTF-8") + request.getParameter("num"));
-		
+				"http://openapi.animal.go.kr/openapi/service/rest/abandonmentPublicSrvc/sido"); /* URL */
 		urlBuilder.append("?" + URLEncoder.encode("ServiceKey", "UTF-8") + sKey); /* Service Key */
+		
 		DocumentBuilderFactory dbFactoty = DocumentBuilderFactory.newInstance();
 		List<BoardVO> list = new ArrayList<BoardVO>();
 		try {
@@ -40,25 +42,12 @@ public class Abandonment_View_Action implements Action {
 				Node nNode = nList.item(temp);
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 					Element eElement = (Element) nNode;
+					BoardVO bVo = new BoardVO();	
+					bVo.setDesertionNo(getTagValue("orgCd",eElement));
+					bVo.setFilename(getTagValue("orgdownNm",eElement));
+				
 					
-					BoardVO bVo = new BoardVO();
-					
-					bVo.setDesertionNo(getTagValue("desertionNo",eElement));
-					bVo.setFilename(getTagValue("filename",eElement));
-					bVo.setHappenDt(getTagValue("happenDt",eElement));
-					bVo.setHappenPlace(getTagValue("happenPlace",eElement));
-					bVo.setKindCd(getTagValue("kindCd",eElement));
-					bVo.setColorCd(getTagValue("colorCd",eElement));
-					bVo.setAge(getTagValue("age",eElement));
-					bVo.setWeight(getTagValue("weight",eElement));
-					bVo.setNoticeNo(getTagValue("noticeNo", eElement));
-					bVo.setNoticeSdt(getTagValue("noticeSdt", eElement));
-					bVo.setNoticeEdt(getTagValue("noticeEdt", eElement));
-					bVo.setPopfile(getTagValue("popfile", eElement));
-					bVo.setProcessState(getTagValue("processState", eElement));
-					bVo.setSexCd(getTagValue("sexCd", eElement));
-
-					list.add(bVo);
+					list.add(bVo); //시,도 리스트
 				}
 			}
 		} catch (Exception e) {

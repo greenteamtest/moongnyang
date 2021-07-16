@@ -32,7 +32,7 @@
 					role="button" data-bs-toggle="dropdown" aria-expanded="false">
 						바로가기 </a>
 					<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						<li><a class="dropdown-item" href="#">Picnic</a></li>
+						<li><a class="dropdown-item" href="BoardServlet_picnic?command=picnic">Picnic</a></li>
 						<li><a class="dropdown-item" href="#">Health & Edu</a></li>
 						<li><a class="dropdown-item" href="#">Community</a></li>
 					</ul></li>
