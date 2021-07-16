@@ -6,9 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 관리</title>
-<script type="text/javascript" src="../script/member.js"></script>
-<script type="text/javascript" src="../script/login.js"></script>
-
+<script type="text/javascript" src="js/login/member.js"></script>
+<script type="text/javascript" src="js/login/loginjs.js"></script>
 <style>
 .jb-th-1 {
 	width: 33%;
@@ -70,7 +69,7 @@
 			<tr>
 				<td colspan='2'>
 					<div class="d-grid gap-2">
-						<button class="btn btn-primary btn-xs btn-warning" type="button">Button</button>
+						<button class="btn btn-primary btn-lg btn-warning" type="button">중복검사</button>
 						<br>
 					</div>
 				</td>
@@ -150,73 +149,64 @@
 			</tr>
 			<tr>
 				<td><div class="form-check">
-						<input class="form-check-input" type="checkbox" value=""
-							id="check_all"> <label class="form-check-label"
-							for="check_all"><h4>전체동의</h4> </label>
+						<input class="form-check-input" type="checkbox" value="selectall"
+							onclick="selectAll(this)" id="check_all"> <label
+							class="form-check-label" for="check_all"><h4>전체동의</h4> </label>
 
 					</div> <br></td>
 			</tr>
+
+			<tr>
+				<td><div class="form-check">
+						<input class="form-check-input" type="checkbox" name="animal"
+							value="" id="check_1"> <label class="form-check-label"
+							for="check_1"><h4>만 14세 이상입니다.</h4>
+							<h5 class="gray">(필수)</h5></label>
+					</div> <br></td>
+			</tr>
+
+			<tr>
+				<td><div class="form-check">
+						<input class="form-check-input" type="checkbox" name="animal"
+							value="" id="check_2"> <label class="form-check-label"
+							for="check_2"><h4>
+								이용약관
+								<h5 class="gray">(필수)</h5>
+							</h4> </label>
+					</div> <br></td>
+			</tr>
+			<tr>
+				<td><div class="form-check">
+						<input class="form-check-input" type="checkbox" name="animal"
+							value="" id="check_3"> <label class="form-check-label"
+							for="check_3"><h4>개인정보수및 및 이용동의</h4>
+							<h5 class="gray">(필수)</h5> </label>
+
+					</div> <br></td>
+			</tr>
+			<tr>
+				<td><div class="form-check">
+						<input class="form-check-input" type="checkbox" name="animal"
+							value="" id="check_4"> <label class="form-check-label"
+							for="check_4"><h4>이벤트, 프로모션 메일 및 sms 수신</h4>
+							<h5 class="blue">(선택 항목)</h5> </label>
+					</div> <br></td>
+			</tr>
+			<tr>
+				<td>
+					<div class="d-grid gap-2">
+						<button class="btn btn-primary btn-lg btn-warning" type="button" value="확인"
+							onclick="return joinCheck()">회원가입</button>
+					</div>
+				</td>
+			</tr>
+
+			<tr>
+				<td colspan="2">${message}</td>
+			</tr>
+
 		</table>
-		<div class="checkbox_group">
-			<table align="center">
 
-				<tr>
-					<td><div class="form-check">
-							<input class="form-check-input" type="checkbox" value=""
-								id="check_1"> <label class="form-check-label"
-								for="check_1">만 14세 이상입니다. (필수)</label>
-						</div> <br></td>
-				</tr>
-
-				<tr>
-					<td><div class="form-check">
-							<input class="form-check-input" type="checkbox" value=""
-								id="check_2"> <label class="form-check-label"
-								for="check_2"><h4>
-									이용약관
-									<h5 class="gray">(필수)</h5>
-								</h4> </label>
-						</div> <br></td>
-				</tr>
-				<tr>
-					<td><div class="form-check">
-							<input class="form-check-input" type="checkbox" value=""
-								id="check_3"> <label class="form-check-label"
-								for="check_3"><h4>개인정보수및 및 이용동의</h4>
-								<h5 class="gray">(필수)</h5> </label>
-
-						</div> <br></td>
-				</tr>
-				<tr>
-					<td><div class="form-check">
-							<input class="form-check-input" type="checkbox" value=""
-								id="check_4"> <label class="form-check-label"
-								for="check_4"><h4>이벤트, 프로모션 메일 및 sms 수신</h4>
-								<h5 class="blue">(선택 항목)</h5> </label>
-						</div> <br></td>
-				</tr>
-
-				<tr>
-					<td colspan="2" align="center"><input type="submit" value="확인"
-						onclick="return joinCheck()"> &nbsp;&nbsp;&nbsp;&nbsp; <input
-						type="reset" value="취소"></td>
-				</tr>
-				<tr>
-					<td colspan="2">${message}</td>
-				</tr>
-
-			</table>
-		</div>
-		<div class="checkbox_group">
-
-			<input type="checkbox" id="check_all"> <label for="check_all">전체
-				동의</label> <input type="checkbox" id="check_1" class="normal"> <label
-				for="check_1">개인정보 처리방침 동의</label> <input type="checkbox"
-				id="check_2" class="normal"> <label for="check_2">서비스
-				이용약관 동의</label> <input type="checkbox" id="check_3" class="normal">
-			<label for="check_3">마케팅 수신 동의</label>
-
-		</div>
 	</form>
 </body>
 </html>
