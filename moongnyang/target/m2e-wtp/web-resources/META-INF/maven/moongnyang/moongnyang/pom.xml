@@ -22,11 +22,12 @@
 	</build>
 
 	<dependencies>
+	
 		<!-- mybatis -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
-			<version>3.4.5</version>
+			<version>3.5.7</version>
 		</dependency>
 
 		<!-- commons-dbcp -->
@@ -35,6 +36,7 @@
 			<artifactId>commons-dbcp</artifactId>
 			<version>1.4</version>
 		</dependency>
+		
 
 		<!-- 오라클 connector -->
 		<dependency>
@@ -42,25 +44,22 @@
 			<artifactId>ojdbc6</artifactId>
 			<version>11.2.0.4</version>
 		</dependency>
-		<!-- sql -->
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.42</version>
-		</dependency>
-
+		
+		
 		<!-- jstl -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
+		
 
 		<dependency>
 			<groupId>taglibs</groupId>
 			<artifactId>standard</artifactId>
 			<version>1.1.2</version>
 		</dependency>
+
 
 		<!-- https://mvnrepository.com/artifact/servlets.com/cos -->
 		<dependency>
@@ -77,8 +76,6 @@
 			<name>ORACLE JDBC Repository</name>
 			<url>http://maven.jahia.org/maven2</url>
 		</repository>
-
-
 	</repositories>
 
 </project>

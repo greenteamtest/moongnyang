@@ -15,7 +15,8 @@
 		insert into visit_user(idx,user_id,user_pw,user_name,create_date,user_profile)
 		values (SEQ_VISIT_USER_IDX.nextval, #{user_id}, #{user_pw}, #{user_name} , '21.07.15 / 13 : 30' , 'user' )
 	</select>
-
+	
+	
 
 
 </mapper>
