@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ include file="../top&down/header.jsp"%>
 <%@ include file="../bootstrap/boot.jsp"%>
 <!DOCTYPE html>
 <html>
@@ -35,6 +36,9 @@
 	<!-- 이건 좀 좁은 테마 -->
 	<form action="join.do" method="post" name="frm">
 		<table align="center">
+			<tr>
+				<td><br> <br> <br> <br></td>
+			</tr>
 			<tr>
 				<td colspan='2'>
 					<div>
@@ -195,8 +199,8 @@
 			<tr>
 				<td>
 					<div class="d-grid gap-2">
-						<button class="btn btn-primary btn-lg btn-warning" type="button" value="확인"
-							onclick="return joinCheck()">회원가입</button>
+						<button class="btn btn-primary btn-lg btn-warning" type="button"
+							value="확인" onclick="return joinCheck()">회원가입</button>
 					</div>
 				</td>
 			</tr>

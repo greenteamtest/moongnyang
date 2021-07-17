@@ -65,13 +65,18 @@
 	</script>
 
 
-	<br>
-	<br>
-	<br>
-	<br>
-	<h2 align="center" class="gray">뭉냥뭉냥</h2>
+
 	<form action="login.do" method="post" name="frm">
 		<table align="center">
+			<tr>
+				<td><br> <br> <br> <br> <br> <br>
+					<br></td>
+			</tr>
+			<tr>
+				<td>
+					<h2 align="center" class="gray">뭉냥뭉냥</h2> <br> <br>
+				</td>
+			</tr>
 			<tr>
 				<td>
 					<div class="input-group mb-3">
@@ -87,18 +92,19 @@
 						<input type="password" class="form-control" placeholder="비밀번호"
 							name="pwd" size="20" aria-label="비밀번호"
 							aria-describedby="basic-addon1">
+							 <br> <br>
 					</div>
 				</td>
 			</tr>
 			<tr>
 				<td><a id="custom-login-btn" type="submit"><img
 						class="smallimg" src="img/loginbutton.png"
-						onclick="return loginCheck()"></a></td>
+						onclick="return loginCheck()"></a> <br></td>
 			</tr>
 			<tr>
 				<td><a id="custom-login-btn" type="submit"><img
 						class="smallimg" src="img/registerbutton.png"
-						onclick="location.href='join.do'"></a></td>
+						onclick="location.href='join.do'"></a> <br> <br> </td>
 			</tr>
 			<tr>
 				<td><br></td>
@@ -106,7 +112,7 @@
 			<tr>
 				<td><a id="custom-login-btn" type="submit"> <img
 						src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg"
-						width="250" onclick="return kakaoLogin();" />
+						width="250" onclick="return kakaoLogin();" /> <br>  <br> 
 				</a></td>
 			</tr>
 			<tr>
