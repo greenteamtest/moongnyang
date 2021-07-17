@@ -33,8 +33,20 @@
 <!-- 	crossorigin="anonymous"> -->
 </head>
 <body>
+	<%
+	String clientId = "AO6MJLUwfRyG_NAC17cF";//애플리케이션 클라이언트 아이디값";
+	String redirectURI = URLEncoder.encode("http://localhost:8092/Hompage/member/sociallogin/naver_callback.jsp", "UTF-8");
+	SecureRandom random = new SecureRandom();
+	String state = new BigInteger(130, random).toString();
+	String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
+	apiURL += "&client_id=" + clientId;
+	apiURL += "&redirect_uri=" + redirectURI;
+	apiURL += "&state=" + state;
+	session.setAttribute("state", state);
+	%>
 	<script>
 		//61eaf0ccb670c71fede5ee3ff459092e
+		
 	</script>
 	<script src="http://developers.kakao.com/sdk/js/kakao.js"></script>
 	<script>
@@ -53,13 +65,18 @@
 	</script>
 
 
-	<br>
-	<br>
-	<br>
-	<br>
-	<h2 align="center" class="gray">뭉냥뭉냥</h2>
+
 	<form action="login.do" method="post" name="frm">
 		<table align="center">
+			<tr>
+				<td><br> <br> <br> <br> <br> <br>
+					<br></td>
+			</tr>
+			<tr>
+				<td>
+					<h2 align="center" class="gray">뭉냥뭉냥</h2> <br> <br>
+				</td>
+			</tr>
 			<tr>
 				<td>
 					<div class="input-group mb-3">
@@ -75,18 +92,19 @@
 						<input type="password" class="form-control" placeholder="비밀번호"
 							name="pwd" size="20" aria-label="비밀번호"
 							aria-describedby="basic-addon1">
+							 <br> <br>
 					</div>
 				</td>
 			</tr>
 			<tr>
 				<td><a id="custom-login-btn" type="submit"><img
 						class="smallimg" src="img/loginbutton.png"
-						onclick="return loginCheck()"></a></td>
+						onclick="return loginCheck()"></a> <br></td>
 			</tr>
 			<tr>
 				<td><a id="custom-login-btn" type="submit"><img
 						class="smallimg" src="img/registerbutton.png"
-						onclick="location.href='join.do'"></a></td>
+						onclick="location.href='join.do'"></a> <br> <br> </td>
 			</tr>
 			<tr>
 				<td><br></td>
@@ -94,29 +112,19 @@
 			<tr>
 				<td><a id="custom-login-btn" type="submit"> <img
 						src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg"
-						width="250" onclick="return kakaoLogin();" />
+						width="250" onclick="return kakaoLogin();" /> <br>  <br> 
 				</a></td>
 			</tr>
 			<tr>
-				<td><a id="naver_id_login" type="submit"> <img
-						class="smallimg" src="img/naverlogin.png" width="222"
-						onclick="return loginCheck()" />
-				</a></td>
+				<td>
+					<!-- 				<a id="naver_id_login" type="submit"> <img --> <!-- 						class="smallimg" src="img/naverlogin.png" width="222" -->
+					<%-- 						onclick="<%=apiURL%>" /> --%> <!-- 				</a>  --> <a
+					href="<%=apiURL%>"><img height="50" src="img/naverlogin.png" /></a>
+				</td>
 			</tr>
 		</table>
-		<%
-		String clientId = "AO6MJLUwfRyG_NAC17cF";//애플리케이션 클라이언트 아이디값";
-		String redirectURI = URLEncoder.encode("http://localhost:8092/Hompage/member/sociallogin/naver_callback.jsp", "UTF-8");
-		SecureRandom random = new SecureRandom();
-		String state = new BigInteger(130, random).toString();
-		String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
-		apiURL += "&client_id=" + clientId;
-		apiURL += "&redirect_uri=" + redirectURI;
-		apiURL += "&state=" + state;
-		session.setAttribute("state", state);
-		%>
-		<a href="<%=apiURL%>"><img height="50"
-			src="http://static.nid.naver.com/oauth/small_g_in.PNG" /></a>
+
+
 	</form>
 </body>
 
