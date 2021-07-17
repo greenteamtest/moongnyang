@@ -2,12 +2,18 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../bootstrap/boot.jsp"%>
 <%@ include file="../top&down/header.jsp"%>
+<%@ page import="java.net.URLEncoder"%>
+<%@ page import="java.security.SecureRandom"%>
+<%@ page import="java.math.BigInteger"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,viewport-fit=cover">
+<script>
+	//61eaf0ccb670c71fede5ee3ff459092e
+</script>
 <title>로그인 화면</title>
 <style>
 .gray {
@@ -27,6 +33,26 @@
 <!-- 	crossorigin="anonymous"> -->
 </head>
 <body>
+	<script>
+		//61eaf0ccb670c71fede5ee3ff459092e
+	</script>
+	<script src="http://developers.kakao.com/sdk/js/kakao.js"></script>
+	<script>
+	window.Kakao.init("61eaf0ccb670c71fede5ee3ff459092e"); 
+	
+	function kakaoLogin(){ 
+		window.Kakao.Auth.login({
+			scope:'profile_nickname,account_email',
+			success : function(authObj){
+			console.log(authObj); 
+			window.Kakao.API.request({ 
+				url:'/v2/user/me',
+				success : res => {
+					const kakao_account = res.kakao_account;
+					console.log(kakao_account); } }); } }); }
+	</script>
+
+
 	<br>
 	<br>
 	<br>
@@ -68,16 +94,29 @@
 			<tr>
 				<td><a id="custom-login-btn" type="submit"> <img
 						src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg"
-						width="250" onclick="return loginCheck()" />
+						width="250" onclick="return kakaoLogin();" />
 				</a></td>
 			</tr>
 			<tr>
-				<td><a id="custom-login-btn" type="submit"> <img
+				<td><a id="naver_id_login" type="submit"> <img
 						class="smallimg" src="img/naverlogin.png" width="222"
 						onclick="return loginCheck()" />
 				</a></td>
 			</tr>
 		</table>
+		<%
+		String clientId = "AO6MJLUwfRyG_NAC17cF";//애플리케이션 클라이언트 아이디값";
+		String redirectURI = URLEncoder.encode("http://localhost:8092/Hompage/member/sociallogin/naver_callback.jsp", "UTF-8");
+		SecureRandom random = new SecureRandom();
+		String state = new BigInteger(130, random).toString();
+		String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
+		apiURL += "&client_id=" + clientId;
+		apiURL += "&redirect_uri=" + redirectURI;
+		apiURL += "&state=" + state;
+		session.setAttribute("state", state);
+		%>
+		<a href="<%=apiURL%>"><img height="50"
+			src="http://static.nid.naver.com/oauth/small_g_in.PNG" /></a>
 	</form>
 </body>
 
