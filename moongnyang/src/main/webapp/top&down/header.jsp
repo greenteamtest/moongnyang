@@ -14,7 +14,7 @@
 	id="mainNav">
 	<div class="container">
 		<a class="navbar-brand" href="#page-top"><img
-			src="assets/img/mungnang.jpg" alt="..." /></a>
+			src="${pageContext.request.contextPath}/assets/img/mungnang.jpg" alt="..." /></a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 			data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
 			aria-expanded="false" aria-label="Toggle navigation">

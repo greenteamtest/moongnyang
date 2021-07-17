@@ -1,8 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="../bootstrap/boot.jsp"%>
-<%@ include file="../jQuery/jquery.jsp"%>
-<%@ include file="../setting/setting.jsp"%>
-<%@ include file="../top&down/header.jsp"%>
+
+<%@ include file="/bootstrap/boot.jsp"%>
+<%@ include file="/startbootstrap/startbootstrap.jsp"%>
+
+<%@ include file="/jQuery/jquery.jsp"%>
+<%@ include file="/setting/setting.jsp"%>
+<%@ include file="/top&down/header.jsp"%>
+<%@ include file="/health&edu/nav.jsp"%>
+
+
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -12,31 +18,23 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>뭉냥뭉냥-반려동물과의 즐거운 하루 !</title>
-<!-- Favicon-->
-<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-<!-- Bootstrap icons-->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
 
-<!-- Core theme CSS (includes Bootstrap)-->
-<link href="css/styles.css" rel="stylesheet" />
-<!-- Core theme JS-->
-<script src="js/scripts.js"></script>
-
-<!-- * *                               SB Forms JS                               * *-->
-<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 
 <style>
-	.icon{
-		width : 100px;
-		height : 100px;
-	}
-	
+.icon {
+	width: 100px;
+	height: 100px;
+	transition: transform 0.5s;
+}
+
+.icon:hover {
+	transform: scale(1.2);
+}
 </style>
 </head>
 <body id="page-top">
-	<%@ include file="nav.jsp"%>
 	
+
 	<!-- Header-->
 	<header class="py-5">
 		<div class="container px-lg-5">
@@ -65,19 +63,26 @@
 							<div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4">
 								<i class="bi bi-collection"></i>
 							</div>
-							<a href="#"> <h2 class="fs-4 fw-bold"> <img class="icon" alt="cafe" src="img/cafe-icon.png">  </h2> </a>
-							<p class="mb-0"> 카 페 </p>
+							<a href="#">
+								<h2 class="fs-4 fw-bold">
+									<img class="icon" alt="cafe" src="img/cafe-icon.png">
+								</h2>
+							</a>
+							<p class="mb-0">카 페</p>
 						</div>
 					</div>
 				</div>
-				
 				<div class="col-lg-6 col-xxl-4 mb-5">
 					<div class="card bg-light border-0 h-100">
 						<div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
 							<div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4">
 								<i class="bi bi-cloud-download"></i>
 							</div>
-							<a href="#"> <h2 class="fs-4 fw-bold"> <img class="icon" alt="beauty" src="img/beauty.png">  </h2> </a>
+							<a href="#">
+								<h2 class="fs-4 fw-bold">
+									<img class="icon" alt="beauty" src="img/beauty.png">
+								</h2>
+							</a>
 							<p class="mb-0">미 용</p>
 						</div>
 					</div>
@@ -88,7 +93,11 @@
 							<div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4">
 								<i class="bi bi-card-heading"></i>
 							</div>
-							<a href="#"> <h2 class="fs-4 fw-bold"> <img class="icon" alt="hospital" src="img/hospital.png">  </h2> </a>
+							<a href="#">
+								<h2 class="fs-4 fw-bold">
+									<img class="icon" alt="hospital" src="img/hospital.png">
+								</h2>
+							</a>
 							<p class="mb-0">병 원</p>
 						</div>
 					</div>
@@ -99,8 +108,12 @@
 							<div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4">
 								<i class="bi bi-bootstrap"></i>
 							</div>
-								<a href="#"> <h2 class="fs-4 fw-bold"> <img class="icon" alt="restraunt" src="img/restraunt-pet.png">  </h2> </a>
-							<p class="mb-0"> 식 당</p>
+							<a href="#">
+								<h2 class="fs-4 fw-bold">
+									<img class="icon" alt="restraunt" src="img/restraunt-pet.png">
+								</h2>
+							</a>
+							<p class="mb-0">식 당</p>
 						</div>
 					</div>
 				</div>
@@ -110,8 +123,12 @@
 							<div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4">
 								<i class="bi bi-code"></i>
 							</div>
-							<a href="#"> <h2 class="fs-4 fw-bold"> <img class="icon" alt="kindergaden" src="img/dog-training.png">  </h2> </a>
-							<p class="mb-0"> 유치원 </p>
+							<a href="#">
+								<h2 class="fs-4 fw-bold">
+									<img class="icon" alt="kindergaden" src="img/dog-training.png">
+								</h2>
+							</a>
+							<p class="mb-0">유치원</p>
 						</div>
 					</div>
 				</div>
@@ -121,7 +138,11 @@
 							<div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4">
 								<i class="bi bi-patch-check"></i>
 							</div>
-							<a href="#"> <h2 class="fs-4 fw-bold"> <img class="icon" alt="hotel" src="img/hotel.png">  </h2> </a>
+							<a href="#">
+								<h2 class="fs-4 fw-bold">
+									<img class="icon" alt="hotel" src="img/hotel.png">
+								</h2>
+							</a>
 							<p class="mb-0">호 텔</p>
 						</div>
 					</div>
@@ -129,6 +150,7 @@
 			</div>
 		</div>
 	</section>
-	<%@ include file="./footer.jsp"%>
+
+	<%@ include file="/health&edu/footer.jsp"%>
 </body>
 </html>
