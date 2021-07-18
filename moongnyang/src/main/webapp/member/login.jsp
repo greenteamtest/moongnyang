@@ -67,8 +67,8 @@
 				<td>
 					<div class="input-group mb-3">
 						<input type="text" class="form-control" placeholder="이메일"
-							value="${user_email}" name="user_email" size="20"
-							aria-label="이메일" aria-describedby="basic-addon1">
+							value="${user_email}" name="email" size="20" aria-label="이메일"
+							aria-describedby="basic-addon1">
 					</div>
 				</td>
 			</tr>
@@ -76,15 +76,22 @@
 				<td>
 					<div class="input-group mb-3">
 						<input type="password" class="form-control" placeholder="비밀번호"
-							value="${user_pwd}" name="user_pwd" size="20" aria-label="비밀번호"
+							value="${user_pwd}" name="pwd" size="20" aria-label="비밀번호"
 							aria-describedby="basic-addon1"> <br> <br>
 					</div>
 				</td>
 			</tr>
 			<tr>
+
 				<td><a id="custom-login-btn" type="submit"><img
-						class="smallimg" src="img/loginbutton.png"
+						class="smallimg" src="img/loginbutton.png" type="submit"
 						onclick="return loginCheck()"></a> <br></td>
+			</tr>
+			<tr>
+				<td>
+					<button type="submit" class="btn btn-primary"
+						onclick="return loginCheck()">Login</button> <br>
+				</td>
 			</tr>
 			<tr>
 				<td><a id="custom-login-btn" type="button"><img

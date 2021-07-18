@@ -36,16 +36,17 @@ public class LoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
-		String url = "member/login.jsp";
+		String url = "/member/login.jsp";
 		HttpSession session = request.getSession();
 		if (session.getAttribute("loginUser") != null) {
-			url = "test.jsp";
+			url = "/member/main.jsp";
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 	}
+	
 
-	/**
+	/**F
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
@@ -53,10 +54,10 @@ public class LoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		doGet(request, response);
-		String url = "member/login.jsp";
+		String url = "/member/login.jsp";
 
-		String email = request.getParameter("user_email");
-		String pwd = request.getParameter("user_pwd");
+		String email = request.getParameter("email");
+		String pwd = request.getParameter("pwd");
 		MemberDAO dao = MemberDAO.getInstance();
 		int result = dao.userCheck(email, pwd);
 
@@ -65,7 +66,7 @@ public class LoginServlet extends HttpServlet {
 			HttpSession session = request.getSession(true);
 			session.setAttribute("loginUser", vo);
 			request.setAttribute("message", "회원가입에 성공했습니다.");
-			url = "member/test.jsp";
+			url = "/member/main.jsp";
 		} else if (result == 0) {
 			request.setAttribute("message", "이런.. 비밀번호가 맞지않네요 ㅠ");
 
