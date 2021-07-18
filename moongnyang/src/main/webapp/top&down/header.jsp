@@ -25,8 +25,8 @@
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
 				<c:if test="${!empty loginUser}">
-					<li class="nav-item"><a class="nav-link" href="logout.do">${nickname}님,
-							안녕하세요 
+					<li class="nav-item"><a class="nav-link" href="logout.do">ヽ(=^･ω･^=)丿${loginUser.nickname}님,
+							환영한다옹(▽◕ ᴥ ◕▽)
 				</c:if>
 				<li class="nav-item"><a class="nav-link" href="#services">알림</a></li>
 				<c:if test="${empty loginUser}">
