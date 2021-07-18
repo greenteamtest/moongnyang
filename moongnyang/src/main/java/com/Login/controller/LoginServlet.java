@@ -39,7 +39,7 @@ public class LoginServlet extends HttpServlet {
 		String url = "member/login.jsp";
 		HttpSession session = request.getSession();
 		if (session.getAttribute("loginUser") != null) {
-			url = "main.jsp";
+			url = "test.jsp";
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
@@ -65,13 +65,13 @@ public class LoginServlet extends HttpServlet {
 			MemberVO vo = dao.getMeber(email);
 			HttpSession session = request.getSession();
 			session.setAttribute("loginUser", vo);
-			request.setAttribute("meesage", "Regist is success");
-			url = "main.jsp";
+			request.setAttribute("meesage", "회원가입에 성공했습니다.");
+			url = "test.jsp";
 		} else if (result == 0) {
-			request.setAttribute("message", "It's not a right password");
+			request.setAttribute("message", "이런.. 비밀번호가 맞지않네요 ㅠ");
 
 		} else if (result == -1) {
-			request.setAttribute("message", "It's not a existing member");
+			request.setAttribute("message", "앗, 존재하지 않는 회원이라네요. 다시 한번 확인부탁드려용");
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

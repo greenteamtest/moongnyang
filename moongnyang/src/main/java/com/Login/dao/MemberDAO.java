@@ -30,7 +30,7 @@ public class MemberDAO {
 		return conn;
 	}
 
-	public int userCheck(String userid, String pwd) {
+	public int userCheck(String useremail, String pwd) {
 		int result = -1;
 		String sql = "select pwd from member where userid=?";
 		Connection conn = null;
@@ -40,7 +40,7 @@ public class MemberDAO {
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, userid);
+			pstmt.setString(1, useremail);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				if (rs.getString("pwd") != null && rs.getString("pwd").equals(pwd)) {
@@ -71,7 +71,7 @@ public class MemberDAO {
 		return result;
 	}
 
-	public MemberVO getMeber(String userid) {
+	public MemberVO getMeber(String useremail) {
 		MemberVO mVo = null;
 		String sql = "select * from member where userid=?";
 		Connection conn = null;
@@ -81,7 +81,7 @@ public class MemberDAO {
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, userid);
+			pstmt.setString(1, useremail);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				mVo = new MemberVO();
