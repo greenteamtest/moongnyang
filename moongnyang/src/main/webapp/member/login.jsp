@@ -82,7 +82,7 @@
 				<td>
 					<div class="input-group mb-3">
 						<input type="text" class="form-control" placeholder="이메일"
-							name="userid" size="20" aria-label="이메일"
+							name="user_email" size="20" aria-label="이메일"
 							aria-describedby="basic-addon1">
 					</div>
 				</td>
@@ -91,9 +91,8 @@
 				<td>
 					<div class="input-group mb-3">
 						<input type="password" class="form-control" placeholder="비밀번호"
-							name="pwd" size="20" aria-label="비밀번호"
-							aria-describedby="basic-addon1">
-							 <br> <br>
+							name="user_pwd" size="20" aria-label="비밀번호"
+							aria-describedby="basic-addon1"> <br> <br>
 					</div>
 				</td>
 			</tr>
@@ -105,7 +104,7 @@
 			<tr>
 				<td><a id="custom-login-btn" type="submit"><img
 						class="smallimg" src="img/registerbutton.png"
-						onclick="location.href='join.do'"></a> <br> <br> </td>
+						onclick="location.href='join.do'"></a> <br> <br></td>
 			</tr>
 			<tr>
 				<td><br></td>
@@ -113,7 +112,7 @@
 			<tr>
 				<td><a id="custom-login-btn" type="submit"> <img
 						src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg"
-						width="250" onclick="return kakaoLogin();" /> <br>  <br> 
+						width="250" onclick="return kakaoLogin();" /> <br> <br>
 				</a></td>
 			</tr>
 			<tr>
@@ -123,6 +122,10 @@
 					href="<%=apiURL%>"><img height="50" src="img/naverlogin.png" /></a>
 				</td>
 			</tr>
+			<tr>
+				<td>${message}</td>
+			</tr>
+
 		</table>
 
 

@@ -57,7 +57,7 @@ public class LoginServlet extends HttpServlet {
 
 		String email = request.getParameter("user_email");
 		String pwd = request.getParameter("user_pwd");
-
+		System.out.println(email);
 		MemberDAO dao = MemberDAO.getInstance();
 		int result = dao.userCheck(email, pwd);
 
@@ -65,7 +65,7 @@ public class LoginServlet extends HttpServlet {
 			MemberVO vo = dao.getMeber(email);
 			HttpSession session = request.getSession();
 			session.setAttribute("loginUser", vo);
-			request.setAttribute("meesage", "회원가입에 성공했습니다.");
+			request.setAttribute("message", "회원가입에 성공했습니다.");
 			url = "test.jsp";
 		} else if (result == 0) {
 			request.setAttribute("message", "이런.. 비밀번호가 맞지않네요 ㅠ");

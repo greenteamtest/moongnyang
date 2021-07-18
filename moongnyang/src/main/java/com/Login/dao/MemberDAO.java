@@ -30,7 +30,7 @@ public class MemberDAO {
 		return conn;
 	}
 
-	public int userCheck(String useremail, String pwd) {
+	public int userCheck(String email, String pwd) {
 		int result = -1;
 		String sql = "select user_pwd from user_info where user_email=?";
 		Connection conn = null;
@@ -40,7 +40,7 @@ public class MemberDAO {
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, useremail);
+			pstmt.setString(1, email);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				if (rs.getString("user_pwd") != null && rs.getString("user_pwd").equals(pwd)) {

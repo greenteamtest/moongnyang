@@ -3,14 +3,15 @@
  */
 
 function loginCheck() {
-	if (document.frm.userid.value.length == 0) {
-		alert("앗! 아이디를 입력하지 않으셨어요ㅠ꼭 입력해주실꺼죠~?");
-		frm.userid.focus();
+	System.out.println(user_email);
+	if (document.frm.user_email.value.length == 0) {
+		alert("앗! 이메일을 입력하지 않으셨어요ㅠ꼭 입력해주실꺼죠~?");
+		frm.user_email.focus();
 		return false;
 	}
-	if (document.frm.pwd.value == "") {
+	if (document.frm.user_pwd.value == "") {
 		alert("앗! 비밀번호를 입력하지 않으셨어요ㅠ꼭 입력해주실꺼죠~?");
-		frm.pwd.focus();
+		frm.user_pwd.focus();
 		return false;
 	}
 	return true;
