@@ -55,8 +55,8 @@ public class LoginServlet extends HttpServlet {
 //		doGet(request, response);
 		String url = "member/login.jsp";
 
-		String email = request.getParameter("email");
-		String pwd = request.getParameter("pwd");
+		String email = request.getParameter("user_email");
+		String pwd = request.getParameter("user_pwd");
 
 		MemberDAO dao = MemberDAO.getInstance();
 		int result = dao.userCheck(email, pwd);

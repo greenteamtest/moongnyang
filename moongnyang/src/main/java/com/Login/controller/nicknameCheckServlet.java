@@ -12,16 +12,16 @@ import javax.servlet.http.HttpServletResponse;
 import com.Login.dao.MemberDAO;
 
 /**
- * Servlet implementation class idCheckServlet
+ * Servlet implementation class idCheckServlet 아직 완성안됨 
  */
-@WebServlet("/idCheck.do")
-public class idCheckServlet extends HttpServlet {
+@WebServlet("/nickCheck.do")
+public class nicknameCheckServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public idCheckServlet() {
+	public nicknameCheckServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -34,11 +34,11 @@ public class idCheckServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
-		String userid = request.getParameter("userid");
+		String nickname = request.getParameter("user_nick");
 		MemberDAO dao = MemberDAO.getInstance();
 
-		int result = dao.confirmID(userid);
-		request.setAttribute("userid", userid);
+		int result = dao.confirmNickname(nickname);
+		request.setAttribute("userid", nickname);
 		request.setAttribute("result", result);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("member/idCheck.jsp");
 		dispatcher.forward(request, response);
