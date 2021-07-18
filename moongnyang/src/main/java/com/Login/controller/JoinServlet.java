@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.Team.dao.MemberDAO;
-import com.Team.dto.MemberVO;
+import com.Login.dao.MemberDAO;
+import com.Login.dto.MemberVO;
 
 /**
  * Servlet implementation class JoinServlet
@@ -49,20 +49,16 @@ public class JoinServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 //		doGet(request, response);
 		request.setCharacterEncoding("UTF-8");
-		String name = request.getParameter("name");
-		String userid = request.getParameter("userid");
+		String nickname = request.getParameter("nickname");
 		String pwd = request.getParameter("pwd");
 		String email = request.getParameter("email");
-		String phone = request.getParameter("phone");
-		String admin = request.getParameter("admin");
+		String auth = request.getParameter("auth");
 
 		MemberVO vo = new MemberVO();
-		vo.setName(name);
-		vo.setUserid(userid);
+		vo.setNickname(nickname);
 		vo.setPwd(pwd);
 		vo.setEmail(email);
-		vo.setPhone(phone);
-		vo.setAdmin(Integer.parseInt(admin));
+		vo.setAuth(Integer.parseInt(auth));
 		
 		MemberDAO dao = MemberDAO.getInstance();
 		int result = dao.inserMember(vo);
@@ -70,10 +66,10 @@ public class JoinServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 
 		if (result == 1) {
-			session.setAttribute("userid", vo.getUserid());
-			request.setAttribute("message", "ȸ�����Կ� �����߽��ϴ�.");
+			session.setAttribute("email", vo.getEmail());
+			request.setAttribute("message", "이메일 중복");
 		} else {
-			request.setAttribute("mesaage", "ȸ�����Կ� �����߽��ϴ�.");
+			request.setAttribute("mesaage", "이메일 없음.");
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher("member/login.jsp");
 		dispatcher.forward(request, response);
