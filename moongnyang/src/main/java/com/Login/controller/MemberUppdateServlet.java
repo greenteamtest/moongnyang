@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.Team.dao.MemberDAO;
-import com.Team.dto.MemberVO;
+import com.Login.dao.MemberDAO;
+import com.Login.dto.MemberVO;
 
 /**
  * Servlet implementation class MemberUppdateServlet
@@ -36,7 +36,7 @@ public class MemberUppdateServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
 		String userid = request.getParameter("userid");
-		
+
 		MemberDAO dao = MemberDAO.getInstance();
 		MemberVO vo = dao.getMeber(userid);
 		request.setAttribute("vo", vo);
@@ -52,18 +52,16 @@ public class MemberUppdateServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
-		String userid = request.getParameter("userid");
+		String nickname = request.getParameter("nickname");
 		String pwd = request.getParameter("pwd");
 		String email = request.getParameter("email");
-		String phone = request.getParameter("phone");
-		String admin = request.getParameter("admin");
+		String auth = request.getParameter("auth");
 
 		MemberVO vo = new MemberVO();
-		vo.setUserid(userid);
+		vo.setNickname(nickname);
 		vo.setPwd(pwd);
 		vo.setEmail(email);
-		vo.setPhone(phone);
-		vo.setAdmin(Integer.parseInt(admin));
+		vo.setAuth(Integer.parseInt(auth));
 
 		MemberDAO dao = MemberDAO.getInstance();
 

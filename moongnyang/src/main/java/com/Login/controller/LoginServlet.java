@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.Team.dao.MemberDAO;
-import com.Team.dto.MemberVO;
+import com.Login.dao.MemberDAO;
+import com.Login.dto.MemberVO;
 
 /**
  * Servlet implementation class LoginServlet
@@ -55,14 +55,14 @@ public class LoginServlet extends HttpServlet {
 //		doGet(request, response);
 		String url = "member/login.jsp";
 
-		String userid = request.getParameter("userid");
+		String email = request.getParameter("email");
 		String pwd = request.getParameter("pwd");
 
 		MemberDAO dao = MemberDAO.getInstance();
-		int result = dao.userCheck(userid, pwd);
+		int result = dao.userCheck(email, pwd);
 
 		if (result == 1) {
-			MemberVO vo = dao.getMeber(userid);
+			MemberVO vo = dao.getMeber(email);
 			HttpSession session = request.getSession();
 			session.setAttribute("loginUser", vo);
 			request.setAttribute("meesage", "Regist is success");
