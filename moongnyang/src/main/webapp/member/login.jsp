@@ -82,6 +82,10 @@
 				</td>
 			</tr>
 			<tr>
+				<td><div class="alert alert-warning" role="alert">
+						${message}</div></td>
+			</tr>
+			<tr>
 
 				<td><input type="image" class="smallimg"
 					src="img/loginbutton.png" type="submit"
@@ -109,9 +113,7 @@
 					href="<%=apiURL%>"><img height="50" src="img/naverlogin.png" /></a>
 				</td>
 			</tr>
-			<tr>
-				<td>${message}</td>
-			</tr>
+
 		</table>
 	</form>
 </body>

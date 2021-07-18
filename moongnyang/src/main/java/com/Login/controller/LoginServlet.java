@@ -72,7 +72,7 @@ public class LoginServlet extends HttpServlet {
 			request.setAttribute("message", "이런.. 비밀번호가 맞지않네요 ㅠ");
 
 		} else if (result == -1) {
-			request.setAttribute("message", "앗, 존재하지 않는 회원이라네요. 다시 한번 확인부탁드려용");
+			request.setAttribute("message", "앗, 가입되지않은 아이디에요 ㅠ");
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
