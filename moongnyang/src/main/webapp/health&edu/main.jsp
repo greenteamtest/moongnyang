@@ -33,7 +33,7 @@
 </style>
 </head>
 <body id="page-top">
-	
+
 
 	<!-- Header-->
 	<header class="py-5">
@@ -63,7 +63,7 @@
 							<div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4">
 								<i class="bi bi-collection"></i>
 							</div>
-							<a href="#">
+							<a href="#" class="category" id="cafe">
 								<h2 class="fs-4 fw-bold">
 									<img class="icon" alt="cafe" src="img/cafe-icon.png">
 								</h2>
@@ -78,8 +78,8 @@
 							<div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4">
 								<i class="bi bi-cloud-download"></i>
 							</div>
-							<a href="#">
-								<h2 class="fs-4 fw-bold">
+							<a href="#" class="category" id="beauty">
+								<h2 class="fs-4 fw-bold" id="cafe">
 									<img class="icon" alt="beauty" src="img/beauty.png">
 								</h2>
 							</a>
@@ -93,7 +93,7 @@
 							<div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4">
 								<i class="bi bi-card-heading"></i>
 							</div>
-							<a href="#">
+							<a href="#" class="category" id="hospital">
 								<h2 class="fs-4 fw-bold">
 									<img class="icon" alt="hospital" src="img/hospital.png">
 								</h2>
@@ -108,7 +108,7 @@
 							<div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4">
 								<i class="bi bi-bootstrap"></i>
 							</div>
-							<a href="#">
+							<a href="#" class="category" id="restraunt">
 								<h2 class="fs-4 fw-bold">
 									<img class="icon" alt="restraunt" src="img/restraunt-pet.png">
 								</h2>
@@ -123,8 +123,8 @@
 							<div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4">
 								<i class="bi bi-code"></i>
 							</div>
-							<a href="#">
-								<h2 class="fs-4 fw-bold">
+							<a href="#" class="category" id="kindergaden">
+								<h2 class="fs-4 fw-bold" >
 									<img class="icon" alt="kindergaden" src="img/dog-training.png">
 								</h2>
 							</a>
@@ -138,7 +138,7 @@
 							<div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4">
 								<i class="bi bi-patch-check"></i>
 							</div>
-							<a href="#">
+							<a href="#" class="category" id="hotel">
 								<h2 class="fs-4 fw-bold">
 									<img class="icon" alt="hotel" src="img/hotel.png">
 								</h2>

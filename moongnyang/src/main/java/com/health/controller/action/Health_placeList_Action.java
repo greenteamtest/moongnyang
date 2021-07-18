@@ -8,20 +8,19 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.health.dto.HealthVo;
+import com.health.dto.HealthPlaceVo;
 
 public class Health_placeList_Action implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 
-		// List<VisitVo> list = VisitTestDao.getInstence().selectList_board();
+		List<HealthPlaceVo> place = service.selectPlace_List(request.getParameter("key"));
 
-		List<HealthVo> list = service.selectList_board();
-		request.setAttribute("list", list);
+		request.setAttribute("place", place);
 
-		RequestDispatcher disp = request.getRequestDispatcher("visit/list/list.jsp");
+		RequestDispatcher disp = request.getRequestDispatcher("health&edu/place/place_list.jsp");
 		disp.forward(request, response);
+
 	}
 }

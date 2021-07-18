@@ -24,55 +24,63 @@
 	border: 2px solid red;
 }
 
+#place_list {
+	border: 5px solid red;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+#card-border {
+	border: 2px solid blue;
+	width: 100rem;
+	padding-left: 10rem;
+	text-align: center;
+}
+
 .card-frame {
 	display: inline-block;
+	margin: 2rem 2rem 2rem 2rem;
 }
 </style>
 </head>
 <body>
-	<main>
-		
-		<div class="card-frame">
-			<div class="card" style="width: 18rem;">
-				<img src="..." class="card-img-top" alt="...">
-				<div class="card-body">
-					<h5 class="card-title">Card title</h5>
-					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-						content.</p>
-				</div>
-				<ul class="list-group list-group-flush">
-					<li class="list-group-item">An item</li>
-					<li class="list-group-item">A second item</li>
+	<div id="container">
+		<main>
+			<section id="place_list">
+				<div id="card-border">
 
-					<li class="list-group-item">A third item</li>
-				</ul>
-				<div class="card-body">
-					<a href="#" class="card-link">Card link</a> <a href="#" class="card-link">Another link</a>
-				</div>
-			</div>
-		</div>
+					<c:if test="${empty place }">
+						<span id="no-data">데이터가 없습니다 </span>
+					</c:if>
 
-		<div class="card-frame">
-			<div class="card" style="width: 18rem;">
-				<img src="..." class="card-img-top" alt="...">
-				<div class="card-body">
-					<h5 class="card-title">Card title</h5>
-					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-						content.</p>
-				</div>
-				<ul class="list-group list-group-flush">
-					<li class="list-group-item">An item</li>
-					<li class="list-group-item">A second item</li>
-					<li class="list-group-item">A third item</li>
-				</ul>
-				<div class="card-body">
-					<a href="#" class="card-link">Card link</a> <a href="#" class="card-link">Another link</a>
-				</div>
-			</div>
-		</div>
+					<c:forEach var="vo" items="${ place }">
 
-	</main>
+						<div class="card-frame">
+							<div class="card" style="width: 18rem;">
+								<img src="..." class="card-img-top" alt="...">
+								<div class="card-body">
+									<h5 class="card-title">${vo.getPlace() }</h5>
+									<p class="card-text">${ vo.getAddress() }</p>
+								</div>
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item">${ vo.getPet_kind() }</li>
+									<li class="list-group-item"># 거리</li>
 
+									<li class="list-group-item">${ vo.getDips_cont() }</li>
+								</ul>
+								<div class="card-body">
+									<a href="#" class="card-link"> 자세히 보기 </a> <a href="#" class="card-link">Another link</a>
+								</div>
+							</div>
+						</div>
+					</c:forEach>
+
+				</div>
+			</section>
+		</main>
+	</div>
 
 	<%@ include file="../footer.jsp"%>
 

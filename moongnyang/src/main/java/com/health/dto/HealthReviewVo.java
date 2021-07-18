@@ -1,6 +1,6 @@
 package com.health.dto;
 
-public class HealthVo {
+public class HealthReviewVo {
 
 	private int idx;
 	private String user_id;
@@ -18,7 +18,7 @@ public class HealthVo {
 	private int user_idx;
 	private int board_idx;
 
-	public HealthVo() {
+	public HealthReviewVo() {
 	}
 
 	public int getIdx() {
