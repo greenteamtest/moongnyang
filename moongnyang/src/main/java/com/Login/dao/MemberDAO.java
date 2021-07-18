@@ -1,4 +1,4 @@
-package com.Team.dao;
+package com.Login.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,7 +8,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import com.Team.dto.MemberVO;
+import com.Login.dto.MemberVO;
 
 public class MemberDAO {
 	private MemberDAO() {
@@ -85,12 +85,10 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				mVo = new MemberVO();
-				mVo.setName(rs.getString("name"));
-				mVo.setUserid(rs.getString("userid"));
+				mVo.setNickname(rs.getString("name"));
 				mVo.setPwd(rs.getString("pwd"));
 				mVo.setEmail(rs.getString("email"));
-				mVo.setPhone(rs.getString("phone"));
-				mVo.setAdmin(rs.getInt("admin"));
+				mVo.setAuth(rs.getInt("admin"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -158,12 +156,10 @@ public class MemberDAO {
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, vo.getName());
-			pstmt.setString(2, vo.getUserid());
-			pstmt.setString(3, vo.getPwd());
-			pstmt.setString(4, vo.getEmail());
-			pstmt.setString(5, vo.getPhone());
-			pstmt.setInt(6, vo.getAdmin());
+			pstmt.setString(1, vo.getNickname());
+			pstmt.setString(2, vo.getPwd());
+			pstmt.setString(3, vo.getEmail());
+			pstmt.setInt(4, vo.getAuth());
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -192,10 +188,8 @@ public class MemberDAO {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(spl);
 			pstmt.setString(1, vo.getPwd());
-			pstmt.setString(2, vo.getEmail());
-			pstmt.setString(3, vo.getPhone());
-			pstmt.setInt(4, vo.getAdmin());
-			pstmt.setString(5, vo.getUserid());
+			pstmt.setString(2, vo.getNickname());
+			pstmt.setString(5, vo.getEmail());
 			result = pstmt.executeUpdate();
 
 		} catch (Exception e) {
