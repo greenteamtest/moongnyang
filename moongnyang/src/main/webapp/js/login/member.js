@@ -1,9 +1,4 @@
-/**
- * 
- */
-
 function loginCheck() {
-	System.out.println(user_email);
 	if (document.frm.user_email.value.length == 0) {
 		alert("앗! 이메일을 입력하지 않으셨어요ㅠ꼭 입력해주실꺼죠~?");
 		frm.user_email.focus();
@@ -14,6 +9,7 @@ function loginCheck() {
 		frm.user_pwd.focus();
 		return false;
 	}
+//	alert("모두 입력했음");
 	return true;
 }
 

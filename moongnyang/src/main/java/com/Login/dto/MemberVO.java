@@ -5,6 +5,7 @@ public class MemberVO {
 	private String nickname;
 	private String pwd;
 	private int auth;
+	
 	public String getEmail() {
 		return email;
 	}

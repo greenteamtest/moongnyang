@@ -18,11 +18,13 @@
 	Connection con = DriverManager.getConnection(url, id, pwd);
 	PreparedStatement ps = con.prepareStatement(sql);
 	ResultSet rs = ps.executeQuery();
-	out.println("user_email user_nick user_pwd");
+	int cnt = 0;
 	while (rs.next()) {
-		out.println(rs.getString("user_email"));
-		out.println(rs.getString("user_nick"));
-		out.println(rs.getString("user_pwd"));
+		cnt++;
+		out.println(cnt+"번째 데이따"+"<br>");
+		out.println("이멜 : " + rs.getString("user_email") + "<br>");
+		out.println("닉넴 : " + rs.getString("user_nick") + "<br>");
+		out.println("비번 :" + rs.getString("user_pwd") + "<br><br>");
 	}
 	%>
 </body>

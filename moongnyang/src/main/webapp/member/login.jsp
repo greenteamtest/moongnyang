@@ -25,13 +25,6 @@
 	width: 250px
 }
 </style>
-
-<!-- <script type="text/javascript" src="script/member.js"></script> -->
-<!-- <link -->
-<!-- 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" -->
-<!-- 	rel="stylesheet" -->
-<!-- 	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" -->
-<!-- 	crossorigin="anonymous"> -->
 </head>
 <body>
 	<%
@@ -45,14 +38,9 @@
 	apiURL += "&state=" + state;
 	session.setAttribute("state", state);
 	%>
-	<script>
-		//61eaf0ccb670c71fede5ee3ff459092e
-		
-	</script>
 	<script src="http://developers.kakao.com/sdk/js/kakao.js"></script>
 	<script>
 	window.Kakao.init("61eaf0ccb670c71fede5ee3ff459092e"); 
-	
 	function kakaoLogin(){ 
 		window.Kakao.Auth.login({
 			scope:'profile_nickname,account_email',
@@ -64,9 +52,6 @@
 					const kakao_account = res.kakao_account;
 					console.log(kakao_account); } }); } }); }
 	</script>
-
-
-
 	<form action="login.do" method="post" name="frm">
 		<table align="center">
 			<tr>
@@ -82,8 +67,8 @@
 				<td>
 					<div class="input-group mb-3">
 						<input type="text" class="form-control" placeholder="이메일"
-							name="user_email" size="20" aria-label="이메일"
-							aria-describedby="basic-addon1">
+							value="${user_email}" name="user_email" size="20"
+							aria-label="이메일" aria-describedby="basic-addon1">
 					</div>
 				</td>
 			</tr>
@@ -91,7 +76,7 @@
 				<td>
 					<div class="input-group mb-3">
 						<input type="password" class="form-control" placeholder="비밀번호"
-							name="user_pwd" size="20" aria-label="비밀번호"
+							value="${user_pwd}" name="user_pwd" size="20" aria-label="비밀번호"
 							aria-describedby="basic-addon1"> <br> <br>
 					</div>
 				</td>
@@ -102,7 +87,7 @@
 						onclick="return loginCheck()"></a> <br></td>
 			</tr>
 			<tr>
-				<td><a id="custom-login-btn" type="submit"><img
+				<td><a id="custom-login-btn" type="button"><img
 						class="smallimg" src="img/registerbutton.png"
 						onclick="location.href='join.do'"></a> <br> <br></td>
 			</tr>
@@ -110,7 +95,7 @@
 				<td><br></td>
 			</tr>
 			<tr>
-				<td><a id="custom-login-btn" type="submit"> <img
+				<td><a id="custom-login-btn" type="button"> <img
 						src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg"
 						width="250" onclick="return kakaoLogin();" /> <br> <br>
 				</a></td>
@@ -125,10 +110,7 @@
 			<tr>
 				<td>${message}</td>
 			</tr>
-
 		</table>
-
-
 	</form>
 </body>
 
