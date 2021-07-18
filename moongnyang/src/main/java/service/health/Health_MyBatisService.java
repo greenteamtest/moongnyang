@@ -1,4 +1,4 @@
-package service;
+package service.health;
 
 import java.util.List;
 import java.util.Map;
@@ -9,18 +9,18 @@ import dao.VisitDAO;
 import dbconnect.MybatisSessionFactory;
 import vo.VisitVo;
 
-public class OracleMyBatisService {
+public class Health_MyBatisService {
 
-	VisitDAO dao;
+	HealthDAO dao;
 
-	public OracleMyBatisService() {
-		dao = new VisitDAO();
+	public Health_MyBatisService() {
+		dao = new HealthDAO();
 	}
 
 	// view board
-	public List<VisitVo> selectList_board() {
+	public List<HealthVo> selectList_board() {
 		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
-		List<VisitVo> list = null;
+		List<HealthVo> list = null;
 
 		try {
 			list = dao.selectList_board(session); // dao에 SqlSession 전송
@@ -160,9 +160,9 @@ public class OracleMyBatisService {
 	}
 
 	// get user info
-	public List<VisitVo> selectUser_Info(Map<String, Object> map) {
+	public List<HealthVo> selectUser_Info(Map<String, Object> map) {
 		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
-		List<VisitVo> userID = null;
+		List<HealthVo> userID = null;
 
 		try {
 			userID = dao.selectUser_Info(session, map); // dao에 SqlSession 전송
