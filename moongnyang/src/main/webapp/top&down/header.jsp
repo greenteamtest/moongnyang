@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <style>
 .small1 {
 	width: 100px;
@@ -23,9 +24,25 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+				<c:if test="${!empty loginUser}">
+					<li class="nav-item"><a class="nav-link" href="logout.do">${nickname}님,
+							안녕하세요 
+				</c:if>
 				<li class="nav-item"><a class="nav-link" href="#services">알림</a></li>
-				<li class="nav-item"><a class="nav-link" href="login.do">로그인
-				</a></li>
+				<c:if test="${empty loginUser}">
+					<li class="nav-item"><a class="nav-link" href="login.do">로그인
+
+
+					
+				</c:if>
+				<c:if test="${!empty loginUser}">
+					<li class="nav-item"><a class="nav-link" href="logout.do">로그아웃
+
+
+					
+				</c:if>
+				</a>
+				</li>
 				<!-- 				<li class="nav-item"><a class="nav-link" href="#about">회원가입</a></li> -->
 				<li class="nav-item"><a class="nav-link" href="#team">고객센터</a></li>
 				<li class="nav-item dropdown"><a

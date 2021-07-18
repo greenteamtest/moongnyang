@@ -83,16 +83,11 @@
 			</tr>
 			<tr>
 
-				<td><a id="custom-login-btn" type="submit"><img
-						class="smallimg" src="img/loginbutton.png" type="submit"
-						onclick="return loginCheck()"></a> <br></td>
+				<td><input type="image" class="smallimg"
+					src="img/loginbutton.png" type="submit"
+					onclick="return loginCheck()"> <br></td>
 			</tr>
-			<tr>
-				<td>
-					<button type="submit" class="btn btn-primary"
-						onclick="return loginCheck()">Login</button> <br>
-				</td>
-			</tr>
+
 			<tr>
 				<td><a id="custom-login-btn" type="button"><img
 						class="smallimg" src="img/registerbutton.png"

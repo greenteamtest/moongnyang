@@ -39,14 +39,15 @@ public class LoginServlet extends HttpServlet {
 		String url = "/member/login.jsp";
 		HttpSession session = request.getSession();
 		if (session.getAttribute("loginUser") != null) {
-			url = "/member/main.jsp";
+			url = "index.jsp";
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 	}
-	
 
-	/**F
+	/**
+	 * F
+	 * 
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
@@ -66,7 +67,7 @@ public class LoginServlet extends HttpServlet {
 			HttpSession session = request.getSession(true);
 			session.setAttribute("loginUser", vo);
 			request.setAttribute("message", "회원가입에 성공했습니다.");
-			url = "/member/main.jsp";
+			url = "index.jsp";
 		} else if (result == 0) {
 			request.setAttribute("message", "이런.. 비밀번호가 맞지않네요 ㅠ");
 
