@@ -32,7 +32,7 @@ public class MemberDAO {
 
 	public int userCheck(String useremail, String pwd) {
 		int result = -1;
-		String sql = "select pwd from member where userid=?";
+		String sql = "select user_pwd from user_info where user_email=?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -43,7 +43,7 @@ public class MemberDAO {
 			pstmt.setString(1, useremail);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				if (rs.getString("pwd") != null && rs.getString("pwd").equals(pwd)) {
+				if (rs.getString("user_pwd") != null && rs.getString("user_pwd").equals(pwd)) {
 					result = 1;
 				} else {
 					result = 0;
@@ -73,7 +73,7 @@ public class MemberDAO {
 
 	public MemberVO getMeber(String useremail) {
 		MemberVO mVo = null;
-		String sql = "select * from member where userid=?";
+		String sql = "select * from user_info where user_email=?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -85,10 +85,10 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				mVo = new MemberVO();
-				mVo.setNickname(rs.getString("name"));
-				mVo.setPwd(rs.getString("pwd"));
-				mVo.setEmail(rs.getString("email"));
-				mVo.setAuth(rs.getInt("admin"));
+				mVo.setNickname(rs.getString("user_nickname"));
+				mVo.setPwd(rs.getString("user_pwd"));
+				mVo.setEmail(rs.getString("user_email"));
+				mVo.setAuth(rs.getInt("user_admin"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

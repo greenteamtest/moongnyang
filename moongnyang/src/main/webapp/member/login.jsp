@@ -14,7 +14,7 @@
 <script>
 	//61eaf0ccb670c71fede5ee3ff459092e
 </script>
-<script type="text/javascript" src="script/member.js"></script>
+<script type="text/javascript" src="js/login/member.js"></script>
 <title>로그인 화면</title>
 <style>
 .gray {

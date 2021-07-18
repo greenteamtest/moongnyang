@@ -15,7 +15,7 @@
 	<div class="container">
 		<a class="navbar-brand" href="#page-top"><img
 			src="assets/img/mungnang.jpg" alt="..."
-			onclick="location.href='http://localhost:8092/Hompage/'" /></a>
+			onclick="location.href='index.jsp'" /></a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 			data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
 			aria-expanded="false" aria-label="Toggle navigation">
