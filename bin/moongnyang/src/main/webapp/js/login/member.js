@@ -4,12 +4,12 @@
 
 function loginCheck() {
 	if (document.frm.userid.value.length == 0) {
-		alert("앗! 아이디를 입력하지 않으셨어요ㅠ꼭 입력해주실꺼죠~?");
+		alert("Please Enter your ID");
 		frm.userid.focus();
 		return false;
 	}
 	if (document.frm.pwd.value == "") {
-		alert("앗! 비밀번호를 입력하지 않으셨어요ㅠ꼭 입력해주실꺼죠~?");
+		alert("Please Enter your Password");
 		frm.pwd.focus();
 		return false;
 	}
