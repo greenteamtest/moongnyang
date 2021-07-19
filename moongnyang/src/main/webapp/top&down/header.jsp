@@ -37,14 +37,16 @@
 				</c:if>
 				<c:if test="${!empty loginUser}">
 					<li class="nav-item"><a class="nav-link" href="logout.do">로그아웃
-
-
-					
 				</c:if>
 				</a>
 				</li>
 				<!-- 				<li class="nav-item"><a class="nav-link" href="#about">회원가입</a></li> -->
-				<li class="nav-item"><a class="nav-link" href="#team">고객센터</a></li>
+				<c:if test="${loginUser.auth==0}">
+				<li class="nav-item"><a class="nav-link" href="userPage.do">마이페이지</a></li>
+				</c:if>
+				<c:if test="${loginUser.auth==1}">
+				<li class="nav-item"><a class="nav-link" href="userPage.do">${loginUser.auth}사업자관리</a></li>
+				</c:if>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"
 					role="button" data-bs-toggle="dropdown" aria-expanded="false">
