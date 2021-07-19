@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../top&down/header.jsp"%>
 <%@ include file="../bootstrap/boot.jsp"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +12,7 @@
 <script type="text/javascript" src="js/login/loginjs.js"></script>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript" src="js/login/member.js"></script>
 
 <style>
 .jb-th-1 {
@@ -37,7 +39,7 @@
 	<br>
 	<br>
 	<!-- 이건 좀 좁은 테마 -->
-	<form action="join.do" method="post" name="frm">
+	<form action="emailCheck.do" method="get" name="frm1">
 		<table align="center">
 			<tr>
 				<td><br> <br> <br> <br></td>
@@ -60,16 +62,16 @@
 				<td colspan='3'>
 					<div class="input-group mb-3">
 						<input type="text" class="form-control" placeholder="이메일"
-							name="email" aria-label="이메일"><span class="gray">&nbsp;@&nbsp;</span>
+							id="userEmail" name="userEmail"><span class="gray">&nbsp;@&nbsp;</span>
 						<select class="form-select" id="inputGroupSelect01"
-							name="selectEmail">
+							name="selectemail" id="selectemail">
 							<option selected>선택해주세요.</option>
 							<option value="naver.com">naver.com</option>
 							<option value="hanmail.net">hanmail.net</option>
 							<option value="daum.net">daum.net</option>
 							<option value="gmail.com">gmail.com</option>
 							<option value="nate.com">nate.com</option>
-							<option value="6" function="inputUserEmail()">직접입력할래요</option>
+							<option value="user_write" onChange="selectEmail(this)">직접입력할래요</option>
 						</select>
 					</div>
 				</td>
@@ -77,14 +79,23 @@
 			<tr>
 				<td colspan='2'>
 					<div class="d-grid gap-2">
-						<button class="btn btn-primary btn-lg btn-warning" type="button">중복검사</button>
-						<br>
+						<button class="btn btn-primary btn-lg btn-warning" type="button"
+							onclick="return emailCheck()">중복검사</button>
 					</div>
 				</td>
 			</tr>
 			<tr>
+				<td class="alert alert-warning" role="alert" id="emailtest"><input
+					type="hidden" name="reEmail">중복검사를 해주세용</td>
+			</tr>
+		</table>
+	</form>
+	<form action="nicknameCheck.do" method="get" name="frm2">
+		<table align="center">
+			<tr>
 				<td colspan='2'>
 					<div>
+						<br>
 						<h4>비밀번호</h4>
 					</div>
 				</td>
@@ -143,10 +154,18 @@
 							name="nickname" size="20" aria-label="별명"
 							aria-describedby="basic-addon1">
 						<button type="button" class="btn btn-warning"
-							onclick="return joinCheck()">중복검사</button>
+							onclick="return nicknameCheck()">중복검사</button>
 					</div>
 				</td>
 			</tr>
+			<tr>
+				<td class="alert alert-warning" role="alert" id="emailtest"><input
+					type="hidden" name="renickname">중복검사를 해주세용</td>
+			</tr>
+		</table>
+	</form>
+	<form action="join.do" method="post" name="frm3">
+		<table align="center">
 			<tr>
 				<td colspan='2'>
 					<div>
@@ -208,13 +227,7 @@
 					</div>
 				</td>
 			</tr>
-
-			<tr>
-				<td colspan="2">${message}</td>
-			</tr>
-
 		</table>
-
 	</form>
 </body>
 </html>

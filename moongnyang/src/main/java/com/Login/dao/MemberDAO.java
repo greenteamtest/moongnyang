@@ -118,7 +118,7 @@ public class MemberDAO {
 	public int confirmEmail(String email) {
 		int result = -1;
 		String sql = "select user_email from user_info where user_email=?";
-
+		System.out.println("확인하긴하나?");
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -130,9 +130,10 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				result = 1;
-
+				System.out.println(result);
 			} else {
 				result = -1;
+				System.out.println(result);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

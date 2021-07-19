@@ -36,6 +36,7 @@ public class JoinServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("member/join.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -49,17 +50,23 @@ public class JoinServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 //		doGet(request, response);
 		request.setCharacterEncoding("UTF-8");
-		String nickname = request.getParameter("user_nick");
-		String pwd = request.getParameter("user_pwd");
-		String email = request.getParameter("user_email");
-		String auth = request.getParameter("user_auth");
+
+		String email_non = request.getParameter("emailFront");
+		String email_a = "@";
+		String site = request.getParameter("selectemail");
+		String email = email_non + email_a + site;
+		String nickname = request.getParameter("nickname");
+		String pwd = request.getParameter("pwd");
+
+//		String auth = request.getParameter("user_auth");
+		String auth = "0";
 
 		MemberVO vo = new MemberVO();
+		vo.setEmail(email);
 		vo.setNickname(nickname);
 		vo.setPwd(pwd);
-		vo.setEmail(email);
 		vo.setAuth(Integer.parseInt(auth));
-		
+
 		MemberDAO dao = MemberDAO.getInstance();
 		int result = dao.inserMember(vo);
 
@@ -67,9 +74,9 @@ public class JoinServlet extends HttpServlet {
 
 		if (result == 1) {
 			session.setAttribute("user_email", vo.getEmail());
-			request.setAttribute("message", "이메일 중복");
+			request.setAttribute("message", "이메일 중복띠ㅠ");
 		} else {
-			request.setAttribute("mesaage", "이메일 없음.");
+			request.setAttribute("mesaage", "이메일 사용가능!");
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher("member/login.jsp");
 		dispatcher.forward(request, response);
