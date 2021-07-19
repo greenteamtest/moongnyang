@@ -6,7 +6,6 @@
 	<select id="selectPlace_List" parameterType="String" resultType="com.health.dto.HealthPlaceVo">
 		select * from view_place where field = #{key}
 	</select>
-
 	
 
 </mapper>
