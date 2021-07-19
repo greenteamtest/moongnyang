@@ -9,6 +9,9 @@
 <title>회원 관리</title>
 <script type="text/javascript" src="js/login/member.js"></script>
 <script type="text/javascript" src="js/login/loginjs.js"></script>
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-latest.min.js"></script>
+
 <style>
 .jb-th-1 {
 	width: 33%;
@@ -58,14 +61,15 @@
 					<div class="input-group mb-3">
 						<input type="text" class="form-control" placeholder="이메일"
 							name="email" aria-label="이메일"><span class="gray">&nbsp;@&nbsp;</span>
-						<select class="form-select" id="inputGroupSelect01">
+						<select class="form-select" id="inputGroupSelect01"
+							name="selectEmail">
 							<option selected>선택해주세요.</option>
-							<option value="1">naver.com</option>
-							<option value="2">hanmail.net</option>
-							<option value="3">daum.net</option>
-							<option value="4">gmail.com</option>
-							<option value="5">nate.com</option>
-							<option value="6" func="inputUserEmail()">직접입력할래요</option>
+							<option value="naver.com">naver.com</option>
+							<option value="hanmail.net">hanmail.net</option>
+							<option value="daum.net">daum.net</option>
+							<option value="gmail.com">gmail.com</option>
+							<option value="nate.com">nate.com</option>
+							<option value="6" function="inputUserEmail()">직접입력할래요</option>
 						</select>
 					</div>
 				</td>
