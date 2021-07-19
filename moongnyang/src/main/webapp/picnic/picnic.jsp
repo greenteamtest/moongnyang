@@ -7,6 +7,9 @@
 	<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+	<%@ include file="../top&down/header.jsp"%>
+	<%@ include file="../bootstrap/boot.jsp"%>
+
 
 <html>
 	<head>
@@ -15,6 +18,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="picnic/picnic/css/main.css" />
 		<noscript><link rel="stylesheet" href="picnic/picnic/css/noscript.css" /></noscript>
+		<script type="text/javascript" src="picnic/select.js"></script>
 	</head>
 	<body class="is-preload">
 
@@ -45,14 +49,52 @@
 							</article>
 
 						<!-- Work -->
-							<article id="work" class="panel">								
+							<article id="work" class="panel" >								
 								<header>
 									<h2>유실 동물</h2>
 								</header>
-								<form action="BoardServlet_picnic?command=abandonment" name="select">지역<br>
-									<input type="checkbox" name="sido" value="soul"/>서울
-									<input type="checkbox" name="sido" value="ssss" />경기도
-								</form>
+								<div>
+								<select name ="sido" id= "sido" onchange="categoryChange()">
+								<option>시/도</option>
+								<option value="6110000">서울특별시</option>
+								<option value="6260000">부산광역시</option>
+								<option value="6270000">대구광역시</option>
+								<option value="6280000">인천광역시</option>
+								<option value="6290000">광주광역시</option>
+								<option value="5690000">세종특별자치시</option>
+								<option value="6300000">대전광역시</option>
+								<option value="6310000">울산광역시</option>
+								<option value="6410000">경기도</option>
+								<option value="6420000">강원도</option>
+								<option value="6430000">충청북도</option>
+								<option value="6440000">충청남도</option>
+								<option value="6450000">전라북도</option>
+								<option value="6460000">전라남도</option>
+								<option value="6470000">경상북도</option>
+								<option value="6480000">경상남도</option>
+								<option value="6500000">제주특별자치도</option>					
+								</select>
+								</div>
+								<div>
+								<select name = "gu" id="gu">
+								<option>시/군/구</option>
+								</select>
+								</div>
+								<br>
+								<div>
+									<select name="kind" id="kind" onchange="category_kind()">
+										<option>축종</option>
+										<option value="417000">개</option>
+										<option value="422400">고양이</option>
+										<option value="429900">기타</option>
+									</select>
+								</div>
+								<div>
+									<select name="kind2" id="kind2">
+										<option>품종</option>
+									</select>
+								</div>
+								
 							</article>
 
 						<!-- Contact -->

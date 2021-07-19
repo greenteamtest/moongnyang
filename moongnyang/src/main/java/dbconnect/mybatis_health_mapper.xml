@@ -7,6 +7,4 @@
 		select * from view_place where field = #{key}
 	</select>
 
-	
-
 </mapper>

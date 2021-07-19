@@ -17,7 +17,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import com.Team.dto.BoardVO;
+import com.picnic.dto.BoardVO;
 
 public class Abandonment_Action implements Action {
 	@Override

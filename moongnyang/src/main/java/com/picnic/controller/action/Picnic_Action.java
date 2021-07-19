@@ -17,9 +17,13 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import com.Team.dto.BoardVO;
+import com.picnic.dto.BoardVO;
+
+import service.picnic.picnic_MyBatisService;
 
 public class Picnic_Action implements Action{
+	/* private static picnic_MyBatisService pms = new picnic_MyBatisService(); */
+	
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException{
 		
@@ -45,12 +49,16 @@ public class Picnic_Action implements Action{
 					BoardVO bVo = new BoardVO();	
 					bVo.setOrgCd(getTagValue("orgCd",eElement));
 					bVo.setOrgdownNm(getTagValue("orgdownNm",eElement));
-
-					list.add(bVo); //시,도 리스트
 					
+					list.add(bVo);
+					/* int rs = pms.insert_Abandonment(bVo); */
 					
 				}
 			}
+			
+		
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
