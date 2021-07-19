@@ -49,10 +49,10 @@ public class JoinServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 //		doGet(request, response);
 		request.setCharacterEncoding("UTF-8");
-		String nickname = request.getParameter("nickname");
-		String pwd = request.getParameter("pwd");
-		String email = request.getParameter("email");
-		String auth = request.getParameter("auth");
+		String nickname = request.getParameter("user_nick");
+		String pwd = request.getParameter("user_pwd");
+		String email = request.getParameter("user_email");
+		String auth = request.getParameter("user_auth");
 
 		MemberVO vo = new MemberVO();
 		vo.setNickname(nickname);
@@ -66,7 +66,7 @@ public class JoinServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 
 		if (result == 1) {
-			session.setAttribute("email", vo.getEmail());
+			session.setAttribute("user_email", vo.getEmail());
 			request.setAttribute("message", "이메일 중복");
 		} else {
 			request.setAttribute("mesaage", "이메일 없음.");
