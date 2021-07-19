@@ -10,7 +10,6 @@
 	color: #C0C0C0
 }
 </style>
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-secondary fixed-top"
 	id="mainNav">
 	<div class="container">
@@ -36,6 +35,7 @@
 				</c:if>
 				<c:if test="${!empty loginUser}">
 					<li class="nav-item"><a class="nav-link" href="logout.do">로그아웃
+					
 				</c:if>
 				</a>
 				</li>
@@ -58,5 +58,4 @@
 			</ul>
 		</div>
 	</div>
->>>>>>> refs/heads/uno
 </nav>
