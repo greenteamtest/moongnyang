@@ -1,26 +1,27 @@
 package com.Login.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.Login.controller.action.Action;
+import com.Login.dao.MemberDAO;
 
 /**
- * Servlet implementation class BoardServlet
+ * Servlet implementation class idCheckServlet 아직 완성안됨 
  */
-@WebServlet("/BoardServlet")
-public class BoardServlet extends HttpServlet {
+@WebServlet("/nickCheck.do")
+public class nicknameCheckServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
-	 * 아아아아아아아아아아아아아아아
 	 */
-	public BoardServlet() {
+	public nicknameCheckServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -33,15 +34,15 @@ public class BoardServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
-		String command = request.getParameter("command");
-		System.out.println("BoardServlet���� ��û�� ������ Ȯ�� : " + command);
-		// ��ȣ�׷� ���࿡ ������ ��ġ�������� �����뵵�ξ�! ����
-		ActionFactory af = ActionFactory.getInstance();
-		Action action = af.getAction(command);
+		String nickname = request.getParameter("user_nick");
+		MemberDAO dao = MemberDAO.getInstance();
 
-		if (action != null) {
-			action.execute(request, response);
-		}
+		int result = dao.confirmNickname(nickname);
+		request.setAttribute("userid", nickname);
+		request.setAttribute("result", result);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("member/idCheck.jsp");
+		dispatcher.forward(request, response);
+
 	}
 
 	/**
@@ -51,8 +52,6 @@ public class BoardServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.setCharacterEncoding("UTF-8");
 		doGet(request, response);
 	}
-
 }

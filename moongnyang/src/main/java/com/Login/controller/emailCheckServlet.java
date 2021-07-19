@@ -9,19 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.Team.dao.MemberDAO;
+import com.Login.dao.MemberDAO;
 
 /**
  * Servlet implementation class idCheckServlet
  */
 @WebServlet("/idCheck.do")
-public class idCheckServlet extends HttpServlet {
+public class emailCheckServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public idCheckServlet() {
+	public emailCheckServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -34,11 +34,11 @@ public class idCheckServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
-		String userid = request.getParameter("userid");
+		String email = request.getParameter("user_email");
 		MemberDAO dao = MemberDAO.getInstance();
 
-		int result = dao.confirmID(userid);
-		request.setAttribute("userid", userid);
+		int result = dao.confirmEmail(email);
+		request.setAttribute("user_email", email);
 		request.setAttribute("result", result);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("member/idCheck.jsp");
 		dispatcher.forward(request, response);
