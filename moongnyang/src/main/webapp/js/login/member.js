@@ -1,18 +1,15 @@
-/**
- * 
- */
-
 function loginCheck() {
-	if (document.frm.userid.value.length == 0) {
-		alert("Please Enter your ID");
-		frm.userid.focus();
+	if (document.frm.user_email.value.length == 0) {
+		alert("앗! 이메일을 입력하지 않으셨어요ㅠ꼭 입력해주실꺼죠~?");
+		frm.user_email.focus();
 		return false;
 	}
-	if (document.frm.pwd.value == "") {
-		alert("Please Enter your Password");
-		frm.pwd.focus();
+	if (document.frm.user_pwd.value == "") {
+		alert("앗! 비밀번호를 입력하지 않으셨어요ㅠ꼭 입력해주실꺼죠~?");
+		frm.user_pwd.focus();
 		return false;
 	}
+//	alert("모두 입력했음");
 	return true;
 }
 
