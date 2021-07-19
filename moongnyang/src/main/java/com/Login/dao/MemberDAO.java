@@ -9,6 +9,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import com.Team.dto.MemberVO;
 
 public class MemberDAO {
@@ -198,7 +199,10 @@ public class MemberDAO {
 			pstmt.setInt(4, vo.getAdmin());
 			pstmt.setString(5, vo.getUserid());
 =======
+=======
+>>>>>>> branch 'master' of https://github.com/greenteamtest/moongnyang.git
 import com.Login.dto.MemberVO;
+
 
 public class MemberDAO {
 	private MemberDAO() {
@@ -223,6 +227,7 @@ public class MemberDAO {
 	public int userCheck(String email, String pwd) {
 		int result = -1;
 		String sql = "select user_pwd from user_info where user_email=?";
+
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -234,6 +239,7 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				if (rs.getString("user_pwd") != null && rs.getString("user_pwd").equals(pwd)) {
+
 					result = 1;
 				} else {
 					result = 0;
@@ -264,6 +270,7 @@ public class MemberDAO {
 	public MemberVO getMeber(String useremail) {
 		MemberVO mVo = null;
 		String sql = "select * from user_info where user_email=?";
+
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -279,6 +286,7 @@ public class MemberDAO {
 				mVo.setPwd(rs.getString("user_pwd"));
 				mVo.setEmail(rs.getString("user_email"));
 				mVo.setAuth(rs.getInt("user_admin"));
+
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -304,12 +312,14 @@ public class MemberDAO {
 	public int confirmEmail(String email) {
 		int result = -1;
 		String sql = "select user_email from user_info where user_email=?";
+
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
+
 			pstmt.setString(1, email);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
@@ -348,6 +358,7 @@ public class MemberDAO {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, nick);
+
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				result = 1;
@@ -378,6 +389,7 @@ public class MemberDAO {
 	public int inserMember(MemberVO vo) {
 		int result = -1;
 		String sql = "insert into user_info values(?, ?, ?, ?)";
+
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -387,6 +399,7 @@ public class MemberDAO {
 			pstmt.setString(2, vo.getPwd());
 			pstmt.setString(3, vo.getEmail());
 			pstmt.setInt(4, 0);
+
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -408,6 +421,7 @@ public class MemberDAO {
 	public int updateMember_userVer(MemberVO vo) {
 		int result = 1;
 		String spl = "update user_info set user_pwd=?, user_nick=?,user_auth=? where user_email=?";
+
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 
@@ -418,7 +432,11 @@ public class MemberDAO {
 			pstmt.setString(4, vo.getEmail());
 			pstmt.setString(2, vo.getNickname());
 			pstmt.setInt(3, vo.getAuth());
+<<<<<<< HEAD
 >>>>>>> refs/heads/uno
+=======
+
+>>>>>>> branch 'master' of https://github.com/greenteamtest/moongnyang.git
 			result = pstmt.executeUpdate();
 
 		} catch (Exception e) {
