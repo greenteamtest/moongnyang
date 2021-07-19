@@ -1,4 +1,4 @@
-package com.Team.dto;
+package com.picnic.dto;
 
 import java.sql.Timestamp;
 

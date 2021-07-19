@@ -1,4 +1,4 @@
-package com.Team.dao;
+package com.picnic.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
