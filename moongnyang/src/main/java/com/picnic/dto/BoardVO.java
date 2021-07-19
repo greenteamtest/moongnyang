@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 package com.Team.dto;
+=======
+package com.picnic.dto;
+>>>>>>> refs/heads/Ho
 
 import java.sql.Timestamp;
 
