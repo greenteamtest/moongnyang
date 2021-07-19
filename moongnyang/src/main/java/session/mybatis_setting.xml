@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+ 
+<configuration>
+    <typeAliases>
+        <typeAlias type="com.health.dto.HealthPlaceVo" alias="place"/>
+        <typeAlias type="com.health.dto.HealthReviewVo" alias="review"/>
+    </typeAliases>
+    
+    <environments default="development">
+        <environment id="development">
+          <transactionManager type="JDBC"/>
+            <!--  connecting to Local ORACLE -->
+            <dataSource type="POOLED">
+                <property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
+                <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
+                <property name="username" value="scott"/>
+                <property name="password" value="tiger"/>
+            </dataSource>
+       </environment>
+    </environments>
+    <mappers>
+       <mapper resource="dbconnect/mybatis_health_mapper.xml"/><!-- 다중 mapper.xml 사용가능 여부 test 중 -->
+    </mappers>
+</configuration>
+
+
