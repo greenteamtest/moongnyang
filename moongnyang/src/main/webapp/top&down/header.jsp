@@ -26,26 +26,30 @@
 			<ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
 				<c:if test="${!empty loginUser}">
 					<li class="nav-item"><a class="nav-link" href="logout.do">ヽ(=^･ω･^=)丿${loginUser.nickname}님,
-							환영한다옹(▽◕ ᴥ ◕▽)
+							환영한다옹(▽◕ ᴥ ◕▽) 
 				</c:if>
-				<li class="nav-item"><a class="nav-link" href="#services">알림</a></li>
+				<c:if test="${!empty loginUser}">
+					<li class="nav-item"><a class="nav-link" href="#services">알림</a></li>
+				</c:if>
 				<c:if test="${empty loginUser}">
 					<li class="nav-item"><a class="nav-link" href="login.do">로그인
+
 
 
 					
 				</c:if>
 				<c:if test="${!empty loginUser}">
 					<li class="nav-item"><a class="nav-link" href="logout.do">로그아웃
+					
 				</c:if>
 				</a>
 				</li>
 				<!-- 				<li class="nav-item"><a class="nav-link" href="#about">회원가입</a></li> -->
 				<c:if test="${loginUser.auth==0}">
-				<li class="nav-item"><a class="nav-link" href="userPage.do">마이페이지</a></li>
+					<li class="nav-item"><a class="nav-link" href="userPage.do">마이페이지</a></li>
 				</c:if>
 				<c:if test="${loginUser.auth==1}">
-				<li class="nav-item"><a class="nav-link" href="userPage.do">${loginUser.auth}사업자관리</a></li>
+					<li class="nav-item"><a class="nav-link" href="userPage.do">${loginUser.auth}사업자관리</a></li>
 				</c:if>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"
