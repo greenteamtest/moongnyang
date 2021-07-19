@@ -9,8 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+<<<<<<< HEAD
 import com.Login.dao.MemberDAO;
 import com.Login.dto.MemberVO;
+=======
+import com.Team.dao.MemberDAO;
+import com.team.dto.MemberVO;
+>>>>>>> refs/heads/Ho
 
 /**
  * Servlet implementation class MemberUppdateServlet
