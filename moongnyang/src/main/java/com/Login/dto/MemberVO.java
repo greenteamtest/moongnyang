@@ -1,11 +1,12 @@
 package com.Login.dto;
 
 public class MemberVO {
+
 	private String email;
 	private String nickname;
 	private String pwd;
 	private int auth;
-	
+
 	public String getEmail() {
 		return email;
 	}
@@ -44,6 +45,4 @@ public class MemberVO {
 	public String toString() {
 		return "MemberVO [email=" + email + ", nickname=" + nickname + ", pwd=" + pwd + ", auth=" + auth + "]";
 	}
-
-
 }

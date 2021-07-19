@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -10,7 +11,6 @@
 	color: #C0C0C0
 }
 </style>
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-secondary fixed-top"
 	id="mainNav">
 	<div class="container">
@@ -33,10 +33,6 @@
 				</c:if>
 				<c:if test="${empty loginUser}">
 					<li class="nav-item"><a class="nav-link" href="login.do">로그인
-
-
-
-					
 				</c:if>
 				<c:if test="${!empty loginUser}">
 					<li class="nav-item"><a class="nav-link" href="logout.do">로그아웃
