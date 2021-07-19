@@ -30,6 +30,24 @@ public class BoardVO {
 	private String sexCd;			//성별
 	//유실 동물 DB용
 	private String orgCd;			//지역 코드
+	public String getOrgCd() {
+		return orgCd;
+	}
+	public void setOrgCd(String orgCd) {
+		this.orgCd = orgCd;
+	}
+	public String getUprCd() {
+		return uprCd;
+	}
+	public void setUprCd(String uprCd) {
+		this.uprCd = uprCd;
+	}
+	public String getOrgdownNm() {
+		return orgdownNm;
+	}
+	public void setOrgdownNm(String orgdownNm) {
+		this.orgdownNm = orgdownNm;
+	}
 	private String uprCd;			//지역 코드
 	private String orgdownNm;		//지역 명
 	

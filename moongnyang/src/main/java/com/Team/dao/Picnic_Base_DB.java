@@ -23,23 +23,21 @@ public class Picnic_Base_DB {
 
 
 	public void insertBoard(List<BoardVO> list) {
-		String sql = "insert into Abandonment_sido(" + "orgCd, orgdownNm) "
+		String sql = "insert into Abandonment_sido(orgCd, orgdownNm)"
 				+ "values(? ,?)";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		conn = DBManager.getConnection();
 		try {
-			for(int i = 0; i < list.size(); i++)
+			for(int i = 0; i < list.size(); i++) {
 				pstmt = conn.prepareStatement(sql);
-
-				pstmt.setString(1, vo.getName());
-				pstmt.setString(2, vo.getEmail());
-				pstmt.setString(3, vo.getPass());
-				pstmt.setString(4, vo.getTitle());
-				pstmt.setString(5, vo.getContent());
-
+				BoardVO str = list.get(i);
+				pstmt.setString(1, str.getOrgCd());
+				pstmt.setString(2, str.getOrgdownNm());
+			
 				pstmt.executeUpdate();
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
