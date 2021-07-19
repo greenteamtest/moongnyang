@@ -20,6 +20,7 @@ public class MemberVO {
 
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
+
 	}
 
 	public String getPwd() {
@@ -36,11 +37,13 @@ public class MemberVO {
 
 	public void setAuth(int auth) {
 		this.auth = auth;
+
 	}
 
 	@Override
 	public String toString() {
 		return "MemberVO [email=" + email + ", nickname=" + nickname + ", pwd=" + pwd + ", auth=" + auth + "]";
 	}
+
 
 }
