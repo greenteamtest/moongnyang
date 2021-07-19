@@ -19,6 +19,7 @@
 <meta name="author" content="" />
 <title>뭉냥뭉냥-반려동물과의 즐거운 하루 !</title>
 
+<script defer src="main.js" type="text/javascript"></script>
 
 <style>
 .icon {
@@ -31,6 +32,7 @@
 	transform: scale(1.2);
 }
 </style>
+
 </head>
 <body id="page-top">
 
@@ -124,7 +126,7 @@
 								<i class="bi bi-code"></i>
 							</div>
 							<a href="#" class="category" id="kindergaden">
-								<h2 class="fs-4 fw-bold" >
+								<h2 class="fs-4 fw-bold">
 									<img class="icon" alt="kindergaden" src="img/dog-training.png">
 								</h2>
 							</a>
