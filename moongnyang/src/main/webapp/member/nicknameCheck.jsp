@@ -8,25 +8,20 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 가입</title>
-<script type="text/javascript" src="script/member.js"></script>
+<script type="text/javascript" src="js/login/member.js"></script>
 </head>
 <body>
-	<h2>별명 중복확인</h2>
+	<h2 align="center">(・ｗ・)별명 중복 결과는?!(・ｗ・)</h2>
 	<form action="nicknameCheck.do" method="get" name="frm2">
-		이메일 <input type="text" name="userid" value="${nickname}"> <input
-			type="submit" value="중복 체크"> <br>
 		<c:if test="${result == 1}">
-			<script type="text/javascript">
-				opener.document.frm2.nickname.value = "";
-			</script>
-		현재 ${nickname}은 이미 사용 중인 별명이에요(´･ω･`)
-	</c:if>
+			현재 ${nickname}은 이미 사용 중인 이메일이에요(´･ω･`)
+			<input type="button" value="다시작성할게요ㅠ" onclick="test()">
+		</c:if>
 		<c:if test="${result==-1}">
-	현재 ${nickname}은 사용 가능한 별명입니다. (＾-＾)ノ
-	<input type="button" value="사용" class="cancel"
+			현재 ${nickname}은 사용 가능한 별명입니다. (＾-＾)ノ
+			<input type="button" value="사용" class="cancel"
 				onclick="nickok('${nickname}')">
 		</c:if>
 	</form>
 </body>
-
 </html>

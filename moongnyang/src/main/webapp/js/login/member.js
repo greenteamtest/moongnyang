@@ -12,6 +12,7 @@ function loginCheck() {
 	//	alert("모두 입력했음");
 	return true;
 }
+
 function emailCheck() {
 	if (document.frm1.userEmail.value == "") {
 		alert('이런 이메일을 입력하지 않으셨어요 ∑(O_O;)');
@@ -22,10 +23,11 @@ function emailCheck() {
 	window.open(url, "_blank_1",
 		"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=200");
 }
-
-function idok(user_email) {
-	opener.frm1.user_email.value = document.frm1.user_email.value;
-	opener.frm1.reEmail.value = document.frm1.user_email.value;
+function test() {
+	self.close();
+}
+function emailok() {
+	opener.frm1.reEmail.value = "1";
 	self.close();
 }
 
@@ -36,13 +38,12 @@ function nicknameCheck() {
 		return false;
 	}
 	var url = "nicknameCheck.do?nickname=" + document.frm2.nickname.value;
-	window.open(url, "_blank_2",
+	window.open(url, "_blank_1",
 		"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=200");
 }
 
-function nickok(nickname) {
-	opener.frm2.nickname.value = document.frm2.nickname.value;
-	opener.frm1.renickname.value = document.frm1.nickname.value;
+function nickok() {
+	opener.frm2.renickname.value = "1";
 	self.close();
 }
 
@@ -62,8 +63,13 @@ function joinCheck() {
 		frm.pwd.focus();
 		return false;
 	}
-	if (document.frm.reid.value.length == 0) {
-		alert("중복체크를 하지 않았어용ㅇㅇㅇ(⑉⊙ȏ⊙)");
+	if (document.frm.reEmail.value != "1") {
+		alert("이메일 중복체크를 하지 않았어용ㅇㅇㅇ(⑉⊙ȏ⊙)");
+		frm.uesrid.focus();
+		return false;
+	}
+	if (document.frm.renickname.value != "1") {
+		alert("이메일 중복체크를 하지 않았어용ㅇㅇㅇ(⑉⊙ȏ⊙)");
 		frm.uesrid.focus();
 		return false;
 	}

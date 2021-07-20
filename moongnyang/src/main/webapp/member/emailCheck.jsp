@@ -8,25 +8,20 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 가입</title>
-<script type="text/javascript" src="script/member.js"></script>
+<script type="text/javascript" src="js/login/member.js"></script>
 </head>
 <body>
-	<h2>이메일 중복확인</h2>
+	<h2 align="center">(・ｗ・)이메일 중복 결과는?!(・ｗ・)</h2>
+
 	<form action="emailCheck.do" method="get" name="frm1">
-		이메일 <input type="text" name="userid" value="${user_email}"> <input
-			type="submit" value="중복 체크"> <br>
 		<c:if test="${result == 1}">
-			<script type="text/javascript">
-				opener.document.frm1.userEmail.value= "";
-			</script>
-		현재 이메일은 이미 사용 중인 이메일이에요(´･ω･`)
-	</c:if>
+		현재 ${user_email}은 이미 사용 중인 이메일이에요(´･ω･`)
+		<input type="button" value="다시작성할게요ㅠ" onclick="test()">
+		</c:if>
 		<c:if test="${result==-1}">
-	현재 이메일은 사용 가능한 아이디입니다ヾ(＾-＾)ノ
-	<script type="text/javascript">
-				opener.document.frm1.emailtest.text= ${user_email};
-			</script>
-	<input type="button" value="사용" class="cancel" onclick="emailok('${user_email}')">
+	현재 ${user_email}이메일은 사용 가능한 아이디입니다<br>ヾ(＾-＾)ノ
+			<input type="button" value="사용할게요!" class="cancel"
+				onclick="emailok()">
 		</c:if>
 	</form>
 </body>

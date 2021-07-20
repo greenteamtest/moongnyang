@@ -154,13 +154,13 @@
 							name="nickname" size="20" aria-label="별명"
 							aria-describedby="basic-addon1">
 						<button type="button" class="btn btn-warning"
-							onclick="return nicknameCheck()">중복검사</button>
+							onclick="nicknameCheck()">중복검사</button>
 					</div>
 				</td>
 			</tr>
 			<tr>
 				<td class="alert alert-warning" role="alert" id="emailtest"><input
-					type="hidden" name="renickname">중복검사를 해주세용</td>
+					type="hidden" name="renickname" id="nickDuple">중복검사를 해주세용</td>
 			</tr>
 		</table>
 	</form>
