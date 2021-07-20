@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page import="java.util.*, java.text.*"%>
-
+<% request.setCharacterEncoding("utf-8");%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +15,7 @@
 
 	<form action="emailCheck.do" method="get" name="frm1">
 		<c:if test="${result == 1}">
+		
 		현재 ${user_email}은 이미 사용 중인 이메일이에요(´･ω･`)
 		<input type="button" value="다시작성할게요ㅠ" onclick="test()">
 		</c:if>
