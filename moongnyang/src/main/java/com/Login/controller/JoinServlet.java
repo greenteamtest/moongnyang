@@ -18,64 +18,68 @@ import com.Login.dto.MemberVO;
  */
 @WebServlet("/join.do")
 public class JoinServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public JoinServlet() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public JoinServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
-		RequestDispatcher dispatcher = request.getRequestDispatcher("member/join.jsp");
-		dispatcher.forward(request, response);
-	}
+    /**
+     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+     *      response)
+     */
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // TODO Auto-generated method stub
+//        response.getWriter().append("Served at: ").append(request.getContextPath());
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-//		doGet(request, response);
-		request.setCharacterEncoding("UTF-8");
-		String name = request.getParameter("name");
-		String userid = request.getParameter("userid");
-		String pwd = request.getParameter("pwd");
-		String email = request.getParameter("email");
-		String phone = request.getParameter("phone");
-		String admin = request.getParameter("admin");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("member/join.jsp");
+        dispatcher.forward(request, response);
+    }
 
-		MemberVO vo = new MemberVO();
-		vo.setName(name);
-		vo.setUserid(userid);
-		vo.setPwd(pwd);
-		vo.setEmail(email);
-		vo.setPhone(phone);
-		vo.setAdmin(Integer.parseInt(admin));
-		
-		MemberDAO dao = MemberDAO.getInstance();
-		int result = dao.inserMember(vo);
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+     *      response)
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // TODO Auto-generated method stub
+//        doGet(request, response);
+        request.setCharacterEncoding("UTF-8");
 
-		HttpSession session = request.getSession();
+        String userEmail = request.getParameter("userEmail");
+        String a = "@";
+        String selectemail = request.getParameter("selectemail");
+        String email = userEmail + a + selectemail;
+        String nickname = request.getParameter("nickname");
+        String pwd = request.getParameter("pwd");
+        System.out.println(email);
+        System.out.println(pwd);
+        System.out.println(nickname);
+        String auth = "0";
 
-		if (result == 1) {
-			session.setAttribute("userid", vo.getUserid());
-			request.setAttribute("message", "ȸ�����Կ� �����߽��ϴ�.");
-		} else {
-			request.setAttribute("mesaage", "ȸ�����Կ� �����߽��ϴ�.");
-		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("member/login.jsp");
-		dispatcher.forward(request, response);
-	}
+        MemberVO vo = new MemberVO();
+        vo.setEmail(email);
+        vo.setNickname(nickname);
+        vo.setPwd(pwd);
+        vo.setAuth(Integer.parseInt(auth));
+
+        MemberDAO dao = MemberDAO.getInstance();
+        int result = dao.insertMember(vo);
+
+        HttpSession session = request.getSession();
+
+        if (result == 1) {
+            session.setAttribute("user_email", vo.getEmail());
+            request.setAttribute("message", "이메일 중복띠ㅠ");
+        } else {
+            request.setAttribute("mesaage", "이메일 사용가능!");
+        }
+        RequestDispatcher dispatcher = request.getRequestDispatcher("member/login.jsp");
+        dispatcher.forward(request, response);
+    }
 }

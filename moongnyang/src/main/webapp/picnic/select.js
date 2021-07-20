@@ -162,26 +162,5 @@ function category_kind(){
 	}
 }
 
-function send(){
-	var org_cd = document.getElementById("org_cd");
-	var upr_cd = document.getElementById("upr_cd");
-	var upkind = document.getElementById("upkind");
-	var kind = document.getElementById("kind");
-	var str = "";
-	if(org_cd != null){	
-		str = "&org_cd=" + org_cd.options[org_cd.selectedIndex].value;
-	}else if(upr_cd != null){
-		str = "&upr_cd=" + upr_cd.options[upr_cd.selectedIndex].value;
-	}
-	if(upkind != null){	
-		str = "&upkind=" + upkind.options[upkind.selectedIndex].value;
-	}else if(kind != null){
-		str = "&kind=" + kind.options[kind.selectedIndex].value;
-	}
-
-	return str;
-}
-
-
 
 

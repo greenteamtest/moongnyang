@@ -193,7 +193,7 @@ public class MemberDAO {
 		return result;
 	}
 
-	public int inserMember(MemberVO vo) {
+	public int insertMember(MemberVO vo) {
 		int result = -1;
 		String sql = "insert into user_info values(?, ?, ?, ?)";
 
