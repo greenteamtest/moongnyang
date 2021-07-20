@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.Team.dao.MemberDAO;
-import com.team.dto.MemberVO;
+import com.Login.dao.MemberDAO;
+import com.Login.dto.MemberVO;
 
 /**
  * Servlet implementation class LoginServlet
