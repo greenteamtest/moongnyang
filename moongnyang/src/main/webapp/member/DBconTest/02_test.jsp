@@ -12,7 +12,7 @@
 	<%
 	MemberDAO memDao = MemberDAO.getInstance();
 	Connection conn = memDao.getConnection();
-	out.println("성공");
+	out.println("성공qwe");
 	%>
 </body>
 </html>
