@@ -16,20 +16,66 @@
 <!-- Favicon-->
 
 </head>
+
+<!-- 여기서부터 수정함 -->
 <body id="page-top">
 	<!-- Navigation-->
-	<!-- Masthead-->
+<!-- 	Masthead -->
 	<header class="masthead">
-		<div class="container">
-			<div class="masthead-subheading">강아지 고양이 반려동물 커뮤니티</div>
-			<div class="masthead-heading text-uppercase">뭉냥뭉냥</div>
-
+		<div class="nav_wrap">
+			<ul id="nav">
+				<li><a href='about.jsp'>ABOUT</a></li>
+				<li><a href='picnic.jsp'>PICNIC</a>
+					<div class="over_wrap" style="top: 80px; display: none;">
+						<div class="menu wrap">
+							<h2>PICNIC</h2>
+							<ul class="picnic_list">
+								<li>카페</li>
+								<li>레스토랑</li>
+								<li>호텔</li>
+							</ul>
+						</div>
+					</div></li>
+				<li><a href='health&edu.jsp'>HEALTH & EDU</a>
+					<div class="over_wrap" style="top: 80px; display: none;">
+						<div class="menu wrap">
+							<h2>HEALTH & EDU</h2>
+							<ul class="health&edu_list">
+								<li>병원 예약</li>
+								<li>미용 예약</li>
+								<li>유치원 예약</li>
+							</ul>
+						</div>
+					</div></li>
+				<li><a href='community.jsp'>COMMUNITY</a>
+					<div class="over_wrap" style="top: 80px; display: none;">
+						<div class="menu wrap">
+							<h2>COMMUNITY</h2>
+							<ul class="community_list">
+								<li>제품추천</li>
+								<li>순간포착</li>
+								<li>벼룩시장</li>
+								<li>궁금해요</li>
+							</ul>
+						</div>
+					</div></li>
+			</ul>
 		</div>
 	</header>
+
+
+	<!-- Main -->
+	<section class="page-section" id="services">
+		<div class="main">
+			
+		</div>
+	</section>
+	
+	
 	<!-- Services-->
 	<section class="page-section" id="services">
 		<div class="container">
-			<div class="row text-center">
+			<div class="text-center">
 				<h2 class="section-heading text-uppercase">Services</h2>
 				<h3 class="section-subheading text-muted">뭉냥뭉냥에서는...</h3>
 			</div>
@@ -39,9 +85,7 @@
 						class="fas fa-circle fa-stack-2x text-primary"></i> <i
 						class="fas fa-tree fa-stack-1x fa-inverse"></i>
 					</span>
-					<h4 class="my-3">
-						<a href="login.do">여행</a>
-					</h4>
+					<h4 class="my-3">여행</h4>
 					<p class="text-muted">
 						반려동물과 함께 갈 수 있는 <br> 식당, 카페, 편의시설을 추천해드려요 !
 					</p>
@@ -69,126 +113,73 @@
 			</div>
 		</div>
 	</section>
+	
+	
 	<!-- Portfolio Grid-->
-	<section class="page-section bg-Success" id="portfolio">
+	<section class="page-section bg-warning" id="portfolio">
 		<div class="container">
 			<div class="text-center">
 				<h2 class="section-heading text-uppercase">Portfolio</h2>
-				<h3 class="section-subheading text-muted">Lorem ipsum dolor sit
-					amet consectetur.</h3>
+				<h3 class="section-subheading text-muted">뭉냥뭉냥에서 당신이 할 수 있는 것</h3>
 			</div>
-			<!-- 			<div class="row"> -->
-			<!-- 				<div class="col-lg-4 col-sm-6 mb-4"> -->
-			<!-- 					Portfolio item 1 -->
-			<!-- 					<div class="portfolio-item"> -->
-			<!-- 						<a class="portfolio-link" data-bs-toggle="modal" -->
-			<!-- 							href="#portfolioModal1"> -->
-			<!-- 							<div class="portfolio-hover"> -->
-			<!-- 								<div class="portfolio-hover-content"> -->
-			<!-- 									<i class="fas fa-plus fa-3x"></i> -->
-			<!-- 								</div> -->
-			<!-- 							</div> <img class="img-fluid" src="assets/img/portfolio/1.jpg" -->
-			<!-- 							alt="..." /> -->
-			<!-- 						</a> -->
-			<!-- 						<div class="portfolio-caption"> -->
-			<!-- 							<div class="portfolio-caption-heading">Threads</div> -->
-			<!-- 							<div class="portfolio-caption-subheading text-muted">Illustration</div> -->
-			<!-- 						</div> -->
-			<!-- 					</div> -->
-			<!-- 				</div> -->
-			<!-- 				<div class="col-lg-4 col-sm-6 mb-4"> -->
-			<!-- 					Portfolio item 2 -->
-			<!-- 					<div class="portfolio-item"> -->
-			<!-- 						<a class="portfolio-link" data-bs-toggle="modal" -->
-			<!-- 							href="#portfolioModal2"> -->
-			<!-- 							<div class="portfolio-hover"> -->
-			<!-- 								<div class="portfolio-hover-content"> -->
-			<!-- 									<i class="fas fa-plus fa-3x"></i> -->
-			<!-- 								</div> -->
-			<!-- 							</div> <img class="img-fluid" src="assets/img/portfolio/2.jpg" -->
-			<!-- 							alt="..." /> -->
-			<!-- 						</a> -->
-			<!-- 						<div class="portfolio-caption"> -->
-			<!-- 							<div class="portfolio-caption-heading">Explore</div> -->
-			<!-- 							<div class="portfolio-caption-subheading text-muted">Graphic -->
-			<!-- 								Design</div> -->
-			<!-- 						</div> -->
-			<!-- 					</div> -->
-			<!-- 				</div> -->
-			<div class="col-lg-4 col-sm-6 mb-4">
-				Portfolio item 3
-				<div class="portfolio-item">
-					<a class="portfolio-link" data-bs-toggle="modal"
-						href="#portfolioModal3">
-						<div class="portfolio-hover">
-							<div class="portfolio-hover-content">
-								<i class="fas fa-plus fa-3x"></i>
-							</div>
-						</div> <img class="img-fluid" src="assets/img/portfolio/3.jpg" alt="..." />
-					</a>
-					<div class="portfolio-caption">
-						<div class="portfolio-caption-heading">Finish</div>
-						<div class="portfolio-caption-subheading text-muted">Identity</div>
+			<div class="row">
+				<div class="col-lg-4 col-sm-6 mb-4">
+					<!-- Portfolio item 1-->
+					<div class="portfolio-item">
+						<a class="portfolio-link" data-bs-toggle="modal"
+							href="#portfolioModal1">
+							<div class="portfolio-hover">
+								<div class="portfolio-hover-content">
+									<i class="fas fa-plus fa-3x"></i>
+								</div>
+							</div> <img class="img-fluid" src="assets/img/portfolio/1.jpg"
+							alt="..." />
+						</a>
+						<div class="portfolio-caption">
+							<div class="portfolio-caption-heading">여행</div>
+							<div class="portfolio-caption-subheading text-muted">반려동물과 함께 갈 수 있는 <br> 식당, 카페, 편의시설을 추천해드려요 !</div>
+						</div>
 					</div>
 				</div>
+				<div class="col-lg-4 col-sm-6 mb-4">
+					<!-- Portfolio item 2-->
+					<div class="portfolio-item">
+						<a class="portfolio-link" data-bs-toggle="modal"
+							href="#portfolioModal2">
+							<div class="portfolio-hover">
+								<div class="portfolio-hover-content">
+									<i class="fas fa-plus fa-3x"></i>
+								</div>
+							</div> <img class="img-fluid" src="assets/img/portfolio/2.jpg"
+							alt="..." />
+						</a>
+						<div class="portfolio-caption">
+							<div class="portfolio-caption-heading">건강</div>
+							<div class="portfolio-caption-subheading text-muted">반려동물의 병원예약, 미용실 예약, <br> 유치원 및 호텔 예약을 도와드려요 !</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-sm-6 mb-4">
+					<!-- Portfolio item 3-->
+					<div class="portfolio-item">
+						<a class="portfolio-link" data-bs-toggle="modal"
+							href="#portfolioModal3">
+							<div class="portfolio-hover">
+								<div class="portfolio-hover-content">
+									<i class="fas fa-plus fa-3x"></i>
+								</div>
+							</div> <img class="img-fluid" src="assets/img/portfolio/3.jpg"
+							alt="..." />
+						</a>
+						<div class="portfolio-caption">
+							<div class="portfolio-caption-heading">커뮤니티</div>
+							<div class="portfolio-caption-subheading text-muted">반려동물의 사랑스러운 사진을 올려 <br>다른 반려인들과 소통해보세요 !</div>
+						</div>
+					</div>
+				</div>
+					
 			</div>
-			<!-- 				<div class="col-lg-4 col-sm-6 mb-4 mb-lg-0"> -->
-			<!-- 					Portfolio item 4 -->
-			<!-- 					<div class="portfolio-item"> -->
-			<!-- 						<a class="portfolio-link" data-bs-toggle="modal" -->
-			<!-- 							href="#portfolioModal4"> -->
-			<!-- 							<div class="portfolio-hover"> -->
-			<!-- 								<div class="portfolio-hover-content"> -->
-			<!-- 									<i class="fas fa-plus fa-3x"></i> -->
-			<!-- 								</div> -->
-			<!-- 							</div> <img class="img-fluid" src="assets/img/portfolio/4.jpg" -->
-			<!-- 							alt="..." /> -->
-			<!-- 						</a> -->
-			<!-- 						<div class="portfolio-caption"> -->
-			<!-- 							<div class="portfolio-caption-heading">Lines</div> -->
-			<!-- 							<div class="portfolio-caption-subheading text-muted">Branding</div> -->
-			<!-- 						</div> -->
-			<!-- 					</div> -->
-			<!-- 				</div> -->
-			<!-- 				<div class="col-lg-4 col-sm-6 mb-4 mb-sm-0"> -->
-			<!-- 					Portfolio item 5 -->
-			<!-- 					<div class="portfolio-item"> -->
-			<!-- 						<a class="portfolio-link" data-bs-toggle="modal" -->
-			<!-- 							href="#portfolioModal5"> -->
-			<!-- 							<div class="portfolio-hover"> -->
-			<!-- 								<div class="portfolio-hover-content"> -->
-			<!-- 									<i class="fas fa-plus fa-3x"></i> -->
-			<!-- 								</div> -->
-			<!-- 							</div> <img class="img-fluid" src="assets/img/portfolio/5.jpg" -->
-			<!-- 							alt="..." /> -->
-			<!-- 						</a> -->
-			<!-- 						<div class="portfolio-caption"> -->
-			<!-- 							<div class="portfolio-caption-heading">Southwest</div> -->
-			<!-- 							<div class="portfolio-caption-subheading text-muted">Website -->
-			<!-- 								Design</div> -->
-			<!-- 						</div> -->
-			<!-- 					</div> -->
-			<!-- 				</div> -->
-			<!-- 				<div class="col-lg-4 col-sm-6"> -->
-			<!-- 					Portfolio item 6 -->
-			<!-- 					<div class="portfolio-item"> -->
-			<!-- 						<a class="portfolio-link" data-bs-toggle="modal" -->
-			<!-- 							href="#portfolioModal6"> -->
-			<!-- 							<div class="portfolio-hover"> -->
-			<!-- 								<div class="portfolio-hover-content"> -->
-			<!-- 									<i class="fas fa-plus fa-3x"></i> -->
-			<!-- 								</div> -->
-			<!-- 							</div> <img class="img-fluid" src="assets/img/portfolio/6.jpg" -->
-			<!-- 							alt="..." /> -->
-			<!-- 						</a> -->
-			<!-- 						<div class="portfolio-caption"> -->
-			<!-- 							<div class="portfolio-caption-heading">Window</div> -->
-			<!-- 							<div class="portfolio-caption-subheading text-muted">Photography</div> -->
-			<!-- 						</div> -->
-			<!-- 					</div> -->
-			<!-- 				</div> -->
-			<!-- 			</div> -->
-			<!-- 		</div> -->
+		</div>
 	</section>
 	<!-- About-->
 	<section class="page-section" id="about">
