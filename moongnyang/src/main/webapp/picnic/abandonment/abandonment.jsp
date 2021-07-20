@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+	<jsp:include page="../../top&down/header.jsp" flush="ture"/>
+	<jsp:include page="../../bootstrap/boot.jsp" flush="ture"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,8 +20,10 @@
 <body>
 	<c:set var="i" value="0" />
 	<c:set var="j" value="2" />
-		<table border= "1" >
-			<tbody>
+	<br><br><br><br>
+	<h1 align="center">유기 동물</h1>
+		<table border= "1" >		
+			<tbody>			
 				<c:forEach var="list" items="${list }">
 					<c:if test="${i%j == 0 }">
 						<tr>
@@ -41,14 +44,14 @@
 								&nbsp;성별(M:수컷,F:암컷,Q:미상) : ${list.sexCd}<br>
 								</td>
             		<c:if test="${i%j == j-1 }">
-						</tr>
+						
             		</c:if>
             		<c:set var="i" value="${i+1 }" />
         		</c:forEach>
     		</tbody>
 		</table>
 		<table>
-			<tr><td>2<a href="BoardServlet_picnic?Abandonment_Action&pageNo=2"></a></td></tr>
+			<tr><td align="center">페이지 번호 적기<a href="BoardServlet_picnic?Abandonment_Action&pageNo=2"></a></td></tr>
 		</table>
 </body>
 </html>

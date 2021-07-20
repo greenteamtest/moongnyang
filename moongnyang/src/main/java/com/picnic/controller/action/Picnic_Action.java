@@ -19,7 +19,10 @@ import org.w3c.dom.NodeList;
 
 import com.picnic.dto.BoardVO;
 
+
 public class Picnic_Action implements Action{
+	/* private static picnic_MyBatisService pms = new picnic_MyBatisService(); */
+	
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException{
 		
@@ -45,12 +48,16 @@ public class Picnic_Action implements Action{
 					BoardVO bVo = new BoardVO();	
 					bVo.setOrgCd(getTagValue("orgCd",eElement));
 					bVo.setOrgdownNm(getTagValue("orgdownNm",eElement));
-
-					list.add(bVo); //시,도 리스트
 					
+					list.add(bVo);
+					/* int rs = pms.insert_Abandonment(bVo); */
 					
 				}
 			}
+			
+		
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

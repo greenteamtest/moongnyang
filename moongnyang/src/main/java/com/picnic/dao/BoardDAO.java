@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-package com.Team.dao;
-=======
 package com.picnic.dao;
->>>>>>> refs/heads/Ho
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
