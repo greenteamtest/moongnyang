@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../top&down/header.jsp"%>
 <%@ include file="../bootstrap/boot.jsp"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +12,7 @@
 <script type="text/javascript" src="js/login/loginjs.js"></script>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript" src="js/login/member.js"></script>
 
 <style>
 .jb-th-1 {
@@ -60,16 +62,15 @@
 				<td colspan='3'>
 					<div class="input-group mb-3">
 						<input type="text" class="form-control" placeholder="이메일"
-							name="email" aria-label="이메일"><span class="gray">&nbsp;@&nbsp;</span>
+							name="userEmail"><span class="gray">&nbsp;@&nbsp;</span>
 						<select class="form-select" id="inputGroupSelect01"
-							name="selectEmail">
-							<option selected>선택해주세요.</option>
+							name="selectemail" id="selectemail">
+							<option value="15" selected>선택해주세요.</option>
 							<option value="naver.com">naver.com</option>
 							<option value="hanmail.net">hanmail.net</option>
 							<option value="daum.net">daum.net</option>
 							<option value="gmail.com">gmail.com</option>
 							<option value="nate.com">nate.com</option>
-							<option value="6" function="inputUserEmail()">직접입력할래요</option>
 						</select>
 					</div>
 				</td>
@@ -77,14 +78,21 @@
 			<tr>
 				<td colspan='2'>
 					<div class="d-grid gap-2">
-						<button class="btn btn-primary btn-lg btn-warning" type="button">중복검사</button>
-						<br>
+						<button class="btn btn-primary btn-lg btn-warning" type="button"
+							onclick="return emailCheck()">중복검사</button>
 					</div>
 				</td>
 			</tr>
 			<tr>
+				<td class="alert alert-warning" role="alert" id="emailtest"><input
+					type="hidden" name="reEmail">중복검사를 해주세용</td>
+			</tr>
+		</table>
+		<table align="center">
+			<tr>
 				<td colspan='2'>
 					<div>
+						<br>
 						<h4>비밀번호</h4>
 					</div>
 				</td>
@@ -143,10 +151,16 @@
 							name="nickname" size="20" aria-label="별명"
 							aria-describedby="basic-addon1">
 						<button type="button" class="btn btn-warning"
-							onclick="return joinCheck()">중복검사</button>
+							onclick="nicknameCheck()">중복검사</button>
 					</div>
 				</td>
 			</tr>
+			<tr>
+				<td class="alert alert-warning" role="alert" id="emailtest"><input
+					type="hidden" name="renickname" id="nickDuple">중복검사를 해주세용</td>
+			</tr>
+		</table>
+		<table align="center">
 			<tr>
 				<td colspan='2'>
 					<div>
@@ -166,7 +180,7 @@
 
 			<tr>
 				<td><div class="form-check">
-						<input class="form-check-input" type="checkbox" name="animal"
+						<input class="form-check-input" type="checkbox" name="check"
 							value="" id="check_1"> <label class="form-check-label"
 							for="check_1"><h4>만 14세 이상입니다.</h4>
 							<h5 class="gray">(필수)</h5></label>
@@ -175,7 +189,7 @@
 
 			<tr>
 				<td><div class="form-check">
-						<input class="form-check-input" type="checkbox" name="animal"
+						<input class="form-check-input" type="checkbox" name="check"
 							value="" id="check_2"> <label class="form-check-label"
 							for="check_2"><h4>
 								이용약관
@@ -185,7 +199,7 @@
 			</tr>
 			<tr>
 				<td><div class="form-check">
-						<input class="form-check-input" type="checkbox" name="animal"
+						<input class="form-check-input" type="checkbox" name="check"
 							value="" id="check_3"> <label class="form-check-label"
 							for="check_3"><h4>개인정보수및 및 이용동의</h4>
 							<h5 class="gray">(필수)</h5> </label>
@@ -194,7 +208,7 @@
 			</tr>
 			<tr>
 				<td><div class="form-check">
-						<input class="form-check-input" type="checkbox" name="animal"
+						<input class="form-check-input" type="checkbox" name="check"
 							value="" id="check_4"> <label class="form-check-label"
 							for="check_4"><h4>이벤트, 프로모션 메일 및 sms 수신</h4>
 							<h5 class="blue">(선택 항목)</h5> </label>
@@ -203,18 +217,12 @@
 			<tr>
 				<td>
 					<div class="d-grid gap-2">
-						<button class="btn btn-primary btn-lg btn-warning" type="button"
+						<button class="btn btn-primary btn-lg btn-warning" type="submit"
 							value="확인" onclick="return joinCheck()">회원가입</button>
 					</div>
 				</td>
 			</tr>
-
-			<tr>
-				<td colspan="2">${message}</td>
-			</tr>
-
 		</table>
-
 	</form>
 </body>
 </html>

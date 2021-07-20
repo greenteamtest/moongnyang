@@ -91,7 +91,7 @@ public class MemberDAO {
 				mVo.setNickname(rs.getString("user_nick"));
 				mVo.setPwd(rs.getString("user_pwd"));
 				mVo.setEmail(rs.getString("user_email"));
-				mVo.setAuth(rs.getInt("user_admin"));
+				mVo.setAuth(rs.getInt("user_auth"));
 
 			}
 		} catch (Exception e) {
@@ -118,7 +118,7 @@ public class MemberDAO {
 	public int confirmEmail(String email) {
 		int result = -1;
 		String sql = "select user_email from user_info where user_email=?";
-
+		System.out.println("확인하긴하나?");
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -130,9 +130,10 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				result = 1;
-
+				System.out.println(result);
 			} else {
 				result = -1;
+				System.out.println(result);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -192,7 +193,7 @@ public class MemberDAO {
 		return result;
 	}
 
-	public int inserMember(MemberVO vo) {
+	public int insertMember(MemberVO vo) {
 		int result = -1;
 		String sql = "insert into user_info values(?, ?, ?, ?)";
 
@@ -201,9 +202,9 @@ public class MemberDAO {
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, vo.getNickname());
-			pstmt.setString(2, vo.getPwd());
-			pstmt.setString(3, vo.getEmail());
+			pstmt.setString(1, vo.getEmail());
+			pstmt.setString(2, vo.getNickname());
+			pstmt.setString(3, vo.getPwd());
 			pstmt.setInt(4, 0);
 
 			result = pstmt.executeUpdate();

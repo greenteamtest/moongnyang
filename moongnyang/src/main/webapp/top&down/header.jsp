@@ -32,6 +32,8 @@
 				</c:if>
 				<c:if test="${empty loginUser}">
 					<li class="nav-item"><a class="nav-link" href="login.do">로그인
+
+					
 				</c:if>
 				<c:if test="${!empty loginUser}">
 					<li class="nav-item"><a class="nav-link" href="logout.do">로그아웃
@@ -44,7 +46,10 @@
 					<li class="nav-item"><a class="nav-link" href="userPage.do">마이페이지</a></li>
 				</c:if>
 				<c:if test="${loginUser.auth==1}">
-					<li class="nav-item"><a class="nav-link" href="userPage.do">${loginUser.auth}사업자관리</a></li>
+					<li class="nav-item"><a class="nav-link" href="managerPage.do">사업장관리</a></li>
+				</c:if>
+				<c:if test="${loginUser.auth==2}">
+					<li class="nav-item"><a class="nav-link" href="userPage.do">페이지관리</a></li>
 				</c:if>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"

@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.Login.dao.MemberDAO;
 
 /**
- * Servlet implementation class idCheckServlet 아직 완성안됨 
+ * Servlet implementation class idCheckServlet
  */
-@WebServlet("/nickCheck.do")
+@WebServlet("/nicknameCheck.do")
 public class nicknameCheckServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -34,13 +34,14 @@ public class nicknameCheckServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
-		String nickname = request.getParameter("user_nick");
-		MemberDAO dao = MemberDAO.getInstance();
-
-		int result = dao.confirmNickname(nickname);
-		request.setAttribute("userid", nickname);
+		request.setCharacterEncoding("UTF-8");
+		
+		String nickname = request.getParameter("nickname");
+		MemberDAO mDao = MemberDAO.getInstance();
+		int result = mDao.confirmNickname(nickname);
+		request.setAttribute("nickname", nickname);
 		request.setAttribute("result", result);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("member/idCheck.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("member/nicknameCheck.jsp");
 		dispatcher.forward(request, response);
 
 	}
@@ -52,6 +53,25 @@ public class nicknameCheckServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+//		doGet(request, response);
+
+//		String email_non = request.getParameter("userEmail");
+//		String email_a = "@";
+//		String site = request.getParameter("selectemail");
+//		String email = email_non + email_a + site;
+//		String email = request.getParameter("user_email");
+//		System.out.println(email);
+//		MemberDAO dao = MemberDAO.getInstance();
+//
+//		int result = dao.confirmEmail(email);
+//		if (result == 1) {
+//			request.setAttribute("message", "중복된 이메일이에요");
+//		} else if (result == -1) {
+//			request.setAttribute("message", "가입가능한 이메일이에요");
+//		}
+//
+//		request.setAttribute("useremail", email);
+//		RequestDispatcher dispatcher = request.getRequestDispatcher("member/emailCheck.jsp");
+//		dispatcher.forward(request, response);
 	}
 }
