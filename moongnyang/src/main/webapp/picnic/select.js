@@ -1,4 +1,5 @@
-function categoryChange() {
+function category_org() {
+	
 	var arr6110000 = ["가정보호", "강남구", "강동구", "강북구", "강서구", "관악구", "광진구", "구로구", "금천구", "노원구", "도봉구", "동대문구", "동작구", "마포구", "서대문구", "서울특별시", "서초구", "성동구", "성북구", "송파구", "양천구", "영등포구", "용산구", "은평구", "종로구", "중구", "중랑구"];
 	var arr6110000value = ["6119999", "3220000", "3240000", "3080000", "3150000","3200000","3040000","3160000","3170000","3100000","3090000","3050000","3190000","3130000","3120000","6119998","3210000","3030000","3070000","3230000","3140000","3180000","3020000","3110000","3000000", "3010000","3060000"];
 
@@ -51,10 +52,10 @@ function categoryChange() {
 	var arr6500000value = ["6520000", "6510000", "6500000"];
 
 
-	var sido = document.getElementById("sido");
-	var selectedValue = sido.options[sido.selectedIndex].value;
+	var upr = document.getElementById("upr_cd");
+	var selectedValue = upr.options[upr.selectedIndex].value;
 
-
+	
 	if (selectedValue == "6110000") {
 		var d = arr6110000;
 		var v = arr6110000value;
@@ -107,15 +108,20 @@ function categoryChange() {
 		var d = arr6500000;
 		var v = arr6500000value;
 	}
-	var target = document.getElementById("gu");
+	var target = document.getElementById("org_cd");
 	target.options.length = 0;
+	
+	var opt = document.createElement("option");
+		opt.value = "";
+		opt.innerHTML = "전체";
+		target.appendChild(opt);
 
 	for (x in d) {
 		var opt = document.createElement("option");
 		opt.value = v[x];
 		opt.innerHTML = d[x];
 		target.appendChild(opt);
-	}
+	}	
 }
 
 function category_kind(){
@@ -126,9 +132,9 @@ function category_kind(){
 	var arr429900 = ["기타축종"];
 	var arr429900value = ["000117"];
 	
-	var kind = document.getElementById("kind");
-	var selectedValue = kind.options[kind.selectedIndex].value;
-	
+	var up_kind = document.getElementById("upkind");
+	var selectedValue = up_kind.options[up_kind.selectedIndex].value;
+
 	
 	if (selectedValue == "417000") {
 		var d = arr417000;
@@ -140,15 +146,40 @@ function category_kind(){
 		var d = arr429900;
 		var v = arr429900value;
 	}
-	var target = document.getElementById("kind2");
+	var target = document.getElementById("kind");
 	target.options.length = 0;
-
+	
+	var opt = document.createElement("option");
+		opt.value = "";
+		opt.innerHTML = "전체";
+		target.appendChild(opt);
+		
 	for (x in d) {
 		var opt = document.createElement("option");
 		opt.value = v[x];
 		opt.innerHTML = d[x];
 		target.appendChild(opt);
 	}
+}
+
+function send(){
+	var org_cd = document.getElementById("org_cd");
+	var upr_cd = document.getElementById("upr_cd");
+	var upkind = document.getElementById("upkind");
+	var kind = document.getElementById("kind");
+	var str = "";
+	if(org_cd != null){	
+		str = "&org_cd=" + org_cd.options[org_cd.selectedIndex].value;
+	}else if(upr_cd != null){
+		str = "&upr_cd=" + upr_cd.options[upr_cd.selectedIndex].value;
+	}
+	if(upkind != null){	
+		str = "&upkind=" + upkind.options[upkind.selectedIndex].value;
+	}else if(kind != null){
+		str = "&kind=" + kind.options[kind.selectedIndex].value;
+	}
+
+	return str;
 }
 
 
