@@ -91,7 +91,7 @@ public class MemberDAO {
 				mVo.setNickname(rs.getString("user_nick"));
 				mVo.setPwd(rs.getString("user_pwd"));
 				mVo.setEmail(rs.getString("user_email"));
-				mVo.setAuth(rs.getInt("user_admin"));
+				mVo.setAuth(rs.getInt("user_auth"));
 
 			}
 		} catch (Exception e) {
