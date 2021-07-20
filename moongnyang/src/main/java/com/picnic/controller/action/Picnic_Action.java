@@ -19,7 +19,6 @@ import org.w3c.dom.NodeList;
 
 import com.picnic.dto.BoardVO;
 
-import service.picnic.picnic_MyBatisService;
 
 public class Picnic_Action implements Action{
 	/* private static picnic_MyBatisService pms = new picnic_MyBatisService(); */
