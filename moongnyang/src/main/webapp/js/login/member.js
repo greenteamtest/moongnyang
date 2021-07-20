@@ -14,12 +14,12 @@ function loginCheck() {
 }
 
 function emailCheck() {
-	if (document.frm1.userEmail.value == "") {
+	if (document.frm.userEmail.value == "") {
 		alert('이런 이메일을 입력하지 않으셨어요 ∑(O_O;)');
-		document.frm1.userEmail.focus();
+		document.frm.userEmail.focus();
 		return false;
 	}
-	var url = "emailCheck.do?user_email=" + document.frm1.userEmail.value + "@" + document.frm1.selectemail.value;
+	var url = "emailCheck.do?user_email=" + document.frm.userEmail.value + "@" + document.frm.selectemail.value;
 	window.open(url, "_blank_1",
 		"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=200");
 }
@@ -27,30 +27,35 @@ function test() {
 	self.close();
 }
 function emailok() {
-	opener.frm1.reEmail.value = "1";
+	opener.frm.reEmail.value = "1";
 	self.close();
 }
 
 function nicknameCheck() {
-	if (document.frm2.nickname.value == "") {
+	if (document.frm.nickname.value == "") {
 		alert('이런 별명을 입력하지 않으셨어요 ∑(O_O;)');
-		document.frm2.nickname.focus();
+		document.frm.nickname.focus();
 		return false;
 	}
-	var url = "nicknameCheck.do?nickname=" + document.frm2.nickname.value;
+	var url = "nicknameCheck.do?nickname=" + document.frm.nickname.value;
 	window.open(url, "_blank_1",
 		"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=200");
 }
 
 function nickok() {
-	opener.frm2.renickname.value = "1";
+	opener.frm.renickname.value = "1";
 	self.close();
 }
 
 function joinCheck() {
-	if (document.frm.emailFront.value.length == 0) {
+	if (document.frm.userEmail.value.length == 0) {
 		alert("이런, 이메일을 입력하지 않으셨어요 ∑(O_O;)");
-		frm.name.focus();
+		frm.userEmail.focus();
+		return false;
+	}
+	if (document.frm.selectemail.value == "15") {
+		alert("이런, 이메일도메인을 선택하지 않으셨어요 ∑(O_O;)");
+		frm.selectemail.focus();
 		return false;
 	}
 	if (document.frm.pwd.value == "") {
@@ -65,13 +70,18 @@ function joinCheck() {
 	}
 	if (document.frm.reEmail.value != "1") {
 		alert("이메일 중복체크를 하지 않았어용ㅇㅇㅇ(⑉⊙ȏ⊙)");
-		frm.uesrid.focus();
+		frm.userEmail.focus();
 		return false;
 	}
 	if (document.frm.renickname.value != "1") {
-		alert("이메일 중복체크를 하지 않았어용ㅇㅇㅇ(⑉⊙ȏ⊙)");
-		frm.uesrid.focus();
+		alert("별명 중복체크를 하지 않았어용ㅇㅇㅇ(⑉⊙ȏ⊙)");
+		frm.nickname.focus();
 		return false;
 	}
+//	if (!$(check_1).is(":checked") && $(check_2).is(":checked") && $(check_1).is(":checked")) {
+//		alert("약관에 동의해주세요><");
+//		frm.nickname.focus();
+//		return false;
+//	}
 	return true;
 }

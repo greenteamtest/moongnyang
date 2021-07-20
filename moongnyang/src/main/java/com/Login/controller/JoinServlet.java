@@ -36,7 +36,7 @@ public class JoinServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("member/join.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -51,14 +51,15 @@ public class JoinServlet extends HttpServlet {
 //		doGet(request, response);
 		request.setCharacterEncoding("UTF-8");
 
-		String email_non = request.getParameter("emailFront");
-		String email_a = "@";
-		String site = request.getParameter("selectemail");
-		String email = email_non + email_a + site;
+		String userEmail = request.getParameter("userEmail");
+		String a = "@";
+		String selectemail = request.getParameter("selectemail");
+		String email = userEmail + a + selectemail;
 		String nickname = request.getParameter("nickname");
 		String pwd = request.getParameter("pwd");
-
-//		String auth = request.getParameter("user_auth");
+		System.out.println(email);
+		System.out.println(pwd);
+		System.out.println(nickname);
 		String auth = "0";
 
 		MemberVO vo = new MemberVO();
@@ -68,7 +69,7 @@ public class JoinServlet extends HttpServlet {
 		vo.setAuth(Integer.parseInt(auth));
 
 		MemberDAO dao = MemberDAO.getInstance();
-		int result = dao.inserMember(vo);
+		int result = dao.insertMember(vo);
 
 		HttpSession session = request.getSession();
 

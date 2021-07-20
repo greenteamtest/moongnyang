@@ -39,7 +39,7 @@
 	<br>
 	<br>
 	<!-- 이건 좀 좁은 테마 -->
-	<form action="emailCheck.do" method="get" name="frm1">
+	<form action="join.do" method="post" name="frm">
 		<table align="center">
 			<tr>
 				<td><br> <br> <br> <br></td>
@@ -62,16 +62,15 @@
 				<td colspan='3'>
 					<div class="input-group mb-3">
 						<input type="text" class="form-control" placeholder="이메일"
-							id="userEmail" name="userEmail"><span class="gray">&nbsp;@&nbsp;</span>
+							name="userEmail"><span class="gray">&nbsp;@&nbsp;</span>
 						<select class="form-select" id="inputGroupSelect01"
 							name="selectemail" id="selectemail">
-							<option selected>선택해주세요.</option>
+							<option value="15" selected>선택해주세요.</option>
 							<option value="naver.com">naver.com</option>
 							<option value="hanmail.net">hanmail.net</option>
 							<option value="daum.net">daum.net</option>
 							<option value="gmail.com">gmail.com</option>
 							<option value="nate.com">nate.com</option>
-							<option value="user_write" onChange="selectEmail(this)">직접입력할래요</option>
 						</select>
 					</div>
 				</td>
@@ -89,8 +88,6 @@
 					type="hidden" name="reEmail">중복검사를 해주세용</td>
 			</tr>
 		</table>
-	</form>
-	<form action="nicknameCheck.do" method="get" name="frm2">
 		<table align="center">
 			<tr>
 				<td colspan='2'>
@@ -163,8 +160,6 @@
 					type="hidden" name="renickname" id="nickDuple">중복검사를 해주세용</td>
 			</tr>
 		</table>
-	</form>
-	<form action="join.do" method="post" name="frm3">
 		<table align="center">
 			<tr>
 				<td colspan='2'>
@@ -185,7 +180,7 @@
 
 			<tr>
 				<td><div class="form-check">
-						<input class="form-check-input" type="checkbox" name="animal"
+						<input class="form-check-input" type="checkbox" name="check"
 							value="" id="check_1"> <label class="form-check-label"
 							for="check_1"><h4>만 14세 이상입니다.</h4>
 							<h5 class="gray">(필수)</h5></label>
@@ -194,7 +189,7 @@
 
 			<tr>
 				<td><div class="form-check">
-						<input class="form-check-input" type="checkbox" name="animal"
+						<input class="form-check-input" type="checkbox" name="check"
 							value="" id="check_2"> <label class="form-check-label"
 							for="check_2"><h4>
 								이용약관
@@ -204,7 +199,7 @@
 			</tr>
 			<tr>
 				<td><div class="form-check">
-						<input class="form-check-input" type="checkbox" name="animal"
+						<input class="form-check-input" type="checkbox" name="check"
 							value="" id="check_3"> <label class="form-check-label"
 							for="check_3"><h4>개인정보수및 및 이용동의</h4>
 							<h5 class="gray">(필수)</h5> </label>
@@ -213,7 +208,7 @@
 			</tr>
 			<tr>
 				<td><div class="form-check">
-						<input class="form-check-input" type="checkbox" name="animal"
+						<input class="form-check-input" type="checkbox" name="check"
 							value="" id="check_4"> <label class="form-check-label"
 							for="check_4"><h4>이벤트, 프로모션 메일 및 sms 수신</h4>
 							<h5 class="blue">(선택 항목)</h5> </label>
@@ -222,7 +217,7 @@
 			<tr>
 				<td>
 					<div class="d-grid gap-2">
-						<button class="btn btn-primary btn-lg btn-warning" type="button"
+						<button class="btn btn-primary btn-lg btn-warning" type="submit"
 							value="확인" onclick="return joinCheck()">회원가입</button>
 					</div>
 				</td>

@@ -193,7 +193,7 @@ public class MemberDAO {
 		return result;
 	}
 
-	public int inserMember(MemberVO vo) {
+	public int insertMember(MemberVO vo) {
 		int result = -1;
 		String sql = "insert into user_info values(?, ?, ?, ?)";
 
@@ -202,9 +202,9 @@ public class MemberDAO {
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, vo.getNickname());
-			pstmt.setString(2, vo.getPwd());
-			pstmt.setString(3, vo.getEmail());
+			pstmt.setString(1, vo.getEmail());
+			pstmt.setString(2, vo.getNickname());
+			pstmt.setString(3, vo.getPwd());
 			pstmt.setInt(4, 0);
 
 			result = pstmt.executeUpdate();
