@@ -39,7 +39,7 @@ public class LoginServlet extends HttpServlet {
 		String url = "member/login.jsp";
 		HttpSession session = request.getSession();
 		if (session.getAttribute("loginUser") != null) {
-			url = "main.jsp";
+			url = "index.jsp";
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
@@ -53,11 +53,13 @@ public class LoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		doGet(request, response);
+		System.out.println("로그인 서블릿 진입");
 		String url = "member/login.jsp";
 
-		String userid = request.getParameter("userid");
+		String userid = request.getParameter("email");
 		String pwd = request.getParameter("pwd");
-
+		System.out.println(userid);
+		System.out.println(pwd);
 		MemberDAO dao = MemberDAO.getInstance();
 		int result = dao.userCheck(userid, pwd);
 
@@ -66,7 +68,7 @@ public class LoginServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("loginUser", vo);
 			request.setAttribute("meesage", "가입이 완료되었어요!");
-			url = "main.jsp";
+			url = "index.jsp";
 		} else if (result == 0) {
 			request.setAttribute("message", "이런, 회원정보가 맞지않아요 ㅠ");
 

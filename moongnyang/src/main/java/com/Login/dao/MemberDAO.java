@@ -10,7 +10,6 @@ import javax.sql.DataSource;
 
 import com.Login.dto.MemberVO;
 
-
 public class MemberDAO {
 	private MemberDAO() {
 
@@ -46,7 +45,7 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				if (rs.getString("user_pwd") != null && rs.getString("user_pwd").equals(pwd)) {
-
+					System.out.println("비번은 일치함");
 					result = 1;
 				} else {
 					result = 0;
@@ -202,12 +201,13 @@ public class MemberDAO {
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, vo.getNickname());
+			pstmt.setString(1, vo.getEmail());
 			pstmt.setString(2, vo.getPwd());
-			pstmt.setString(3, vo.getEmail());
+			pstmt.setString(3, vo.getNickname());
 			pstmt.setInt(4, 0);
 
 			result = pstmt.executeUpdate();
+			System.out.println(vo.getNickname() + " " + vo.getPwd() + " " + vo.getEmail() + " " + "0");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -222,6 +222,7 @@ public class MemberDAO {
 				e.printStackTrace();
 			}
 		}
+
 		return result;
 	}
 

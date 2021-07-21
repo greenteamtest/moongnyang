@@ -18,7 +18,7 @@
 <title>로그인 화면</title>
 <style>
 .gray {
-	color: #C0C0C0 
+	color: #C0C0C0
 }
 
 .smallimg {
