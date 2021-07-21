@@ -65,13 +65,13 @@ public class LoginServlet extends HttpServlet {
 			MemberVO vo = dao.getMeber(userid);
 			HttpSession session = request.getSession();
 			session.setAttribute("loginUser", vo);
-			request.setAttribute("meesage", "Regist is success");
+			request.setAttribute("meesage", "가입이 완료되었어요!");
 			url = "main.jsp";
 		} else if (result == 0) {
-			request.setAttribute("message", "It's not a right password");
+			request.setAttribute("message", "이런, 회원정보가 맞지않아요 ㅠ");
 
 		} else if (result == -1) {
-			request.setAttribute("message", "It's not a existing member");
+			request.setAttribute("message", "이런, 회원정보가 맞지않아요 ㅠ");
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
