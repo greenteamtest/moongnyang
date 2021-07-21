@@ -16,6 +16,15 @@ public class ActionFactory {
 	public Action getAction(String command) {
 		Action action = null;
 		System.out.println("ActionFactory : " + command);
+		if (command.equals("userPage")) {
+			action = new userPageAction();
+		}
+		if (command.equals("managerPage")) {
+			action = new managerPageAction();
+		}
+		if (command.equals("businessPage")) {
+			action = new businessPageAction();
+		}
 		return action;
 	}
 }

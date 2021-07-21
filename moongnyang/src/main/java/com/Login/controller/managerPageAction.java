@@ -9,12 +9,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.Login.controller.action.Action;
 
-public class userPageAction implements Action {
+public class managerPageAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String url = "member/manage/userPage.jsp";
+		String url = "member/manage/managerPage.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 	}
