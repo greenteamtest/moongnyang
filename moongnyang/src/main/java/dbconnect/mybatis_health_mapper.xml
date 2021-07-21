@@ -3,8 +3,17 @@
 <mapper namespace="dao.BookingDAO">
 
 	<!-- 카테고리별 장소 목록 -->
-	<select id="selectPlace_List" parameterType="String" resultType="com.health.dto.HealthPlaceVo">
-		select * from view_place where field = #{key}
+	<select id="selectPlace_List" parameterType="Object" resultType="com.health.dto.HealthPlaceVo">
+		select idx, field, place, phone_num, address, open_time, introduce, dips_cont, pet_kind
+		from view_place
+		<choose>
+			<when test="value != null and value instanceof Integer">
+				where idx = #{key} 
+			</when>
+			<otherwise> 
+				where field = #{key}
+			</otherwise> 
+		</choose> 
 	</select>
-
+ 
 </mapper>
