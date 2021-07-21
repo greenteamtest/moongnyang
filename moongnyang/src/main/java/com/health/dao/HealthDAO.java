@@ -8,8 +8,8 @@ import com.health.dto.HealthPlaceVo;
 
 public class HealthDAO {
 
-	public List<HealthPlaceVo> selectPlace_List(SqlSession session, String key) { // select place list
-		return session.selectList("selectPlace_List", key);
+	public List<HealthPlaceVo> selectPlace_List(SqlSession session, Object value) { // select place list
+		return session.selectList("selectPlace_List", value);
 	}
 
 	public HealthPlaceVo selectPlace_info(SqlSession session, int place_key) { // select place list

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-package com.Team.dto;
-=======
 package com.picnic.dto;
->>>>>>> refs/heads/Ho
 
 import java.sql.Timestamp;
 
@@ -34,6 +30,9 @@ public class BoardVO {
 	private String sexCd;			//성별
 	//유실 동물 DB용
 	private String orgCd;			//지역 코드
+	private String uprCd;			//지역 코드
+	private String orgdownNm;		//지역 명
+	
 	public String getOrgCd() {
 		return orgCd;
 	}
@@ -52,8 +51,7 @@ public class BoardVO {
 	public void setOrgdownNm(String orgdownNm) {
 		this.orgdownNm = orgdownNm;
 	}
-	private String uprCd;			//지역 코드
-	private String orgdownNm;		//지역 명
+
 	
 	public String getDesertionNo() {
 		return desertionNo;

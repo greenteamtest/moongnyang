@@ -36,18 +36,16 @@ public class LoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
-		String url = "/member/login.jsp";
+		String url = "member/login.jsp";
 		HttpSession session = request.getSession();
 		if (session.getAttribute("loginUser") != null) {
-			url = "index.jsp";
+			url = "main.jsp";
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 	}
 
 	/**
-	 * F
-	 * 
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
@@ -55,25 +53,25 @@ public class LoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		doGet(request, response);
-		String url = "/member/login.jsp";
+		String url = "member/login.jsp";
 
-		String email = request.getParameter("email");
+		String userid = request.getParameter("userid");
 		String pwd = request.getParameter("pwd");
-		System.out.println(email);
+
 		MemberDAO dao = MemberDAO.getInstance();
-		int result = dao.userCheck(email, pwd);
+		int result = dao.userCheck(userid, pwd);
 
 		if (result == 1) {
-			MemberVO vo = dao.getMeber(email);
-			HttpSession session = request.getSession(true);
+			MemberVO vo = dao.getMeber(userid);
+			HttpSession session = request.getSession();
 			session.setAttribute("loginUser", vo);
-			request.setAttribute("message", "로그인에 성공했습니다.");
-			url = "index.jsp";
+			request.setAttribute("meesage", "Regist is success");
+			url = "main.jsp";
 		} else if (result == 0) {
-			request.setAttribute("message", "이런.. 비밀번호가 맞지않네요 ㅠ");
+			request.setAttribute("message", "It's not a right password");
 
 		} else if (result == -1) {
-			request.setAttribute("message", "앗, 가입되지않은 아이디에요 ㅠ");
+			request.setAttribute("message", "It's not a existing member");
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

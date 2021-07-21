@@ -1,6 +1,7 @@
 package com.picnic.controller;
 
 import com.picnic.controller.action.Action;
+import com.picnic.controller.action.Index_Action;
 import com.picnic.controller.action.Picnic_Action;
 import com.picnic.controller.action.Abandonment_Action;
 import com.picnic.controller.action.Abandonment_View_Action;
@@ -23,6 +24,8 @@ public class ActionFactory {
 		System.out.println("ActionFactory :" + command);
 		if(command.equals("picnic")) {
 			action = new Picnic_Action();
+		} else if(command.equals("index")) {
+			action = new Index_Action();
 		} else if(command.equals("abandonment")) {
 			action = new Abandonment_Action();
 		} else if(command.equals("abandonment_view")) {

@@ -19,7 +19,6 @@ public class HealthPlaceVo {
 	private String pet_kind;
 
 	public HealthPlaceVo() {
-
 	}
 
 	public int getIdx() {
@@ -124,6 +123,13 @@ public class HealthPlaceVo {
 
 	public void setPet_kind(String pet_kind) {
 		this.pet_kind = pet_kind;
+	}
+
+	public String toString() {
+		return "{\"idx\" :" + "\"" + idx + "\"" + ",  \"place\" :" + "\"" + place + "\"" + ", \"phone_num\" : " + "\""
+				+ phone_num + "\"" + ", \"address\" : " + "\"" + address + "\"" + ", \"open_time\" : " + "\""
+				+ open_time + "\"" + ", \"introduce\" : " + "\"" + introduce + "\"" + ", \"pet_kind\" : " + "\""
+				+ pet_kind + "\"" + ", \"dips_cont\" : " + "\"" + dips_cont + "\"}";
 	}
 
 }

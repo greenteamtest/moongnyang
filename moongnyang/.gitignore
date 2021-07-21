@@ -1,1 +1,9 @@
 /target/
+<<<<<<< HEAD
+<<<<<<< HEAD
+/.gitignore
+=======
+>>>>>>> refs/remotes/origin/master
+=======
+>>>>>>> branch 'MSJ' of https://github.com/greenteamtest/moongnyang.git
+/bin/

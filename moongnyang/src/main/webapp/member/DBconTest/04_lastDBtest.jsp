@@ -21,7 +21,7 @@
 	int cnt = 0;
 	while (rs.next()) {
 		cnt++;
-		out.println(cnt+"번째 데이따"+"<br>");
+		out.println(cnt+"번째 데이따~~"+"<br>");
 		out.println("이멜 : " + rs.getString("user_email") + "<br>");
 		out.println("닉넴 : " + rs.getString("user_nick") + "<br>");
 		out.println("비번 :" + rs.getString("user_pwd") + "<br><br>");

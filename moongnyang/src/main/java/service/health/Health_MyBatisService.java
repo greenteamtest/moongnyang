@@ -22,8 +22,13 @@ public class Health_MyBatisService {
 		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
 		List<HealthPlaceVo> list = null;
 
+		System.out.println(key);
 		try {
-			list = dao.selectPlace_List(session, key); // dao에 SqlSession 전송
+			Integer numKey = Integer.parseInt(key);
+			list = dao.selectPlace_List(session, numKey);
+		} catch (NumberFormatException e) {
+			System.out.println("String 타입");
+			list = dao.selectPlace_List(session, key);
 		} finally {
 			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
 		}
