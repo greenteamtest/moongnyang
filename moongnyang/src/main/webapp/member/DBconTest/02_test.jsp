@@ -13,6 +13,8 @@
 	MemberDAO memDao = MemberDAO.getInstance();
 	Connection conn = memDao.getConnection();
 	out.println("디비 연동보다 깃허브가 실시간 연동되게해주세요><");
+	out.println("디비 연동보다 깃허브가 실시간 연동되게해주세요><");
+	out.println("디비 연동보다 깃허브가 실시간 연동되게해주세요><");
 	%>
 </body>
 </html>
