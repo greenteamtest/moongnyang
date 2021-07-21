@@ -10,7 +10,7 @@ public class HealthPlaceVo {
 
 	private int place_info_idx;
 	private int place_list_id;
-	private int phone_num;
+	private String phone_num;
 	private String address;
 
 	private String open_time;
@@ -78,11 +78,11 @@ public class HealthPlaceVo {
 		this.place_list_id = place_list_id;
 	}
 
-	public int getPhone_num() {
+	public String getPhone_num() {
 		return phone_num;
 	}
 
-	public void setPhone_num(int phone_num) {
+	public void setPhone_num(String phone_num) {
 		this.phone_num = phone_num;
 	}
 
@@ -126,4 +126,10 @@ public class HealthPlaceVo {
 		this.pet_kind = pet_kind;
 	}
 
+	public String toString() {
+		return "{\"idx\" :" + "\"" + idx + "\"" + ",  \"place\" :" + "\"" + place + "\"" + ", \"phone_num\" : " + "\""
+				+ phone_num + "\"" + ", \"address\" : " + "\"" + address + "\"" + ", \"open_time\" : " + "\""
+				+ open_time + "\"" + ", \"introduce\" : " + "\"" + introduce + "\"" + ", \"pet_kind\" : " + "\""
+				+ pet_kind + "\"" + ", \"dips_cont\" : " + "\"" + dips_cont + "\"}";
+	}
 }
