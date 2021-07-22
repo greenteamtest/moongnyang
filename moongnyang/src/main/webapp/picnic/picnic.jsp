@@ -98,6 +98,7 @@
 								</div>
 								<div style="text-align :center">
 								<br>
+								<input type="hidden" name="pageNo" value="1"> 
 								<button type="submit" style="background:white">
 								<img src="picnic/images/loupe.png" width="100px" height="100px"></button>									
 								<br>↑↑검색↑↑								
