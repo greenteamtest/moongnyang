@@ -9,7 +9,7 @@
 <meta name="author"
 	content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 <meta name="generator" content="Hugo 0.84.0">
-<title>☕직원게시판</title>
+<title>🐶🐱뭉냥뭉냥☕관리자페이지🐶🐱</title>
 
 <link rel="canonical"
 	href="https://getbootstrap.com/docs/5.0/examples/dashboard/">

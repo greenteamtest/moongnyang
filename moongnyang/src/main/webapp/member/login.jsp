@@ -89,7 +89,7 @@
 
 				<td><input type="image" class="smallimg"
 					src="img/loginbutton.png" type="submit"
-					onclick="return loginCheck()"> <br></td>
+					onclick="return loginCheck()" data-bs-toggle="tooltip"  data-bs-placement="top" title="Tooltip on top"> <br></td>
 			</tr>
 
 			<tr>

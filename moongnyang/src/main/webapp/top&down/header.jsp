@@ -30,7 +30,9 @@
 				</c:if>
 				<c:if test="${!empty loginUser}">
 					<button type="button" class="btn btn-warning position-relative "
-						data-bs-toggle="modal" data-bs-target="#exampleModal">
+						data-bs-toggle="modal" data-bs-target="#exampleModal"
+						data-bs-toggle="tooltip" data-bs-placement="top"
+						title="읽지않은 알람을 확인하세요">
 						알림 <span
 							class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
 							${unread_count}10 <span class="visually-hidden">unread
@@ -40,13 +42,17 @@
 				</c:if>
 				&nbsp;&nbsp;&nbsp;&nbsp;
 				<c:if test="${empty loginUser}">
-					<li class="nav-item"><a class="nav-link" href="login.do">로그인
+					<li class="nav-item"><a class="nav-link" href="login.do"
+						data-bs-toggle="tooltip" data-bs-placement="top" title="함께해요!">로그인
+
 
 
 					
 				</c:if>
 				<c:if test="${!empty loginUser}">
-					<li class="nav-item"><a class="nav-link" href="logout.do">로그아웃
+					<li class="nav-item"><a class="nav-link" href="logout.do"
+						data-bs-toggle="tooltip" data-bs-placement="top" title="정말 나가시게요?">로그아웃
+
 
 
 					
@@ -56,15 +62,18 @@
 				<!-- 				<li class="nav-item"><a class="nav-link" href="#about">회원가입</a></li> -->
 				<c:if test="${loginUser.auth==0}">
 					<li class="nav-item"><a class="nav-link"
-						href="mypageServlet?command=userPage">마이페이지</a></li>
+						href="mypageServlet?command=userPage" data-bs-toggle="tooltip"
+						data-bs-placement="top" title="좀 더 가까이와요">마이페이지</a></li>
 				</c:if>
 				<c:if test="${loginUser.auth==1}">
 					<li class="nav-item"><a class="nav-link"
-						href="mypageServlet?command=businessPage">사업장관리</a></li>
+						href="mypageServlet?command=businessPage" data-bs-toggle="tooltip"
+						data-bs-placement="top" title="효율적으로 관리해봐요">사업장관리</a></li>
 				</c:if>
 				<c:if test="${loginUser.auth==2}">
 					<li class="nav-item"><a class="nav-link"
-						href="mypageServlet?command=managerPage">페이지관리</a></li>
+						href="mypageServlet?command=managerPage" data-bs-toggle="tooltip"
+						data-bs-placement="top" title="명심! 사용자들을 위한 운영!">페이지관리</a></li>
 				</c:if>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"
@@ -118,8 +127,10 @@
 			당선되었다. 그러나 19대 총선에선 다시 낙선하였다.
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary"
-					data-bs-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-Danger">모두 읽음 처리</button>
+					data-bs-dismiss="modal">닫기</button>
+				<button type="button" class="btn btn-Danger"
+					data-bs-toggle="tooltip" data-bs-placement="top"
+					title="하나하나 보시는것도 좋아요">모두 읽음 처리</button>
 			</div>
 		</div>
 	</div>

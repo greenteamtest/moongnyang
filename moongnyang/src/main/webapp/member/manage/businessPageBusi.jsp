@@ -11,7 +11,7 @@
 <meta name="author"
 	content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 <meta name="generator" content="Hugo 0.84.0">
-<title>☕관리자페이지</title>
+<title>🏘사업자페이지</title>
 
 <link rel="canonical"
 	href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
@@ -50,28 +50,13 @@
 					class="col-md-3 col-lg-2 d-md-block bg-Secondary sidebar collapse">
 					<div class="position-sticky pt-3">
 						<ul class="nav flex-column">
-							<li class="nav-item"><a class="nav-link "
-								aria-current="page" href="mypageServlet?command=managerPage">
-									<span data-feather="home"></span> Dashboard
-							</a></li>
-							<li class="nav-item"><a class="nav-link active"
-								href="mypageServlet?command=managerPageCus"> <span
-									data-feather="file"></span> 고객소리함
-							</a></li>
 							<li class="nav-item"><a class="nav-link"
-								href="mypageServlet?command=managerPageBusi"> <span
-									data-feather="shopping-cart"></span> 사업자신청관리
+								aria-current="page" href="mypageServlet?command=businessPage"> <span data-feather="home"></span>
+									Dashboard
 							</a></li>
-							<li class="nav-item"><a class="nav-link"
-								href="mypageServlet?command=managerPageQna"> <span
-									data-feather="users"></span> QnA
+							<li class="nav-item"><a class="nav-link active" href="mypageServlet?command=businessPageBusi"> <span
+									data-feather="file"></span> 사업장관리
 							</a></li>
-							<!-- 							<li class="nav-item"><a class="nav-link" href="#"> <span -->
-							<!-- 									data-feather="bar-chart-2"></span> Reports -->
-							<!-- 							</a></li> -->
-							<!-- 							<li class="nav-item"><a class="nav-link" href="#"> <span -->
-							<!-- 									data-feather="layers"></span> Integrations -->
-							<!-- 							</a></li> -->
 						</ul>
 					</div>
 				</nav>
@@ -236,7 +221,3 @@
 	<script src="member/manage/dashboard.js"></script>
 </body>
 </html>
-
-
-
-
