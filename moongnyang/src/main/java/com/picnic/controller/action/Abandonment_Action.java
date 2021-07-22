@@ -38,26 +38,27 @@ public class Abandonment_Action implements Action {
 			urlBuilder.append("?pageNo=" + temp); /* 페이지 번호 */
 			System.out.println(urlBuilder.toString());
 		}
-
+		
+		//urlBuilder.append("&numOfRows=10");
+		
 		// 시,군,구 코드가 있을시 시,군,구 만 넣고 없으면 시, 도 코드 확인
-		if (request.getParameter("org_cd") != null) {
+		if (request.getParameter("org_cd") != null && request.getParameter("org_cd") != "") {
 			temp = request.getParameter("org_cd");
 			urlBuilder.append("&org_cd=" + temp); /* 시,군,구 */
 			System.out.println(urlBuilder.toString());
-		} else if (request.getParameter("upr_cd") != null) {
+		} else if (request.getParameter("upr_cd") != null && request.getParameter("upr_cd") != "") {
 			temp = request.getParameter("upr_cd");
 			urlBuilder.append("&upr_cd=" + temp); /* 시,도 */
 			System.out.println(urlBuilder.toString());
 		}
 
 		// 품종 코드가 있을시 품종코드만 넣고 없으면 축종코드 있는지 확인 축종->개,고양이 등등 품종->도베르만,골든 리트리버 등등
-		System.out.println("---"+request.getParameter("kind")+"---");
-		if (request.getParameter("kind") != null) {
+		if (request.getParameter("kind") != null && request.getParameter("kind") != "") {
 			System.out.println(urlBuilder.toString());
 			temp = request.getParameter("kind");
 			urlBuilder.append("&kind=" + temp); /* 품종 코드 */
 			System.out.println(urlBuilder.toString());
-		} else if (request.getParameter("upkind") != null) {			
+		} else if (request.getParameter("upkind") != null && request.getParameter("upkind") != "") {			
 			temp = request.getParameter("upkind");
 			urlBuilder.append("&upkind=" + temp); /* 축종코드 */
 			System.out.println(urlBuilder.toString());
@@ -71,15 +72,17 @@ public class Abandonment_Action implements Action {
 			DocumentBuilder dBuilder = dbFactoty.newDocumentBuilder();
 			Document doc = dBuilder.parse(urlBuilder.toString());
 			doc.getDocumentElement().normalize();
+			
+	
 			NodeList nList = doc.getElementsByTagName("item");
 
 			for (int i = 0; i < nList.getLength(); i++) {
+				BoardVO bVo = new BoardVO(); 	
 				Node nNode = nList.item(i);
+	
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 					Element eElement = (Element) nNode;
-
-					BoardVO bVo = new BoardVO();
-
+	
 					bVo.setDesertionNo(getTagValue("desertionNo", eElement));
 					bVo.setFilename(getTagValue("filename", eElement));
 					bVo.setHappenDt(getTagValue("happenDt", eElement));
@@ -92,9 +95,14 @@ public class Abandonment_Action implements Action {
 					bVo.setNoticeSdt(getTagValue("noticeSdt", eElement));
 					bVo.setNoticeEdt(getTagValue("noticeEdt", eElement));
 					bVo.setPopfile(getTagValue("popfile", eElement));
-					bVo.setProcessState(getTagValue("processState", eElement));
+					bVo.setProcessState(getTagValue("processState", eElement));					
 					bVo.setSexCd(getTagValue("sexCd", eElement));
-
+					bVo.setNeuterYn(getTagValue("neuterYn", eElement));
+					bVo.setCareNm(getTagValue("careNm", eElement));
+					bVo.setCareTel(getTagValue("careTel", eElement));
+					bVo.setCareAddr(getTagValue("careAddr", eElement));
+					bVo.setOrgNm(getTagValue("orgNm", eElement));
+					bVo.setOfficetel(getTagValue("officetel", eElement));
 					list.add(bVo);
 				}
 			}

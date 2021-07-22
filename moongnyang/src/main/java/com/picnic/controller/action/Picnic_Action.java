@@ -46,8 +46,7 @@ public class Picnic_Action implements Action{
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 					Element eElement = (Element) nNode;
 					BoardVO bVo = new BoardVO();	
-					bVo.setOrgCd(getTagValue("orgCd",eElement));
-					bVo.setOrgdownNm(getTagValue("orgdownNm",eElement));
+				
 					
 					list.add(bVo);
 					/* int rs = pms.insert_Abandonment(bVo); */

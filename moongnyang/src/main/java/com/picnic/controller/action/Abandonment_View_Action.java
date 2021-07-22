@@ -25,16 +25,16 @@ public class Abandonment_View_Action implements Action {
 		String sKey = "=MHijCewxZVm%2F%2BYHcu%2BV4EPh3gx9YgCMkq7l6bp0y2j5kMNVUObecIzmLdQeU8uzx7p1vXbUyw%2BqXLCNFbJXL3g%3D%3D";
 		StringBuilder urlBuilder = new StringBuilder(
 				"http://openapi.animal.go.kr/openapi/service/rest/abandonmentPublicSrvc/abandonmentPublic"); /* URL */
-		urlBuilder.append("?" + URLEncoder.encode("bgnde", "UTF-8") + request.getParameter("num"));
+		urlBuilder.append("?" + URLEncoder.encode("desertionNo", "UTF-8") + request.getParameter("num"));
 		
-		urlBuilder.append("?" + URLEncoder.encode("ServiceKey", "UTF-8") + sKey); /* Service Key */
+		urlBuilder.append("&" + URLEncoder.encode("ServiceKey", "UTF-8") + sKey); /* Service Key */
 		DocumentBuilderFactory dbFactoty = DocumentBuilderFactory.newInstance();
 		List<BoardVO> list = new ArrayList<BoardVO>();
 		try {
 			DocumentBuilder dBuilder = dbFactoty.newDocumentBuilder();
 			Document doc = dBuilder.parse(urlBuilder.toString());
 			doc.getDocumentElement().normalize();
-			NodeList nList = doc.getElementsByTagName("item");
+			NodeList nList = doc.getElementsByTagName("items");
 
 			for (int temp = 0; temp < nList.getLength(); temp++) {
 				Node nNode = nList.item(temp);
@@ -57,7 +57,17 @@ public class Abandonment_View_Action implements Action {
 					bVo.setPopfile(getTagValue("popfile", eElement));
 					bVo.setProcessState(getTagValue("processState", eElement));
 					bVo.setSexCd(getTagValue("sexCd", eElement));
-
+					bVo.setNeuterYn(getTagValue("neuterYn", eElement));
+					bVo.setCareNm(getTagValue("careNm", eElement));
+					bVo.setCareTel(getTagValue("careTel", eElement));
+					bVo.setCareAddr(getTagValue("careAddr", eElement));
+					bVo.setOrgNm(getTagValue("orgNm", eElement));
+					bVo.setChargeNm(getTagValue("chargeNm", eElement));
+					bVo.setOfficetel(getTagValue("officetel", eElement));
+					bVo.setNoticeComment(getTagValue("noticeComment", eElement));
+					bVo.setPageNo(getTagValue("pageNo", eElement));
+					bVo.setTotalCount(getTagValue("totalCount", eElement));					
+					
 					list.add(bVo);
 				}
 			}

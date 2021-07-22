@@ -1,3 +1,29 @@
+function nextPage(){
+    var pageName = "";
+    var tempPageName = window.location.href;
+    var strPageName = tempPageName.split("pageNo=");
+    var new_page = (strPageName[1]*1) + 1;
+    if(new_page <= 0){
+    	new_page = 1;
+    }
+    pageName = strPageName[0]+ "pageNo=" + new_page;   
+ 	location.replace(pageName);  
+}
+
+function backPage(){
+    var pageName = "";
+    var tempPageName = window.location.href;
+    var strPageName = tempPageName.split("pageNo=");
+    var new_page = (strPageName[1]*1) - 1;
+    if(new_page <= 0){
+    	new_page = 1;
+    }
+    pageName = strPageName[0]+ "pageNo=" + new_page;   
+ 	location.replace(pageName);  
+}
+
+
+
 function category_org() {
 	
 	var arr6110000 = ["가정보호", "강남구", "강동구", "강북구", "강서구", "관악구", "광진구", "구로구", "금천구", "노원구", "도봉구", "동대문구", "동작구", "마포구", "서대문구", "서울특별시", "서초구", "성동구", "성북구", "송파구", "양천구", "영등포구", "용산구", "은평구", "종로구", "중구", "중랑구"];
@@ -161,6 +187,3 @@ function category_kind(){
 		target.appendChild(opt);
 	}
 }
-
-
-
