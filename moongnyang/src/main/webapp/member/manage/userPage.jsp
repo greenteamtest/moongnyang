@@ -177,9 +177,28 @@
 							data-bs-target="#exampleModal4" data-bs-whatever="@mdo">#잠시이별</button>
 					</div>
 					<div class="mb-3">
-						<label for="message-text" class="col-form-label">내용</label>
-						<textarea class="form-control" id="message-text"></textarea>
+
+						<label for="exampleInputPassword1" class="form-label">비밀번호를
+							변경하시려면 새로입력해주세요!</label> <input type="password" class="form-control"
+							value="${loginUser.pwd}" id="exampleInputPassword1" name="pwd">
+						<label for="exampleInputPassword1" class="form-label">변경하신
+							비밀번호를 한번 더 입려해주세요</label> <input type="password" class="form-control"
+							value="${loginUser.pwd}" id="exampleInputPassword1"
+							name="pwd_check">
 					</div>
+					<div>
+						<label for="exampleInputPassword1" class="form-label">별명을
+							변경하시려면 새로입력해주세요!</label>
+					</div>
+					<div class="input-group mb-3">
+
+						<input type="text" class="form-control"
+							value="${loginUser.nickname}" id="exampleInputPassword1"
+							name=nickname>
+						<button type="button" class="btn btn-warning"
+							onclick="nicknameCheck()">중복검사</button>
+					</div>
+
 				</form>
 			</div>
 			<div class="modal-footer">
@@ -209,7 +228,9 @@
 						<button type="button" class="btn btn-secondary">#잠시이별</button>
 					</div>
 					<div class="mb-3">
-						<label for="message-text" class="col-form-label">내용</label>
+						<p class="text-center">다시 돌아왔을 때, 더 멋진 모습으로 기다리고 있겠습니다.</p>
+						<label for="message-text" class="col-form-label">마지막으로
+							비밀번호를 입력해주세요.</label>
 						<textarea class="form-control" id="message-text"></textarea>
 					</div>
 				</form>
@@ -217,7 +238,7 @@
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary"
 					data-bs-dismiss="modal">닫기</button>
-				<button type="button" class="btn btn-Warning">제출하기</button>
+				<button type="button" class="btn btn-Warning">언젠간 돌아오겠습니다</button>
 			</div>
 		</div>
 	</div>
