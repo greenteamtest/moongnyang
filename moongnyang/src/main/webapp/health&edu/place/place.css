@@ -1,0 +1,97 @@
+@charset "UTF-8";
+
+@import
+	url('https://fonts.googleapis.com/css2?family=Cute+Font&display=swap');
+
+.card {
+	margin: 20px 40px 20px 40px;
+}
+
+#place_list {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+#card-border {
+	width: 100rem;
+	text-align: center;
+}
+
+.card-frame {
+	display: inline-block;
+	margin: 2rem 2rem 2rem 2rem;
+	transition: transform 0.8s;
+}
+
+.card-frame:hover {
+	transform: scale(1.05);
+}
+
+.card-img-top {
+	height: 20rem;
+}
+
+.card-img-top:hover {
+	cursor: pointer;
+}
+
+.pets-icons {
+	height: 2rem;
+	width: 2rem;
+	margin-right: 1rem;
+}
+
+.card-link:hover {
+	cursor: pointer;
+	color: pink;
+	transition: color 0.8s;
+	color: pink;
+}
+
+img[class="d-block w-100"] {
+	width: 30rem;
+	height: 35rem;
+}
+
+.place {
+	font-size: 3.5rem;
+	font-weight: bold;
+}
+
+.text_contents {
+	font-family: 'Cute Font', cursive;
+	font-size: 1.8rem;
+}
+
+div[class="ui divider1"] {
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+}
+
+.comments_frame {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+div[class="ui big comments"] {
+	font-size: 2rem;
+	
+}
+
+.profile_img {
+	width: 40px;
+	height: 40px;
+}
+
+.comment {
+	width : 40rem;
+}
+
+.content {
+	margin-left : 0px;
+}
+
