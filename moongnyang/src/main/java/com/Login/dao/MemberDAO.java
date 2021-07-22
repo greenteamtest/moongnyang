@@ -228,7 +228,7 @@ public class MemberDAO {
 
 	public int updateMember_userVer(MemberVO vo) {
 		int result = 1;
-		String spl = "update user_info set user_pwd=?, user_nick=?,user_auth=? where user_email=?";
+		String spl = "update user_info set user_pwd=?, user_nick=?";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -237,9 +237,7 @@ public class MemberDAO {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(spl);
 			pstmt.setString(1, vo.getPwd());
-			pstmt.setString(4, vo.getEmail());
 			pstmt.setString(2, vo.getNickname());
-			pstmt.setInt(3, vo.getAuth());
 
 			result = pstmt.executeUpdate();
 

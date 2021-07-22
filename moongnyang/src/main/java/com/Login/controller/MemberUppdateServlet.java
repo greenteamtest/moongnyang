@@ -48,14 +48,10 @@ public class MemberUppdateServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String nickname = request.getParameter("nickname");
 		String pwd = request.getParameter("pwd");
-		String email = request.getParameter("email");
-		String auth = request.getParameter("auth");
 
 		MemberVO vo = new MemberVO();
 		vo.setNickname(nickname);
 		vo.setPwd(pwd);
-		vo.setEmail(email);
-		vo.setAuth(Integer.parseInt(auth));
 
 		MemberDAO dao = MemberDAO.getInstance();
 

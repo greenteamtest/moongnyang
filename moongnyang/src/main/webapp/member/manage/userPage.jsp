@@ -109,9 +109,9 @@
 			</div>
 			<div class="d-grid gap-2 col-6 mx-auto">
 				<button type="button" class="btn btn-Warning" data-bs-toggle="modal"
-					data-bs-target="#exampleModal2" data-bs-whatever="@mdo">#소통&nbsp;&nbsp;#문의&nbsp;&nbsp;#운영자에게</button>
+					data-bs-target="#managermessage" data-bs-whatever="@mdo">#소통&nbsp;&nbsp;#문의&nbsp;&nbsp;#운영자에게</button>
 				<button class="btn btn-Danger" type="button" data-bs-toggle="modal"
-					data-bs-target="#exampleModal3" data-bs-whatever="@mdo">#회원정보변경&nbsp;&nbsp;#회원탈퇴</button>
+					data-bs-target="#changemember" data-bs-whatever="@mdo">#회원정보변경&nbsp;&nbsp;#회원탈퇴</button>
 			</div>
 			<footer class="pt-3 mt-4 text-muted border-top"> &copy; 2021
 			</footer>
@@ -124,12 +124,12 @@
 </html>
 <!--  이거 완성되면 헤더부분으로 옮기자꾸나~~~ -->
 <!--  건의사항 부분 -->
-<div class="modal fade" id="exampleModal2" tabindex="-1"
+<div class="modal fade" id="managermessage" tabindex="-1"
 	aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">#소통 #문의 #운영자에게</h5>
+				<h5 class="modal-title" id="managermessage">#소통 #문의 #운영자에게</h5>
 				<button type="button" class="btn-close" data-bs-dismiss="modal"
 					aria-label="Close"></button>
 			</div>
@@ -161,7 +161,7 @@
 </div>
 <!--  회원정보변경 부분 -->
 <form action="memberUpdate.do" method="post" name="frm">
-	<div class="modal fade" id="exampleModal3" tabindex="-1"
+	<div class="modal fade" id="changemember" tabindex="-1"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -176,7 +176,7 @@
 							<button type="button" class="btn btn-primary">#회원정보변경</button>
 							<button type="button" class="btn btn-secondary"
 								data-bs-dismiss="modal" data-bs-toggle="modal"
-								data-bs-target="#exampleModal4" data-bs-whatever="@mdo">#잠시이별</button>
+								data-bs-target="#withdrawal" data-bs-whatever="@mdo">#잠시이별</button>
 						</div>
 						<div class="mb-3">
 
@@ -188,7 +188,7 @@
 								value="${loginUser.pwd}" id="exampleInputPassword1"
 								name="pwd_check">
 						</div>
-						
+
 						<div>
 							<label for="exampleInputPassword1" class="form-label">별명을
 								변경하시려면 새로입력해주세요!</label><input type="hidden" name="renickname" value="1"
@@ -198,7 +198,7 @@
 
 							<input type="text" class="form-control"
 								value="${loginUser.nickname}" id="exampleInputPassword1"
-								name=nickname>
+								name="nickname">
 							<button type="button" class="btn btn-warning"
 								onclick="nicknameCheck()">중복검사</button>
 						</div>
@@ -207,14 +207,15 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-bs-dismiss="modal">닫기</button>
-					<button type="button" class="btn btn-Warning">변경하기!</button>
+					<button type="button" class="btn btn-Warning"
+						onclick="return update_mamber()">변경하기!</button>
 				</div>
 			</div>
 		</div>
 	</div>
 </form>
 <!--  회원탈퇴 부분 -->
-<div class="modal fade" id="exampleModal4" tabindex="-1"
+<div class="modal fade" id="withdrawal" tabindex="-1"
 	aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -228,7 +229,7 @@
 					<div class="mb-3">
 						<button type="button" class="btn btn-primary"
 							data-bs-dismiss="modal" data-bs-toggle="modal"
-							data-bs-target="#exampleModal3" data-bs-whatever="@mdo">#회원정보변경</button>
+							data-bs-target="#changemember" data-bs-whatever="@mdo">#회원정보변경</button>
 						<button type="button" class="btn btn-secondary">#잠시이별</button>
 					</div>
 					<div class="mb-3">

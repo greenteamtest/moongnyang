@@ -30,7 +30,7 @@
 				</c:if>
 				<c:if test="${!empty loginUser}">
 					<button type="button" class="btn btn-warning position-relative "
-						data-bs-toggle="modal" data-bs-target="#exampleModal"
+						data-bs-toggle="modal" data-bs-target="#check_notification"
 						data-bs-toggle="tooltip" data-bs-placement="top"
 						title="읽지않은 알람을 확인하세요">
 						알림 <span
@@ -83,12 +83,12 @@
 </nav>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1"
+<div class="modal fade" id="check_notification" tabindex="-1"
 	aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel" align="center">새글알림</h5>
+				<h5 class="modal-title" id="check_notificationLabel" align="center">새글알림</h5>
 				<button type="button" class="btn-close" data-bs-dismiss="modal"
 					aria-label="Close"></button>
 			</div>
