@@ -50,7 +50,7 @@
 					class="col-md-3 col-lg-2 d-md-block bg-Secondary sidebar collapse">
 					<div class="position-sticky pt-3">
 						<ul class="nav flex-column">
-							<li class="nav-item"><a class="nav-link active"
+							<li class="nav-item"><a class="nav-link "
 								aria-current="page" href="mypageServlet?command=managerPage">
 									<span data-feather="home"></span> Dashboard
 							</a></li>
@@ -62,7 +62,7 @@
 								href="mypageServlet?command=managerPageBusi"> <span
 									data-feather="shopping-cart"></span> 사업자신청관리
 							</a></li>
-							<li class="nav-item"><a class="nav-link"
+							<li class="nav-item"><a class="nav-link active"
 								href="mypageServlet?command=managerPageQna"> <span
 									data-feather="users"></span> QnA
 							</a></li>
@@ -75,21 +75,6 @@
 						</ul>
 					</div>
 				</nav>
-
-				<div
-					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-					<h1 class="h2">총 게시글 조회수</h1>
-					<div class="btn-toolbar mb-2 mb-md-0">
-						<div class="alert alert-secondary" role="alert">${nowdate}</div>
-						<button type="button"
-							class="btn btn-sm btn-outline-secondary dropdown-toggle">
-							<span data-feather="calendar"></span> This week
-						</button>
-					</div>
-				</div>
-
-				<canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
-
 				<h2>Section title</h2>
 				<div class="table-responsive">
 					<table class="table table-striped table-sm">
