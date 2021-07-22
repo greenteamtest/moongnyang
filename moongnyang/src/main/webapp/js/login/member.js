@@ -22,7 +22,7 @@ function emailCheck() {
 	}
 	var url = "emailCheck.do?user_email=" + document.frm.userEmail.value + "@" + document.frm.selectemail.value;
 	window.open(url, "_blank_1",
-		"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=200");
+		"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=600, height=150");
 }
 function test() {
 	self.close();
@@ -40,7 +40,7 @@ function nicknameCheck() {
 	}
 	var url = "nicknameCheck.do?nickname=" + document.frm.nickname.value;
 	window.open(url, "_blank_1",
-		"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=200");
+		"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=600, height=150");
 }
 
 function nickok() {
@@ -79,10 +79,10 @@ function joinCheck() {
 		frm.nickname.focus();
 		return false;
 	}
-//	if (!$(check_1).is(":checked") && $(check_2).is(":checked") && $(check_1).is(":checked")) {
-//		alert("약관에 동의해주세요><");
-//		frm.nickname.focus();
-//		return false;
-//	}
+	//	if (!$(check_1).is(":checked") && $(check_2).is(":checked") && $(check_1).is(":checked")) {
+	//		alert("약관에 동의해주세요><");
+	//		frm.nickname.focus();
+	//		return false;
+	//	}
 	return true;
 }

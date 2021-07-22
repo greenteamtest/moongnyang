@@ -47,11 +47,13 @@
 
 
 
+
 					
 				</c:if>
 				<c:if test="${!empty loginUser}">
 					<li class="nav-item"><a class="nav-link" href="logout.do"
 						data-bs-toggle="tooltip" data-bs-placement="top" title="정말 나가시게요?">로그아웃
+
 
 
 

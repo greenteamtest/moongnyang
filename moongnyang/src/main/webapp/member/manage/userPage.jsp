@@ -198,7 +198,6 @@
 						<button type="button" class="btn btn-warning"
 							onclick="nicknameCheck()">중복검사</button>
 					</div>
-
 				</form>
 			</div>
 			<div class="modal-footer">
