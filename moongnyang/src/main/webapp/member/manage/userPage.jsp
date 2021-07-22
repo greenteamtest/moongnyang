@@ -11,7 +11,7 @@
 <meta name="author"
 	content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 <meta name="generator" content="Hugo 0.84.0">
-<title>Jumbotron example · Bootstrap v5.0</title>
+<title>🐶🐱나만의☕작은☕공간🐶🐱</title>
 
 <link rel="canonical"
 	href="https://getbootstrap.com/docs/5.0/examples/jumbotron/">
@@ -109,7 +109,8 @@
 			<div class="d-grid gap-2 col-6 mx-auto">
 				<button type="button" class="btn btn-Warning" data-bs-toggle="modal"
 					data-bs-target="#exampleModal2" data-bs-whatever="@mdo">#소통&nbsp;&nbsp;#문의&nbsp;&nbsp;#운영자에게</button>
-				<button class="btn btn-Danger" type="button">#회원정보변경&nbsp;&nbsp;#회원탈퇴</button>
+				<button class="btn btn-Danger" type="button" data-bs-toggle="modal"
+					data-bs-target="#exampleModal3" data-bs-whatever="@mdo">#회원정보변경&nbsp;&nbsp;#회원탈퇴</button>
 			</div>
 			<footer class="pt-3 mt-4 text-muted border-top"> &copy; 2021
 			</footer>
@@ -121,6 +122,7 @@
 </body>
 </html>
 <!--  이거 완성되면 헤더부분으로 옮기자꾸나~~~ -->
+<!--  건의사항 부분 -->
 <div class="modal fade" id="exampleModal2" tabindex="-1"
 	aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
@@ -133,13 +135,78 @@
 			<div class="modal-body">
 				<form>
 					<div class="mb-3">
-						<label for="recipient-name" class="col-form-label">무엇을 도와드릴까요?!</label>
-						<select class="form-select" aria-label="Default select example">
+						<label for="recipient-name" class="col-form-label">무엇을
+							도와드릴까요?!</label> <select class="form-select"
+							aria-label="Default select example">
 							<option selected>하위메뉴를 골라주세요!</option>
 							<option value="1">불만, 건의사항</option>
 							<option value="2">사업자관련 문의</option>
 							<option value="3">QnA</option>
 						</select>
+					</div>
+					<div class="mb-3">
+						<label for="message-text" class="col-form-label">내용</label>
+						<textarea class="form-control" id="message-text"></textarea>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary"
+					data-bs-dismiss="modal">닫기</button>
+				<button type="button" class="btn btn-Warning">제출하기</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!--  회원정보변경 부분 -->
+<div class="modal fade" id="exampleModal3" tabindex="-1"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">#회원정보변경</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"
+					aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="mb-3">
+						<button type="button" class="btn btn-primary">#회원정보변경</button>
+						<button type="button" class="btn btn-secondary"
+							data-bs-dismiss="modal" data-bs-toggle="modal"
+							data-bs-target="#exampleModal4" data-bs-whatever="@mdo">#잠시이별</button>
+					</div>
+					<div class="mb-3">
+						<label for="message-text" class="col-form-label">내용</label>
+						<textarea class="form-control" id="message-text"></textarea>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary"
+					data-bs-dismiss="modal">닫기</button>
+				<button type="button" class="btn btn-Warning">제출하기</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!--  회원탈퇴 부분 -->
+<div class="modal fade" id="exampleModal4" tabindex="-1"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">#잠시이별</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"
+					aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="mb-3">
+						<button type="button" class="btn btn-primary"
+							data-bs-dismiss="modal" data-bs-toggle="modal"
+							data-bs-target="#exampleModal3" data-bs-whatever="@mdo">#회원정보변경</button>
+						<button type="button" class="btn btn-secondary">#잠시이별</button>
 					</div>
 					<div class="mb-3">
 						<label for="message-text" class="col-form-label">내용</label>
