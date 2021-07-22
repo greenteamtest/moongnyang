@@ -202,8 +202,8 @@ public class MemberDAO {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getEmail());
-			pstmt.setString(2, vo.getPwd());
-			pstmt.setString(3, vo.getNickname());
+			pstmt.setString(2, vo.getNickname());
+			pstmt.setString(3, vo.getPwd());
 			pstmt.setInt(4, 0);
 
 			result = pstmt.executeUpdate();

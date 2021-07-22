@@ -44,20 +44,10 @@
 				<c:if test="${empty loginUser}">
 					<li class="nav-item"><a class="nav-link" href="login.do"
 						data-bs-toggle="tooltip" data-bs-placement="top" title="함께해요!">로그인
-
-
-
-
-					
 				</c:if>
 				<c:if test="${!empty loginUser}">
 					<li class="nav-item"><a class="nav-link" href="logout.do"
 						data-bs-toggle="tooltip" data-bs-placement="top" title="정말 나가시게요?">로그아웃
-
-
-
-
-					
 				</c:if>
 				</a>
 				</li>

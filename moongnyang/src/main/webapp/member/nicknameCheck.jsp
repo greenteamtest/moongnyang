@@ -20,7 +20,7 @@ response.setContentType("text/html");
 	<form action="nicknameCheck.do" method="get" name="frm">
 		<c:if test="${result == 1}">
 			<%
-			request.setCharacterEncoding("utf-8");
+			request.setCharacterEncoding("UTF-8");
 			%>
 			<div class="alert alert-danger" role="alert">현재 ${nickname}은 이미
 				사용 중인 별명이에요(´･ω･`)</div>

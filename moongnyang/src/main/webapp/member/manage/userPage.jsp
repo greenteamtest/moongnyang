@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../../bootstrap/boot.jsp"%>
 <%@ include file="../../top&down/header.jsp"%>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -58,7 +59,7 @@
 
 </head>
 <body>
-
+	<script type="text/javascript" src="js/login/member.js"></script>
 	<main>
 		<div class="container py-4">
 			<header class="pb-3 mb-4 border-bottom">
@@ -159,55 +160,59 @@
 	</div>
 </div>
 <!--  회원정보변경 부분 -->
-<div class="modal fade" id="exampleModal3" tabindex="-1"
-	aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">#회원정보변경</h5>
-				<button type="button" class="btn-close" data-bs-dismiss="modal"
-					aria-label="Close"></button>
-			</div>
-			<div class="modal-body">
-				<form>
-					<div class="mb-3">
-						<button type="button" class="btn btn-primary">#회원정보변경</button>
-						<button type="button" class="btn btn-secondary"
-							data-bs-dismiss="modal" data-bs-toggle="modal"
-							data-bs-target="#exampleModal4" data-bs-whatever="@mdo">#잠시이별</button>
-					</div>
-					<div class="mb-3">
+<form action="memberUpdate.do" method="post" name="frm">
+	<div class="modal fade" id="exampleModal3" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">#회원정보변경</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="mb-3">
+							<button type="button" class="btn btn-primary">#회원정보변경</button>
+							<button type="button" class="btn btn-secondary"
+								data-bs-dismiss="modal" data-bs-toggle="modal"
+								data-bs-target="#exampleModal4" data-bs-whatever="@mdo">#잠시이별</button>
+						</div>
+						<div class="mb-3">
 
-						<label for="exampleInputPassword1" class="form-label">비밀번호를
-							변경하시려면 새로입력해주세요!</label> <input type="password" class="form-control"
-							value="${loginUser.pwd}" id="exampleInputPassword1" name="pwd">
-						<label for="exampleInputPassword1" class="form-label">변경하신
-							비밀번호를 한번 더 입려해주세요</label> <input type="password" class="form-control"
-							value="${loginUser.pwd}" id="exampleInputPassword1"
-							name="pwd_check">
-					</div>
-					<div>
-						<label for="exampleInputPassword1" class="form-label">별명을
-							변경하시려면 새로입력해주세요!</label>
-					</div>
-					<div class="input-group mb-3">
+							<label for="exampleInputPassword1" class="form-label">비밀번호를
+								변경하시려면 새로입력해주세요!</label> <input type="password" class="form-control"
+								value="${loginUser.pwd}" id="exampleInputPassword1" name="pwd">
+							<label for="exampleInputPassword1" class="form-label">변경하신
+								비밀번호를 한번 더 입려해주세요</label> <input type="password" class="form-control"
+								value="${loginUser.pwd}" id="exampleInputPassword1"
+								name="pwd_check">
+						</div>
+						
+						<div>
+							<label for="exampleInputPassword1" class="form-label">별명을
+								변경하시려면 새로입력해주세요!</label><input type="hidden" name="renickname" value="1"
+								id="nickDuple">
+						</div>
+						<div class="input-group mb-3">
 
-						<input type="text" class="form-control"
-							value="${loginUser.nickname}" id="exampleInputPassword1"
-							name=nickname>
-						<button type="button" class="btn btn-warning"
-							onclick="nicknameCheck()">중복검사</button>
-					</div>
-				</form>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary"
-					data-bs-dismiss="modal">닫기</button>
-				<button type="button" class="btn btn-Warning">제출하기</button>
+							<input type="text" class="form-control"
+								value="${loginUser.nickname}" id="exampleInputPassword1"
+								name=nickname>
+							<button type="button" class="btn btn-warning"
+								onclick="nicknameCheck()">중복검사</button>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">닫기</button>
+					<button type="button" class="btn btn-Warning">변경하기!</button>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
+</form>
 <!--  회원탈퇴 부분 -->
 <div class="modal fade" id="exampleModal4" tabindex="-1"
 	aria-labelledby="exampleModalLabel" aria-hidden="true">
