@@ -202,7 +202,7 @@
 						<input class="form-check-input" type="checkbox" name="check"
 							value="" id="check_3"> <label class="form-check-label"
 							for="check_3"><h4>개인정보수및 및 이용동의</h4>
-							<h5 class="gray">(필수)</h5> </label>
+							<h5 class="gray">(필수)</h5></label>
 
 					</div> <br></td>
 			</tr>

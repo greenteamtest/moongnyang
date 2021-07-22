@@ -40,7 +40,7 @@
 						</span>
 					</button>
 				</c:if>
-				&nbsp;&nbsp;&nbsp;&nbsp;
+				<div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
 				<c:if test="${empty loginUser}">
 					<li class="nav-item"><a class="nav-link" href="login.do"
 						data-bs-toggle="tooltip" data-bs-placement="top" title="함께해요!">로그인

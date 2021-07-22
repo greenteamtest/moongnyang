@@ -208,7 +208,7 @@
 					<button type="button" class="btn btn-secondary"
 						data-bs-dismiss="modal">닫기</button>
 					<button type="button" class="btn btn-Warning"
-						onclick="return update_mamber()">변경하기!</button>
+						onclick="return update_member()">변경하기!</button>
 				</div>
 			</div>
 		</div>

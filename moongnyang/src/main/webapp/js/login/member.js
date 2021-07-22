@@ -86,3 +86,27 @@ function joinCheck() {
 	//	}
 	return true;
 }
+
+function update_member() {
+	if (document.frm.pwd.value == "") {
+		alert("암호를 입력하지 않으셨어요 !(°ロ°) !");
+		frm.pwd.focus();
+		return false;
+	}
+	if (document.frm.pwd.value != document.frm.pwd_check.value) {
+		alert("암호가 일치하지않아욧 ㅠㅠΣ(꒪ȏ꒪)");
+		frm.pwd.focus();
+		return false;
+	}
+	if (document.frm.renickname.value != "1") {
+		alert("별명 중복체크를 하지 않았어용ㅇㅇㅇ(⑉⊙ȏ⊙)");
+		frm.nickname.focus();
+		return false;
+	}
+	//	if (!$(check_1).is(":checked") && $(check_2).is(":checked") && $(check_1).is(":checked")) {
+	//		alert("약관에 동의해주세요><");
+	//		frm.nickname.focus();
+	//		return false;
+	//	}
+	return true;
+}
