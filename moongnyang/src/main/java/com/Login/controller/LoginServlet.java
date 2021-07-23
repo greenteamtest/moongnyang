@@ -67,13 +67,13 @@ public class LoginServlet extends HttpServlet {
 			MemberVO vo = dao.getMeber(userid);
 			HttpSession session = request.getSession();
 			session.setAttribute("loginUser", vo);
-			request.setAttribute("meesage", "가입이 완료되었어요!");
+			request.setAttribute("meesage", "로그인이 완료되었어요!");
 			url = "index.jsp";
 		} else if (result == 0) {
 			request.setAttribute("message", "이런, 회원정보가 맞지않아요 ㅠ");
 
 		} else if (result == -1) {
-			request.setAttribute("message", "이런, 회원정보가 맞지않아요 ㅠ");
+			request.setAttribute("message", "이런, 회원q정보가 맞지않아요 ㅠ");
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

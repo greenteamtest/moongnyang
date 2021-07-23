@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.Login.dao.MemberDAO;
 import com.Login.dto.MemberVO;
@@ -48,14 +49,20 @@ public class MemberUppdateServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String nickname = request.getParameter("nickname");
 		String pwd = request.getParameter("pwd");
-
+		String email = request.getParameter("email");
+		System.out.println("멤버서블릿 : " + nickname);
+		System.out.println("멤버서블릿 : " + pwd);
+		System.out.println("멤버서블릿 : " + email);
 		MemberVO vo = new MemberVO();
 		vo.setNickname(nickname);
 		vo.setPwd(pwd);
+		vo.setEmail(email);
 
 		MemberDAO dao = MemberDAO.getInstance();
 
 		dao.updateMember_userVer(vo);
+		HttpSession session = request.getSession();
+		session.setAttribute("loginUser", vo);
 		response.sendRedirect("index.jsp");
 	}
 }

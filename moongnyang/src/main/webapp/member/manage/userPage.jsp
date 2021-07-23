@@ -3,10 +3,10 @@
 <%@ include file="../../bootstrap/boot.jsp"%>
 <%@ include file="../../top&down/header.jsp"%>
 
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author"
@@ -179,8 +179,8 @@
 								data-bs-target="#withdrawal" data-bs-whatever="@mdo">#잠시이별</button>
 						</div>
 						<div class="mb-3">
-
-							<label for="exampleInputPassword1" class="form-label">비밀번호를
+							<input type="hidden" name="email" value="${loginUser.email}"
+								id="nickDuple"> <label for="exampleInputPassword1" class="form-label">비밀번호를
 								변경하시려면 새로입력해주세요!</label> <input type="password" class="form-control"
 								value="${loginUser.pwd}" id="exampleInputPassword1" name="pwd">
 							<label for="exampleInputPassword1" class="form-label">변경하신
@@ -207,7 +207,7 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-bs-dismiss="modal">닫기</button>
-					<button type="button" class="btn btn-Warning"
+					<button type="submit" class="btn btn-Warning"
 						onclick="return update_member()">변경하기!</button>
 				</div>
 			</div>

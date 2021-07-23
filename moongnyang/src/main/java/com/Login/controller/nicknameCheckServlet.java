@@ -37,6 +37,7 @@ public class nicknameCheckServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		String nickname = request.getParameter("nickname");
+		System.out.println("서블릿 : " + nickname);
 		MemberDAO mDao = MemberDAO.getInstance();
 		int result = mDao.confirmNickname(nickname);
 		request.setAttribute("nickname", nickname);
