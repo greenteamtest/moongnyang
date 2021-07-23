@@ -37,6 +37,9 @@ public class ActionFactory {
 		if (command.equals("businessPageBusi")) {
 			action = new busibusinessChangeAction();
 		}
+		if (command.equals("memberLounge")) {
+			action = new memberLoungeAction();
+		}
 		return action;
 	}
 }
