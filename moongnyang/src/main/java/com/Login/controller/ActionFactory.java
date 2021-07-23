@@ -40,6 +40,9 @@ public class ActionFactory {
 		if (command.equals("memberLounge")) {
 			action = new memberLoungeAction();
 		}
+		if (command.equals("secret")) {
+			action = new secretAction();
+		}
 		return action;
 	}
 }

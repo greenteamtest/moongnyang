@@ -50,22 +50,10 @@
 				<c:if test="${empty loginUser}">
 					<li class="nav-item"><a class="nav-link" href="login.do"
 						data-bs-toggle="tooltip" data-bs-placement="top" title="함께해요!">로그인
-
-
-
-
-
-					
 				</c:if>
 				<c:if test="${!empty loginUser}">
 					<li class="nav-item"><a class="nav-link" href="logout.do"
 						data-bs-toggle="tooltip" data-bs-placement="top" title="정말 나가시게요?">로그아웃
-
-
-
-
-
-					
 				</c:if>
 				</a>
 				</li>
@@ -97,12 +85,13 @@
 						<li><hr class="dropdown-divider"></li>
 						<li><a class="dropdown-item"
 							href="mypageServlet?command=memberLounge">고객센터</a></li>
+						<li><a class="dropdown-item"
+							href="mypageServlet?command=secret">비밀버튼</a></li>
 					</ul></li>
 			</ul>
 		</div>
 	</div>
 </nav>
-
 <!-- Modal -->
 <div class="modal fade" id="check_notification" tabindex="-1"
 	aria-labelledby="exampleModalLabel" aria-hidden="true">
