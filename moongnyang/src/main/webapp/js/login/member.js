@@ -110,3 +110,17 @@ function update_member() {
 	//	}
 	return true;
 }
+
+function delete_member() {
+	if (document.delete.pwd.value == "") {
+		alert("암호를 입력하지 않으셨어요 !(°ロ°) !");
+		frm.delete.focus();
+		return false;
+	}
+	if (document.delete.pwd.value != document.delete.origin_pwd.value) {
+		alert("암호가 일치하지않아욧 ㅠㅠΣ(꒪ȏ꒪)");
+		frm.delete.focus();
+		return false;
+	}
+	return true;
+}

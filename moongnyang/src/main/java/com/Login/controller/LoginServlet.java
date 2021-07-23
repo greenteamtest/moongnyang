@@ -73,7 +73,7 @@ public class LoginServlet extends HttpServlet {
 			request.setAttribute("message", "이런, 회원정보가 맞지않아요 ㅠ");
 
 		} else if (result == -1) {
-			request.setAttribute("message", "이런, 회원q정보가 맞지않아요 ㅠ");
+			request.setAttribute("message", "없는 계정입니다. 확인해주세요!");
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

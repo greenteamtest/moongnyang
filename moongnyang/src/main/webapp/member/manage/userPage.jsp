@@ -180,10 +180,11 @@
 						</div>
 						<div class="mb-3">
 							<input type="hidden" name="email" value="${loginUser.email}"
-								id="nickDuple"> <label for="exampleInputPassword1" class="form-label">비밀번호를
-								변경하시려면 새로입력해주세요!</label> <input type="password" class="form-control"
-								value="${loginUser.pwd}" id="exampleInputPassword1" name="pwd">
-							<label for="exampleInputPassword1" class="form-label">변경하신
+								id="nickDuple"> <label for="exampleInputPassword1"
+								class="form-label">비밀번호를 변경하시려면 새로입력해주세요!</label> <input
+								type="password" class="form-control" value="${loginUser.pwd}"
+								id="exampleInputPassword1" name="pwd"> <label
+								for="exampleInputPassword1" class="form-label">변경하신
 								비밀번호를 한번 더 입려해주세요</label> <input type="password" class="form-control"
 								value="${loginUser.pwd}" id="exampleInputPassword1"
 								name="pwd_check">
@@ -215,36 +216,43 @@
 	</div>
 </form>
 <!--  회원탈퇴 부분 -->
-<div class="modal fade" id="withdrawal" tabindex="-1"
-	aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">#잠시이별</h5>
-				<button type="button" class="btn-close" data-bs-dismiss="modal"
-					aria-label="Close"></button>
-			</div>
-			<div class="modal-body">
-				<form>
-					<div class="mb-3">
-						<button type="button" class="btn btn-primary"
-							data-bs-dismiss="modal" data-bs-toggle="modal"
-							data-bs-target="#changemember" data-bs-whatever="@mdo">#회원정보변경</button>
-						<button type="button" class="btn btn-secondary">#잠시이별</button>
-					</div>
-					<div class="mb-3">
-						<p class="text-center">다시 돌아왔을 때, 더 멋진 모습으로 기다리고 있겠습니다.</p>
-						<label for="message-text" class="col-form-label">마지막으로
-							비밀번호를 입력해주세요.</label>
-						<textarea class="form-control" id="message-text"></textarea>
-					</div>
-				</form>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary"
-					data-bs-dismiss="modal">닫기</button>
-				<button type="button" class="btn btn-Warning">언젠간 돌아오겠습니다</button>
+<form action="memberDelete.do" method="post" name="delete">
+	<div class="modal fade" id="withdrawal" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">#잠시이별</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="mb-3">
+							<button type="button" class="btn btn-primary"
+								data-bs-dismiss="modal" data-bs-toggle="modal"
+								data-bs-target="#changemember" data-bs-whatever="@mdo">#회원정보변경</button>
+							<button type="button" class="btn btn-secondary">#잠시이별</button>
+						</div>
+						<div class="mb-3">
+							<input type="hidden" name="email" value="${loginUser.email}"
+								id="deletemember_email"> <input type="hidden"
+								name="origin_pwd" value="${loginUser.pwd}"
+								id="deletemember_email">
+							<p class="text-center">다시 돌아왔을 때, 더 멋진 모습으로 기다리고 있겠습니다.</p>
+							<label for="message-text" class="col-form-label">마지막으로
+								비밀번호를 입력해주세요.</label> <input type="password" class="form-control"
+								value="" id="exampleInputPassword1" name="pwd">
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">닫기</button>
+					<button type="submit" class="btn btn-Warning"
+						onclick="return  delete_member()">언젠간 돌아오겠습니다</button>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
+</form>
