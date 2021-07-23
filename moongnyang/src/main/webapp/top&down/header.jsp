@@ -3,11 +3,11 @@
 <%@ include file="../bootstrap/boot.jsp"%>
 <%@ include file="/bootstrap/boot.jsp"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-	<!-- Core theme JS-->
-	<script src="js/scripts.js"></script>
-	<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="js/scripts.js"></script>
+<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 <style>
 .small1 {
 	width: 100px;
@@ -50,10 +50,12 @@
 				<c:if test="${empty loginUser}">
 					<li class="nav-item"><a class="nav-link" href="login.do"
 						data-bs-toggle="tooltip" data-bs-placement="top" title="함께해요!">로그인
+					
 				</c:if>
 				<c:if test="${!empty loginUser}">
 					<li class="nav-item"><a class="nav-link" href="logout.do"
 						data-bs-toggle="tooltip" data-bs-placement="top" title="정말 나가시게요?">로그아웃
+					
 				</c:if>
 				</a>
 				</li>
