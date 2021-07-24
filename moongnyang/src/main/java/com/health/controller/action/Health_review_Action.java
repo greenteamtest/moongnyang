@@ -3,7 +3,6 @@ package com.health.controller.action;
 import java.io.IOException;
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,34 +14,29 @@ import org.json.simple.parser.ParseException;
 
 import com.health.dto.HealthPlaceVo;
 
-public class Health_placeList_Action implements Action {
+public class Health_review_Action implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String jsonData = request.getParameter("jsonData");
-		List<HealthPlaceVo> place = null;
+		List<HealthPlaceVo> review = null;
 
 		if (jsonData != null && jsonData.trim().length() != 0) {
 			try {
 				JSONObject jo = (JSONObject) new JSONParser().parse(jsonData);
-				place = service.selectPlace_List(jo.get("idx").toString());
+				System.out.println("idx ? : " + jo.get("idx").toString());
+				review = service.selectUser_Review(jo.get("idx").toString());
 
-				if (place.size() != 0) {
-					String rs = JSONArray.toJSONString(place);
+				if (review.size() != 0) {
+					String rs = JSONArray.toJSONString(review);
+					System.out.println("rs ? :" + rs);
 					response.getWriter().write(rs);
+				} else {
+					response.getWriter().write("null");
 				}
 			} catch (ParseException e) {
 				e.printStackTrace();
-			}
-		} else {
-			place = service.selectPlace_List(request.getParameter("key"));
-
-			if (place.size() != 0) {
-				String url = "health&edu/place/place_list.jsp";
-				request.setAttribute("place", place);
-				RequestDispatcher disp = request.getRequestDispatcher(url);
-				disp.forward(request, response);
 			}
 		}
 	}

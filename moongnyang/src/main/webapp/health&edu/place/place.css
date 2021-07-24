@@ -79,7 +79,6 @@ div[class="ui divider1"] {
 
 div[class="ui big comments"] {
 	font-size: 2rem;
-	
 }
 
 .profile_img {
@@ -88,10 +87,32 @@ div[class="ui big comments"] {
 }
 
 .comment {
-	width : 40rem;
+	width: 40rem;
 }
 
-.content {
-	margin-left : 0px;
+.comment .content {
+	padding-left: 3rem;
+	text-align: left;
+}
+
+#review_nodata {
+	margin: 1rem 2rem 2rem 2rem;
+}
+
+.text {
+	padding-left: 4rem;
+}
+
+#cntNum_frame {
+	display: inline-block;
+	position: absolute;
+	left: 0.8rem;
+}
+
+#sub-footer {
+	text-align: left;
+}
+#select_rating{
+	margin-right:  0.7rem;
 }
 
