@@ -50,13 +50,12 @@
 				<div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
 				<c:if test="${empty loginUser}">
 					<li class="nav-item"><a class="nav-link" href="login.do"
-						data-bs-toggle="tooltip" data-bs-placement="top" title="함께해요!">로그인
+						data-bs-toggle="tooltip" data-bs-placement="top" title="함께해요!">로그인</a>
 				</c:if>
 				<c:if test="${!empty loginUser}">
 					<li class="nav-item"><a class="nav-link" href="logout.do"
-						data-bs-toggle="tooltip" data-bs-placement="top" title="정말 나가시게요?">로그아웃
+						data-bs-toggle="tooltip" data-bs-placement="top" title="정말 나가시게요?">로그아웃</a>
 				</c:if>
-				</a>
 				</li>
 				<!-- 				<li class="nav-item"><a class="nav-link" href="#about">회원가입</a></li> -->
 				<c:if test="${loginUser.auth==0}">
@@ -79,13 +78,15 @@
 					role="button" data-bs-toggle="dropdown" aria-expanded="false">
 						바로가기 </a>
 					<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<li><h6 class="dropdown-header">카테고리</h6></li>
 						<li><a class="dropdown-item"
 							href="BoardServlet_picnic?command=picnic">Picnic</a></li>
 						<li><a class="dropdown-item" href="#">Health & Edu</a></li>
 						<li><a class="dropdown-item" href="#">Community</a></li>
 						<li><hr class="dropdown-divider"></li>
+						<li><h6 class="dropdown-header">고객센터</h6></li>
 						<li><a class="dropdown-item"
-							href="mypageServlet?command=memberLounge">고객센터</a></li>
+							href="mypageServlet?command=memberLounge">FAQ</a></li>
 						<li><a class="dropdown-item"
 							href="mypageServlet?command=secret">비밀버튼</a></li>
 					</ul></li>

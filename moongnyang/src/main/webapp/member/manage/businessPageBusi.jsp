@@ -40,47 +40,40 @@
 <link href="member/manage/dashboard.css" rel="stylesheet">
 </head>
 <body>
-	<main>
-
-		<section class="py-5 text-center container">
-			<div class="row py-lg-5">
-				<div class="col-lg-6 col-md-8 mx-auto">
-					<h1 class="fw-light">Album example</h1>
-					<p class="lead text-muted">Something short and leading about
-						the collection belowâits contents, the creator, etc. Make it
-						short and sweet, but not too short so folks donât simply skip
-						over it entirely.</p>
-					<p>
-						<a href="#" class="btn btn-primary my-2">Main call to action</a> <a
-							href="#" class="btn btn-secondary my-2">Secondary action</a>
-					</p>
-				</div>
-			</div>
-		</section>
-		<div class="container-fluid">
-			<div class="row">
-				<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-					<nav id="sidebarMenu"
-						class="col-md-3 col-lg-2 d-md-block bg-Secondary sidebar collapse">
-						<div class="position-sticky pt-3">
-							<ul class="nav flex-column">
-								<li class="nav-item"><a class="nav-link"
-									aria-current="page" href="mypageServlet?command=businessPage">
-										<span data-feather="home"></span> Dashboard
-								</a></li>
-								<li class="nav-item"><a class="nav-link active"
-									href="mypageServlet?command=businessPageBusi"> <span
-										data-feather="file"></span> 사업장관리
-								</a></li>
-							</ul>
-						</div>
-					</nav>
-				</main>
+	<header class="py-5 text-center container">
+		<div class="row py-lg-5">
+			<div class="col-lg-6 col-md-8 mx-auto">
+				<h1 class="fw-light">Album example</h1>
+				<p class="lead text-muted">Something short and leading about the
+					collection belowâits contents, the creator, etc. Make it short
+					and sweet, but not too short so folks donât simply skip over it
+					entirely.</p>
+				<p>
+					<a href="#" class="btn btn-primary my-2">Main call to action</a> <a
+						href="#" class="btn btn-secondary my-2">Secondary action</a>
+				</p>
 			</div>
 		</div>
-		<div class="album py-5 bg-light">
-			<div class="container">
+	</header>
 
+	<div class="container-fluid">
+		<div class="row">
+			<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+				<nav id="sidebarMenu"
+					class="col-md-3 col-lg-2 d-md-block bg-Secondary sidebar collapse">
+					<div class="position-sticky pt-3">
+						<ul class="nav flex-column">
+							<li class="nav-item"><a class="nav-link" aria-current="page"
+								href="mypageServlet?command=businessPage"> <span
+									data-feather="home"></span> Dashboard
+							</a></li>
+							<li class="nav-item"><a class="nav-link active"
+								href="mypageServlet?command=businessPageBusi"> <span
+									data-feather="file"></span> 사업장관리
+							</a></li>
+						</ul>
+					</div>
+				</nav>
 				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 					<div class="col">
 						<div class="card shadow-sm">
@@ -301,11 +294,9 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</main>
 		</div>
-
-	</main>
-
+	</div>
 	<footer class="text-muted py-5">
 		<div class="container">
 			<p class="float-end mb-1">
@@ -334,6 +325,5 @@
 		integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha"
 		crossorigin="anonymous"></script>
 	<script src="member/manage/dashboard.js"></script>
-
 </body>
 </html>
