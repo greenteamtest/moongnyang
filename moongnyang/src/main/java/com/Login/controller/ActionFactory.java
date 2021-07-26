@@ -49,6 +49,9 @@ public class ActionFactory {
 		if (command.equals("businessReadBoard")) {
 			action = new managerPageBusiReadBoardAction();
 		}
+		if (command.equals("businessUpdateBoard")) {
+			action = new managerPageBusiUpdateBoardAction();
+		}
 		return action;
 	}
 }

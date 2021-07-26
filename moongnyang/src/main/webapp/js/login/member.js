@@ -111,6 +111,20 @@ function update_member() {
 	return true;
 }
 
+function passwordCheck() {
+	if (document.passwordcheck.passwordcheck.value == "") {
+		alert("비밀번호를 입력해주세요!");
+		passwordcheck.passwordcheck.focus();
+		return false;
+	}
+	if (document.passwordcheck.passwordcheck.value != document.passwordcheck.passwordcheck_user.value) {
+		alert("비밀번호가 일치하지 않습니다.!");
+		passwordcheck.passwordcheck.focus();
+		return false;
+	}
+	return true;
+}
+
 function businessUpdate() {
 	if (document.businessUpdate.content.value == "") {
 		alert("내용을 입력해주세요 !");

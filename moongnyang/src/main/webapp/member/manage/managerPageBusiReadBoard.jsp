@@ -41,6 +41,7 @@
 <link href="../../css/starter-template.css" rel="stylesheet">
 </head>
 <body>
+	<script type="text/javascript" src="js/login/member.js"></script>
 	<div class="container-fluid">
 		<div class="row">
 			<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
@@ -72,10 +73,12 @@
 				<p class="fs-5 col-md-8">${board.content}</p>
 
 				<div class="mb-5">
-					<a href="../examples/" class="btn btn-primary btn-lg px-4">사업자로
-						등록하기</a> <a href="../examples/" class="btn btn-primary btn-lg px-4">거절하기</a>
-					<a href="../examples/" class="btn btn-primary btn-lg px-4">목록으로
-						돌아가기</a>
+					<a href="../examples/" class="btn btn-primary btn-lg px-4"
+						data-bs-toggle="modal" data-bs-target="#updatemember"
+						data-bs-whatever="@mdo">사업자로 등록하기</a> <a href="../examples/"
+						class="btn btn-primary btn-lg px-4">거절하기</a> <a
+						href="mypageServlet?command=managerPageBusi"
+						class="btn btn-primary btn-lg px-4">목록으로 돌아가기</a>
 				</div>
 
 				<hr class="col-3 col-md-2 mb-5">
@@ -120,3 +123,43 @@
 		<script src="assets/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
+<!-- 등록하기 모달 -->
+<form action="mypageServlet" method="post" name="passwordcheck">
+	<input type="hidden" name="command" value="businessUpdateBoard">
+	<div class="modal fade" id="updatemember" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">등록전 관리자 확인</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<form>
+						<input type="hidden" name="passwordcheck_user"
+							value="${loginUser.pwd}" id="passwordcheck_user"> <input
+							type="hidden" name="email" value="${board.email}" id="email">
+						<div class="mb-3">
+							<label for="recipient-name" class="col-form-label">해당유저이메일</label>
+							<div class="alert alert-dark" role="alert" name="email_check"
+								id="email_check">${board.email}</div>
+
+						</div>
+						<div class="mb-3">
+							<label for="message-text" class="col-form-label">비밀번호확인</label> <input
+								type="password" class="form-control" id="passwordcheck"
+								name="passwordcheck">
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">닫기</button>
+					<button type="submit" class="btn btn-primary "
+						onclick="return passwordCheck()">사업자등록</button>
+				</div>
+			</div>
+		</div>
+	</div>
