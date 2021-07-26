@@ -75,8 +75,9 @@
 				<div class="mb-5">
 					<a href="../examples/" class="btn btn-primary btn-lg px-4"
 						data-bs-toggle="modal" data-bs-target="#updatemember"
-						data-bs-whatever="@mdo">사업자로 등록하기</a> <a href="../examples/"
-						class="btn btn-primary btn-lg px-4">거절하기</a> <a
+						data-bs-whatever="@mdo">사업자로 등록하기</a> <a
+						class="btn btn-primary btn-lg px-4" data-bs-toggle="modal"
+						data-bs-target="#rejectUpdatemember">거절하기</a> <a
 						href="mypageServlet?command=managerPageBusi"
 						class="btn btn-primary btn-lg px-4">목록으로 돌아가기</a>
 				</div>
@@ -163,3 +164,51 @@
 			</div>
 		</div>
 	</div>
+</form>
+<!-- 거절하기 모달 -->
+<form action="mypageServlet" method="post" name="rejectUpdate">
+	<input type="hidden" name="command" value="rejectUpdatemember">
+	<div class="modal fade" id="rejectUpdatemember" tabindex="-1"
+		aria-labelledby="rejectUpdatemember" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">등록전 관리자 확인</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<form>
+						<input type="hidden" name="passwordcheck_user"
+							value="${loginUser.pwd}" id="passwordcheck_user"> <input
+							type="hidden" name="email" value="${board.email}" id="email">
+						<div class="mb-3">
+							<label for="recipient-name" class="col-form-label">해당유저이메일</label>
+							<div class="alert alert-dark" role="alert" name="email_check"
+								id="email_check">${board.email}</div>
+						</div>
+						<div class="form-floating">
+							<div class="form-floating">
+								<textarea class="form-control"
+									placeholder="Leave a comment here" id="rejectcontent"
+									name="rejectcontent" style="height: 300px"></textarea>
+								<label for="floatingTextarea2">거절사유 *필수</label>
+							</div>
+						</div>
+						<div class="mb-3">
+							<label for="message-text" class="col-form-label">비밀번호확인</label> <input
+								type="password" class="form-control" id="passwordcheck"
+								name="passwordcheck">
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">닫기</button>
+					<button type="submit" class="btn btn-primary "
+						onclick="return rejectUpdate()">거절하기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>

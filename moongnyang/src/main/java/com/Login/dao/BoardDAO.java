@@ -124,6 +124,7 @@ public class BoardDAO {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, 1);
 			pstmt.setString(2, email);
+			System.out.println("이메일이 잘나오나? " + email);
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -125,6 +125,25 @@ function passwordCheck() {
 	return true;
 }
 
+function rejectUpdate() {
+	if (document.rejectUpdate.passwordcheck.value == "") {
+		alert("비밀번호를 입력해주세요!");
+		rejectUpdate.passwordcheck.focus();
+		return false;
+	}
+	if (document.rejectUpdate.passwordcheck.value != document.rejectUpdate.passwordcheck_user.value) {
+		alert("비밀번호가 일치하지 않습니다.!");
+		rejectUpdate.passwordcheck.focus();
+		return false;
+	}
+	if (document.rejectUpdate.rejectcontent.value == "") {
+		alert("비밀번호가 일치하지 않습니다.!");
+		rejectUpdate.rejectcontent.focus();
+		return false;
+	}
+	return true;
+}
+
 function businessUpdate() {
 	if (document.businessUpdate.content.value == "") {
 		alert("내용을 입력해주세요 !");
