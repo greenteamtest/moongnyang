@@ -19,7 +19,7 @@
 
 
 <!-- Bootstrap core CSS -->
-<link href="../../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
 <style>
 .bd-placeholder-img {
 	font-size: 1.125rem;
@@ -35,10 +35,8 @@
 	}
 }
 </style>
-
-
 <!-- Custom styles for this template -->
-<link href="../../css/starter-template.css" rel="stylesheet">
+<link href="css/starter-template.css" rel="stylesheet">
 </head>
 <body>
 	<script type="text/javascript" src="js/login/member.js"></script>
@@ -120,7 +118,6 @@
 		</div>
 
 
-		<script src="../../assets/dist/js/bootstrap.bundle.min.js"></script>
 		<script src="assets/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

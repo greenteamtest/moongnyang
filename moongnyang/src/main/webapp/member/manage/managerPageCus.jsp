@@ -75,31 +75,21 @@
 						</ul>
 					</div>
 				</nav>
-
 				<div
 					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-					<h1 class="h2">총 게시글 조회수</h1>
-					<div class="btn-toolbar mb-2 mb-md-0">
-						<div class="alert alert-secondary" role="alert">${nowdate}</div>
-						<button type="button"
-							class="btn btn-sm btn-outline-secondary dropdown-toggle">
-							<span data-feather="calendar"></span> This week
-						</button>
-					</div>
+					<div class="btn-toolbar mb-2 mb-md-0"></div>
 				</div>
-
-				<canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
-
-				<h2>Section title</h2>
+				<h6>#사용자들의 #소중한 #의견들 #소통</h6>
+				<h1>고객소리함</h1>
 				<div class="table-responsive">
 					<table class="table table-striped table-sm">
 						<thead>
 							<tr>
-								<th scope="col">#</th>
-								<th scope="col">Header</th>
-								<th scope="col">Header</th>
-								<th scope="col">Header</th>
-								<th scope="col">Header</th>
+								<th scope="col">순번</th>
+								<th scope="col">카테고리</th>
+								<th scope="col">내용</th>
+								<th scope="col">작성날짜</th>
+								<th scope="col">읽음유무</th>
 							</tr>
 						</thead>
 						<tbody>
