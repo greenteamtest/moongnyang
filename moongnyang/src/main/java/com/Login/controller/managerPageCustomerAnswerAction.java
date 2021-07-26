@@ -20,6 +20,7 @@ public class managerPageCustomerAnswerAction implements Action {
 		vo.setKeyword(request.getParameter("keyword"));
 		vo.setEmail(request.getParameter("email"));
 		vo.setContent(request.getParameter("answercontent"));
+		vo.setUsercontent(request.getParameter("usercontent"));
 		BoardDAO dao = BoardDAO.getInstance();
 		dao.insertAnswerboard(vo);
 

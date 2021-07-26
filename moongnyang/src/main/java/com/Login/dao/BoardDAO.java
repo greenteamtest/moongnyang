@@ -154,8 +154,8 @@ public class BoardDAO {
 	}
 
 	public void insertAnswerboard(boardVO bVo) {
-		String sql = "insert into answerBoard(" + "answerkeyword,user_email, manager_email, answercontent)"
-				+ "values(?,?, ?, ?)";
+		String sql = "insert into answerBoard(" + "answerkeyword,user_email, manager_email, answercontent, usercontent)"
+				+ "values(?,?, ?, ?,? )";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -165,6 +165,7 @@ public class BoardDAO {
 			pstmt.setString(2, bVo.getEmail());
 			pstmt.setString(3, bVo.getManageremail());
 			pstmt.setString(4, bVo.getContent());
+			pstmt.setString(5, bVo.getContent());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

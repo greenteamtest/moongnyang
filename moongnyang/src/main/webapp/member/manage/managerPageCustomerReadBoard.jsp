@@ -120,7 +120,7 @@
 </body>
 </html>
 
-<!-- 거절하기 모달 -->
+<!-- 답장하기 모달 -->
 <form action="mypageServlet" method="post" name="answer">
 	<input type="hidden" name="command" value="answerCustomer"> <input
 		type="hidden" name="manageremail" value="${loginUser.email}">
@@ -135,6 +135,7 @@
 				</div>
 				<div class="modal-body">
 					<input type="hidden" name="email" value="${board.email}" id="email">
+					<input type="hidden" name="usercontent" value="${board.content}" id="usercontent">
 					<input type="hidden" name="keyword" value="${board.keyword}"
 						id="keyword">
 					<div class="mb-3">

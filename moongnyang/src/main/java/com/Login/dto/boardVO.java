@@ -11,6 +11,15 @@ public class boardVO {
 	private Timestamp writedate;
 	private String keyword;
 	private String manageremail;
+	private String usercontent;
+
+	public String getUsercontent() {
+		return usercontent;
+	}
+
+	public void setUsercontent(String usercontent) {
+		this.usercontent = usercontent;
+	}
 
 	public String getManageremail() {
 		return manageremail;
