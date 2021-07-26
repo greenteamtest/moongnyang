@@ -9,6 +9,15 @@ public class boardVO {
 	private String content;
 	private int readval;
 	private Timestamp writedate;
+	private String keyword;
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
 
 	public int getNum() {
 		return num;

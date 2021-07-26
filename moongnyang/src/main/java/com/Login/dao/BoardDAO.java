@@ -52,6 +52,37 @@ public class BoardDAO {
 		return list;
 	}
 
+	public List<boardVO> selectAllconversationBoards() {
+		String sql = "select * from conversationBoard order by conversationBoardnum desc";
+		List<boardVO> list = new ArrayList<boardVO>();
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		System.out.println("DB접속은된듯?");
+		try {
+			conn = DBManager.getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				boardVO bVo = new boardVO();
+				System.out.println(rs.getInt("conversationBoardnum") + " " + rs.getString("user_email") + " "
+						+ rs.getString("conversationBoardcontent"));
+				bVo.setNum(rs.getInt("conversationBoardnum"));
+				bVo.setKeyword(rs.getString("conversationBoardkeyword"));
+				bVo.setEmail(rs.getString("user_email"));
+				bVo.setContent(rs.getString("conversationBoardcontent"));
+				bVo.setReadval(rs.getInt("conversationBoardread"));
+				bVo.setWritedate(rs.getTimestamp("conversationBoardwritedate"));
+				list.add(bVo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, stmt, rs);
+		}
+		return list;
+	}
+
 	public void insertBusinessUpdateBoard(boardVO bVo) {
 		String sql = "insert into businessboard(" + "businessnum, user_email, businesscontent) "
 				+ "values(board_seq.nextval, ?, ?)";
@@ -62,6 +93,26 @@ public class BoardDAO {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, bVo.getEmail());
 			pstmt.setString(2, bVo.getContent());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+	}
+
+	public void insertConversationUploadBoard(boardVO bVo) {
+		String sql = "insert into conversationBoard("
+				+ "conversationBoardnum,conversationBoardkeyword, user_email, conversationBoardcontent)"
+				+ "values(board_seq.nextval,?, ?, ?)";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, bVo.getKeyword());
+			pstmt.setString(2, bVo.getEmail());
+			pstmt.setString(3, bVo.getContent());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -98,6 +149,34 @@ public class BoardDAO {
 		return bVo;
 	}
 
+	public boardVO selectOneCustomerBoardByNum(String num) {
+		String sql = "select * from conversationBoard where conversationBoardnum = ?";
+		boardVO bVo = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, num);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				bVo = new boardVO();
+				bVo.setNum(rs.getInt("conversationBoardnum"));
+				bVo.setKeyword(rs.getString("conversationBoardkeyword"));
+				bVo.setEmail(rs.getString("USER_EMAIL"));
+				bVo.setContent(rs.getString("conversationBoardcontent"));
+				bVo.setWritedate(rs.getTimestamp("conversationBoardread"));
+				bVo.setReadval(rs.getInt("conversationBoardWRITEDATE"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return bVo;
+	}
+
 	public void checkedBoard(String email) {
 		String sql = "update businessboard set businessread=? where user_email=?";
 		Connection conn = null;
@@ -107,6 +186,23 @@ public class BoardDAO {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, 0);
 			pstmt.setString(2, email);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+	}
+
+	public void checkedcustomerBoard(String num) {
+		String sql = "update conversationBoard set conversationBoardread=? where conversationBoardnum=?";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, 0);
+			pstmt.setString(2, num);
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

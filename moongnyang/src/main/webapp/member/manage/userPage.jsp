@@ -127,41 +127,46 @@
 </html>
 <!--  이거 완성되면 헤더부분으로 옮기자꾸나~~~ -->
 <!--  건의사항 부분 -->
-<div class="modal fade" id="managermessage" tabindex="-1"
-	aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="managermessage">#소통 #문의 #운영자에게</h5>
-				<button type="button" class="btn-close" data-bs-dismiss="modal"
-					aria-label="Close"></button>
-			</div>
-			<div class="modal-body">
-				<form>
+<form action="mypageServlet" method="post" name="customerconversation">
+	<input type="hidden" name="command" value="customerconversation">
+	<input type="hidden" name="email" value="${loginUser.email}">
+	<div class="modal fade" id="managermessage" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="managermessage">#소통 #문의 #운영자에게</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
 					<div class="mb-3">
 						<label for="recipient-name" class="col-form-label">무엇을
 							도와드릴까요?!</label> <select class="form-select"
-							aria-label="Default select example">
+							aria-label="Default select example"
+							name="customerconversationSelect">
 							<option value="0" selected>하위메뉴를 골라주세요!</option>
-							<option value="1">불만, 건의사항</option>
-							<option value="2">사업자관련 문의</option>
-							<option value="3">QnA</option>
+							<option value="불만, 건의사항">불만, 건의사항</option>
+							<option value="사업자관련 문의">사업자관련 문의</option>
+							<option value="QnA">QnA</option>
 						</select>
 					</div>
 					<div class="mb-3">
 						<label for="message-text" class="col-form-label">내용</label>
-						<textarea class="form-control" id="message-text"></textarea>
+						<textarea class="form-control" name="customerconversationtextarea"
+							id="customerconversationtextarea"></textarea>
 					</div>
-				</form>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary"
-					data-bs-dismiss="modal">닫기</button>
-				<button type="button" class="btn btn-Warning">제출하기</button>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">닫기</button>
+					<button type="submit" class="btn btn-Warning"
+						onclick="return customerconversation()">제출하기</button>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
+</form>
 <!--  사업자 등록신청하는 부분 -->
 <form action="mypageServlet" method="post" name="businessUpdate">
 	<input type="hidden" name="command" value="businessUpdate">

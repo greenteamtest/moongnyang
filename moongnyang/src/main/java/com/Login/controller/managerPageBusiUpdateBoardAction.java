@@ -23,7 +23,7 @@ public class managerPageBusiUpdateBoardAction implements Action {
 		System.out.println("success update auth");
 		dao.deleteUpdateListbusiness(email);
 
-		new businessChangeAction().execute(request, response);
+		new managerBusiChangeAction().execute(request, response);
 	}
 
 }

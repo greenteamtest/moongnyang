@@ -144,6 +144,20 @@ function rejectUpdate() {
 	return true;
 }
 
+function customerconversation() {
+	if (document.customerconversation.customerconversationtextarea.value == "") {
+		alert("내용을 입력해주세요!");
+		rejectUpdate.customerconversationtextarea.focus();
+		return false;
+	}
+	if (document.customerconversation.customerconversationSelect.value == "0") {
+		alert("카테고리를 선택해주세요!");
+		rejectUpdate.customerconversationSelect.focus();
+		return false;
+	}
+	return true;
+}
+
 function businessUpdate() {
 	if (document.businessUpdate.content.value == "") {
 		alert("내용을 입력해주세요 !");

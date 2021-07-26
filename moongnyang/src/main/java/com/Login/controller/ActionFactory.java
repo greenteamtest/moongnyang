@@ -23,13 +23,13 @@ public class ActionFactory {
 			action = new managerPageAction();
 		}
 		if (command.equals("managerPageCus")) {
-			action = new customerChangeAction();
+			action = new managerPageCustomer();
 		}
 		if (command.equals("managerPageQna")) {
 			action = new qnaChangeAction();
 		}
 		if (command.equals("managerPageBusi")) {
-			action = new businessChangeAction();
+			action = new managerBusiChangeAction();
 		}
 		if (command.equals("businessPage")) {
 			action = new businessPageAction();
@@ -54,6 +54,12 @@ public class ActionFactory {
 		}
 		if (command.equals("rejectUpdatemember")) {
 			action = new managerPageBusiRejectBoardAction();
+		}
+		if (command.equals("customerconversation")) {
+			action = new userPageconversationUploadAction();
+		}
+		if (command.equals("customerreadBoard")) {
+			action = new managerPageCustomerReadBoardAction();
 		}
 		return action;
 	}

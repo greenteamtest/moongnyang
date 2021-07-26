@@ -51,11 +51,11 @@
 								aria-current="page" href="mypageServlet?command=managerPage">
 									<span data-feather="home"></span> Dashboard
 							</a></li>
-							<li class="nav-item"><a class="nav-link"
+							<li class="nav-item"><a class="nav-link active"
 								href="mypageServlet?command=managerPageCus"> <span
 									data-feather="file"></span> 고객소리함 #소통 #고객
 							</a></li>
-							<li class="nav-item"><a class="nav-link active"
+							<li class="nav-item"><a class="nav-link"
 								href="mypageServlet?command=managerPageBusi"> <span
 									data-feather="shopping-cart"></span> 사업자신청관리
 							</a></li>
@@ -67,16 +67,15 @@
 					</div>
 				</nav>
 				<h1>게시글 상세보기</h1>
+				<h2>키워드 : ${board.keyword}</h2>
 				<h4>보낸이 : ${board.email}</h4>
 				<p class="fs-5 col-md-8">${board.content}</p>
 
 				<div class="mb-5">
 					<a href="../examples/" class="btn btn-primary btn-lg px-4"
-						data-bs-toggle="modal" data-bs-target="#updatemember"
-						data-bs-whatever="@mdo">사업자로 등록하기</a> <a
-						class="btn btn-primary btn-lg px-4" data-bs-toggle="modal"
-						data-bs-target="#rejectUpdatemember">거절하기</a> <a
-						href="mypageServlet?command=managerPageBusi"
+						data-bs-toggle="modal" data-bs-target="#answerCustomer"
+						data-bs-whatever="@mdo">답장하기</a> <a
+						href="mypageServlet?command=managerPageCus"
 						class="btn btn-primary btn-lg px-4">목록으로 돌아가기</a>
 				</div>
 
@@ -122,88 +121,38 @@
 </body>
 </html>
 
-<!-- 등록하기 모달 -->
-<form action="mypageServlet" method="post" name="passwordcheck">
-	<input type="hidden" name="command" value="businessUpdateBoard">
-	<div class="modal fade" id="updatemember" tabindex="-1"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">등록전 관리자 확인</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal"
-						aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					<form>
-						<input type="hidden" name="passwordcheck_user"
-							value="${loginUser.pwd}" id="passwordcheck_user"> <input
-							type="hidden" name="email" value="${board.email}" id="email">
-						<div class="mb-3">
-							<label for="recipient-name" class="col-form-label">해당유저이메일</label>
-							<div class="alert alert-dark" role="alert" name="email_check"
-								id="email_check">${board.email}</div>
-
-						</div>
-						<div class="mb-3">
-							<label for="message-text" class="col-form-label">비밀번호확인</label> <input
-								type="password" class="form-control" id="passwordcheck"
-								name="passwordcheck">
-						</div>
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary"
-						data-bs-dismiss="modal">닫기</button>
-					<button type="submit" class="btn btn-primary "
-						onclick="return passwordCheck()">사업자등록</button>
-				</div>
-			</div>
-		</div>
-	</div>
-</form>
 <!-- 거절하기 모달 -->
-<form action="mypageServlet" method="post" name="rejectUpdate">
-	<input type="hidden" name="command" value="rejectUpdatemember">
-	<div class="modal fade" id="rejectUpdatemember" tabindex="-1"
-		aria-labelledby="rejectUpdatemember" aria-hidden="true">
+<form action="mypageServlet" method="post" name="answerCustomer">
+	<input type="hidden" name="command" value="answerCustomer">
+	<div class="modal fade" id="answerCustomer" tabindex="-1"
+		aria-labelledby="answerCustomer" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">등록전 관리자 확인</h5>
+					<h5 class="modal-title" id="exampleModalLabel">친절! 친절! 친절!</h5>
 					<button type="button" class="btn-close" data-bs-dismiss="modal"
 						aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
-					<form>
-						<input type="hidden" name="passwordcheck_user"
-							value="${loginUser.pwd}" id="passwordcheck_user"> <input
-							type="hidden" name="email" value="${board.email}" id="email">
-						<div class="mb-3">
-							<label for="recipient-name" class="col-form-label">해당유저이메일</label>
-							<div class="alert alert-dark" role="alert" name="email_check"
-								id="email_check">${board.email}</div>
-						</div>
+					<input type="hidden" name="email" value="${board.email}" id="email">
+					<div class="mb-3">
+						<label for="recipient-name" class="col-form-label">해당유저이메일</label>
+						<div class="alert alert-dark" role="alert" name="email_check"
+							id="email_check">${board.email}</div>
+					</div>
+					<div class="form-floating">
 						<div class="form-floating">
-							<div class="form-floating">
-								<textarea class="form-control"
-									placeholder="Leave a comment here" id="rejectcontent"
-									name="rejectcontent" style="height: 300px"></textarea>
-								<label for="floatingTextarea2">거절사유 *필수</label>
-							</div>
+							<textarea class="form-control" placeholder="Leave a comment here"
+								id="answercontent" name="rejectcontent" style="height: 300px"></textarea>
+							<label for="floatingTextarea2">무조건 친절하게! 이해하실 수 있게!!</label>
 						</div>
-						<div class="mb-3">
-							<label for="message-text" class="col-form-label">비밀번호확인</label> <input
-								type="password" class="form-control" id="passwordcheck"
-								name="passwordcheck">
-						</div>
-					</form>
+					</div>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-bs-dismiss="modal">닫기</button>
 					<button type="submit" class="btn btn-primary "
-						onclick="return rejectUpdate()">거절하기</button>
+						onclick="return answerCustomer()">답변하기</button>
 				</div>
 			</div>
 		</div>

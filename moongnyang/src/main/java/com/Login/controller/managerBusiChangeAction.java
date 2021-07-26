@@ -12,7 +12,7 @@ import com.Login.controller.action.Action;
 import com.Login.dao.BoardDAO;
 import com.Login.dto.boardVO;
 
-public class businessChangeAction implements Action {
+public class managerBusiChangeAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

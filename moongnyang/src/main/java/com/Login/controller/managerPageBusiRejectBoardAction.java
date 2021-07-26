@@ -20,7 +20,7 @@ public class managerPageBusiRejectBoardAction implements Action {
 		BoardDAO dao = BoardDAO.getInstance();
 		dao.deleteUpdateListbusiness(email);
 
-		new businessChangeAction().execute(request, response);
+		new managerBusiChangeAction().execute(request, response);
 	}
 
 }
