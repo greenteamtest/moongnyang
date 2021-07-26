@@ -17,6 +17,7 @@ public class BoardDAO {
 	}
 
 	private static BoardDAO instance = new BoardDAO();
+	private PreparedStatement pstmt;
 
 	public static BoardDAO getInstance() {
 		return instance;
@@ -35,8 +36,6 @@ public class BoardDAO {
 			rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				boardVO bVo = new boardVO();
-				System.out.println(rs.getInt("businessnum") + " " + rs.getString("user_email") + " "
-						+ rs.getString("businesscontent"));
 				bVo.setNum(rs.getInt("businessnum"));
 				bVo.setEmail(rs.getString("user_email"));
 				bVo.setContent(rs.getString("businesscontent"));
@@ -58,21 +57,54 @@ public class BoardDAO {
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet rs = null;
-		System.out.println("DB접속은된듯?");
+
 		try {
 			conn = DBManager.getConnection();
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				boardVO bVo = new boardVO();
-				System.out.println(rs.getInt("conversationBoardnum") + " " + rs.getString("user_email") + " "
-						+ rs.getString("conversationBoardcontent"));
 				bVo.setNum(rs.getInt("conversationBoardnum"));
 				bVo.setKeyword(rs.getString("conversationBoardkeyword"));
 				bVo.setEmail(rs.getString("user_email"));
 				bVo.setContent(rs.getString("conversationBoardcontent"));
 				bVo.setReadval(rs.getInt("conversationBoardread"));
 				bVo.setWritedate(rs.getTimestamp("conversationBoardwritedate"));
+				list.add(bVo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, stmt, rs);
+		}
+		return list;
+	}
+
+	public List<boardVO> selectUserAnswerBoards(String email) {
+		String sql = "select * from answerboard where user_email='" + email + "'";
+		System.out.println(sql);
+		List<boardVO> list = new ArrayList<boardVO>();
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		try {
+			conn = DBManager.getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				boardVO bVo = new boardVO();
+				bVo.setKeyword(rs.getString("answerkeyword"));
+				System.out.println(rs.getString("answerkeyword"));
+				bVo.setEmail(rs.getString("user_email"));
+				System.out.println(rs.getString("user_email"));
+				bVo.setManageremail(rs.getString("manager_email"));
+				System.out.println(rs.getString("manager_email"));
+				bVo.setContent(rs.getString("answercontent"));
+				System.out.println(rs.getString("answercontent"));
+				bVo.setReadval(rs.getInt("answerread"));
+				System.out.println(rs.getString("answerread"));
+				bVo.setWritedate(rs.getTimestamp("answerredwritedate"));
+				System.out.println(rs.getString("answerredwritedate"));
 				list.add(bVo);
 			}
 		} catch (SQLException e) {
@@ -113,6 +145,26 @@ public class BoardDAO {
 			pstmt.setString(1, bVo.getKeyword());
 			pstmt.setString(2, bVo.getEmail());
 			pstmt.setString(3, bVo.getContent());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+	}
+
+	public void insertAnswerboard(boardVO bVo) {
+		String sql = "insert into answerBoard(" + "answerkeyword,user_email, manager_email, answercontent)"
+				+ "values(?,?, ?, ?)";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, bVo.getKeyword());
+			pstmt.setString(2, bVo.getEmail());
+			pstmt.setString(3, bVo.getManageremail());
+			pstmt.setString(4, bVo.getContent());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -166,8 +218,8 @@ public class BoardDAO {
 				bVo.setKeyword(rs.getString("conversationBoardkeyword"));
 				bVo.setEmail(rs.getString("USER_EMAIL"));
 				bVo.setContent(rs.getString("conversationBoardcontent"));
-				bVo.setWritedate(rs.getTimestamp("conversationBoardread"));
-				bVo.setReadval(rs.getInt("conversationBoardWRITEDATE"));
+				bVo.setWritedate(rs.getTimestamp("conversationBoardWRITEDATE"));
+				bVo.setReadval(rs.getInt("conversationBoardread"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -220,7 +272,6 @@ public class BoardDAO {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, 1);
 			pstmt.setString(2, email);
-			System.out.println("이메일이 잘나오나? " + email);
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

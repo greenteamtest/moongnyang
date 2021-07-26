@@ -61,6 +61,9 @@ public class ActionFactory {
 		if (command.equals("customerreadBoard")) {
 			action = new managerPageCustomerReadBoardAction();
 		}
+		if (command.equals("answerCustomer")) {
+			action = new managerPageCustomerAnswerAction();
+		}
 		return action;
 	}
 }

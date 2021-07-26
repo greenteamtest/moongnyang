@@ -20,10 +20,7 @@ public class managerPageCustomer implements Action {
 		String url = "member/manage/managerPageCus.jsp";
 		BoardDAO dao = BoardDAO.getInstance();
 		List<boardVO> boardList = dao.selectAllconversationBoards();
-		System.out.println("이건된건가??");
-
 		request.setAttribute("boardList", boardList);
-		System.out.println("요청된건가??");
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

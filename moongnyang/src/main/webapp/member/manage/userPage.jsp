@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../../bootstrap/boot.jsp"%>
 <%@ include file="../../top&down/header.jsp"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <!DOCTYPE html>
 <html>
@@ -107,6 +109,36 @@
 			<div>
 				<br> <br>
 			</div>
+
+			<h2>운영자와 #소통 한 내용</h2>
+			<table class="table table-dark table-sm">
+				<thead>
+					<tr>
+						<th scope="col">키워드</th>
+						<th scope="col">답변내용</th>
+						<th scope="col">답변직원이멜</th>
+						<th scope="col">작성날짜</th>
+						<th scope="col">읽음유무</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="board" items="${boardList}">
+						<tr>
+							<td>${board.keyword}</td>
+							<td><a
+								href="mypageServlet?command=userreadAnswer&email=${board.manageremail}">${board.content}</a></td>
+							<td>${board.manageremail}</td>
+							<td><fmt:formatDate value="${board.writedate}" /></td>
+							<td><c:if test="${board.readval==0}">읽음</c:if> <c:if
+									test="${board.readval==1}">읽지않음</c:if></td>
+						</tr>
+					</c:forEach>
+				</tbody>
+				<tr>
+				</tr>
+				</tbody>
+			</table>
+
 			<div class="d-grid gap-2 col-6 mx-auto">
 				<button type="button" class="btn btn-Warning" data-bs-toggle="modal"
 					data-bs-target="#managermessage" data-bs-whatever="@mdo">#소통&nbsp;&nbsp;#문의&nbsp;&nbsp;#운영자에게</button>
@@ -116,7 +148,6 @@
 					data-bs-target="#changemember" data-bs-whatever="@mdo">#회원정보변경&nbsp;&nbsp;#회원탈퇴</button>
 			</div>
 			<footer class="pt-3 mt-4 text-muted border-top"> &copy; 2021
-
 			</footer>
 		</div>
 	</main>

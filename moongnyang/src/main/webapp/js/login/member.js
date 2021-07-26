@@ -158,6 +158,15 @@ function customerconversation() {
 	return true;
 }
 
+function answerCustomer() {
+	if (document.answer.answercontent.value == "무조건 친절하게! 이해하실 수 있게!!") {
+		alert("내용을 입력해주세요!");
+		answer.answercontent.focus();
+		return false;
+	}
+	return true;
+}
+
 function businessUpdate() {
 	if (document.businessUpdate.content.value == "") {
 		alert("내용을 입력해주세요 !");

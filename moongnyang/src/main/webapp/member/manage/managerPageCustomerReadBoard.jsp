@@ -72,10 +72,9 @@
 				<p class="fs-5 col-md-8">${board.content}</p>
 
 				<div class="mb-5">
-					<a href="../examples/" class="btn btn-primary btn-lg px-4"
-						data-bs-toggle="modal" data-bs-target="#answerCustomer"
-						data-bs-whatever="@mdo">답장하기</a> <a
-						href="mypageServlet?command=managerPageCus"
+					<a class="btn btn-primary btn-lg px-4" data-bs-toggle="modal"
+						data-bs-target="#answerCustomer" data-bs-whatever="@mdo">답장하기</a>
+					<a href="mypageServlet?command=managerPageCus"
 						class="btn btn-primary btn-lg px-4">목록으로 돌아가기</a>
 				</div>
 
@@ -122,19 +121,22 @@
 </html>
 
 <!-- 거절하기 모달 -->
-<form action="mypageServlet" method="post" name="answerCustomer">
-	<input type="hidden" name="command" value="answerCustomer">
+<form action="mypageServlet" method="post" name="answer">
+	<input type="hidden" name="command" value="answerCustomer"> <input
+		type="hidden" name="manageremail" value="${loginUser.email}">
 	<div class="modal fade" id="answerCustomer" tabindex="-1"
 		aria-labelledby="answerCustomer" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<div class="modal-header">
+				<div class="modal-head er">
 					<h5 class="modal-title" id="exampleModalLabel">친절! 친절! 친절!</h5>
 					<button type="button" class="btn-close" data-bs-dismiss="modal"
 						aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
 					<input type="hidden" name="email" value="${board.email}" id="email">
+					<input type="hidden" name="keyword" value="${board.keyword}"
+						id="keyword">
 					<div class="mb-3">
 						<label for="recipient-name" class="col-form-label">해당유저이메일</label>
 						<div class="alert alert-dark" role="alert" name="email_check"
@@ -143,7 +145,7 @@
 					<div class="form-floating">
 						<div class="form-floating">
 							<textarea class="form-control" placeholder="Leave a comment here"
-								id="answercontent" name="rejectcontent" style="height: 300px"></textarea>
+								id="answercontent" name="answercontent" style="height: 300px"></textarea>
 							<label for="floatingTextarea2">무조건 친절하게! 이해하실 수 있게!!</label>
 						</div>
 					</div>

@@ -10,6 +10,15 @@ public class boardVO {
 	private int readval;
 	private Timestamp writedate;
 	private String keyword;
+	private String manageremail;
+
+	public String getManageremail() {
+		return manageremail;
+	}
+
+	public void setManageremail(String manageremail) {
+		this.manageremail = manageremail;
+	}
 
 	public String getKeyword() {
 		return keyword;
