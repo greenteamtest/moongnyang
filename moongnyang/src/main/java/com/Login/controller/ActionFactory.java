@@ -43,6 +43,9 @@ public class ActionFactory {
 		if (command.equals("secret")) {
 			action = new secretAction();
 		}
+		if (command.equals("businessUpdate")) {
+			action = new BusinessUpdateAction();
+		}
 		return action;
 	}
 }

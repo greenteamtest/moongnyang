@@ -110,10 +110,13 @@
 			<div class="d-grid gap-2 col-6 mx-auto">
 				<button type="button" class="btn btn-Warning" data-bs-toggle="modal"
 					data-bs-target="#managermessage" data-bs-whatever="@mdo">#소통&nbsp;&nbsp;#문의&nbsp;&nbsp;#운영자에게</button>
+				<button class="btn btn-Success" type="button" data-bs-toggle="modal"
+					data-bs-target="#businessupdate" data-bs-whatever="@mdo">#사업자신청&nbsp;&nbsp;</button>
 				<button class="btn btn-Danger" type="button" data-bs-toggle="modal"
 					data-bs-target="#changemember" data-bs-whatever="@mdo">#회원정보변경&nbsp;&nbsp;#회원탈퇴</button>
 			</div>
 			<footer class="pt-3 mt-4 text-muted border-top"> &copy; 2021
+
 			</footer>
 		</div>
 	</main>
@@ -159,6 +162,42 @@
 		</div>
 	</div>
 </div>
+<!--  사업자 등록신청하는 부분 -->
+<form action="mypageServlet" method="post" name="businessUpdate">
+	<input type="hidden" name="command" value="businessUpdate">
+	<div class="modal fade" id="businessupdate" tabindex="-1"
+		aria-labelledby="businessupdate" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="businessupdate">#사업자신청하기</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<input type="hidden" name="email" value="${loginUser.email}"
+						id="email">
+					<form>
+						<div class="mb-3">
+							<label for="recipient-name" class="col-form-label">회원님의
+								사업장에 대해 설명부탁드려요</label>
+						</div>
+						<div class="mb-3">
+							<textarea name="content" class="form-control" id="content"></textarea>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">닫기</button>
+					<button type="submit" class="btn btn-Warning"
+						onclick="return businessUpdate()">제출하기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+
 <!--  회원정보변경 부분 -->
 <form action="memberUpdate.do" method="post" name="frm">
 	<div class="modal fade" id="changemember" tabindex="-1"

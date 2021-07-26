@@ -55,8 +55,8 @@
 				<c:if test="${!empty loginUser}">
 					<li class="nav-item"><a class="nav-link" href="logout.do"
 						data-bs-toggle="tooltip" data-bs-placement="top" title="정말 나가시게요?">로그아웃</a>
+					</li>
 				</c:if>
-				</li>
 				<!-- 				<li class="nav-item"><a class="nav-link" href="#about">회원가입</a></li> -->
 				<c:if test="${loginUser.auth==0}">
 					<li class="nav-item"><a class="nav-link"

@@ -9,17 +9,22 @@
 <meta name="author" content="" />
 
 <!-- Favicon-->
-<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/assets/favicon.ico" />
+<link rel="icon" type="image/x-icon"
+	href="${pageContext.request.contextPath}/assets/favicon.ico" />
 <!-- Bootstrap icons-->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+	rel="stylesheet" />
 
 
 <!-- Core theme JS-->
 <script src="${pageContext.request.contextPath}/js/scripts.js"></script>
 <!-- Core theme CSS (includes Bootstrap)-->
-<link href="${pageContext.request.contextPath}/css/styles.css" rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/css/styles.css"
+	rel="stylesheet" />
 <!-- Bootstrap core JS-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
 <!-- * *                               SB Forms JS                               * *-->
 <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->

@@ -111,6 +111,15 @@ function update_member() {
 	return true;
 }
 
+function businessUpdate() {
+	if (document.businessUpdate.content.value == "") {
+		alert("내용을 입력해주세요 !");
+		businessUpdate.content.focus();
+		return false;
+	}
+	return true;
+}
+
 function delete_member() {
 	if (document.delete.pwd.value == "") {
 		alert("암호를 입력하지 않으셨어요 !(°ロ°) !");
