@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="/bootstrap/boot.jsp"%>
+<%@ include file="/health&edu/bootstrap/getboot.jsp"%>
+<%@ include file="/health&edu/bootstrap/boot.jsp"%>
 <%@ include file="/startbootstrap/startbootstrap.jsp"%>
 <%@ include file="/semanticUI/semanticUI.jsp"%>
 <%@ include file="/jQuery/jquery.jsp"%>
 <%@ include file="/setting/setting.jsp"%>
 <%@ include file="/top&down/header.jsp"%>
 <%@ include file="/health&edu/nav.jsp"%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -19,7 +21,6 @@
 <link href="health&edu/place/place.css" rel="stylesheet" />
 <script defer src="health&edu/place/place_info.js" type="text/javascript"></script>
 <script defer src="health&edu/place/insert_review.js" type="text/javascript"></script>
-
 <style>
 </style>
 </head>
@@ -50,15 +51,13 @@
 									<li class="list-group-item">
 										<div class="ui labeled button" tabindex="0" style="margin-top: 1rem">
 											<div class="ui red button">
-												<i class="heart icon"></i>
-												찜
+												<i class="heart icon"></i> 찜
 											</div>
 											<a class="ui basic red left pointing label"> ${ vo.getDips_cont() } </a>
 										</div>
 										<div class="ui labeled button" tabindex="0" style="margin-top: 1rem">
 											<div class="ui basic blue button">
-												<i class="fork icon"></i>
-												Forks
+												<i class="fork icon"></i> Forks
 											</div>
 											<a class="ui basic left pointing blue label"> 1,048 </a>
 										</div>
@@ -68,6 +67,7 @@
 							</div>
 						</div>
 					</c:forEach>
+
 
 					<!-- Modal -->
 
@@ -106,29 +106,24 @@
 										<span class="place"></span>
 										<div class="ui divider"></div>
 										<div class="ui divider1"></div>
-										<i class="fas fa-home"></i>
-										&emsp;
+										<i class="fas fa-home"></i> &emsp;
 										<span class="address"></span>
 										<div class="ui divider1"></div>
-										<i class="fas fa-phone-alt"></i>
-										&emsp;
+										<i class="fas fa-phone-alt"></i> &emsp;
 										<span class="phone_num"></span>
 										<div class="ui divider1"></div>
-										<i class="far fa-clock"></i>
-										&emsp;
+										<i class="far fa-clock"></i> &emsp;
 										<span class="open_time"></span>
 										<div class="ui divider1"></div>
 										<div class="ui divider1"></div>
-										<i class="fas fa-paw"></i>
-										&emsp;
+										<i class="fas fa-paw"></i> &emsp;
 										<span class="pet_kind"></span>
 										<div class="ui divider1"></div>
 										<div class="ui divider1"></div>
 
 										<div class="ui styled fluid accordion">
 											<div class="title">
-												<i class="dropdown icon"></i>
-												매장 소개
+												<i class="dropdown icon"></i> 매장 소개
 											</div>
 											<div class="content">
 												<span class="introduce"></span>
@@ -137,8 +132,7 @@
 
 										<div class="ui styled fluid accordion">
 											<div class="title">
-												<i class="dropdown icon"></i>
-												매장 위치
+												<i class="dropdown icon"></i> 매장 위치
 											</div>
 											<div class="content">
 												<span class="introduce"></span>
@@ -147,8 +141,7 @@
 
 										<div class="ui styled fluid accordion">
 											<div class="title">
-												<i class="dropdown icon"></i>
-												리뷰 보기
+												<i class="dropdown icon"></i> 리뷰 보기
 											</div>
 											<div class="content">
 
@@ -165,8 +158,7 @@
 
 														<div class="ui blue labeled submit icon button" class="btn btn-primary" id="btn1" data-bs-toggle="modal"
 															data-bs-target="#">
-															<i class="icon edit"></i>
-															리뷰를 등록하세요
+															<i class="icon edit"></i> 리뷰를 등록하세요
 														</div>
 
 														<!-- Modal -->
@@ -181,7 +173,7 @@
 																		<form class="ui reply form">
 																			<div class="field">
 																				<input type="hidden" value="${loginUser.getEmail()}" />
-																				<textarea id="review_textarea">안녕하세요</textarea>
+																				<textarea id="review_textarea"></textarea>
 																			</div>
 																		</form>
 																	</div>
@@ -191,14 +183,10 @@
 																			<span id="cntNum">0</span>
 																			/ 500 ]&nbsp;
 																		</div>
-																		<span id="select_rating" style="font-size : 1.2rem">
-																			별점 
-																			<i class="hand point right outline icon"></i>
-																			<i class="star icon" style="color:pink"></i>
-																			<i class="star icon" style="color:pink"></i>
-																			<i class="star icon" style="color:pink"></i>
-																			<i class="star icon" style="color:pink"></i>
-																			<i class="star icon" style="color:pink"></i>
+																		<span id="select_rating" style="font-size: 1.2rem">
+																			별점 <i class="hand point right outline icon"></i> <i class="star icon" style="color: pink"></i> <i
+																				class="star icon" style="color: pink"></i> <i class="star icon" style="color: pink"></i> <i
+																				class="star icon" style="color: pink"></i> <i class="star icon" style="color: pink"></i>
 																		</span>
 																		<div class="ui buttons">
 																			<button class="ui button">취소</button>
@@ -224,6 +212,28 @@
 								<div class="modal-footer">
 									<button type="button" id="close_outside" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 									<button type="button" class="btn btn-primary">Save changes</button>
+								</div>
+
+								<!-- request login Modal -->
+								<div class="modal fade" id="requestLogin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+									<div class="modal-dialog modal-dialog-centered">
+										<div class="modal-content">
+											<div class="modal-header"></div>
+											<div class="modal-body">■ &nbsp;  로그인 후 이용 가능 합니다  &nbsp;■</div>
+											<div class="modal-footer"></div>
+										</div>
+									</div>
+								</div>
+								
+								<!-- checkForOverlap Modal -->
+								<div class="modal fade" id="checkOverlap" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+									<div class="modal-dialog modal-dialog-centered">
+										<div class="modal-content">
+											<div class="modal-header"></div>
+											<div class="modal-body">■ &nbsp;  리뷰는 한개만 등록 할 수 있습니다  &nbsp;■</div>
+											<div class="modal-footer"></div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>

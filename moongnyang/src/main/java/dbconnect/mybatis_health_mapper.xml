@@ -26,11 +26,17 @@
 	</select>
 
 
+	<!-- 업체당 user review -->
+	<select id="checkOverlapReview" parameterType="review" resultType="com.health.dto.HealthReviewVo">
+		select user_review_idx from user_review where place_list_id = #{place_list_id} and user_email = #{user_email}
+	</select>
+
+
 
 	<!-- insert user review -->
 	<select id="insert_review" parameterType="review" resultType="int">
 		insert into user_review (user_review_idx, user_email, place_list_id, contents, my_rating, write_date, write_time)
-		values (seq_user_review.nextval, #{user_email}, #{place_list_id}, #{contents}, #{my_rating}, to_char(sysdate , 'yy.MM.dd'), to_char(sysdate, 'HH:MM'))
+		values (seq_user_review.nextval, #{user_email}, #{place_list_id}, #{contents}, #{my_rating}, to_char(sysdate , 'yy.MM.dd'), to_char(sysdate, 'hh24:mi'))
 	</select>
 
 </mapper>
