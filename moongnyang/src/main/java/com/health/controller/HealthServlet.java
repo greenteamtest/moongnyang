@@ -27,8 +27,6 @@ public class HealthServlet extends HttpServlet {
 
 		String command = request.getParameter("command");
 
-		System.out.println("BoardServlet 에서 요청 확인 : " + command);
-
 		ActionFactory af = ActionFactory.getInstance();
 
 		Action action = null;

@@ -3,7 +3,6 @@
  */
 
 
-
 // 리뷰 글자수 체크
 $(".field > textarea").on("propertychange change keyup paste input", () => {
 
@@ -35,12 +34,24 @@ $('#select_rating > .star.icon').mousedown(function() {
 
 // 리뷰 등록
 $('.ui.positive.button').click(function() {
+	const contents = $('#write_container').find('#review_textarea').val();
+	
+	if(contents.trim().length < 10  ){
+		alert('10글자 이상 입력해 주세요');
+		return;
+	}
 
-
+	
+	if (getSessionAJAX() == 'null') {
+		alert('세션이 만료되었습니다. 로그인 페이지로 이동합니다');
+		location.href = 'login.do';
+		return;
+	}
+	
 	const param = {
 		"idx": $('.card-frame').find('input[type="hidden"]').val(),
 		"email": $('#write_container').find('input[type="hidden"]').val(),
-		"contents": $('#write_container').find('#review_textarea').val(),
+		"contents": contents,
 		"my_rating": $('#select_rating').find('i[style="color:pink"]').length
 	}
 
@@ -50,12 +61,13 @@ $('.ui.positive.button').click(function() {
 		"method": "post",
 		"success": (result) => {
 			const rs = result;
+			
 
-			if (rs > 0) {
+			if (rs == '1') {
 				alert('리뷰 등록이 완료되었습니다');
 				showReviewsAJAX(param);
 				$('#write_container').modal('hide');
-			}else{
+			} else {
 				alert('리뷰 등록 실패');
 				$('#write_container').modal('hide');
 			}
@@ -113,5 +125,21 @@ function showReviewsAJAX(param) {
 			}
 		}
 	})
+}
+
+function getSessionAJAX() {
+
+	let rs = "";
+
+	$.ajax({
+		url: "controller.do?command=getSession",
+		data: null,
+		method: "post",
+		async: false,
+		success: (result) => {
+			rs = result;
+		},
+	});
+	return rs;
 }
 

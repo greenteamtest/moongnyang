@@ -27,7 +27,6 @@ public class Health_MyBatisService {
 			Integer numKey = Integer.parseInt(key);
 			list = dao.selectPlace_List(session, numKey);
 		} catch (NumberFormatException e) {
-			System.out.println("String 타입");
 			list = dao.selectPlace_List(session, key);
 		} finally {
 			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
@@ -36,9 +35,9 @@ public class Health_MyBatisService {
 	}
 
 	// select user_reivew
-	public List<HealthPlaceVo> selectUser_Review(String key) {
+	public List<HealthReviewVo> selectUser_Review(String key) {
 		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
-		List<HealthPlaceVo> list = null;
+		List<HealthReviewVo> list = null;
 
 		try {
 			int numKey = Integer.parseInt(key);
@@ -47,6 +46,19 @@ public class Health_MyBatisService {
 			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
 		}
 		return list;
+	}
+
+	// checkForOverlapReview
+	public List<HealthReviewVo> checkOverlapReview(HealthReviewVo vo) {
+		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
+		List<HealthReviewVo> result = null;
+
+		try {
+			result = dao.checkOverlapReview(session, vo);
+		} finally {
+			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
+		}
+		return result;
 	}
 
 	// insert review

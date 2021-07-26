@@ -3,6 +3,9 @@
  */
 
 
+
+
+
 $('.card-img-top').click(function() {
 
 	const param = {
@@ -11,11 +14,61 @@ $('.card-img-top').click(function() {
 
 	showPlaceInfoAJAX(param);
 	showReviewAJAX(param);
-	
+
 })
 
 
-function showPlaceInfoAJAX(param){
+
+$('.d-block.w-100').on('error', function() {
+	$(this).attr('src', 'health&edu/place/place_img/logo.png');
+})
+
+
+$('.title').click(function() {
+	$(this).next().toggle();
+})
+
+
+$('.card-img-top').click(function() {
+	$('.title').next().hide();
+})
+
+
+
+
+
+$('#btn1').click(function() { // static modal (글등록창) show
+	let userEmail = $('#write_container').find('input[type="hidden"]').val();
+
+	if (userEmail.length == 0 || userEmail == null) { // 로그인 여부 체크 
+		$('#requestLogin').modal('show');
+		return;
+	}
+
+	if (getSessionAJAX() == 'null') { // 세션 만료 체크 
+		alert('세션이 만료되었습니다. 로그인 페이지로 이동합니다');
+		location.href = 'login.do';
+		return;
+	}
+	
+	if(checkForOverlapReviewAJAX() == '-1'){
+		$('#checkOverlap').modal('show');
+		return;
+	} 
+
+
+	$('#write_container').find('#review_textarea').val("");
+	$('#cntNum').text('0');
+	$('#write_container').modal('show');
+})
+
+$('.ui.button').click(function() { // static modal hide
+	$('#write_container').modal('hide');
+
+})
+
+
+function showPlaceInfoAJAX(param) {
 	$.ajax({
 		"url": "controller.do?command=placeList",
 		"data": { "jsonData": JSON.stringify(param) },
@@ -48,7 +101,7 @@ function showPlaceInfoAJAX(param){
 }
 
 
-function showReviewAJAX(param){
+function showReviewAJAX(param) {
 	$.ajax({
 		"url": "controller.do?command=review",
 		"data": { "jsonData": JSON.stringify(param) },
@@ -98,32 +151,41 @@ function showReviewAJAX(param){
 	})
 }
 
-$('.d-block.w-100').on('error', function() {
-	$(this).attr('src', 'health&edu/place/place_img/logo.png');
-})
 
 
-$('.title').click(function() {
-	$(this).next().toggle();
-})
+function getSessionAJAX() {
 
+	let rs = "";
 
-$('.card-img-top').click(function() {
-	$('.title').next().hide();
-})
+	$.ajax({
+		url: "controller.do?command=getSession",
+		data: null,
+		method: "post",
+		async: false,
+		success: (result) => {
+			rs = result;
+		},
+	});
+	return rs;
+}
 
+function checkForOverlapReviewAJAX() {
 
-$('#btn1').click(function() { // static modal show
+	let rs = "";
 	
-	$('#write_container').find('#review_textarea').val("");
-	$('#cntNum').text('0');
-	$('#write_container').modal('show');
-})
+	const param = {
+		"idx": $('.card-frame').find('input[type="hidden"]').val(),
+		"email": $('#write_container').find('input[type="hidden"]').val(),
+	}
 
-$('.ui.button').click(function() { // static modal hide
-	$('#write_container').modal('hide');
-
-})
-
-
-
+	$.ajax({
+		url: "controller.do?command=overlapReview",
+		data: {"jsonData" : JSON.stringify(param)},
+		method: "post", 
+		async: false,
+		success: (result) => {
+			rs = result;
+		},
+	});
+	return rs;
+}

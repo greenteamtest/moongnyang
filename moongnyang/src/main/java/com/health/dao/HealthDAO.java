@@ -13,8 +13,12 @@ public class HealthDAO {
 		return session.selectList("selectPlace_List", value);
 	}
 
-	public List<HealthPlaceVo> selectUser_Review(SqlSession session, int place_idx) { // select place list
+	public List<HealthReviewVo> selectUser_Review(SqlSession session, int place_idx) { // select place list
 		return session.selectList("selectUser_Review", place_idx);
+	}
+
+	public List<HealthReviewVo> checkOverlapReview(SqlSession session, HealthReviewVo vo) { //
+		return session.selectList("checkOverlapReview", vo);
 	}
 
 	public int insert_review(SqlSession session, HealthReviewVo vo) {
