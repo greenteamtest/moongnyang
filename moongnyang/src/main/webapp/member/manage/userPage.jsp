@@ -137,61 +137,18 @@
 						</tr>
 					</c:forEach>
 				</tbody>
-				<tr>
-				</tr>
-				</tbody>
 			</table>
-			<form action="mypageServlet" method="post" name="checkandread">
-				<input type="hidden" name="command" value="answerCustomer">
-				<input type="hidden" name="manageremail" value="${loginUser.email}">
-				<div class="modal fade" id="checkandread" tabindex="-1"
-					aria-labelledby="checkandread" aria-hidden="true">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-head er">
-								<h5 class="modal-title" id="exampleModalLabel">확인하기</h5>
-								<button type="button" class="btn-close" data-bs-dismiss="modal"
-									aria-label="Close"></button>
-							</div>
-							<div class="modal-body">
-								<input type="hidden" name="email" value="${board.email}"
-									id="email"> <input type="hidden" name="keyword"
-									value="${board.keyword}" id="keyword">
-								<div class="mb-3">
-									<label for="recipient-name" class="col-form-label">키워드내용${board.keyword}</label>
-									<div class="alert alert-dark" role="alert" name="email_check"
-										id="email_check">${board.keyword}</div>
-								</div>
-								<label for="recipient-name" class="col-form-label">질문내용</label>
-								<div class="alert alert-dark" role="alert" name="email_check"
-									id="email_check">${board.usercontent}</div>
-							</div>
-							<div class="mb-3">
-								<label for="recipient-name" class="col-form-label">답변내용</label>
-								<div class="alert alert-dark" role="alert" name="email_check"
-									id="email_check">${board.usercontent}</div>
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary"
-								data-bs-dismiss="modal">닫기</button>
-							<button type="submit" class="btn btn-primary "
-								onclick="return checkandread()">답변하기</button>
-						</div>
-					</div>
-				</div>
-		</div>
-		</form>
-		<div class="d-grid gap-2 col-6 mx-auto">
-			<button type="button" class="btn btn-Warning" data-bs-toggle="modal"
-				data-bs-target="#managermessage" data-bs-whatever="@mdo">#소통&nbsp;&nbsp;#문의&nbsp;&nbsp;#운영자에게</button>
-			<button class="btn btn-Success" type="button" data-bs-toggle="modal"
-				data-bs-target="#businessupdate" data-bs-whatever="@mdo">#사업자신청&nbsp;&nbsp;</button>
-			<button class="btn btn-Danger" type="button" data-bs-toggle="modal"
-				data-bs-target="#changemember" data-bs-whatever="@mdo">#회원정보변경&nbsp;&nbsp;#회원탈퇴</button>
-		</div>
-		<footer class="pt-3 mt-4 text-muted border-top"> &copy; 2021
-		</footer>
+
+			<div class="d-grid gap-2 col-6 mx-auto">
+				<button type="button" class="btn btn-Warning" data-bs-toggle="modal"
+					data-bs-target="#managermessage" data-bs-whatever="@mdo">#소통&nbsp;&nbsp;#문의&nbsp;&nbsp;#운영자에게</button>
+				<button class="btn btn-Success" type="button" data-bs-toggle="modal"
+					data-bs-target="#businessupdate" data-bs-whatever="@mdo">#사업자신청&nbsp;&nbsp;</button>
+				<button class="btn btn-Danger" type="button" data-bs-toggle="modal"
+					data-bs-target="#changemember" data-bs-whatever="@mdo">#회원정보변경&nbsp;&nbsp;#회원탈퇴</button>
+			</div>
+			<footer class="pt-3 mt-4 text-muted border-top"> &copy; 2021
+			</footer>
 		</div>
 	</main>
 
@@ -374,4 +331,45 @@
 		</div>
 	</div>
 </form>
-<!-- 확인하기 모달 -->
+<!--  확인하기 모달 -->
+<form action="mypageServlet" method="post" name="checkandread">
+	<input type="hidden" name="command" value="answerCustomer"> <input
+		type="hidden" name="manageremail" value="${loginUser.email}">
+	<div class="modal fade" id="checkandread" tabindex="-1"
+		aria-labelledby="checkandread" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-head er">
+					<h5 class="modal-title" id="exampleModalLabel">확인하기</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<input type="hidden" name="email" value="${board.email}" id="email">
+					<input type="hidden" name="keyword" value="${board.keyword}"
+						id="keyword">
+					<div class="mb-3">
+						<label for="recipient-name" class="col-form-label">키워드내용${board.keyword}</label>
+						<div class="alert alert-dark" role="alert" name="email_check"
+							id="email_check">${board.keyword}</div>
+					</div>
+					<label for="recipient-name" class="col-form-label">질문내용</label>
+					<div class="alert alert-dark" role="alert" name="email_check"
+						id="email_check">${board.usercontent}</div>
+				</div>
+				<div class="mb-3">
+					<label for="recipient-name" class="col-form-label">답변내용</label>
+					<div class="alert alert-dark" role="alert" name="email_check"
+						id="email_check">${board.usercontent}</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary"
+					data-bs-dismiss="modal">닫기</button>
+				<button type="submit" class="btn btn-primary "
+					onclick="return checkandread()">답변하기</button>
+			</div>
+		</div>
+	</div>
+	</div>
+</form>
