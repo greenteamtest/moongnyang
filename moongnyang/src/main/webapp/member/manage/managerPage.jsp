@@ -56,7 +56,7 @@
 							</a></li>
 							<li class="nav-item"><a class="nav-link"
 								href="mypageServlet?command=managerPageCus"> <span
-									data-feather="file"></span> 고객소리함
+									data-feather="file"></span> 고객소리함 #소통 #고객
 							</a></li>
 							<li class="nav-item"><a class="nav-link"
 								href="mypageServlet?command=managerPageBusi"> <span
@@ -88,8 +88,16 @@
 					</div>
 				</div>
 
-				<canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+				<canvas class="my-4 w-100" id="myChart" width="900" height="190"></canvas>
 
+				<div
+					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+					<h1 class="h2">총 게시글 등록수</h1>
+					<div class="btn-toolbar mb-2 mb-md-0"></div>
+				</div>
+				<div class="graphBox">
+					<canvas id="totalView" width="900" height="190"></canvas>
+				</div>
 				<h2>Section title</h2>
 				<div class="table-responsive">
 					<table class="table table-striped table-sm">

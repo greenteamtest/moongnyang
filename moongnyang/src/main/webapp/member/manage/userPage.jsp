@@ -142,7 +142,7 @@
 						<label for="recipient-name" class="col-form-label">무엇을
 							도와드릴까요?!</label> <select class="form-select"
 							aria-label="Default select example">
-							<option selected>하위메뉴를 골라주세요!</option>
+							<option value="0" selected>하위메뉴를 골라주세요!</option>
 							<option value="1">불만, 건의사항</option>
 							<option value="2">사업자관련 문의</option>
 							<option value="3">QnA</option>
