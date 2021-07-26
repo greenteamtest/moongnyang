@@ -71,8 +71,8 @@ public class BoardDAO {
 	}
 
 	// 게시판 글 상세 내용 보기 :글번호로 찾아온다. : 실패 null,
-	public boardVO selectOneBoardByNum(String num) {
-		String sql = "select * from businessboard where businessnum = ?";
+	public boardVO selectOneBoardByNum(String email) {
+		String sql = "select * from businessboard where user_email = ?";
 		boardVO bVo = null;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -80,7 +80,7 @@ public class BoardDAO {
 		try {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, num);
+			pstmt.setString(1, email);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				bVo = new boardVO();
@@ -88,6 +88,7 @@ public class BoardDAO {
 				bVo.setEmail(rs.getString("user_email"));
 				bVo.setContent(rs.getString("businesscontent"));
 				bVo.setWritedate(rs.getTimestamp("writedate"));
+				bVo.setReadval(rs.getInt("businessread"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

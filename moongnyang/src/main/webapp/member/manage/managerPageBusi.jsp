@@ -92,7 +92,8 @@
 							<c:forEach var="board" items="${boardList}">
 								<tr>
 									<td>${board.num}</td>
-									<td>${board.email }</td>
+									<td><a
+										href="mypageServlet?command=businessReadBoard&email=${board.email}">${board.email }</a></td>
 									<td>${board.content }</td>
 									<td><fmt:formatDate value="${board.writedate}" /></td>
 									<td><c:if test="${board.readval==0}">읽음</c:if> <c:if
