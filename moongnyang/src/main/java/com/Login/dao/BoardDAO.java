@@ -82,7 +82,6 @@ public class BoardDAO {
 
 	public List<boardVO> selectUserAnswerBoards(String email) {
 		String sql = "select * from answerboard where user_email='" + email + "'";
-		System.out.println(sql);
 		List<boardVO> list = new ArrayList<boardVO>();
 		Connection conn = null;
 		Statement stmt = null;
@@ -94,17 +93,11 @@ public class BoardDAO {
 			while (rs.next()) {
 				boardVO bVo = new boardVO();
 				bVo.setKeyword(rs.getString("answerkeyword"));
-				System.out.println(rs.getString("answerkeyword"));
 				bVo.setEmail(rs.getString("user_email"));
-				System.out.println(rs.getString("user_email"));
 				bVo.setManageremail(rs.getString("manager_email"));
-				System.out.println(rs.getString("manager_email"));
 				bVo.setContent(rs.getString("answercontent"));
-				System.out.println(rs.getString("answercontent"));
 				bVo.setReadval(rs.getInt("answerread"));
-				System.out.println(rs.getString("answerread"));
 				bVo.setWritedate(rs.getTimestamp("answerredwritedate"));
-				System.out.println(rs.getString("answerredwritedate"));
 				list.add(bVo);
 			}
 		} catch (SQLException e) {
@@ -256,6 +249,23 @@ public class BoardDAO {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, 0);
 			pstmt.setString(2, num);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+	}
+
+	public void checkedAnswerBoard(String manageremail) {
+		String sql = "update answerboard set answerread=? where manager_email=?";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, 0);
+			pstmt.setString(2, manageremail);
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

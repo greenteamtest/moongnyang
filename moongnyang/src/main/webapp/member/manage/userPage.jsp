@@ -115,19 +115,25 @@
 				<thead>
 					<tr>
 						<th scope="col">키워드</th>
-						<th scope="col">답변내용</th>
+						
 						<th scope="col">답변직원이멜</th>
+						<th scope="col">답변내용</th>
 						<th scope="col">작성날짜</th>
+						<th scope="col">확인하기</th>
+						<th scope="col">읽음유무</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach var="board" items="${boardList}">
 						<tr>
 							<td>${board.keyword}</td>
-							<td>${board.content}</td>
 							<td>${board.manageremail}</td>
+							<td>${board.content}</td>
 							<td><fmt:formatDate value="${board.writedate}" /></td>
-							
+							<td><a href="mypageServlet?command=answerCheck&manageremail=${board.manageremail}&email=${loginUser.email}">확인</a></td>
+							<td><c:if test="${board.readval==0}">읽음</c:if> <c:if
+									test="${board.readval==1}">읽지않음</c:if></td>
+
 						</tr>
 					</c:forEach>
 				</tbody>

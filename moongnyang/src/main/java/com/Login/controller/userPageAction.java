@@ -19,10 +19,8 @@ public class userPageAction implements Action {
 		// TODO Auto-generated method stub
 		String url = "member/manage/userPage.jsp";
 		String email = request.getParameter("email");
-		System.out.println(email);
 		BoardDAO dao = BoardDAO.getInstance();
 		List<boardVO> boardList = dao.selectUserAnswerBoards(email);
-		System.out.println("이건되었나?");
 		request.setAttribute("boardList", boardList);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
