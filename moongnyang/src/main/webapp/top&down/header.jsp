@@ -59,15 +59,10 @@
 				</c:if>
 				<!-- 				<li class="nav-item"><a class="nav-link" href="#about">회원가입</a></li> -->
 				<c:if test="${loginUser.auth==0}">
-					<form action="mypageServlet" method="post" name="answer">
-						<li class="nav-item"><input type="hidden" name="email"
-							value="${loginUser.email}"> <input type="hidden"
-							name="command" value="userPage">
-							<button type="submit" class="btn btn-dark">마이페이지</button> <!-- 							<a -->
-							<!-- 							type="submit" class="nav-link" data-bs-toggle="tooltip" -->
-							<!-- 							data-bs-placement="top" title="좀 더 가까이와요">마이페이지</a></li> -->
-							<!-- href="mypageServlet?command=userPage" -->
-					</form>
+					<li class="nav-item"><a class="nav-link"
+						data-bs-toggle="tooltip"
+						href="mypageServlet?command=userPage&email=${loginUser.email}"
+						data-bs-placement="top" title="좀 더 가까이와요">마이페이지</a></li>
 				</c:if>
 				<c:if test="${loginUser.auth==1}">
 					<li class="nav-item"><a class="nav-link"

@@ -118,22 +118,16 @@
 						<th scope="col">답변내용</th>
 						<th scope="col">답변직원이멜</th>
 						<th scope="col">작성날짜</th>
-						<th scope="col">확인하기</th>
-						<th scope="col">읽음유무</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach var="board" items="${boardList}">
 						<tr>
 							<td>${board.keyword}</td>
-							<td><a
-								href="mypageServlet?command=userreadAnswer&email=${board.manageremail}">${board.content}</a></td>
+							<td>${board.content}</td>
 							<td>${board.manageremail}</td>
 							<td><fmt:formatDate value="${board.writedate}" /></td>
-							<td><a class="btn btn-primary" data-bs-toggle="modal"
-								data-bs-target="#checkandread" data-bs-whatever="@mdo">확인하기</a></td>
-							<td><c:if test="${board.readval==0}">읽음</c:if> <c:if
-									test="${board.readval==1}">읽지않음</c:if></td>
+							
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -329,47 +323,5 @@
 				</div>
 			</div>
 		</div>
-	</div>
-</form>
-<!--  확인하기 모달 -->
-<form action="mypageServlet" method="post" name="checkandread">
-	<input type="hidden" name="command" value="answerCustomer"> <input
-		type="hidden" name="manageremail" value="${loginUser.email}">
-	<div class="modal fade" id="checkandread" tabindex="-1"
-		aria-labelledby="checkandread" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-head er">
-					<h5 class="modal-title" id="exampleModalLabel">확인하기</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal"
-						aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					<input type="hidden" name="email" value="${board.email}" id="email">
-					<input type="hidden" name="keyword" value="${board.keyword}"
-						id="keyword">
-					<div class="mb-3">
-						<label for="recipient-name" class="col-form-label">키워드내용${board.keyword}</label>
-						<div class="alert alert-dark" role="alert" name="email_check"
-							id="email_check">${board.keyword}</div>
-					</div>
-					<label for="recipient-name" class="col-form-label">질문내용</label>
-					<div class="alert alert-dark" role="alert" name="email_check"
-						id="email_check">${board.usercontent}</div>
-				</div>
-				<div class="mb-3">
-					<label for="recipient-name" class="col-form-label">답변내용</label>
-					<div class="alert alert-dark" role="alert" name="email_check"
-						id="email_check">${board.usercontent}</div>
-				</div>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary"
-					data-bs-dismiss="modal">닫기</button>
-				<button type="submit" class="btn btn-primary "
-					onclick="return checkandread()">답변하기</button>
-			</div>
-		</div>
-	</div>
 	</div>
 </form>
