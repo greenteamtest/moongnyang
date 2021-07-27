@@ -115,7 +115,6 @@
 				<thead>
 					<tr>
 						<th scope="col">키워드</th>
-						
 						<th scope="col">답변직원이멜</th>
 						<th scope="col">답변내용</th>
 						<th scope="col">작성날짜</th>
@@ -130,10 +129,12 @@
 							<td>${board.manageremail}</td>
 							<td>${board.content}</td>
 							<td><fmt:formatDate value="${board.writedate}" /></td>
-							<td><a href="mypageServlet?command=answerCheck&manageremail=${board.manageremail}&email=${loginUser.email}">확인</a></td>
+							<td><a
+								href="mypageServlet?command=answerCheck&num=${board.num}&email=${loginUser.email}">확인</a>
+								<a
+								href="mypageServlet?command=deleteAnswer&num=${board.num}&email=${loginUser.email}">삭제</a></td>
 							<td><c:if test="${board.readval==0}">읽음</c:if> <c:if
 									test="${board.readval==1}">읽지않음</c:if></td>
-
 						</tr>
 					</c:forEach>
 				</tbody>

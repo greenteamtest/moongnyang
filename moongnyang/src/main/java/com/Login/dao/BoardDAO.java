@@ -92,6 +92,7 @@ public class BoardDAO {
 			rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				boardVO bVo = new boardVO();
+				bVo.setNum(rs.getInt("answerBoardnum"));
 				bVo.setKeyword(rs.getString("answerkeyword"));
 				bVo.setEmail(rs.getString("user_email"));
 				bVo.setManageremail(rs.getString("manager_email"));
@@ -147,13 +148,15 @@ public class BoardDAO {
 	}
 
 	public void insertAnswerboard(boardVO bVo) {
-		String sql = "insert into answerBoard(" + "answerkeyword,user_email, manager_email, answercontent, usercontent)"
-				+ "values(?,?, ?, ?,? )";
+		String sql = "insert into answerBoard("
+				+ "answerBoardnum, answerkeyword,user_email, manager_email, answercontent, usercontent)"
+				+ "values(answerBoard_seq.nextval,?,?,?,?,?)";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
+
 			pstmt.setString(1, bVo.getKeyword());
 			pstmt.setString(2, bVo.getEmail());
 			pstmt.setString(3, bVo.getManageremail());
@@ -257,15 +260,15 @@ public class BoardDAO {
 		}
 	}
 
-	public void checkedAnswerBoard(String manageremail) {
-		String sql = "update answerboard set answerread=? where manager_email=?";
+	public void checkedAnswerBoard(String num) {
+		String sql = "update answerboard set answerread=? where answerboardnum=?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, 0);
-			pstmt.setString(2, manageremail);
+			pstmt.setString(2, num);
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -299,6 +302,22 @@ public class BoardDAO {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, email);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+	}
+
+	public void deleteAnswer(String num) {
+		String sql = "delete answerboard where answerboardnum=?";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, num);
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

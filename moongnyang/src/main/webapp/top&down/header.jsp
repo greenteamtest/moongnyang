@@ -66,6 +66,10 @@
 				</c:if>
 				<c:if test="${loginUser.auth==1}">
 					<li class="nav-item"><a class="nav-link"
+						data-bs-toggle="tooltip"
+						href="mypageServlet?command=userPage&email=${loginUser.email}"
+						data-bs-placement="top" title="좀 더 가까이와요">마이페이지</a></li>
+					<li class="nav-item"><a class="nav-link"
 						href="mypageServlet?command=businessPage" data-bs-toggle="tooltip"
 						data-bs-placement="top" title="효율적으로 관리해봐요">사업장관리</a></li>
 				</c:if>

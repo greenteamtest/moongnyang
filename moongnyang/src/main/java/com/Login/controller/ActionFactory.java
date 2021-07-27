@@ -67,6 +67,9 @@ public class ActionFactory {
 		if (command.equals("answerCheck")) {
 			action = new userPageAnswerCheckAction();
 		}
+		if (command.equals("deleteAnswer")) {
+			action = new userPage_Answer_DeleteAction();
+		}
 		return action;
 	}
 }

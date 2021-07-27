@@ -16,11 +16,10 @@ public class userPageAnswerCheckAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("고객의 소통 액션");
 
-		String manageremail = request.getParameter("manageremail");
+		String num = request.getParameter("num");
 		BoardDAO dao = BoardDAO.getInstance();
-		dao.checkedAnswerBoard(manageremail);
+		dao.checkedAnswerBoard(num);
 		String email = request.getParameter("email");
 		List<boardVO> boardList = dao.selectUserAnswerBoards(email);
 		request.setAttribute("boardList", boardList);

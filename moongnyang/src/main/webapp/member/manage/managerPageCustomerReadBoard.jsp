@@ -135,9 +135,10 @@
 				</div>
 				<div class="modal-body">
 					<input type="hidden" name="email" value="${board.email}" id="email">
-					<input type="hidden" name="usercontent" value="${board.content}" id="usercontent">
-					<input type="hidden" name="keyword" value="${board.keyword}"
-						id="keyword">
+					<input type="hidden" name="usercontent" value="${board.content}"
+						id="usercontent"> <input type="hidden" name="num"
+						value="${board.num}" id="num"> <input type="hidden"
+						name="keyword" value="${board.keyword}" id="keyword">
 					<div class="mb-3">
 						<label for="recipient-name" class="col-form-label">해당유저이메일</label>
 						<div class="alert alert-dark" role="alert" name="email_check"
