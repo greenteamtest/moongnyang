@@ -70,16 +70,50 @@
 								href="mypageServlet?command=managerPageStaff"> <span
 									data-feather="layers"></span>업무연동
 							</a></li>
-							<!-- 							<li class="nav-item"><a class="nav-link" href="#"> <span -->
-							<!-- 									data-feather="bar-chart-2"></span> Reports -->
-							<!-- 							</a></li> -->
-							<!-- 							<li class="nav-item"><a class="nav-link" href="#"> <span -->
-							<!-- 									data-feather="layers"></span> Integrations -->
-							<!-- 							</a></li> -->
+
 						</ul>
 					</div>
 				</nav>
-				<h2>Section title</h2>
+				<div
+					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+					<div class="btn-toolbar mb-2 mb-md-0"></div>
+				</div>
+				<div class="row">
+					<h2>#근태관리 #휴가</h2>
+				</div>
+				<div
+					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+					<div class="btn-toolbar mb-2 mb-md-0"></div>
+				</div>
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="d-grid gap-3">
+								<button type="button" class="btn btn-primary btn-lg"
+									data-bs-toggle="modal" data-bs-target="#requestOvertime">
+									시간외근무 신청하기</button>
+								<button type="button" class="btn btn-primary btn-lg"
+									data-bs-toggle="modal" data-bs-target="#viewOvertime">
+									시간외근무 내역보기</button>
+							</div>
+						</div>
+						<div class="col"></div>
+						<div class="col">
+							<div class="d-grid gap-3">
+								<button type="button" class="btn btn-primary btn-lg"
+									data-bs-toggle="modal" data-bs-target="#requestVacation">
+									휴가신청하기</button>
+								<button type="button" class="btn btn-primary btn-lg"
+									data-bs-toggle="modal" data-bs-target="#viewVacation">
+									휴가신청내역보기</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div
+					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+					<div class="btn-toolbar mb-2 mb-md-0"></div>
+				</div>
 				<div class="table-responsive">
 					<table class="table table-striped table-sm">
 						<thead>
@@ -225,3 +259,26 @@
 	<script src="member/manage/dashboard.js"></script>
 </body>
 </html>
+
+<!-- 모달 초과근무 신청 -->
+<form>
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+	data-bs-keyboard="false" tabindex="-1"
+	aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"
+					aria-label="Close"></button>
+			</div>
+			<div class="modal-body">...</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary"
+					data-bs-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">Understood</button>
+			</div>
+		</div>
+	</div>
+</div>
+</form>
