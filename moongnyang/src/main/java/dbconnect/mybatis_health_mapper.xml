@@ -8,12 +8,49 @@
 		from view_place
 		<choose>
 			<when test="value != null and value instanceof Integer">
-				where idx = #{key} 
+				where idx = #{key}
 			</when>
-			<otherwise> 
+			<otherwise>
 				where field = #{key}
-			</otherwise> 
-		</choose> 
+			</otherwise>
+		</choose>
 	</select>
- 
+
+
+	<!-- 업체당 user review -->
+	<select id="selectUser_Review" parameterType="int" resultType="com.health.dto.HealthReviewVo">
+		select place_list_id, user_email, contents, write_date, write_time,like_count, manager_comment, my_rating
+		from user_review
+		where place_list_id = #{place_idx}
+		order by 1 , 4 desc, 5 desc
+	</select>
+
+
+	<!-- 업체당 user review -->
+	<select id="checkOverlapReview" parameterType="review" resultType="com.health.dto.HealthReviewVo">
+		select user_review_idx from user_review where place_list_id = #{place_list_id} and user_email = #{user_email}
+	</select>
+
+
+
+	<!-- insert user review -->
+	<select id="insert_review" parameterType="review" resultType="int">
+		insert into user_review (user_review_idx, user_email, place_list_id, contents, my_rating, write_date, write_time)
+		values (seq_user_review.nextval, #{user_email}, #{place_list_id}, #{contents}, #{my_rating}, to_char(sysdate , 'yy.MM.dd'), to_char(sysdate, 'hh24:mi'))
+	</select>
+
+
+	<!-- revise user review -->
+	<select id="reviseReview" parameterType="review" resultType="int">
+		update user_review
+		set contents = #{contents} ,my_rating = #{my_rating},
+		write_date =to_char(sysdate , 'yy.MM.dd') , write_time =to_char(sysdate, 'hh24:mi')
+		where user_email = #{user_email} and place_list_id = #{place_list_id}
+	</select>
+	
+	<!-- delete user review -->
+	<select id="deleteReview" parameterType="review" resultType="int">
+	delete from user_review where user_email = #{user_email} and place_list_id = #{place_list_id}
+	</select>
+
 </mapper>

@@ -228,7 +228,7 @@ public class MemberDAO {
 
 	public int updateMember_userVer(MemberVO vo) {
 		int result = 1;
-		String spl = "update user_info set user_pwd=?, user_nick=?";
+		String spl = "update user_info set user_pwd=?, user_nick=? where user_email=?";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -236,8 +236,44 @@ public class MemberDAO {
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(spl);
+			System.out.println("DAO : " + vo.getNickname());
+			System.out.println("DAO : " + vo.getPwd());
+			System.out.println("DAO : " + vo.getEmail());
 			pstmt.setString(1, vo.getPwd());
 			pstmt.setString(2, vo.getNickname());
+			pstmt.setString(3, vo.getEmail());
+
+			result = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+
+	public int deleteMember_userVer(MemberVO vo) {
+		int result = 1;
+		String spl = "delete user_info where user_email=?";
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(spl);
+			System.out.println("DAO : " + vo.getEmail());
+			pstmt.setString(1, vo.getEmail());
 
 			result = pstmt.executeUpdate();
 

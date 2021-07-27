@@ -56,7 +56,7 @@
 							</a></li>
 							<li class="nav-item"><a class="nav-link"
 								href="mypageServlet?command=managerPageCus"> <span
-									data-feather="file"></span> 고객소리함
+									data-feather="file"></span> 고객소리함 #소통 #고객
 							</a></li>
 							<li class="nav-item"><a class="nav-link"
 								href="mypageServlet?command=managerPageBusi"> <span

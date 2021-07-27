@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%@ include file="/bootstrap/boot.jsp"%>
+<%@ include file="/health&edu/bootstrap/boot.jsp"%>
 <%@ include file="/startbootstrap/startbootstrap.jsp"%>
-
 <%@ include file="/jQuery/jquery.jsp"%>
 <%@ include file="/setting/setting.jsp"%>
 <%@ include file="/top&down/header.jsp"%>

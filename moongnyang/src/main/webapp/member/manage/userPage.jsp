@@ -2,11 +2,13 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../../bootstrap/boot.jsp"%>
 <%@ include file="../../top&down/header.jsp"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author"
@@ -107,9 +109,41 @@
 			<div>
 				<br> <br>
 			</div>
+
+			<h2>운영자와 #소통 한 내용</h2>
+			<table class="table table-dark table-sm">
+				<thead>
+					<tr>
+						<th scope="col">키워드</th>
+						
+						<th scope="col">답변직원이멜</th>
+						<th scope="col">답변내용</th>
+						<th scope="col">작성날짜</th>
+						<th scope="col">확인하기</th>
+						<th scope="col">읽음유무</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="board" items="${boardList}">
+						<tr>
+							<td>${board.keyword}</td>
+							<td>${board.manageremail}</td>
+							<td>${board.content}</td>
+							<td><fmt:formatDate value="${board.writedate}" /></td>
+							<td><a href="mypageServlet?command=answerCheck&manageremail=${board.manageremail}&email=${loginUser.email}">확인</a></td>
+							<td><c:if test="${board.readval==0}">읽음</c:if> <c:if
+									test="${board.readval==1}">읽지않음</c:if></td>
+
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+
 			<div class="d-grid gap-2 col-6 mx-auto">
 				<button type="button" class="btn btn-Warning" data-bs-toggle="modal"
 					data-bs-target="#managermessage" data-bs-whatever="@mdo">#소통&nbsp;&nbsp;#문의&nbsp;&nbsp;#운영자에게</button>
+				<button class="btn btn-Success" type="button" data-bs-toggle="modal"
+					data-bs-target="#businessupdate" data-bs-whatever="@mdo">#사업자신청&nbsp;&nbsp;</button>
 				<button class="btn btn-Danger" type="button" data-bs-toggle="modal"
 					data-bs-target="#changemember" data-bs-whatever="@mdo">#회원정보변경&nbsp;&nbsp;#회원탈퇴</button>
 			</div>
@@ -124,41 +158,82 @@
 </html>
 <!--  이거 완성되면 헤더부분으로 옮기자꾸나~~~ -->
 <!--  건의사항 부분 -->
-<div class="modal fade" id="managermessage" tabindex="-1"
-	aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="managermessage">#소통 #문의 #운영자에게</h5>
-				<button type="button" class="btn-close" data-bs-dismiss="modal"
-					aria-label="Close"></button>
-			</div>
-			<div class="modal-body">
-				<form>
+<form action="mypageServlet" method="post" name="customerconversation">
+	<input type="hidden" name="command" value="customerconversation">
+	<input type="hidden" name="email" value="${loginUser.email}">
+	<div class="modal fade" id="managermessage" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="managermessage">#소통 #문의 #운영자에게</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
 					<div class="mb-3">
 						<label for="recipient-name" class="col-form-label">무엇을
 							도와드릴까요?!</label> <select class="form-select"
-							aria-label="Default select example">
-							<option selected>하위메뉴를 골라주세요!</option>
-							<option value="1">불만, 건의사항</option>
-							<option value="2">사업자관련 문의</option>
-							<option value="3">QnA</option>
+							aria-label="Default select example"
+							name="customerconversationSelect">
+							<option value="0" selected>하위메뉴를 골라주세요!</option>
+							<option value="불만, 건의사항">불만, 건의사항</option>
+							<option value="사업자관련 문의">사업자관련 문의</option>
+							<option value="QnA">QnA</option>
 						</select>
 					</div>
 					<div class="mb-3">
 						<label for="message-text" class="col-form-label">내용</label>
-						<textarea class="form-control" id="message-text"></textarea>
+						<textarea class="form-control" name="customerconversationtextarea"
+							id="customerconversationtextarea"></textarea>
 					</div>
-				</form>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary"
-					data-bs-dismiss="modal">닫기</button>
-				<button type="button" class="btn btn-Warning">제출하기</button>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">닫기</button>
+					<button type="submit" class="btn btn-Warning"
+						onclick="return customerconversation()">제출하기</button>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
+</form>
+<!--  사업자 등록신청하는 부분 -->
+<form action="mypageServlet" method="post" name="businessUpdate">
+	<input type="hidden" name="command" value="businessUpdate">
+	<div class="modal fade" id="businessupdate" tabindex="-1"
+		aria-labelledby="businessupdate" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="businessupdate">#사업자신청하기</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<input type="hidden" name="email" value="${loginUser.email}"
+						id="email">
+					<form>
+						<div class="mb-3">
+							<label for="recipient-name" class="col-form-label">회원님의
+								사업장에 대해 설명부탁드려요</label>
+						</div>
+						<div class="mb-3">
+							<textarea name="content" class="form-control" id="content"></textarea>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">닫기</button>
+					<button type="submit" class="btn btn-Warning"
+						onclick="return businessUpdate()">제출하기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+
 <!--  회원정보변경 부분 -->
 <form action="memberUpdate.do" method="post" name="frm">
 	<div class="modal fade" id="changemember" tabindex="-1"
@@ -179,11 +254,12 @@
 								data-bs-target="#withdrawal" data-bs-whatever="@mdo">#잠시이별</button>
 						</div>
 						<div class="mb-3">
-
-							<label for="exampleInputPassword1" class="form-label">비밀번호를
-								변경하시려면 새로입력해주세요!</label> <input type="password" class="form-control"
-								value="${loginUser.pwd}" id="exampleInputPassword1" name="pwd">
-							<label for="exampleInputPassword1" class="form-label">변경하신
+							<input type="hidden" name="email" value="${loginUser.email}"
+								id="nickDuple"> <label for="exampleInputPassword1"
+								class="form-label">비밀번호를 변경하시려면 새로입력해주세요!</label> <input
+								type="password" class="form-control" value="${loginUser.pwd}"
+								id="exampleInputPassword1" name="pwd"> <label
+								for="exampleInputPassword1" class="form-label">변경하신
 								비밀번호를 한번 더 입려해주세요</label> <input type="password" class="form-control"
 								value="${loginUser.pwd}" id="exampleInputPassword1"
 								name="pwd_check">
@@ -207,7 +283,7 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-bs-dismiss="modal">닫기</button>
-					<button type="button" class="btn btn-Warning"
+					<button type="submit" class="btn btn-Warning"
 						onclick="return update_member()">변경하기!</button>
 				</div>
 			</div>
@@ -215,36 +291,43 @@
 	</div>
 </form>
 <!--  회원탈퇴 부분 -->
-<div class="modal fade" id="withdrawal" tabindex="-1"
-	aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">#잠시이별</h5>
-				<button type="button" class="btn-close" data-bs-dismiss="modal"
-					aria-label="Close"></button>
-			</div>
-			<div class="modal-body">
-				<form>
-					<div class="mb-3">
-						<button type="button" class="btn btn-primary"
-							data-bs-dismiss="modal" data-bs-toggle="modal"
-							data-bs-target="#changemember" data-bs-whatever="@mdo">#회원정보변경</button>
-						<button type="button" class="btn btn-secondary">#잠시이별</button>
-					</div>
-					<div class="mb-3">
-						<p class="text-center">다시 돌아왔을 때, 더 멋진 모습으로 기다리고 있겠습니다.</p>
-						<label for="message-text" class="col-form-label">마지막으로
-							비밀번호를 입력해주세요.</label>
-						<textarea class="form-control" id="message-text"></textarea>
-					</div>
-				</form>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary"
-					data-bs-dismiss="modal">닫기</button>
-				<button type="button" class="btn btn-Warning">언젠간 돌아오겠습니다</button>
+<form action="memberDelete.do" method="post" name="delete">
+	<div class="modal fade" id="withdrawal" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">#잠시이별</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="mb-3">
+							<button type="button" class="btn btn-primary"
+								data-bs-dismiss="modal" data-bs-toggle="modal"
+								data-bs-target="#changemember" data-bs-whatever="@mdo">#회원정보변경</button>
+							<button type="button" class="btn btn-secondary">#잠시이별</button>
+						</div>
+						<div class="mb-3">
+							<input type="hidden" name="email" value="${loginUser.email}"
+								id="deletemember_email"> <input type="hidden"
+								name="origin_pwd" value="${loginUser.pwd}"
+								id="deletemember_email">
+							<p class="text-center">다시 돌아왔을 때, 더 멋진 모습으로 기다리고 있겠습니다.</p>
+							<label for="message-text" class="col-form-label">마지막으로
+								비밀번호를 입력해주세요.</label> <input type="password" class="form-control"
+								value="" id="exampleInputPassword1" name="pwd">
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">닫기</button>
+					<button type="submit" class="btn btn-Warning"
+						onclick="return  delete_member()">언젠간 돌아오겠습니다</button>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
+</form>

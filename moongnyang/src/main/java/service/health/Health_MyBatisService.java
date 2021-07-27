@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.health.dao.HealthDAO;
 import com.health.dto.HealthPlaceVo;
+import com.health.dto.HealthReviewVo;
 
 import dbconnect.MybatisSessionFactory;
 
@@ -22,12 +23,10 @@ public class Health_MyBatisService {
 		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
 		List<HealthPlaceVo> list = null;
 
-		System.out.println(key);
 		try {
 			Integer numKey = Integer.parseInt(key);
 			list = dao.selectPlace_List(session, numKey);
 		} catch (NumberFormatException e) {
-			System.out.println("String 타입");
 			list = dao.selectPlace_List(session, key);
 		} finally {
 			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
@@ -35,54 +34,94 @@ public class Health_MyBatisService {
 		return list;
 	}
 
-	// select place_info
-	public HealthPlaceVo selectPlace_info(int place_key) {
+	// select user_reivew
+	public List<HealthReviewVo> selectUser_Review(String key) {
 		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
-		HealthPlaceVo vo = null;
+		List<HealthReviewVo> list = null;
 
 		try {
-			vo = dao.selectPlace_info(session, place_key); // dao에 SqlSession 전송
+			int numKey = Integer.parseInt(key);
+			list = dao.selectUser_Review(session, numKey);
 		} finally {
 			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
 		}
-		return vo;
+		return list;
 	}
 
-//	// 비밀번호 매칭 > 게시글 번호 획득
-//	public int select_boardIDX(Map<String, Object> map) {
-//		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
-//		int rs = 0;
-//
-//		try {
-//			Integer output = dao.select_boardIDX(session, map);
-//			System.out.println("output : " + output);
-//			rs = output == null ? 0 : output;
-//			System.out.println("rs : " + rs);
-//		} finally {
-//			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
-//		}
-//		return rs;
-//	}
-//
-//	// 회원가입
-//	public int insert_info(Map<String, Object> map) {
-//		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
-//		int rs = 0;
-//
-//		try {
-//			rs = dao.insert_info(session, map); // dao에 SqlSession 전송
-//
-//			if (rs > 0) {
-//				session.commit();
-//				System.out.println("join success");
-//			} else {
-//				session.rollback();
-//				System.out.println("join fail");
-//			}
-//		} finally {
-//			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
-//		}
-//		return rs;
-//	}
+	// checkForOverlapReview
+	public List<HealthReviewVo> checkOverlapReview(HealthReviewVo vo) {
+		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
+		List<HealthReviewVo> result = null;
+
+		try {
+			result = dao.checkOverlapReview(session, vo);
+		} finally {
+			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
+		}
+		return result;
+	}
+
+	// insert review
+	public int insert_review(HealthReviewVo vo) {
+		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
+		int rs = 0;
+
+		try {
+			rs = dao.insert_review(session, vo); // dao에 SqlSession 전송
+
+			if (rs > 0) {
+				session.commit();
+				System.out.println("insert review success");
+			} else {
+				session.rollback();
+				System.out.println("insert review fail");
+			}
+		} finally {
+			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
+		}
+		return rs;
+	}
+
+	// insert review
+	public int reviseReview(HealthReviewVo vo) {
+		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
+		int rs = 0;
+
+		try {
+			rs = dao.reviseReview(session, vo); // dao에 SqlSession 전송
+
+			if (rs > 0) {
+				session.commit();
+				System.out.println("revise review success");
+			} else {
+				session.rollback();
+				System.out.println("revise review fail");
+			}
+		} finally {
+			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
+		}
+		return rs;
+	}
+
+	// delete review
+	public int deleteReview(HealthReviewVo vo) {
+		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
+		int rs = 0;
+
+		try {
+			rs = dao.deleteReview(session, vo); // dao에 SqlSession 전송
+
+			if (rs > 0) {
+				session.commit();
+				System.out.println("delete review success");
+			} else {
+				session.rollback();
+				System.out.println("delete review fail");
+			}
+		} finally {
+			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
+		}
+		return rs;
+	}
 
 }

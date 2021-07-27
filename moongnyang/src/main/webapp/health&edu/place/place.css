@@ -79,7 +79,6 @@ div[class="ui divider1"] {
 
 div[class="ui big comments"] {
 	font-size: 2rem;
-	
 }
 
 .profile_img {
@@ -88,10 +87,51 @@ div[class="ui big comments"] {
 }
 
 .comment {
-	width : 40rem;
+	width: 40rem;
 }
 
-.content {
-	margin-left : 0px;
+.comment .content {
+	position : relative;
+	width : 45rem;
+	padding-left: 3rem;
+	padding-right : 0;
+	text-align: left;
 }
+
+#review_nodata {
+	margin: 1rem 2rem 2rem 2rem;
+}
+
+.text {
+	width : 35rem;
+	padding-left: 4rem;
+}
+
+#ctrlBtnGroup{
+	position : absolute;
+	top : 1.2rem;
+	right : -0.5rem;
+}
+
+#rvsBtn, #dltBtn {
+	margin : 0.5rem;
+}
+
+#cntNum_frame {
+	display: inline-block;
+	position: absolute;
+	left: 0.8rem;
+}
+
+#sub-footer {
+	text-align: left;
+}
+#select_rating{
+	margin-right:  0.7rem;
+}
+
+
+.review_textarea{
+	font-size: 1.5rem;
+} 
 

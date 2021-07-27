@@ -5,18 +5,40 @@
 <%@ page import="java.net.URLEncoder"%>
 <%@ page import="java.security.SecureRandom"%>
 <%@ page import="java.math.BigInteger"%>
-<!DOCTYPE html>
+
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-	content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,viewport-fit=cover">
-<script>
-	//61eaf0ccb670c71fede5ee3ff459092e
-</script>
-<script type="text/javascript" src="js/login/member.js"></script>
-<title>로그인 화면</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author"
+	content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+<meta name="generator" content="Hugo 0.84.0">
+<title>🐶🐱귀중하신분 맞이화면🐶🐱</title>
+
+<link rel="canonical"
+	href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
+
+
+
+<!-- Bootstrap core CSS -->
+<link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
 <style>
+.bd-placeholder-img {
+	font-size: 1.125rem;
+	text-anchor: middle;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+}
+
+@media ( min-width : 768px) {
+	.bd-placeholder-img-lg {
+		font-size: 3.5rem;
+	}
+}
+
 .gray {
 	color: #C0C0C0
 }
@@ -25,8 +47,12 @@
 	width: 250px
 }
 </style>
+
+<script type="text/javascript" src="js/login/member.js"></script>
+<!-- Custom styles for this template -->
+<link href="css/signin.css" rel="stylesheet">
 </head>
-<body>
+<body class="text-center">
 	<%
 	String clientId = "AO6MJLUwfRyG_NAC17cF";//애플리케이션 클라이언트 아이디값";
 	String redirectURI = URLEncoder.encode("http://localhost:8092/Hompage/member/sociallogin/naver_callback.jsp", "UTF-8");
@@ -52,70 +78,44 @@
 					const kakao_account = res.kakao_account;
 					console.log(kakao_account); } }); } }); }
 	</script>
-	<form action="login.do" method="post" name="frm">
-		<table align="center">
-			<tr>
-				<td><br> <br> <br> <br> <br> <br>
-					<br></td>
-			</tr>
-			<tr>
-				<td>
-					<h2 align="center" class="gray">뭉냥뭉냥</h2> <br> <br>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<div class="input-group mb-3">
-						<input type="text" class="form-control" placeholder="이메일"
-							value="${user_email}" name="email" size="20" aria-label="이메일"
-							aria-describedby="basic-addon1">
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<div class="input-group mb-3">
-						<input type="password" class="form-control" placeholder="비밀번호"
-							value="${user_pwd}" name="pwd" size="20" aria-label="비밀번호"
-							aria-describedby="basic-addon1"> <br> <br>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<td><div class="alert alert-warning" role="alert">
-						${message}</div></td>
-			</tr>
-			<tr>
 
-				<td><input type="image" class="smallimg"
-					src="img/loginbutton.png" type="submit"
-					onclick="return loginCheck()" data-bs-toggle="tooltip"  data-bs-placement="top" title="Tooltip on top"> <br></td>
-			</tr>
+	<main class="form-signin">
+		<form action="login.do" method="post" name="frm">
 
-			<tr>
-				<td><a id="custom-login-btn" type="button"><img
-						class="smallimg" src="img/registerbutton.png"
-						onclick="location.href='join.do'"></a> <br> <br></td>
-			</tr>
-			<tr>
-				<td><br></td>
-			</tr>
-			<tr>
-				<td><a id="custom-login-btn" type="button"> <img
-						src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg"
-						width="250" onclick="return kakaoLogin();" /> <br> <br>
-				</a></td>
-			</tr>
-			<tr>
-				<td>
-					<!-- 				<a id="naver_id_login" type="submit"> <img --> <!-- 						class="smallimg" src="img/naverlogin.png" width="222" -->
-					<%-- 						onclick="<%=apiURL%>" /> --%> <!-- 				</a>  --> <a
-					href="<%=apiURL%>"><img height="50" src="img/naverlogin.png" /></a>
-				</td>
-			</tr>
+			<img class="mb-4" src="img/logo.png" alt="" width="100" width="72"
+				height="57">
+			<h1 class="h3 mb-3 fw-normal">뭉냥뭉냥</h1>
 
-		</table>
-	</form>
+			<div class="form-floating">
+				<input type="email" class="form-control" id="floatingInput"
+					name="email" value="${user_email}"
+					placeholder="name@example.com"> <label for="floatingInput">🐶이메일
+					주소를 입력해주세용🐱</label>
+			</div>
+			<div class="form-floating">
+				<input type="password" class="form-control" id="floatingPassword"
+					value="${user_pwd}" name="pwd" placeholder="Password">
+				<label for="floatingPassword">🐶비밀번호를 입력해주세용🐱</label>
+			</div>
+
+			<div class="alert alert-warning" role="alert">${message}</div>
+			<button class="w-100 btn btn-lg btn-warning" type="submit"
+				onclick="return loginCheck()">입장하겠소!</button>
+			<div>
+				<br>
+			</div>
+			<button class="w-100 btn btn-lg btn-warning" type="button"
+				onclick="location.href='join.do'">함께하겠소!</button>
+			<div>
+				<br>
+			</div>
+			<a id="custom-login-btn" type="button"> <img
+				src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg"
+				width="250" onclick="return kakaoLogin();" />
+			</a> <a href="<%=apiURL%>"><img height="50" src="img/naverlogin.png" /></a>
+			<p class="mt-5 mb-3 text-muted">&copy;2021</p>
+		</form>
+	</main>
+
 </body>
-
 </html>

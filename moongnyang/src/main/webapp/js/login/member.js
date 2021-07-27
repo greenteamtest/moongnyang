@@ -110,3 +110,82 @@ function update_member() {
 	//	}
 	return true;
 }
+
+function passwordCheck() {
+	if (document.passwordcheck.passwordcheck.value == "") {
+		alert("비밀번호를 입력해주세요!");
+		passwordcheck.passwordcheck.focus();
+		return false;
+	}
+	if (document.passwordcheck.passwordcheck.value != document.passwordcheck.passwordcheck_user.value) {
+		alert("비밀번호가 일치하지 않습니다.!");
+		passwordcheck.passwordcheck.focus();
+		return false;
+	}
+	return true;
+}
+
+function rejectUpdate() {
+	if (document.rejectUpdate.passwordcheck.value == "") {
+		alert("비밀번호를 입력해주세요!");
+		rejectUpdate.passwordcheck.focus();
+		return false;
+	}
+	if (document.rejectUpdate.passwordcheck.value != document.rejectUpdate.passwordcheck_user.value) {
+		alert("비밀번호가 일치하지 않습니다.!");
+		rejectUpdate.passwordcheck.focus();
+		return false;
+	}
+	if (document.rejectUpdate.rejectcontent.value == "") {
+		alert("비밀번호가 일치하지 않습니다.!");
+		rejectUpdate.rejectcontent.focus();
+		return false;
+	}
+	return true;
+}
+
+function customerconversation() {
+	if (document.customerconversation.customerconversationtextarea.value == "") {
+		alert("내용을 입력해주세요!");
+		rejectUpdate.customerconversationtextarea.focus();
+		return false;
+	}
+	if (document.customerconversation.customerconversationSelect.value == "0") {
+		alert("카테고리를 선택해주세요!");
+		rejectUpdate.customerconversationSelect.focus();
+		return false;
+	}
+	return true;
+}
+
+function answerCustomer() {
+	if (document.answer.answercontent.value == "무조건 친절하게! 이해하실 수 있게!!") {
+		alert("내용을 입력해주세요!");
+		answer.answercontent.focus();
+		return false;
+	}
+	return true;
+}
+
+function businessUpdate() {
+	if (document.businessUpdate.content.value == "") {
+		alert("내용을 입력해주세요 !");
+		businessUpdate.content.focus();
+		return false;
+	}
+	return true;
+}
+
+function delete_member() {
+	if (document.delete.pwd.value == "") {
+		alert("암호를 입력하지 않으셨어요 !(°ロ°) !");
+		frm.delete.focus();
+		return false;
+	}
+	if (document.delete.pwd.value != document.delete.origin_pwd.value) {
+		alert("암호가 일치하지않아욧 ㅠㅠΣ(꒪ȏ꒪)");
+		frm.delete.focus();
+		return false;
+	}
+	return true;
+}
