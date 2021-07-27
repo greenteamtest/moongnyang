@@ -2,73 +2,10 @@
  * 
  */
 
+let userEmail = $('#write_container').find('input[type="hidden"]').val();
+let clickTarget ;
 
-
-
-
-$('.card-img-top').click(function() {
-
-	const param = {
-		"idx": $(this).prev().val()
-	};
-
-	showPlaceInfoAJAX(param);
-	showReviewAJAX(param);
-
-})
-
-
-
-$('.d-block.w-100').on('error', function() {
-	$(this).attr('src', 'health&edu/place/place_img/logo.png');
-})
-
-
-$('.title').click(function() {
-	$(this).next().toggle();
-})
-
-
-$('.card-img-top').click(function() {
-	$('.title').next().hide();
-})
-
-
-
-
-
-$('#btn1').click(function() { // static modal (글등록창) show
-	let userEmail = $('#write_container').find('input[type="hidden"]').val();
-
-	if (userEmail.length == 0 || userEmail == null) { // 로그인 여부 체크 
-		$('#requestLogin').modal('show');
-		return;
-	}
-
-	if (getSessionAJAX() == 'null') { // 세션 만료 체크 
-		alert('세션이 만료되었습니다. 로그인 페이지로 이동합니다');
-		location.href = 'login.do';
-		return;
-	}
-	
-	if(checkForOverlapReviewAJAX() == '-1'){
-		$('#checkOverlap').modal('show');
-		return;
-	} 
-
-
-	$('#write_container').find('#review_textarea').val("");
-	$('#cntNum').text('0');
-	$('#write_container').modal('show');
-})
-
-$('.ui.button').click(function() { // static modal hide
-	$('#write_container').modal('hide');
-
-})
-
-
-function showPlaceInfoAJAX(param) {
+const showPlaceInfoAJAX = (param) => {
 	$.ajax({
 		"url": "controller.do?command=placeList",
 		"data": { "jsonData": JSON.stringify(param) },
@@ -100,8 +37,8 @@ function showPlaceInfoAJAX(param) {
 	})
 }
 
-
-function showReviewAJAX(param) {
+// 리뷰 목록
+const showReviewsAJAX = (param) => {
 	$.ajax({
 		"url": "controller.do?command=review",
 		"data": { "jsonData": JSON.stringify(param) },
@@ -133,8 +70,25 @@ function showReviewAJAX(param) {
 					}
 
 					text = `<span id="star_rating"> ${text} </span>`;
-
-					$('.comment').append(`<div class="content">
+					
+					if (userEmail == rs[key].user_email) {
+						$('.comment').append(`<div class="content">
+				<img src="health&edu/place/place_img/logo.png" class="profile_img">&ensp;
+				<a class="author" style="font-size: 1.8rem;">${rs[key].user_email}</a>
+				<div class="metadata">
+				<span class="date">${rs[key].write_date} at ${rs[key].write_time}</span>
+				&ensp;
+				${text}&ensp; ${rs[key].my_rating}
+				</div>
+				<div id="ctrlBtnGroup">
+					 <div><button  id="rvsBtn" class="ui inverted violet button">수정</button></div>
+					 <div><button  id="dltBtn" class="ui inverted violet button">삭제</button></div>
+				</div>
+				<div class="text" style="font-size: 1.8rem;">${rs[key].contents}</div>
+				<div class="actions"></div>
+				</div>`)
+					} else {
+						$('.comment').append(`<div class="content">
 				<img src="health&edu/place/place_img/logo.png" class="profile_img">&ensp;
 				<a class="author" style="font-size: 1.8rem;">${rs[key].user_email}</a>
 				<div class="metadata">
@@ -145,15 +99,37 @@ function showReviewAJAX(param) {
 				<div class="text" style="font-size: 1.8rem;">${rs[key].contents}</div>
 				<div class="actions"></div>
 				</div>`)
+
+					}
+
 				}
 			}
 		}
 	})
 }
+const checkForOverlapReviewAJAX = () =>{
+
+	let rs = "";
+
+	const param = {
+		"idx": clickTarget,
+		"email": $('#write_container').find('input[type="hidden"]').val(),
+	}
+
+	$.ajax({
+		url: "controller.do?command=overlapReview",
+		data: { "jsonData": JSON.stringify(param) },
+		method: "post",
+		async: false,
+		success: (result) => {
+			rs = result;
+		},
+	});
+	return rs;
+}
 
 
-
-function getSessionAJAX() {
+const getSessionAJAX = () => {
 
 	let rs = "";
 
@@ -169,23 +145,77 @@ function getSessionAJAX() {
 	return rs;
 }
 
-function checkForOverlapReviewAJAX() {
+$('.card-img-top').click((e)=> {
 
-	let rs = "";
-	
 	const param = {
-		"idx": $('.card-frame').find('input[type="hidden"]').val(),
-		"email": $('#write_container').find('input[type="hidden"]').val(),
+		"idx": $(e.currentTarget).prev().val()
+	};
+	clickTarget = param.idx;
+	showPlaceInfoAJAX(param);
+	showReviewsAJAX(param);
+
+})
+
+
+
+$('.d-block.w-100').on('error', (e) => {
+	$(e.currentTarget).attr('src', 'health&edu/place/place_img/logo.png');
+})
+
+
+$('.title').click((e)=> {
+	$(e.currentTarget).next().toggle();
+})
+
+
+$('.card-img-top').click(()=> {
+	$('.title').next().hide();
+})
+
+
+
+
+
+$('#btn1').click(()=> { // static modal (글등록창) show
+
+
+	if (userEmail.length == 0 || userEmail == null) { // 로그인 여부 체크 
+		$('#requestLogin').modal('show');
+		return;
 	}
 
-	$.ajax({
-		url: "controller.do?command=overlapReview",
-		data: {"jsonData" : JSON.stringify(param)},
-		method: "post", 
-		async: false,
-		success: (result) => {
-			rs = result;
-		},
-	});
-	return rs;
-}
+	if (getSessionAJAX() == 'null') { // 세션 만료 체크 
+		alert('세션이 만료되었습니다. 로그인 페이지로 이동합니다');
+		location.href = 'login.do';
+		return;
+	}
+	
+	if(checkForOverlapReviewAJAX() == '-1'){
+		$('#checkOverlap').modal('show');
+		return;
+	}
+
+	
+	$('#select_rating > .star.icon').attr('style', 'color: pink');
+	$('#write_container').find('.review_textarea').val("");
+	$('#cntNum').text('0');
+	$('#write_container').modal('show');
+})
+
+$('.ui.button').click(()=> { // static modal hide
+	$('#write_container').modal('hide');
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+

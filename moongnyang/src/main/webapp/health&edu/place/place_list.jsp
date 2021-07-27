@@ -21,6 +21,8 @@
 <link href="health&edu/place/place.css" rel="stylesheet" />
 <script defer src="health&edu/place/place_info.js" type="text/javascript"></script>
 <script defer src="health&edu/place/insert_review.js" type="text/javascript"></script>
+<script defer src="health&edu/place/revise_review.js" type="text/javascript"></script>
+<script defer src="health&edu/place/delete_review.js" type="text/javascript"></script>
 <style>
 </style>
 </head>
@@ -161,19 +163,19 @@
 															<i class="icon edit"></i> 리뷰를 등록하세요
 														</div>
 
-														<!-- Modal -->
+														<!-- insert Review Modal -->
 														<div class="modal fade" id="write_container" data-bs-backdrop="static" data-bs-keyboard="false"
 															tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 															<div class="modal-dialog modal-dialog-centered">
 																<div class="modal-content">
 																	<div class="modal-header">
-																		<h5 class="modal-title" id="staticBackdropLabel">Review</h5>
+																		<h5 class="modal-title" id="staticBackdropLabel">리뷰 등록</h5>
 																	</div>
 																	<div class="modal-body">
 																		<form class="ui reply form">
 																			<div class="field">
 																				<input type="hidden" value="${loginUser.getEmail()}" />
-																				<textarea id="review_textarea"></textarea>
+																				<textarea class="review_textarea" style="font-size: 1.5rem"></textarea>
 																			</div>
 																		</form>
 																	</div>
@@ -183,7 +185,7 @@
 																			<span id="cntNum">0</span>
 																			/ 500 ]&nbsp;
 																		</div>
-																		<span id="select_rating" style="font-size: 1.2rem">
+																		<span id="select_rating_insert" style="font-size: 1.2rem">
 																			별점 <i class="hand point right outline icon"></i> <i class="star icon" style="color: pink"></i> <i
 																				class="star icon" style="color: pink"></i> <i class="star icon" style="color: pink"></i> <i
 																				class="star icon" style="color: pink"></i> <i class="star icon" style="color: pink"></i>
@@ -191,16 +193,13 @@
 																		<div class="ui buttons">
 																			<button class="ui button">취소</button>
 																			<div class="or"></div>
-																			<button class="ui positive button">리뷰 등록</button>
+																			<button class="ui positive button">등록</button>
 																		</div>
 																	</div>
 																</div>
 															</div>
 														</div>
-
-
 													</div>
-
 												</div>
 											</div>
 										</div>
@@ -214,24 +213,102 @@
 									<button type="button" class="btn btn-primary">Save changes</button>
 								</div>
 
+								<!-- request text count Modal -->
+								<div class="modal fade" id="minText" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+									<div class="modal-dialog modal-dialog-centered">
+										<div class="modal-content">
+											<div class="modal-header"></div>
+											<div class="modal-body">■ &nbsp; 10 글자 이상 입력 해 주세요 &nbsp;■</div>
+											<div class="modal-footer"></div>
+										</div>
+									</div>
+								</div>
+
+								<!-- request text count Modal -->
+								<div class="modal fade" id="maxText" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+									<div class="modal-dialog modal-dialog-centered">
+										<div class="modal-content">
+											<div class="modal-header"></div>
+											<div class="modal-body">■ &nbsp; 1000 글자 이하로 작성 해 주세요 &nbsp;■</div>
+											<div class="modal-footer"></div>
+										</div>
+									</div>
+								</div>
+
 								<!-- request login Modal -->
 								<div class="modal fade" id="requestLogin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 									<div class="modal-dialog modal-dialog-centered">
 										<div class="modal-content">
 											<div class="modal-header"></div>
-											<div class="modal-body">■ &nbsp;  로그인 후 이용 가능 합니다  &nbsp;■</div>
+											<div class="modal-body">■ &nbsp; 로그인 후 이용 가능 합니다 &nbsp;■</div>
 											<div class="modal-footer"></div>
 										</div>
 									</div>
 								</div>
-								
+
 								<!-- checkForOverlap Modal -->
 								<div class="modal fade" id="checkOverlap" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 									<div class="modal-dialog modal-dialog-centered">
 										<div class="modal-content">
 											<div class="modal-header"></div>
-											<div class="modal-body">■ &nbsp;  리뷰는 한개만 등록 할 수 있습니다  &nbsp;■</div>
+											<div class="modal-body">■ &nbsp; 리뷰는 한개만 등록 할 수 있습니다 &nbsp;■</div>
 											<div class="modal-footer"></div>
+										</div>
+									</div>
+								</div>
+
+								<!-- delete Modal -->
+								<div class="modal fade" id="deleteReviewContainer" tabindex="-1" aria-labelledby="exampleModalLabel"
+									aria-hidden="true">
+									<div class="modal-dialog modal-dialog-centered">
+										<div class="modal-content">
+											<div class="modal-header"></div>
+											<div class="modal-body">■ &nbsp; 등록하신 리뷰를 삭제하시겠습니까 ? &nbsp;■</div>
+											<div class="modal-footer">
+												<div class="ui buttons">
+													<button class="ui button">취소</button>
+													<div class="or"></div>
+													<button class="ui positive button">확인</button>
+												</div>
+											</div>
+											<input type="hidden" value="${loginUser.getEmail()}" />
+										</div>
+									</div>
+								</div>
+
+								<!-- revise Review Modal -->
+								<div class="modal fade" id="reviseReviewContainer" data-bs-backdrop="static" data-bs-keyboard="false"
+									tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+									<div class="modal-dialog modal-dialog-centered">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title" id="staticBackdropLabel">리뷰 수정</h5>
+											</div>
+											<div class="modal-body">
+												<form class="ui reply form">
+													<div class="field">
+														<input type="hidden" value="${loginUser.getEmail()}" />
+														<textarea class="review_textarea"></textarea>
+													</div>
+												</form>
+											</div>
+											<div class="modal-footer" id="sub-footer">
+												<div id="cntNum_frame">
+													[
+													<span id="cntNum">0</span>
+													/ 500 ]&nbsp;
+												</div>
+												<span id="select_rating_revise" style="font-size: 1.2rem">
+													별점 <i class="hand point right outline icon"></i> <i class="star icon" style="color: pink"></i> <i
+														class="star icon" style="color: pink"></i> <i class="star icon" style="color: pink"></i> <i
+														class="star icon" style="color: pink"></i> <i class="star icon" style="color: pink"></i>
+												</span>
+												<div class="ui buttons">
+													<button class="ui button">취소</button>
+													<div class="or"></div>
+													<button class="ui positive button" id="sucRvs">수정 완료</button>
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -243,5 +320,6 @@
 		</main>
 	</div>
 	<%@ include file="../footer.jsp"%>
+
 </body>
 </html>

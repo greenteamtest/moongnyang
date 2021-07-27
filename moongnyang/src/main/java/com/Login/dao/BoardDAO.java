@@ -10,6 +10,7 @@ import java.util.List;
 
 import com.Login.dto.DBManager;
 import com.Login.dto.boardVO;
+import com.community.dao.CommunityDAO;
 
 public class BoardDAO {
 	private BoardDAO() {

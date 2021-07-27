@@ -1,10 +1,11 @@
 package com.picnic.controller;
 
 import com.picnic.controller.action.Action;
+import com.picnic.controller.action.Cafe_Action_Kakao;
+import com.picnic.controller.action.Cafe_Action_Naver;
 import com.picnic.controller.action.Index_Action;
 import com.picnic.controller.action.Picnic_Action;
 import com.picnic.controller.action.Abandonment_Action;
-import com.picnic.controller.action.Abandonment_View_Action;
 
 
 public class ActionFactory {
@@ -28,9 +29,11 @@ public class ActionFactory {
 			action = new Index_Action();
 		} else if(command.equals("abandonment")) {
 			action = new Abandonment_Action();
-		} else if(command.equals("abandonment_view")) {
-			action = new Abandonment_View_Action();
-		} 			 
+		} else if(command.equals("cafe_kakao")) {
+			action = new Cafe_Action_Kakao();
+		} else if(command.equals("cafe_naver")) {
+			action = new Cafe_Action_Naver();
+		}
 		
 		else {
 			System.out.println("ActionFactroy : action이 선택되지 않았어!!");
