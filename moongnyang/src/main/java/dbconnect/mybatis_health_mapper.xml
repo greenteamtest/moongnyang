@@ -39,4 +39,18 @@
 		values (seq_user_review.nextval, #{user_email}, #{place_list_id}, #{contents}, #{my_rating}, to_char(sysdate , 'yy.MM.dd'), to_char(sysdate, 'hh24:mi'))
 	</select>
 
+
+	<!-- revise user review -->
+	<select id="reviseReview" parameterType="review" resultType="int">
+		update user_review
+		set contents = #{contents} ,my_rating = #{my_rating},
+		write_date =to_char(sysdate , 'yy.MM.dd') , write_time =to_char(sysdate, 'hh24:mi')
+		where user_email = #{user_email} and place_list_id = #{place_list_id}
+	</select>
+	
+	<!-- delete user review -->
+	<select id="deleteReview" parameterType="review" resultType="int">
+	delete from user_review where user_email = #{user_email} and place_list_id = #{place_list_id}
+	</select>
+
 </mapper>

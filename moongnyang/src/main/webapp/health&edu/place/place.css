@@ -91,7 +91,10 @@ div[class="ui big comments"] {
 }
 
 .comment .content {
+	position : relative;
+	width : 45rem;
 	padding-left: 3rem;
+	padding-right : 0;
 	text-align: left;
 }
 
@@ -100,7 +103,18 @@ div[class="ui big comments"] {
 }
 
 .text {
+	width : 35rem;
 	padding-left: 4rem;
+}
+
+#ctrlBtnGroup{
+	position : absolute;
+	top : 1.2rem;
+	right : -0.5rem;
+}
+
+#rvsBtn, #dltBtn {
+	margin : 0.5rem;
 }
 
 #cntNum_frame {
@@ -115,4 +129,9 @@ div[class="ui big comments"] {
 #select_rating{
 	margin-right:  0.7rem;
 }
+
+
+.review_textarea{
+	font-size: 1.5rem;
+} 
 

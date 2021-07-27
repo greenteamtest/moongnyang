@@ -39,7 +39,6 @@ public class Health_insertReview_Action implements Action {
 				rs = service.insert_review(vo);
 
 				if (rs > 0) {
-					System.out.println("rs ? :" + rs);
 					response.getWriter().write(String.valueOf(rs));
 				} else {
 					response.getWriter().write("null");
