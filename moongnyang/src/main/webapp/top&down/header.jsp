@@ -101,7 +101,7 @@
 	</div>
 </nav>
 <!-- Modal -->
-<div class="modal fade modal-dialog-scrollable" id="check_notification"
+<div class="modal fade modal-dialog-scrollable " id="check_notification"
 	tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -111,50 +111,28 @@
 					aria-label="Close"></button>
 			</div>
 			<div class="modal-body">
-
-				<!-- 여기부분 뽀 이취 해서 반복 시키면 될듯하다 이론상 -->
 				<div class="container">
 					<div class="row">
-						<div class="col-8">
-							<strong>###카테고리</strong> 님이 당신의 글에 댓글을 남겼어요
+						<div class="col-sm-8">
+							<div class="alert alert-primary d-flex align-items-center"
+								role="alert">
+								<strong>####</strong>님이 당신의 글에 댓글을 남겼어요!!
+							</div>
 						</div>
-						<div class="col-4">
+						<div class="col-sm-4">
 							<button class="btn btn-outline-success">확인버튼</button>
 						</div>
 					</div>
 				</div>
-				<div
-					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-					<div class="btn-toolbar mb-2 mb-md-0"></div>
-				</div>
-				<div class="container">
-					<div class="row">
-						<div class="col-8">
-							<strong>###카테고리</strong> 님이 당신의 글에 댓글을 남겼어요
-						</div>
-						<div class="col-4">
-							<button class="btn btn-outline-success">확인버튼</button>
-						</div>
-					</div>
-				</div>
-				<div
-					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-					<div class="btn-toolbar mb-2 mb-md-0"></div>
-				</div>
+			</div>
 
-
-				<!-- 여기부분 뽀 이취 해서 반복 시키면 될듯하다 이론상 -->
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary"
+					data-bs-dismiss="modal">닫기</button>
+				<button type="button" class="btn btn-Danger"
+					data-bs-toggle="tooltip" data-bs-placement="top"
+					title="하나하나 보시는것도 좋아요">모두 읽음 처리</button>
 			</div>
 		</div>
-
 	</div>
-
-	<div class="modal-footer">
-		<button type="button" class="btn btn-secondary"
-			data-bs-dismiss="modal">닫기</button>
-		<button type="button" class="btn btn-Danger" data-bs-toggle="tooltip"
-			data-bs-placement="top" title="하나하나 보시는것도 좋아요">모두 읽음 처리</button>
-	</div>
-</div>
-</div>
 </div>
