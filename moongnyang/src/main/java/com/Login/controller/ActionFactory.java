@@ -25,8 +25,8 @@ public class ActionFactory {
 		if (command.equals("managerPageCus")) {
 			action = new managerPageCustomer();
 		}
-		if (command.equals("managerPageQna")) {
-			action = new qnaChangeAction();
+		if (command.equals("managerPageStaff")) {
+			action = new staffChangeAction();
 		}
 		if (command.equals("managerPageBusi")) {
 			action = new managerBusiChangeAction();

@@ -63,8 +63,12 @@
 									data-feather="shopping-cart"></span> 사업자신청관리
 							</a></li>
 							<li class="nav-item"><a class="nav-link"
-								href="mypageServlet?command=managerPageQna"> <span
-									data-feather="users"></span> QnA
+								href="mypageServlet?command=managerPageStaff"> <span
+									data-feather="users"></span>근태관리 #휴가
+							</a></li>
+							<li class="nav-item"><a class="nav-link"
+								href="mypageServlet?command=managerPageStaff"> <span
+									data-feather="layers"></span>업무연동
 							</a></li>
 						</ul>
 					</div>

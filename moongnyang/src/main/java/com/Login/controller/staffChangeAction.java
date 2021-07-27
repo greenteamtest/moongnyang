@@ -9,12 +9,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.Login.controller.action.Action;
 
-public class qnaChangeAction implements Action {
+public class staffChangeAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String url = "member/manage/managerPageQna.jsp";
+		String url = "member/manage/managerPageStaff.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 	}
