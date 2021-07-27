@@ -115,7 +115,7 @@
 						<!-- work1 -->
 							<article id="work1" class="panel">
 								<header>
-									<h2 align="center">카페 게시판</h2>
+									<h2 align="center">카페 찾기</h2>
 								</header>
 								<div align="center">
 									<img class="roll-in-left" src="picnic/images/right.png" width="100px" height="100px">									
