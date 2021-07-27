@@ -82,34 +82,46 @@ public class Health_MyBatisService {
 		return rs;
 	}
 
-//	// select place_info
-//	public HealthPlaceVo selectPlace_info(int place_key) {
-//		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
-//		HealthPlaceVo vo = null;
-//
-//		try {
-//			vo = dao.selectPlace_info(session, place_key); // dao에 SqlSession 전송
-//		} finally {
-//			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
-//		}
-//		return vo;
-//	}
+	// insert review
+	public int reviseReview(HealthReviewVo vo) {
+		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
+		int rs = 0;
 
-//	// 비밀번호 매칭 > 게시글 번호 획득
-//	public int select_boardIDX(Map<String, Object> map) {
-//		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
-//		int rs = 0;
-//
-//		try {
-//			Integer output = dao.select_boardIDX(session, map);
-//			System.out.println("output : " + output);
-//			rs = output == null ? 0 : output;
-//			System.out.println("rs : " + rs);
-//		} finally {
-//			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
-//		}
-//		return rs;
-//	}
-//
+		try {
+			rs = dao.reviseReview(session, vo); // dao에 SqlSession 전송
+
+			if (rs > 0) {
+				session.commit();
+				System.out.println("revise review success");
+			} else {
+				session.rollback();
+				System.out.println("revise review fail");
+			}
+		} finally {
+			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
+		}
+		return rs;
+	}
+
+	// delete review
+	public int deleteReview(HealthReviewVo vo) {
+		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
+		int rs = 0;
+
+		try {
+			rs = dao.deleteReview(session, vo); // dao에 SqlSession 전송
+
+			if (rs > 0) {
+				session.commit();
+				System.out.println("delete review success");
+			} else {
+				session.rollback();
+				System.out.println("delete review fail");
+			}
+		} finally {
+			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
+		}
+		return rs;
+	}
 
 }

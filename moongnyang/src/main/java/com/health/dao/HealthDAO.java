@@ -17,12 +17,20 @@ public class HealthDAO {
 		return session.selectList("selectUser_Review", place_idx);
 	}
 
-	public List<HealthReviewVo> checkOverlapReview(SqlSession session, HealthReviewVo vo) { //
+	public List<HealthReviewVo> checkOverlapReview(SqlSession session, HealthReviewVo vo) { // 리뷰 중복 확인
 		return session.selectList("checkOverlapReview", vo);
 	}
 
-	public int insert_review(SqlSession session, HealthReviewVo vo) {
+	public int insert_review(SqlSession session, HealthReviewVo vo) { // 리뷰 등록
 		return session.insert("insert_review", vo);
+	}
+
+	public int reviseReview(SqlSession session, HealthReviewVo vo) { // 리뷰 수정
+		return session.update("reviseReview", vo);
+	}
+
+	public int deleteReview(SqlSession session, HealthReviewVo vo) { // 리뷰 수정
+		return session.delete("deleteReview", vo);
 	}
 //	public Integer select_boardIDX(SqlSession session, Map<String, Object> map) {
 //		return session.selectOne("select_boardIDX", map);

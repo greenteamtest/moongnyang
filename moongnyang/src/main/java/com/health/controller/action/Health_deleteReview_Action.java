@@ -1,7 +1,6 @@
 package com.health.controller.action;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -13,13 +12,13 @@ import org.json.simple.parser.ParseException;
 
 import com.health.dto.HealthReviewVo;
 
-public class Health_overlapReview_Action implements Action {
+public class Health_deleteReview_Action implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String jsonData = request.getParameter("jsonData");
-		List<HealthReviewVo> review = null;
+		int result = 0;
 
 		if (jsonData != null && jsonData.trim().length() != 0) {
 			try {
@@ -29,15 +28,12 @@ public class Health_overlapReview_Action implements Action {
 				vo.setPlace_list_id(Integer.parseInt(jo.get("idx").toString()));
 				vo.setUser_email(jo.get("email").toString());
 
-				review = service.checkOverlapReview(vo);
-				System.out.println(jo.get("idx").toString());
-				System.out.println("review.size ? :" + review.size());
+				result = service.deleteReview(vo);
 
-				if (review.size() > 0) {
-					response.getWriter().write(String.valueOf(-1));
-					System.out.println("딸기");
-				} else {
+				if (result > 0) {
 					response.getWriter().write(String.valueOf(0));
+				} else {
+					response.getWriter().write(String.valueOf(-1));
 				}
 			} catch (ParseException e) {
 				e.printStackTrace();
