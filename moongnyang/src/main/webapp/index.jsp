@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ include file="bootstrap/boot.jsp"%>
 <%@ include file="top&down/header.jsp"%>
 
@@ -694,10 +695,11 @@
 		</div>
 	</div>
 	<!-- Bootstrap core JS-->
-<!-- 	<script -->
-<!-- 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script> -->
-<!-- 	<!-- Core theme JS--> -->
-<!-- 	<script src="js/scripts.js"></script> -->
-<!-- 	<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script> -->
+	<!-- 	<script -->
+	<!-- 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script> -->
+	<!-- 	<!-- Core theme JS-->
+	-->
+	<!-- 	<script src="js/scripts.js"></script> -->
+	<!-- 	<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script> -->
 </body>
 </html>

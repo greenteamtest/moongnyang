@@ -12,7 +12,13 @@
 	content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 <meta name="generator" content="Hugo 0.84.0">
 <title>☕관리자페이지</title>
-
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="./jquery-ui-1.12.1/jquery-ui.min.css">
+<script src="./jquery-ui-1.12.1/jquery-ui.min.js"></script>
+<script src="./jquery-ui-1.12.1/datepicker-ko.js"></script>
 <link rel="canonical"
 	href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
 
@@ -43,6 +49,7 @@
 <link href="member/manage/dashboard.css" rel="stylesheet">
 </head>
 <body>
+
 	<div class="container-fluid">
 		<div class="row">
 			<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
@@ -90,7 +97,7 @@
 						<div class="col">
 							<div class="d-grid gap-3">
 								<button type="button" class="btn btn-primary btn-lg"
-									data-bs-toggle="modal" data-bs-target="#requestOvertime">
+									data-bs-toggle="modal" data-bs-target="#requestOvertimeBefore">
 									시간외근무 신청하기</button>
 								<button type="button" class="btn btn-primary btn-lg"
 									data-bs-toggle="modal" data-bs-target="#viewOvertime">
@@ -126,118 +133,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>1,001</td>
-								<td>random</td>
-								<td>data</td>
-								<td>placeholder</td>
-								<td>text</td>
-							</tr>
-							<tr>
-								<td>1,002</td>
-								<td>placeholder</td>
-								<td>irrelevant</td>
-								<td>visual</td>
-								<td>layout</td>
-							</tr>
-							<tr>
-								<td>1,003</td>
-								<td>data</td>
-								<td>rich</td>
-								<td>dashboard</td>
-								<td>tabular</td>
-							</tr>
-							<tr>
-								<td>1,003</td>
-								<td>information</td>
-								<td>placeholder</td>
-								<td>illustrative</td>
-								<td>data</td>
-							</tr>
-							<tr>
-								<td>1,004</td>
-								<td>text</td>
-								<td>random</td>
-								<td>layout</td>
-								<td>dashboard</td>
-							</tr>
-							<tr>
-								<td>1,005</td>
-								<td>dashboard</td>
-								<td>irrelevant</td>
-								<td>text</td>
-								<td>placeholder</td>
-							</tr>
-							<tr>
-								<td>1,006</td>
-								<td>dashboard</td>
-								<td>illustrative</td>
-								<td>rich</td>
-								<td>data</td>
-							</tr>
-							<tr>
-								<td>1,007</td>
-								<td>placeholder</td>
-								<td>tabular</td>
-								<td>information</td>
-								<td>irrelevant</td>
-							</tr>
-							<tr>
-								<td>1,008</td>
-								<td>random</td>
-								<td>data</td>
-								<td>placeholder</td>
-								<td>text</td>
-							</tr>
-							<tr>
-								<td>1,009</td>
-								<td>placeholder</td>
-								<td>irrelevant</td>
-								<td>visual</td>
-								<td>layout</td>
-							</tr>
-							<tr>
-								<td>1,010</td>
-								<td>data</td>
-								<td>rich</td>
-								<td>dashboard</td>
-								<td>tabular</td>
-							</tr>
-							<tr>
-								<td>1,011</td>
-								<td>information</td>
-								<td>placeholder</td>
-								<td>illustrative</td>
-								<td>data</td>
-							</tr>
-							<tr>
-								<td>1,012</td>
-								<td>text</td>
-								<td>placeholder</td>
-								<td>layout</td>
-								<td>dashboard</td>
-							</tr>
-							<tr>
-								<td>1,013</td>
-								<td>dashboard</td>
-								<td>irrelevant</td>
-								<td>text</td>
-								<td>visual</td>
-							</tr>
-							<tr>
-								<td>1,014</td>
-								<td>dashboard</td>
-								<td>illustrative</td>
-								<td>rich</td>
-								<td>data</td>
-							</tr>
-							<tr>
-								<td>1,015</td>
-								<td>random</td>
-								<td>tabular</td>
-								<td>information</td>
-								<td>text</td>
-							</tr>
+
 						</tbody>
 					</table>
 				</div>
@@ -260,25 +156,132 @@
 </body>
 </html>
 
-<!-- 모달 초과근무 신청 -->
+<!-- 모달 사전신청 초과근무 신청 -->
 <form>
-	<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+	<div class="modal fade modal-dialog modal-lg "
+		id="requestOvertimeBefore" data-bs-backdrop="static"
 		data-bs-keyboard="false" tabindex="-1"
-		aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		aria-labelledby="requestOvertimeBefore" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+					<h5 class="modal-title" id="staticBackdropLabel">
+						시간외근무신청 <strong>#사전신청</strong>
+					</h5>
 					<button type="button" class="btn-close" data-bs-dismiss="modal"
 						aria-label="Close"></button>
 				</div>
-				<div class="modal-body">...</div>
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="d-grid gap-2">
+								<button type="button" class="btn btn-primary">사전신청</button>
+							</div>
+						</div>
+						<div class="col">
+							<div class="d-grid gap-2">
+								<button type="button" class="btn btn-primary"
+									data-bs-dismiss="modal" data-bs-toggle="modal"
+									data-bs-target="#requestOvertimeAfter">소급신청</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-body"></div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
-						data-bs-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Understood</button>
+						data-bs-dismiss="modal">닫기</button>
+					<button type="button" class="btn btn-primary">신청하기</button>
 				</div>
 			</div>
 		</div>
 	</div>
 </form>
+<!-- 모달 소급신청 초과근무 신청 -->
+<form>
+	<script type="text/javascript">
+		//<![CDATA[
+		$(function() {
+			$("#date3").datepicker({
+				onSelect : function(dateText, inst) {
+					console.log(dateText);
+					console.log(inst);
+				}
+			});
+		});
+		//]]>
+	</script>
+	<div class="modal fade modal-dialog modal-lg "
+		id="requestOvertimeAfter" data-bs-backdrop="static"
+		data-bs-keyboard="false" tabindex="-1"
+		aria-labelledby="requestOvertimeAfter" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="staticBackdropLabel">
+						시간외근무신청 <strong>#소급신청</strong>
+					</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="d-grid gap-2">
+								<button type="button" class="btn btn-primary"
+									data-bs-dismiss="modal" data-bs-toggle="modal"
+									data-bs-target="#requestOvertimeBefore">사전신청</button>
+							</div>
+						</div>
+						<div class="col">
+							<div class="d-grid gap-2">
+								<button type="button" class="btn btn-primary"
+									data-bs-toggle="modal" data-bs-target="#requestOvertimeAfter">
+									소급신청</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-body">
+					<div class="input-group mb-3">
+						<input type="text" class="form-control" name="date" id="date3"
+							readonly aria-describedby="button-addon2"><input
+							type="button" class="btn btn-outline-secondary" value="달력"
+							onclick="$('#date3').datepicker('show');" />
+					</div>
+					<div class="container">
+						<div class="row">
+							<div class="col">
+								<h6>시작시간</h6>
+							</div>
+							<div class="col">
+								<input type="time" class="form-control">
+							</div>
+							<div class="col"><h6>종료시간</h6></div>
+							<div class="col">
+								<input type="time" class="form-control">
+							</div>
+						</div>
+					</div>
+					<div>
+						<br>
+					</div>
+					<h4>사유를 입력해주세요.</h4>
+					<div class="form-floating">
+						<textarea class="form-control" placeholder="사유입력"
+							style="height: 200px"></textarea>
+						<label for="floatingTextarea2">사유입력</label>
+					</div>
+
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">닫기</button>
+					<button type="button" class="btn btn-primary">초과근무 소급신청하기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+<!-- 내역보기 -->
