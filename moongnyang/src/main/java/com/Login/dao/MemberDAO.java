@@ -9,8 +9,11 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import com.Login.dto.MemberVO;
+import com.community.dao.CommunityDAO;
 
 public class MemberDAO {
+
+
 	private MemberDAO() {
 
 	}
