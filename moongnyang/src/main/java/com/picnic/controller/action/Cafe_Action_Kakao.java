@@ -7,14 +7,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-public class Picnic_Action implements Action{	
+public class Cafe_Action_Kakao implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException{		
-		String url = "picnic/picnic.jsp";
+		throws ServletException, IOException{
+		String url = "picnic/cafe/cafe_kakao.jsp";
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 	}
-
+	
 }

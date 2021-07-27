@@ -1,18 +1,16 @@
 package com.picnic.dto;
 
-import java.sql.Timestamp;
-
 public class BoardVO {
-	private int num;
-	private String fileName;
-	private String id;
-	private int readcount;
+	//카페 Vo
 	private String title;
-	private String place;
-	private String phone;
-	private String email;
-	private String content;	
-	private Timestamp writedate;
+	private String link;
+	private String category;
+	private String description;
+	private String telephone;
+	private String address;
+	private String roadAddress;
+	private String mapx;
+	private String mapy;
 	//유기 동물 Vo		
 	private String desertionNo;		//유기 번호
 	private String filename;		//이미지
@@ -39,6 +37,60 @@ public class BoardVO {
 	private String pageNo;				//페이지 번호
 	private String totalCount;			//전체 결과수
 	
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getLink() {
+		return link;
+	}
+	public void setLink(String link) {
+		this.link = link;
+	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public String getTelephone() {
+		return telephone;
+	}
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getRoadAddress() {
+		return roadAddress;
+	}
+	public void setRoadAddress(String roadAddress) {
+		this.roadAddress = roadAddress;
+	}
+	public String getMapx() {
+		return mapx;
+	}
+	public void setMapx(String mapx) {
+		this.mapx = mapx;
+	}
+	public String getMapy() {
+		return mapy;
+	}
+	public void setMapy(String mapy) {
+		this.mapy = mapy;
+	}
 	public String getDesertionNo() {
 		return desertionNo;
 	}
@@ -123,66 +175,6 @@ public class BoardVO {
 	public void setSexCd(String sexCd) {
 		this.sexCd = sexCd;
 	}
-	public int getNum() {
-		return num;
-	}
-	public void setNum(int num) {
-		this.num = num;
-	}
-	public String getFileName() {
-		return fileName;
-	}
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
-	}
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
-	public int getReadcount() {
-		return readcount;
-	}
-	public void setReadcount(int readcount) {
-		this.readcount = readcount;
-	}
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	public String getPlace() {
-		return place;
-	}
-	public void setPlace(String place) {
-		this.place = place;
-	}
-	public String getPhone() {
-		return phone;
-	}
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public String getContent() {
-		return content;
-	}
-	public void setContent(String content) {
-		this.content = content;
-	}
-	public Timestamp getWritedate() {
-		return writedate;
-	}
-	public void setWritedate(Timestamp writedate) {
-		this.writedate = writedate;
-	}
 	public String getNeuterYn() {
 		return neuterYn;
 	}
@@ -243,6 +235,5 @@ public class BoardVO {
 	public void setTotalCount(String totalCount) {
 		this.totalCount = totalCount;
 	}
-
 	
 }

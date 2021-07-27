@@ -5,6 +5,7 @@
 <jsp:include page="../../top&down/header.jsp" flush="ture" />
 <jsp:include page="../../bootstrap/boot.jsp" flush="ture" />
 <html>
+<br><br><br><br>
 <head>
 <meta charset="UTF-8">
 <title>유기 동물</title>
@@ -20,10 +21,7 @@ table {
 <body>
 	<c:set var="i" value="0" />
 	<c:set var="j" value="2" />
-	<br>
-	<br>
-	<br>
-	<br>
+	
 	<h1 align="center">유기 동물</h1>
 	<form action="BoardServlet_picnic">
 		<input type="hidden" name="command" value="abandonment">
@@ -123,8 +121,8 @@ table {
 		<table>
 			<tr>		
 				<td align="center">
-					<a href="javascript:backPage();">back</a>
-					<a href="javascript:nextPage();">next</a>					
+					<h2><a href="javascript:backPage();">back</a>&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="javascript:nextPage();">next</a></h2>					
 				</td>
 		</tr>
 	</table>

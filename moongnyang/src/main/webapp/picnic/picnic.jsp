@@ -8,15 +8,17 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-	<jsp:include page="../top&down/header.jsp" flush="ture"/>
-	<jsp:include page="../bootstrap/boot.jsp" flush="ture"/>
+	<jsp:include page="../top&down/header.jsp" flush="ture" />
+	<jsp:include page="../bootstrap/boot.jsp" flush="ture" />
 
 <html>
+<br><br><br><br>
 	<head>
 		<title>뭉냥뭉냥</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="picnic/picnic/css/main.css" />
+		<link rel="stylesheet" href="picnic/css/picnic.css" />
 		<script type="text/javascript" src="picnic/select.js"></script>
 	</head>
 	<body class="is-preload">
@@ -99,9 +101,8 @@
 								<div style="text-align :center">
 								<br>
 								<input type="hidden" name="pageNo" value="1"> 
-								<button type="submit" style="background:white">
-								<img src="picnic/images/loupe.png" width="100px" height="100px"></button>									
-								<br>↑↑검색↑↑								
+								<button type="submit" style="background:white" class="wobble-hor-bottom">
+								<img src="picnic/images/loupe.png" width="100px" height="100px"></button>							
 								</div>
 								
 								<div style="text-align :center">
@@ -114,9 +115,13 @@
 						<!-- work1 -->
 							<article id="work1" class="panel">
 								<header>
-									<h2>공사중</h2>
+									<h2 align="center">카페 게시판</h2>
 								</header>
-								
+								<div align="center">
+									<img class="roll-in-left" src="picnic/images/right.png" width="100px" height="100px">									
+									<a href="BoardServlet_picnic?command=cafe_kakao"><img src="picnic/images/run.gif" width="100px" height="100px"></a>
+									<img class="roll-in-right" src="picnic/images/left.png" width="100px" height="100px">
+								</div>
 							</article>
 							<!-- work2 -->
 							<article id="work2" class="panel">
