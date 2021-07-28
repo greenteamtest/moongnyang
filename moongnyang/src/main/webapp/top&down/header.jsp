@@ -90,10 +90,15 @@
 					<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 						<li><h6 class="dropdown-header">카테고리</h6></li>
 						<li><a class="dropdown-item"
-							href="BoardServlet_picnic?command=picnic">Picnic</a></li>
+							href="BoardServlet_picnic?command=picnic">Picnic </a></li>
 						<li><a class="dropdown-item" href="health&edu/main.jsp">Health
 								& Edu</a></li>
-						<li><a class="dropdown-item" href="#">Community</a></li>
+
+						<!-- 						<li><a class="dropdown-item" href="#">Community</a></li> -->
+						<li><a class="dropdown-item"
+							href="Community_BoardServlet?command=board_list">Community</a></li>
+						<li><hr class="dropdown-divider"></li>
+						<li><a class="dropdown-item" href="#">Abandoned pets</a></li>
 						<li><hr class="dropdown-divider"></li>
 						<li><h6 class="dropdown-header">고객센터</h6></li>
 						<li><a class="dropdown-item"
