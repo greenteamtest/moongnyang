@@ -15,7 +15,7 @@
 	<form action="logout.do">
 		<h2>Hi, ${아이고 오타났네 ㅋㅋr.nickname}(${loginUser.nickname})님</h2>
 		<h2>Hi, ${loginUser.nickname}(${loginUser.nickname})님</h2>
-		<h2>Hi, ${loginUser.nickname}(${loginUser.nickname})님</h2>
+		<h2>Hi, ㅂㅈㄷ${loginUser.nickname}(${loginUser.nickname})님</h2>
 		<h2>Hi, ${loginUser.nickname}(${loginUser.nickname})님</h2>
 		<h2>Hi, ${loginUser.nickname}(${loginUser.nickname})님</h2>
 		<h2>Hi, ${loginUser.nickname}(${loginUser.nickname})님</h2>
