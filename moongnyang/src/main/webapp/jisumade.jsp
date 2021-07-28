@@ -17,6 +17,8 @@
 				<li class="menu_join">로그인</li>
 				<li class="menu_join">회원가입</li>
 				<li class="menu_join">07/28 수 18:39</li>
+				<li class="menu_join">07/28 수 18:39</li>
+				<li class="menu_join">07/28 수 18:39</li>
 			</ul>
 		</div>
 	</div>
