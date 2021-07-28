@@ -15,6 +15,9 @@
 	<form action="logout.do">
 
 		<h2>Hi, ${loginUser.nickname}(${loginUser.nickname})님</h2>
+		<h2>Hi, ${loginUser.nickname}(${loginUser.nickname})님</h2>
+		<h2>Hi, ${loginUser.nickname}(${loginUser.nickname})님</h2>
+		<h2>Hi, ${loginUser.nickname}(${loginUser.nickname})님</h2>
 		<input type="submit" value="logout">&nbsp;&nbsp;
 		<!-- 	<input type="button" value="회원정보변경" -->
 		<%-- 		onclick="location.href='memberUpdate.do?user_email=${loginUser.user_email}'"> --%>
