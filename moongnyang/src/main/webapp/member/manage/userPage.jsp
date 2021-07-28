@@ -237,6 +237,7 @@
 
 <!--  회원정보변경 부분 -->
 <form action="memberUpdate.do" method="post" name="frm">
+	<script type="text/javascript" src="js/login/member.js"></script>
 	<div class="modal fade" id="changemember" tabindex="-1"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
@@ -293,6 +294,7 @@
 </form>
 <!--  회원탈퇴 부분 -->
 <form action="memberDelete.do" method="post" name="delete">
+	<script type="text/javascript" src="js/login/member.js"></script>
 	<div class="modal fade" id="withdrawal" tabindex="-1"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog">

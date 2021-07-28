@@ -115,6 +115,69 @@
 						</tbody>
 					</table>
 				</div>
+				<div
+					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+					<div class="btn-toolbar mb-2 mb-md-0"></div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<table class="table table-dark table-hover">
+							<tr>
+								<h2>#사용자List #고마우신분들</h2>
+							</tr>
+							<tread>
+							<tr>
+								<th scope="col">글번호</th>
+								<th scope="col">별명</th>
+								<th scope="col">시간/일정</th>
+								<th scope="col">사유</th>
+								<th scope="col">확인</th>
+							</tr>
+							</tread>
+							<tbody>
+
+							</tbody>
+						</table>
+					</div>
+					<div class="col">
+						<table class="table table-dark table-hover">
+							<tr>
+								<h2>#사업자List #고마우신분들</h2>
+							</tr>
+							<tread>
+							<tr>
+								<th scope="col">글번호</th>
+								<th scope="col">별명</th>
+								<th scope="col">시간/일정</th>
+								<th scope="col">사유</th>
+								<th scope="col">확인</th>
+							</tr>
+							</tread>
+							<tbody>
+
+							</tbody>
+						</table>
+					</div>
+					<div class="col">
+						<table class="table table-dark table-hover">
+							<tr>
+								<h2>#신고내역</h2>
+							</tr>
+							<tread>
+							<tr>
+								<th scope="col">글번호</th>
+								<th scope="col">별명</th>
+								<th scope="col">시간/일정</th>
+								<th scope="col">사유</th>
+								<th scope="col">확인</th>
+							</tr>
+							</tread>
+							<tbody>
+
+							</tbody>
+						</table>
+					</div>
+				</div>
 			</main>
 		</div>
 	</div>

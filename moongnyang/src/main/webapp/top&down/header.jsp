@@ -78,6 +78,11 @@
 						href="mypageServlet?command=managerPage" data-bs-toggle="tooltip"
 						data-bs-placement="top" title="명심! 사용자들을 위한 운영!">페이지관리</a></li>
 				</c:if>
+				<c:if test="${loginUser.auth==3}">
+					<li class="nav-item"><a class="nav-link"
+						href="mypageServlet?command=managerPage" data-bs-toggle="tooltip"
+						data-bs-placement="top" title="명심! 사용자들을 위한 운영!">페이지관리</a></li>
+				</c:if>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"
 					role="button" data-bs-toggle="dropdown" aria-expanded="false">
