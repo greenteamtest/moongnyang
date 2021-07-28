@@ -26,6 +26,7 @@
 	</select>
 
 
+
 	<!-- 업체당 user review -->
 	<select id="checkOverlapReview" parameterType="review" resultType="com.health.dto.HealthReviewVo">
 		select user_review_idx from user_review where place_list_id = #{place_list_id} and user_email = #{user_email}
@@ -40,6 +41,8 @@
 	</select>
 
 
+
+
 	<!-- revise user review -->
 	<select id="reviseReview" parameterType="review" resultType="int">
 		update user_review
@@ -47,10 +50,51 @@
 		write_date =to_char(sysdate , 'yy.MM.dd') , write_time =to_char(sysdate, 'hh24:mi')
 		where user_email = #{user_email} and place_list_id = #{place_list_id}
 	</select>
-	
+
+
+
 	<!-- delete user review -->
 	<select id="deleteReview" parameterType="review" resultType="int">
-	delete from user_review where user_email = #{user_email} and place_list_id = #{place_list_id}
+		delete from user_review where user_email = #{user_email} and place_list_id = #{place_list_id}
 	</select>
+
+
+
+	<!-- update place dips -->
+	<select id="updatePlaceDips" parameterType="Hashmap" resultType="int">
+		update place_info set dips_cont =
+		<choose>
+			<when test="state eq 'positive'.toString()">
+				dips_cont +1
+			</when>
+			<otherwise>
+				dips_cont -1
+			</otherwise>
+		</choose>
+		where place_list_id = #{idx}
+	</select>
+
+
+	<!-- get placedips -->
+	<select id="getPlaceDips" parameterType="Hashmap" resultType="int">
+		select dips_cont from place_info where place_list_id = #{idx}
+	</select>
+
+
+	<!-- control user dips -->
+	<select id="controlUserDips" parameterType="Hashmap" resultType="int">
+		<choose>
+			<when test="state eq 'positive'.toString()">
+				insert into user_dips
+				values (SEQ_USER_DIPS.nextval, #{email}, #{idx})
+			</when>
+			<otherwise>
+				delete from user_dips 
+				where user_email = #{email} 
+				and dips_place_list_id = #{idx}
+			</otherwise>
+		</choose>
+	</select>
+
 
 </mapper>

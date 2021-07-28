@@ -1,6 +1,7 @@
 package service.health;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -20,7 +21,7 @@ public class Health_MyBatisService {
 
 	// select place_list
 	public List<HealthPlaceVo> selectPlace_List(String key) {
-		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
+		SqlSession session = MybatisSessionFactory.getSqlSession();
 		List<HealthPlaceVo> list = null;
 
 		try {
@@ -29,45 +30,45 @@ public class Health_MyBatisService {
 		} catch (NumberFormatException e) {
 			list = dao.selectPlace_List(session, key);
 		} finally {
-			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
+			session.close();
 		}
 		return list;
 	}
 
 	// select user_reivew
 	public List<HealthReviewVo> selectUser_Review(String key) {
-		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
+		SqlSession session = MybatisSessionFactory.getSqlSession();
 		List<HealthReviewVo> list = null;
 
 		try {
 			int numKey = Integer.parseInt(key);
 			list = dao.selectUser_Review(session, numKey);
 		} finally {
-			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
+			session.close();
 		}
 		return list;
 	}
 
 	// checkForOverlapReview
 	public List<HealthReviewVo> checkOverlapReview(HealthReviewVo vo) {
-		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
+		SqlSession session = MybatisSessionFactory.getSqlSession();
 		List<HealthReviewVo> result = null;
 
 		try {
 			result = dao.checkOverlapReview(session, vo);
 		} finally {
-			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
+			session.close();
 		}
 		return result;
 	}
 
 	// insert review
 	public int insert_review(HealthReviewVo vo) {
-		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
+		SqlSession session = MybatisSessionFactory.getSqlSession();
 		int rs = 0;
 
 		try {
-			rs = dao.insert_review(session, vo); // dao에 SqlSession 전송
+			rs = dao.insert_review(session, vo);
 
 			if (rs > 0) {
 				session.commit();
@@ -77,18 +78,18 @@ public class Health_MyBatisService {
 				System.out.println("insert review fail");
 			}
 		} finally {
-			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
+			session.close();
 		}
 		return rs;
 	}
 
 	// insert review
 	public int reviseReview(HealthReviewVo vo) {
-		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
+		SqlSession session = MybatisSessionFactory.getSqlSession();
 		int rs = 0;
 
 		try {
-			rs = dao.reviseReview(session, vo); // dao에 SqlSession 전송
+			rs = dao.reviseReview(session, vo);
 
 			if (rs > 0) {
 				session.commit();
@@ -98,18 +99,18 @@ public class Health_MyBatisService {
 				System.out.println("revise review fail");
 			}
 		} finally {
-			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
+			session.close();
 		}
 		return rs;
 	}
 
 	// delete review
 	public int deleteReview(HealthReviewVo vo) {
-		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
+		SqlSession session = MybatisSessionFactory.getSqlSession();
 		int rs = 0;
 
 		try {
-			rs = dao.deleteReview(session, vo); // dao에 SqlSession 전송
+			rs = dao.deleteReview(session, vo);
 
 			if (rs > 0) {
 				session.commit();
@@ -119,7 +120,69 @@ public class Health_MyBatisService {
 				System.out.println("delete review fail");
 			}
 		} finally {
-			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
+			session.close();
+		}
+		return rs;
+	}
+
+	// update placedips
+	public int updatePlaceDips(Map<String, Object> map) {
+		SqlSession session = MybatisSessionFactory.getSqlSession();
+		int rs = 0;
+
+		try {
+			rs = dao.updatePlaceDips(session, map);
+			if (rs > 0) {
+				session.commit();
+				System.out.println("update placedips success");
+			} else {
+				session.rollback();
+				System.out.println("update placedips fail");
+			}
+		} finally {
+			session.close();
+		}
+		return rs;
+	}
+
+	// get place dips
+	public int getPlaceDips(Map<String, Object> map) {
+		SqlSession session = MybatisSessionFactory.getSqlSession();
+		int rs = 0;
+
+		try {
+			rs = dao.getPlaceDips(session, map);
+
+			if (rs > 0) {
+				session.commit();
+				System.out.println("get placedips success");
+			} else {
+				session.rollback();
+				System.out.println("get placedips fail");
+			}
+		} finally {
+			session.close();
+		}
+		return rs;
+	}
+
+	// insert user dips
+	public int controlUserDips(Map<String, Object> map) {
+		SqlSession session = MybatisSessionFactory.getSqlSession();
+		int rs = 0;
+
+		try {
+			rs = dao.controlUserDips(session, map);
+
+			if (rs > 0) {
+				session.commit();
+				System.out.println("insert user dips success");
+			} else {
+				session.rollback();
+				System.out.println("insert user dips fail");
+			}
+		} finally {
+			session.close();
 		}
 		return rs;
 	}

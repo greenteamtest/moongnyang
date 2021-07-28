@@ -25,7 +25,8 @@
 <script defer src="health&edu/place/insert_review.js" type="text/javascript"></script>
 <script defer src="health&edu/place/revise_review.js" type="text/javascript"></script>
 <script defer src="health&edu/place/delete_review.js" type="text/javascript"></script>
-<script defer src="health&edu/place/kakaomap2.js" type="text/javascript"></script>
+<script defer src="health&edu/place/kakaomap.js" type="text/javascript"></script>
+<script defer src="health&edu/place/place_dips.js" type="text/javascript"></script>
 
 <style>
 </style>
@@ -34,6 +35,9 @@
 	<div id="maincontainer">
 		<main>
 			<section id="place_list">
+				<div id="user_email">
+					<input type="hidden" value="${loginUser.getEmail()}" />
+				</div>
 				<div id="card-border">
 					<c:if test="${empty place }">
 						<span id="no-data">데이터가 없습니다 </span>
@@ -56,7 +60,7 @@
 									<li class="list-group-item"># 거리</li>
 									<li class="list-group-item">
 										<div class="ui labeled button" tabindex="0" style="margin-top: 1rem">
-											<div class="ui red button">
+											<div class="ui red button" style="background-color: white; border: 2px solid red; color: red">
 												<i class="heart icon"></i> 찜
 											</div>
 											<a class="ui basic red left pointing label"> ${ vo.getDips_cont() } </a>
@@ -142,19 +146,19 @@
 											</div>
 											<div class="content" id="map-frame">
 												<div id="container" class="view_map">
-													<div id="mapWrapper" >
+													<div id="mapWrapper">
 														<div id="map" style="width: 100%; height: 100%"></div>
 														<!-- 지도를 표시할 div 입니다 -->
-														<input type="button" id="btnRoadview" onclick="toggleMap(false)" title="로드뷰 보기" value="로드뷰" >
+														<input type="button" id="btnRoadview" onclick="toggleMap(false)" title="로드뷰 보기" value="로드뷰">
 													</div>
-													<div id="rvWrapper" >
+													<div id="rvWrapper">
 														<div id="roadview" style="height: 100%"></div>
 														<!-- 로드뷰를 표시할 div 입니다 -->
-														<input type="button" id="btnMap" onclick="toggleMap(true)" title="지도 보기" value="지도" >
+														<input type="button" id="btnMap" onclick="toggleMap(true)" title="지도 보기" value="지도">
 													</div>
 												</div>
 												<div id="searchmap">
-													<button id="searchmapBtn" class="ui inverted secondary button" >카카오 지도 검색</button>
+													<button id="searchmapBtn" class="ui inverted secondary button">카카오 지도 검색</button>
 												</div>
 											</div>
 

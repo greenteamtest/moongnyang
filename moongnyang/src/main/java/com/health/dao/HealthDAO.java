@@ -1,6 +1,7 @@
 package com.health.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -32,13 +33,17 @@ public class HealthDAO {
 	public int deleteReview(SqlSession session, HealthReviewVo vo) { // 리뷰 수정
 		return session.delete("deleteReview", vo);
 	}
-//	public Integer select_boardIDX(SqlSession session, Map<String, Object> map) {
-//		return session.selectOne("select_boardIDX", map);
-//	}
-//
-//	public int delete_board(SqlSession session, int board_idx) {
-//		return session.delete("delete_board", board_idx);
-//	}
-//
+
+	public int updatePlaceDips(SqlSession session, Map<String, Object> map) { // 찜 update
+		return session.update("updatePlaceDips", map);
+	}
+
+	public int getPlaceDips(SqlSession session, Map<String, Object> map) { // 찜 count
+		return session.selectOne("getPlaceDips", map);
+	}
+
+	public int controlUserDips(SqlSession session, Map<String, Object> map) { // 찜 count
+		return session.insert("controlUserDips", map);
+	}
 
 }
