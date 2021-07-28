@@ -16,18 +16,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>Document</title>
+<title>HEALTH * EDU</title>
 
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=61eaf0ccb670c71fede5ee3ff459092e&libraries=services,clusterer,drawing"></script>
 <link href="health&edu/place/place.css" rel="stylesheet" />
 <script defer src="health&edu/place/place_info.js" type="text/javascript"></script>
 <script defer src="health&edu/place/insert_review.js" type="text/javascript"></script>
 <script defer src="health&edu/place/revise_review.js" type="text/javascript"></script>
 <script defer src="health&edu/place/delete_review.js" type="text/javascript"></script>
+<script defer src="health&edu/place/kakaomap2.js" type="text/javascript"></script>
+
 <style>
 </style>
 </head>
 <body>
-	<div id="container">
+	<div id="maincontainer">
 		<main>
 			<section id="place_list">
 				<div id="card-border">
@@ -36,7 +40,7 @@
 					</c:if>
 					<c:forEach var="vo" items="${ place }">
 						<div class="card-frame">
-							<div class="card" style="width: 18rem;">
+							<div class="card" style="width: 23rem;">
 								<input type="hidden" value="${vo.idx}" class="photo_${vo.idx}" />
 								<img src="health&edu/place/place_img/${vo.place}_${vo.idx}.png" class="card-img-top" alt="place_photo"
 									class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#place_info" />
@@ -136,9 +140,24 @@
 											<div class="title">
 												<i class="dropdown icon"></i> 매장 위치
 											</div>
-											<div class="content">
-												<span class="introduce"></span>
+											<div class="content" id="map-frame">
+												<div id="container" class="view_map">
+													<div id="mapWrapper" >
+														<div id="map" style="width: 100%; height: 100%"></div>
+														<!-- 지도를 표시할 div 입니다 -->
+														<input type="button" id="btnRoadview" onclick="toggleMap(false)" title="로드뷰 보기" value="로드뷰" >
+													</div>
+													<div id="rvWrapper" >
+														<div id="roadview" style="height: 100%"></div>
+														<!-- 로드뷰를 표시할 div 입니다 -->
+														<input type="button" id="btnMap" onclick="toggleMap(true)" title="지도 보기" value="지도" >
+													</div>
+												</div>
+												<div id="searchmap">
+													<button id="searchmapBtn" class="ui inverted secondary button" >카카오 지도 검색</button>
+												</div>
 											</div>
+
 										</div>
 
 										<div class="ui styled fluid accordion">
@@ -318,7 +337,11 @@
 				</div>
 			</section>
 		</main>
+
+
+
 	</div>
+
 	<%@ include file="../footer.jsp"%>
 
 </body>

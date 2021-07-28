@@ -3,7 +3,7 @@
  */
 
 let userEmail = $('#write_container').find('input[type="hidden"]').val();
-let clickTarget ;
+let clickTarget;
 
 const showPlaceInfoAJAX = (param) => {
 	$.ajax({
@@ -30,9 +30,11 @@ const showPlaceInfoAJAX = (param) => {
 			$(".address").html(rs[0].address);
 			$(".phone_num").html(rs[0].phone_num);
 			$(".open_time").html(rs[0].open_time);
-			$(".introduce").html(rs[0].introduce);
 			$(".pet_kind").html(rs[0].pet_kind);
 			$(".dips_cont").html(rs[0].dips_cont);
+			$(".introduce").html(rs[0].introduce);
+			myMarker($('.address').text());
+
 		}
 	})
 }
@@ -70,7 +72,7 @@ const showReviewsAJAX = (param) => {
 					}
 
 					text = `<span id="star_rating"> ${text} </span>`;
-					
+
 					if (userEmail == rs[key].user_email) {
 						$('.comment').append(`<div class="content">
 				<img src="health&edu/place/place_img/logo.png" class="profile_img">&ensp;
@@ -107,7 +109,7 @@ const showReviewsAJAX = (param) => {
 		}
 	})
 }
-const checkForOverlapReviewAJAX = () =>{
+const checkForOverlapReviewAJAX = () => {
 
 	let rs = "";
 
@@ -145,7 +147,7 @@ const getSessionAJAX = () => {
 	return rs;
 }
 
-$('.card-img-top').click((e)=> {
+$('.card-img-top').click((e) => {
 
 	const param = {
 		"idx": $(e.currentTarget).prev().val()
@@ -163,12 +165,14 @@ $('.d-block.w-100').on('error', (e) => {
 })
 
 
-$('.title').click((e)=> {
+$('.title').click((e) => {
 	$(e.currentTarget).next().toggle();
+	map.relayout();
+	roadview.relayout();
 })
 
 
-$('.card-img-top').click(()=> {
+$('.card-img-top').click(() => {
 	$('.title').next().hide();
 })
 
@@ -176,7 +180,7 @@ $('.card-img-top').click(()=> {
 
 
 
-$('#btn1').click(()=> { // static modal (글등록창) show
+$('#btn1').click(() => { // static modal (글등록창) show
 
 
 	if (userEmail.length == 0 || userEmail == null) { // 로그인 여부 체크 
@@ -189,26 +193,31 @@ $('#btn1').click(()=> { // static modal (글등록창) show
 		location.href = 'login.do';
 		return;
 	}
-	
-	if(checkForOverlapReviewAJAX() == '-1'){
+
+	if (checkForOverlapReviewAJAX() == '-1') {
 		$('#checkOverlap').modal('show');
 		return;
 	}
 
-	
+
 	$('#select_rating > .star.icon').attr('style', 'color: pink');
 	$('#write_container').find('.review_textarea').val("");
 	$('#cntNum').text('0');
 	$('#write_container').modal('show');
 })
 
-$('.ui.button').click(()=> { // static modal hide
+$('.ui.button').click(() => { // static modal hide
 	$('#write_container').modal('hide');
 
 })
 
 
 
+$('#searchmapBtn').click(() => {
+	alert(`${placeX}, ${placeY}`);
+	var t = `https://map.kakao.com/link/map/${placeY},${placeX}`;
+	window.open('about:blank').location.href = t;
+})
 
 
 

@@ -15,7 +15,7 @@
 }
 
 #card-border {
-	width: 100rem;
+	width: 140rem;
 	text-align: center;
 }
 
@@ -91,10 +91,10 @@ div[class="ui big comments"] {
 }
 
 .comment .content {
-	position : relative;
-	width : 45rem;
+	position: relative;
+	width: 45rem;
 	padding-left: 3rem;
-	padding-right : 0;
+	padding-right: 0;
 	text-align: left;
 }
 
@@ -103,18 +103,18 @@ div[class="ui big comments"] {
 }
 
 .text {
-	width : 35rem;
+	width: 35rem;
 	padding-left: 4rem;
 }
 
-#ctrlBtnGroup{
-	position : absolute;
-	top : 1.2rem;
-	right : -0.5rem;
+#ctrlBtnGroup {
+	position: absolute;
+	top: 1.2rem;
+	right: -0.5rem;
 }
 
 #rvsBtn, #dltBtn {
-	margin : 0.5rem;
+	margin: 0.5rem;
 }
 
 #cntNum_frame {
@@ -126,12 +126,96 @@ div[class="ui big comments"] {
 #sub-footer {
 	text-align: left;
 }
-#select_rating{
-	margin-right:  0.7rem;
+
+#select_rating {
+	margin-right: 0.7rem;
 }
 
-
-.review_textarea{
+.review_textarea {
 	font-size: 1.5rem;
-} 
+}
 
+#map-frame {
+	text-align: center;
+	height: 40rem;
+}
+
+#testmap {
+	border: 2px solid gray;
+	width: 35rem;
+	height: 32rem;
+	margin: 0;
+	display: inline-block;
+	width: 35rem;
+}
+
+#searchmap {
+	margin: 1rem;
+}
+
+#container {
+	border: 2px solid gray;
+	overflow: hidden;
+	height: 30rem;
+	position: relative;
+	overflow: hidden;
+}
+
+#btnRoadview, #btnMap {
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	padding: 7px 12px;
+	font-size: 14px;
+	border: 1px solid #dbdbdb;
+	background-color: #fff;
+	border-radius: 2px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, .04);
+	z-index: 1;
+	cursor: pointer;
+}
+
+#btnRoadview:hover, #btnMap:hover {
+	background-color: #fcfcfc;
+	border: 1px solid #c1c1c1;
+}
+
+#container.view_map #mapWrapper {
+	z-index: 10;
+	width: 100%;
+	height: 30rem;
+	position: relative;
+}
+
+#container.view_map #btnMap {
+	display: none;
+}
+
+#container.view_roadview #mapWrapper {
+	z-index: 0;
+}
+
+#container.view_roadview #btnRoadview {
+	display: none;
+}
+
+#mapWrapper {
+	width: 100%;
+	height: 30rem;
+	position: relative;
+}
+
+#rvWrapper {
+	width: 100%;
+	height: 30rem;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#btnRoadview, #btnMap {
+	height: 2.5rem;
+	width: 5rem;
+	font-size: 1.8rem;
+	padding: 0;
+}
