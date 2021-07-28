@@ -16,6 +16,9 @@
 			<ul class="list_menu">
 				<li class="menu_join">로그인</li>
 				<li class="menu_join">회원가입</li>
+				<li class="menu_join">회원가입</li>
+				<li class="menu_join">회원가입</li>
+				<li class="menu_join">내가 김은호다</li>
 			</ul>
 		</div>
 	</div>
