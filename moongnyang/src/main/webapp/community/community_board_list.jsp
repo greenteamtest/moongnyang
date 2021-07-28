@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<%@ include file="../top&down/header.jsp"%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,9 +44,7 @@
 	rel="stylesheet">
 <!-- Custom styles for this template -->
 
-<link href="blog.css" rel="stylesheet">
-
-
+<link href="community_board_list.css" rel="stylesheet">
 
 
 
@@ -157,10 +160,25 @@
 
 			</div>
 			<div class="col-md-auto">
-				<div class="row">게시물 작성하기</div>
-				<div class="row">내가 쓴 글 확인하기</div>
-				<div class="row">(로그인o->바로 글쓰는 곳으로)</div>
-				<div class="row">(로그인x->"로그인이 필요한 기능입니다")</div>
+
+
+				<c:if test="${empty loginUser}">
+					<button type="button" class="btn btn-warning"
+						onclick="location.href='../member/login.do' ">로그인</button>
+
+					<a class="nav-link" href="login.do" data-bs-toggle="tooltip"
+						data-bs-placement="top" title="함께해요!">로그인</a>
+				</c:if>
+
+				<c:if test="${!empty loginUser}">
+					<li class="nav-item"><a class="nav-link" href="logout.do"
+						data-bs-toggle="tooltip" data-bs-placement="top" title="정말 나가시게요?">내가
+							쓴 글</a></li>
+				</c:if>
+
+				<div class="row">내</div>
+				<div class="row">3</div>
+				<div class="row">4</div>
 
 			</div>
 		</div>
@@ -202,17 +220,48 @@
 		<!-- 개별 게시글 나오는 구간 ! -->
 
 		<section class="item_list">
+			<c:forEach var="board" items="${boardList}">
+				<div
+					class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+					<div class="col p-4 d-flex flex-column position-static">
+						<strong class="d-inline-block mb-2 text-primary">아이디: 릴리냥</strong>
+						<h3 class="mb-0">${board.title }</h3>
+						<div class="mb-1 text-muted">date: 3시간 전</div>
+						<p class="card-text mb-auto">contents : 드디어 캣타워를 장만 했답니다! 그동안은
+							책꽃이 위에서만 놀다가 캣타워가 생기니 너무 잘 노네요~!</p>
+						<div class="btn-group">
+							<button type="button" class="btn btn-sm btn-outline-secondary">like_count
+								:좋아요</button>
+							<button type="button" class="btn btn-sm btn-outline-secondary">comment:
+								댓글</button>
+						</div>
+						<a href="#" class="stretched-link">Continue reading</a>
+					</div>
+					<div class="col-auto d-none d-lg-block">
+						<svg class="bd-placeholder-img" width="200" height="250"
+							xmlns="http://www.w3.org/2000/svg" role="img"
+							aria-label="Placeholder: Thumbnail"
+							preserveAspectRatio="xMidYMid slice" focusable="false">
+							<title>Placeholder</title><rect width="100%" height="100%"
+								fill="#55595c" />
+							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+					</div>
+				</div>
+			</c:forEach>
+
 			<div
 				class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
 				<div class="col p-4 d-flex flex-column position-static">
 					<strong class="d-inline-block mb-2 text-primary">아이디: 릴리냥</strong>
-					<h3 class="mb-0">새로 산 캣타워 자랑해요~!</h3>
-					<div class="mb-1 text-muted">3시간 전</div>
-					<p class="card-text mb-auto">드디어 캣타워를 장만 했답니다! 그동안은 책꽃이 위에서만
-						놀다가 캣타워가 생기니 너무 잘 노네요~!</p>
+					<h3 class="mb-0">게시물 제목 , title</h3>
+					<div class="mb-1 text-muted">date: 3시간 전</div>
+					<p class="card-text mb-auto">contents : 드디어 캣타워를 장만 했답니다! 그동안은
+						책꽃이 위에서만 놀다가 캣타워가 생기니 너무 잘 노네요~!</p>
 					<div class="btn-group">
-						<button type="button" class="btn btn-sm btn-outline-secondary">좋아요</button>
-						<button type="button" class="btn btn-sm btn-outline-secondary">댓글</button>
+						<button type="button" class="btn btn-sm btn-outline-secondary">like_count
+							:좋아요</button>
+						<button type="button" class="btn btn-sm btn-outline-secondary">comment:
+							댓글</button>
 					</div>
 					<a href="#" class="stretched-link">Continue reading</a>
 				</div>
@@ -226,72 +275,9 @@
 							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
 				</div>
 			</div>
-			<div
-				class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-				<div class="col p-4 d-flex flex-column position-static">
-					<strong class="d-inline-block mb-2 text-primary">아이디: 릴리냥</strong>
-					<h3 class="mb-0">새로 산 캣타워 자랑해요~!</h3>
-					<div class="mb-1 text-muted">3시간 전</div>
-					<p class="card-text mb-auto">드디어 캣타워를 장만 했답니다! 그동안은 책꽃이 위에서만
-						놀다가 캣타워가 생기니 너무 잘 노네요~!</p>
-					<div class="btn-group">
-						<button type="button" class="btn btn-sm btn-outline-secondary">좋아요</button>
-						<button type="button" class="btn btn-sm btn-outline-secondary">댓글</button>
-					</div>
-				</div>
-				<div class="col-auto d-none d-lg-block">
-					<svg class="bd-placeholder-img" width="200" height="250"
-						xmlns="http://www.w3.org/2000/svg" role="img"
-						aria-label="Placeholder: Thumbnail"
-						preserveAspectRatio="xMidYMid slice" focusable="false">
-							<title>Placeholder</title><rect width="100%" height="100%"
-							fill="#55595c" />
-							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
 
-				</div>
-			</div>
-			<div
-				class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-				<div class="col p-4 d-flex flex-column position-static">
-					<strong class="d-inline-block mb-2 text-primary">아이디: 릴리냥</strong>
-					<h3 class="mb-0">새로 산 캣타워 자랑해요~!</h3>
-					<div class="mb-1 text-muted">3시간 전</div>
-					<p class="card-text mb-auto">드디어 캣타워를 장만 했답니다! 그동안은 책꽃이 위에서만
-						놀다가 캣타워가 생기니 너무 잘 노네요~!</p>
-					<a href="#" class="stretched-link">Continue reading</a>
-				</div>
-				<div class="col-auto d-none d-lg-block">
-					<svg class="bd-placeholder-img" width="200" height="250"
-						xmlns="http://www.w3.org/2000/svg" role="img"
-						aria-label="Placeholder: Thumbnail"
-						preserveAspectRatio="xMidYMid slice" focusable="false">
-							<title>Placeholder</title><rect width="100%" height="100%"
-							fill="#55595c" />
-							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
 
-				</div>
-			</div>
-			<div
-				class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-				<div class="col p-4 d-flex flex-column position-static">
-					<strong class="d-inline-block mb-2 text-primary">아이디: 릴리냥</strong>
-					<h3 class="mb-0">새로 산 캣타워 자랑해요~!</h3>
-					<div class="mb-1 text-muted">3시간 전</div>
-					<p class="card-text mb-auto">드디어 캣타워를 장만 했답니다! 그동안은 책꽃이 위에서만
-						놀다가 캣타워가 생기니 너무 잘 노네요~!</p>
-					<a href="#" class="stretched-link">Continue reading</a>
-				</div>
-				<div class="col-auto d-none d-lg-block">
-					<svg class="bd-placeholder-img" width="200" height="250"
-						xmlns="http://www.w3.org/2000/svg" role="img"
-						aria-label="Placeholder: Thumbnail"
-						preserveAspectRatio="xMidYMid slice" focusable="false">
-							<title>Placeholder</title><rect width="100%" height="100%"
-							fill="#55595c" />
-							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
 
-				</div>
-			</div>
 		</section>
 
 		<div class="position-relative">

@@ -12,6 +12,8 @@ import com.community.dto.CommunityVO;
 
 
 public class CommunityDAO {
+	
+
 
 	private CommunityDAO() {
 	}
@@ -23,7 +25,7 @@ public class CommunityDAO {
 	}
 
 	// c Read u d
-	public List<CommunityVO> selectAllProducts() {
+	public List<CommunityVO> selectAllBoards() {
 		// 최근 등록한 상품 먼저 출력하기
 		String sql = "select * from community_board order by board_idx desc";
 		List<CommunityVO> list = new ArrayList<CommunityVO>();
