@@ -1,22 +1,28 @@
-package com.health.dao;
+package com.Staff.dao;
 
 import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.Staff.dto.StaffVO;
 import com.health.dto.HealthPlaceVo;
 import com.health.dto.HealthReviewVo;
-import com.health.dto.HealthUserDipsVo;
 
-public class HealthDAO {
+public class StaffDAO {
+	public StaffDAO() {
+
+	}
+
+//	public List<StaffVO> All_member_List(SqlSession session, HealthReviewVo vo) { // select place list
+//		return session.selectList("All_member_List", vo);
+//	}
+	public int start_timeover(SqlSession session, StaffVO vo) { // select place list
+		return session.insert("start_timeover");
+	}
 
 	public List<HealthPlaceVo> selectPlace_List(SqlSession session, Object value) { // select place list
 		return session.selectList("selectPlace_List", value);
-	}
-
-	public List<HealthUserDipsVo> selectUser_dips(SqlSession session, String email) { // select user dips
-		return session.selectList("selectUser_dips", email);
 	}
 
 	public List<HealthReviewVo> selectUser_Review(SqlSession session, int place_idx) { // select place list

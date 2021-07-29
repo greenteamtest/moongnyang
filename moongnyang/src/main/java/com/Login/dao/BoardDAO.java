@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.Login.dto.DBManager;
+import com.Login.dto.StaffVO;
 import com.Login.dto.boardVO;
-import com.community.dao.CommunityDAO;
 
 public class BoardDAO {
 	private BoardDAO() {
@@ -325,6 +325,58 @@ public class BoardDAO {
 		} finally {
 			DBManager.close(conn, pstmt);
 		}
+	}
+
+	public List<boardVO> select_user_list() {
+		String sql = "select * from user_info where user_auth=0";
+		List<boardVO> list = new ArrayList<boardVO>();
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		try {
+			conn = DBManager.getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				boardVO bVo = new boardVO();
+				bVo.setEmail(rs.getString("user_email"));
+				bVo.setUser_nick(rs.getString("user_nick"));
+				System.out.println(bVo.getEmail());
+				System.out.println(bVo.getUser_nick());
+				list.add(bVo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, stmt, rs);
+		}
+		return list;
+	}
+
+	public List<boardVO> select_busi_list() {
+		String sql = "select * from user_info where user_auth=1";
+		List<boardVO> list = new ArrayList<boardVO>();
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		try {
+			conn = DBManager.getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				boardVO bVo = new boardVO();
+				bVo.setEmail(rs.getString("user_email"));
+				bVo.setUser_nick(rs.getString("user_nick"));
+				System.out.println(bVo.getEmail());
+				System.out.println(bVo.getUser_nick());
+				list.add(bVo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, stmt, rs);
+		}
+		return list;
 	}
 
 }

@@ -8,8 +8,8 @@
 <%@ include file="/health&edu/nav.jsp"%>
 
 
- 
-<!DOCTYPE html>   
+
+<!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="utf-8" />
@@ -35,6 +35,9 @@
 </head>
 <body id="page-top">
 
+	<div id="user_email">
+		<input type="hidden" value="${loginUser.getEmail()}" />
+	</div>
 
 	<!-- Header-->
 	<header class="py-5">

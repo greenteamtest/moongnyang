@@ -1,37 +1,42 @@
-package service.Login;
+package service.Staff;
 
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.health.dao.HealthDAO;
-import com.health.dto.HealthPlaceVo;
+import com.Staff.dao.StaffDAO;
+import com.Staff.dto.StaffVO;
 import com.health.dto.HealthReviewVo;
 
 import dbconnect.MybatisSessionFactory;
 
-public class Member_MyBatisService {
+public class Staff_MyBatisService {
 
-	HealthDAO dao;
+	StaffDAO dao;
 
-	public Member_MyBatisService() {
-		dao = new HealthDAO();
+	public Staff_MyBatisService() {
+		dao = new StaffDAO();
 	}
 
-	// select place_list
-	public List<HealthPlaceVo> selectPlace_List(String key) {
+	// 초과근무 시작!하면서 DB에 저장시키는 것
+	public int start_timeover(StaffVO vo) {
 		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
-		List<HealthPlaceVo> list = null;
+		int rs = 0;
 
 		try {
-			Integer numKey = Integer.parseInt(key);
-			list = dao.selectPlace_List(session, numKey);
-		} catch (NumberFormatException e) {
-			list = dao.selectPlace_List(session, key);
+			rs = dao.start_timeover(session, vo); // dao에 SqlSession 전송
+
+			if (rs > 0) {
+				session.commit();
+				System.out.println("insert review success");
+			} else {
+				session.rollback();
+				System.out.println("insert review fail");
+			}
 		} finally {
 			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
 		}
-		return list;
+		return rs;
 	}
 
 	// select user_reivew

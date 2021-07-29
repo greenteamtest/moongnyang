@@ -1,6 +1,7 @@
 package com.Login.controller;
 
 import com.Login.controller.action.Action;
+import com.Staff.controller.action.startTimeover_Action;
 
 public class ActionFactory {
 	private static ActionFactory instance = new ActionFactory();
@@ -69,6 +70,9 @@ public class ActionFactory {
 		}
 		if (command.equals("deleteAnswer")) {
 			action = new userPage_Answer_DeleteAction();
+		}
+		if (command.equals("startTime")) {
+			action = (Action) new startTimeover_Action();
 		}
 		return action;
 	}

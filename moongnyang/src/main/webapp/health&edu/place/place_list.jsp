@@ -32,6 +32,7 @@
 </style>
 </head>
 <body>
+
 	<div id="maincontainer">
 		<main>
 			<section id="place_list">
@@ -39,31 +40,53 @@
 					<input type="hidden" value="${loginUser.getEmail()}" />
 				</div>
 				<div id="card-border">
-					<c:if test="${empty place }">
+					<c:if test="${empty placeList }">
 						<span id="no-data">데이터가 없습니다 </span>
 					</c:if>
-					<c:forEach var="vo" items="${ place }">
+					<c:forEach var="place" items="${ placeList }">
 						<div class="card-frame">
 							<div class="card" style="width: 23rem;">
-								<input type="hidden" value="${vo.idx}" class="photo_${vo.idx}" />
-								<img src="health&edu/place/place_img/${vo.place}_${vo.idx}.png" class="card-img-top" alt="place_photo"
-									class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#place_info" />
+								<input type="hidden" value="${place.getIdx()}" class="photo_${place.getIdx()}" />
+								<img src="health&edu/place/place_img/${place.getPlace()}_${place.getIdx()}.png" class="card-img-top"
+									alt="place_photo" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#place_info" />
 
 								<div class="card-body">
-									<h5 class="card-title">${vo.getPlace() }</h5>
-									<p class="card-text">${ vo.getAddress() }</p>
+									<h5 class="card-title">${place.getPlace() }</h5>
+									<p class="card-text">${place.getAddress() }</p>
 								</div>
 								<ul class="list-group list-group-flush">
 									<li class="list-group-item">
-										<img src="health&edu/img/pets.png" class="pets-icons" alt="pet_icon"> ${ vo.getPet_kind() }
+										<img src="health&edu/img/pets.png" class="pets-icons" alt="pet_icon"> ${place.getPet_kind() }
 									</li>
 									<li class="list-group-item"># 거리</li>
 									<li class="list-group-item">
 										<div class="ui labeled button" tabindex="0" style="margin-top: 1rem">
-											<div class="ui red button" style="background-color: white; border: 2px solid red; color: red">
-												<i class="heart icon"></i> 찜
-											</div>
-											<a class="ui basic red left pointing label"> ${ vo.getDips_cont() } </a>
+
+											<c:set var="flag" value="false" />
+
+											<c:forEach var="dips" items="${ dipsList }">
+												<c:if test="${ flag eq false}">
+													<c:if test="${place.getIdx() == dips.getDips_place_list_id()}">
+														<c:set var="flag" value="true" />
+													</c:if>
+												</c:if>
+
+											</c:forEach>
+
+											<c:choose>
+												<c:when test="${flag eq true}">
+													<div class="ui red button activated" style="background-color: red; border: 2px solid red; color: white">
+														<i class="heart icon"></i> 찜
+													</div>
+												</c:when>
+												<c:otherwise>
+													<div class="ui red button" style="background-color: white; border: 2px solid red; color: red">
+														<i class="heart icon"></i> 찜
+													</div>
+												</c:otherwise>
+											</c:choose>
+
+											<a class="ui basic red left pointing label"> ${ place.getDips_cont() } </a>
 										</div>
 										<div class="ui labeled button" tabindex="0" style="margin-top: 1rem">
 											<div class="ui basic blue button">

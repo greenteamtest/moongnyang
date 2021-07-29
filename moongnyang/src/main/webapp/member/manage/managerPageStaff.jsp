@@ -214,16 +214,23 @@
 </body>
 </html>
 <!-- 모달 사전신청 초과근무 신청 -->
-<form name="requestvacation">
+<form action="staffServlet" method="post" name="start_timeover">
 	<script type="text/javascript" src="js/login/manage.js"></script>
+
 	<div class="modal fade" id="requestOvertimeBefore"
 		data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
 		aria-labelledby="requestOvertimeBefore" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
+
 					<h5 class="modal-title" id="staticBackdropLabel">
-						시간외근무신청 <strong>#사전신청</strong>
+						시간외근무신청 <strong>#사전신청</strong> <input type="hidden"
+							name="user_email" value="${loginUser.email}" id="user_email">
+						<input type="hidden" name="user_nick"
+							value="${loginUser.nickname}" id="user_nick">
+						<input type="hidden" name="command"
+							value="start_timeover" id="command">
 					</h5>
 					<button type="button" class="btn-close" data-bs-dismiss="modal"
 						aria-label="Close"></button>
@@ -249,7 +256,7 @@
 				<div class="modal-body">
 					<div class="form-floating">
 						<textarea class="form-control" placeholder="Leave a comment here"
-							id="reason" style="height: 200px"></textarea>
+							id="content" name="content" style="height: 200px"></textarea>
 						<label for="floatingTextarea2">사유를 입력해주세요.</label>
 						<h1 class="h1-clock"></h1>
 					</div>
@@ -257,7 +264,8 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-bs-dismiss="modal">닫기</button>
-					<button type="button" class="btn btn-primary">신청하기</button>
+					<button type="submit" class="btn btn-primary">신청하기</button>
+					<button type="submit" class="btn btn-primary">종료하기</button>
 				</div>
 			</div>
 		</div>

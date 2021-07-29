@@ -1,4 +1,4 @@
-package com.Login.controller;
+package com.Staff.controller;
 
 import java.io.IOException;
 
@@ -8,19 +8,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.Login.controller.action.Action;
+import com.Staff.controller.action.Action;
 
-/**
- * Servlet implementation class mypageServlet
- */
-@WebServlet("/mypageServlet")
-public class mypageServlet extends HttpServlet {
+@WebServlet("/staffServlet")
+public class staffServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public mypageServlet() {
+	public staffServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -37,7 +34,7 @@ public class mypageServlet extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		String command = request.getParameter("command");
-		System.out.println("mypageServlet에서 요청을 받음을 확인 : " + command);
+		System.out.println("staffServlet에서 요청을 받음으 확인 : " + command);
 		ActionFactory af = ActionFactory.getInstance();
 		Action action = af.getAction(command);
 		if (action != null) {
