@@ -2,21 +2,19 @@ package com.Staff.controller.action;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.simple.parser.ParseException;
-
 import com.Staff.dto.StaffVO;
 
-public class Staff_startTimeover_Action implements Action {
+public class startTimeover_Action implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String jsonData = request.getParameter("jsonData");
-
+		String url = "member/manage/managerPageStaff.jsp";
 		int rs = 0;
 
 		StaffVO vo = new StaffVO();
@@ -31,12 +29,15 @@ public class Staff_startTimeover_Action implements Action {
 			rs = service.start_timeover(vo);
 
 			if (rs > 0) {
-				response.getWriter().write(String.valueOf(rs));
+				System.out.println("성공 ㅅㅅ");
 			} else {
-				response.getWriter().write("null");
+				System.out.println("실패 ㅠㅠ");
 			}
-		} catch (ParseException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+		dispatcher.forward(request, response);
+
 	}
 }

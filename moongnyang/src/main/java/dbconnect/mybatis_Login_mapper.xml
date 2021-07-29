@@ -1,18 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dao.StaffDAO">
-	<!-- <mapper namespace="com.Staff.dao.StaffDAO"> -->
+<!-- <mapper namespace="dao.StaffDAO"> -->
+	<mapper namespace="com.Staff.dao.StaffDAO">
 
 	<!-- 초과근무 등록 -->
-	<select id="start_timeover" parameterType="review"
+<!-- 	<select id="start_timeover" parameterType="Staff" -->
+<!-- 		resultType="int"> -->
+<!-- 		insert into request_timeover(num_timeover, -->
+<!-- 		user_nick_timeover, user_eamil_timeover, start_timeover, end_timeover, -->
+<!-- 		date_timeover, reason_timeover) -->
+<!-- 		values (request_timeover_seq.NEXTVAL -->
+<!-- 		,#{user_nick}, #{user_email}, to_char(sysdate, -->
+<!-- 		'hh24:mi'),to_char(sysdate, 'hh24:mi'),to_char(sysdate, -->
+<!-- 		'yyyy.mm.dd'),#{content} ) -->
+<!-- 	</select> -->
+	<select id="start_timeover" parameterType="staff"
 		resultType="int">
-		insert into request_timeover(num_timeover,
-		user_nick_timeover, user_eamil_timeover, start_timeover, end_timeover,
-		date_timeover, reason_timeover)
+		insert into request_timeover
 		values (request_timeover_seq.NEXTVAL
 		,#{user_nick}, #{user_email}, to_char(sysdate,
 		'hh24:mi'),to_char(sysdate, 'hh24:mi'),to_char(sysdate,
-		'yy.mm.dd'),#{content} )
+		'yy.mm.dd'),#{content},'대기' )
 	</select>
 
 
@@ -61,7 +69,7 @@
 		place_list_id, contents, my_rating, write_date, write_time)
 		values
 		(seq_user_review.nextval, #{user_email}, #{place_list_id},
-		#{contents}, #{my_rating}, to_char(sysdate , 'yy.MM.dd'),
+		#{contents}, #{my_rating}, to_char(sysdate , 'yyyy.MM.dd'),
 		to_char(sysdate, 'hh24:mi'))
 	</select>
 

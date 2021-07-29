@@ -214,19 +214,23 @@
 </body>
 </html>
 <!-- 모달 사전신청 초과근무 신청 -->
-<form action="staffServlet" name="requestvacation">
+<form action="staffServlet" method="post" name="start_timeover">
 	<script type="text/javascript" src="js/login/manage.js"></script>
-	<%-- 	<input type="hidden" name="user_email" value="${loginUser.email}" --%>
-	<!-- 		id="user_email"> <input type="hidden" name="user_email" -->
-	<%-- 		value="${loginUser.nick}" id="user_nick"> --%>
+
 	<div class="modal fade" id="requestOvertimeBefore"
 		data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
 		aria-labelledby="requestOvertimeBefore" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
+
 					<h5 class="modal-title" id="staticBackdropLabel">
-						시간외근무신청 <strong>#사전신청</strong>
+						시간외근무신청 <strong>#사전신청</strong> <input type="hidden"
+							name="user_email" value="${loginUser.email}" id="user_email">
+						<input type="hidden" name="user_nick"
+							value="${loginUser.nickname}" id="user_nick">
+						<input type="hidden" name="command"
+							value="start_timeover" id="command">
 					</h5>
 					<button type="button" class="btn-close" data-bs-dismiss="modal"
 						aria-label="Close"></button>

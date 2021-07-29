@@ -19,16 +19,24 @@ public class Staff_MyBatisService {
 	}
 
 	// 초과근무 시작!하면서 DB에 저장시키는 것
-	public List<StaffVO> start_timeover(StaffVO vo) {
+	public int start_timeover(StaffVO vo) {
 		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
-		List<StaffVO> list = null;
+		int rs = 0;
 
 		try {
-			list = dao.start_timeover(session, vo);
+			rs = dao.start_timeover(session, vo); // dao에 SqlSession 전송
+
+			if (rs > 0) {
+				session.commit();
+				System.out.println("insert review success");
+			} else {
+				session.rollback();
+				System.out.println("insert review fail");
+			}
 		} finally {
 			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
 		}
-		return list;
+		return rs;
 	}
 
 	// select user_reivew

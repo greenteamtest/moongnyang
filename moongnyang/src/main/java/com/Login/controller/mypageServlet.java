@@ -37,7 +37,7 @@ public class mypageServlet extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		String command = request.getParameter("command");
-		System.out.println("mypageServlet에서 요청을 받음으 확인 : " + command);
+		System.out.println("mypageServlet에서 요청을 받음을 확인 : " + command);
 		ActionFactory af = ActionFactory.getInstance();
 		Action action = af.getAction(command);
 		if (action != null) {

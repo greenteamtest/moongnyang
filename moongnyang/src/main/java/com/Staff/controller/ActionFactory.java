@@ -1,6 +1,7 @@
 package com.Staff.controller;
 
 import com.Staff.controller.action.Action;
+import com.Staff.controller.action.startTimeover_Action;
 
 public class ActionFactory {
 	private static ActionFactory instance = new ActionFactory();
@@ -13,16 +14,11 @@ public class ActionFactory {
 		return instance;
 	}
 
-	public Action getAction(String command) throws InstantiationException, IllegalAccessException {
+	public Action getAction(String command) {
 		Action action = null;
-
-		try {
-			Class<?> ActionType = Class.forName("com.Staff.controller.action.Staff_" + command + "_Action");
-			action = (Action) ActionType.newInstance();
-
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		System.out.println("ActionFactory : " + command);
+		if (command.equals("start_timeover")) {
+			action = new startTimeover_Action();
 		}
 		return action;
 	}
