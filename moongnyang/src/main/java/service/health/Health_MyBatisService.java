@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.health.dao.HealthDAO;
 import com.health.dto.HealthPlaceVo;
 import com.health.dto.HealthReviewVo;
+import com.health.dto.HealthUserDipsVo;
 
 import dbconnect.MybatisSessionFactory;
 
@@ -29,6 +30,19 @@ public class Health_MyBatisService {
 			list = dao.selectPlace_List(session, numKey);
 		} catch (NumberFormatException e) {
 			list = dao.selectPlace_List(session, key);
+		} finally {
+			session.close();
+		}
+		return list;
+	}
+
+	// select user dips
+	public List<HealthUserDipsVo> selectUser_dips(String email) {
+		SqlSession session = MybatisSessionFactory.getSqlSession();
+		List<HealthUserDipsVo> list = null;
+
+		try {
+			list = dao.selectUser_dips(session, email);
 		} finally {
 			session.close();
 		}

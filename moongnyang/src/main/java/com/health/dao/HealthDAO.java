@@ -7,11 +7,16 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.health.dto.HealthPlaceVo;
 import com.health.dto.HealthReviewVo;
+import com.health.dto.HealthUserDipsVo;
 
 public class HealthDAO {
 
 	public List<HealthPlaceVo> selectPlace_List(SqlSession session, Object value) { // select place list
 		return session.selectList("selectPlace_List", value);
+	}
+
+	public List<HealthUserDipsVo> selectUser_dips(SqlSession session, String email) { // select user dips
+		return session.selectList("selectUser_dips", email);
 	}
 
 	public List<HealthReviewVo> selectUser_Review(SqlSession session, int place_idx) { // select place list

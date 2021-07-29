@@ -15,6 +15,11 @@
 			</otherwise>
 		</choose>
 	</select>
+	
+	<!-- 유저 찜 목록 select -->
+	<select id="selectUser_dips" parameterType="String" resultType="com.health.dto.HealthUserDipsVo">
+		select dips_place_list_id from user_dips  where user_email = #{email}
+	</select>
 
 
 	<!-- 업체당 user review -->
