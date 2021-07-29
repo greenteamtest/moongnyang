@@ -4,30 +4,27 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.health.dao.HealthDAO;
-import com.health.dto.HealthPlaceVo;
+import com.Login.dao.StaffDAO;
+import com.Login.dto.StaffVO;
 import com.health.dto.HealthReviewVo;
 
 import dbconnect.MybatisSessionFactory;
 
-public class Member_MyBatisService {
+public class Staff_MyBatisService {
 
-	HealthDAO dao;
+	StaffDAO dao;
 
-	public Member_MyBatisService() {
-		dao = new HealthDAO();
+	public Staff_MyBatisService() {
+		dao = new StaffDAO();
 	}
 
-	// select place_list
-	public List<HealthPlaceVo> selectPlace_List(String key) {
+	// 유저전체출력(원래있지만 그래도 연습겸!)
+	public List<StaffVO> All_member_List(HealthReviewVo vo) {
 		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
-		List<HealthPlaceVo> list = null;
+		List<StaffVO> list = null;
 
 		try {
-			Integer numKey = Integer.parseInt(key);
-			list = dao.selectPlace_List(session, numKey);
-		} catch (NumberFormatException e) {
-			list = dao.selectPlace_List(session, key);
+			list = dao.All_member_List(session, vo);
 		} finally {
 			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
 		}

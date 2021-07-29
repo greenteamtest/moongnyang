@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dao.BookingDAO">
+<mapper namespace="dao.StaffDAO">
 
+	<!-- 유저 리스트 목록 -->
+	<select id="All_member_List" parameterType="Object"
+		resultType="com.health.dto.StaffVo">
+		select * from user_info where user_auth = 0
+	</select>
 	<!-- 카테고리별 장소 목록 -->
-	<select id="selectPlace_List" parameterType="Object" resultType="com.health.dto.HealthPlaceVo">
-		select idx, field, place, phone_num, address, open_time, introduce, dips_cont, pet_kind
+	<select id="selectPlace_List" parameterType="Object"
+		resultType="com.health.dto.HealthPlaceVo">
+		select idx, field, place, phone_num, address, open_time, introduce,
+		dips_cont, pet_kind
 		from view_place
 		<choose>
 			<when test="value != null and value instanceof Integer">
@@ -18,8 +25,10 @@
 
 
 	<!-- 업체당 user review -->
-	<select id="selectUser_Review" parameterType="int" resultType="com.health.dto.HealthReviewVo">
-		select place_list_id, user_email, contents, write_date, write_time,like_count, manager_comment, my_rating
+	<select id="selectUser_Review" parameterType="int"
+		resultType="com.health.dto.HealthReviewVo">
+		select place_list_id, user_email, contents, write_date,
+		write_time,like_count, manager_comment, my_rating
 		from user_review
 		where place_list_id = #{place_idx}
 		order by 1 , 4 desc, 5 desc
@@ -27,16 +36,23 @@
 
 
 	<!-- 업체당 user review -->
-	<select id="checkOverlapReview" parameterType="review" resultType="com.health.dto.HealthReviewVo">
-		select user_review_idx from user_review where place_list_id = #{place_list_id} and user_email = #{user_email}
+	<select id="checkOverlapReview" parameterType="review"
+		resultType="com.health.dto.HealthReviewVo">
+		select user_review_idx from user_review where place_list_id
+		= #{place_list_id} and user_email = #{user_email}
 	</select>
 
 
 
 	<!-- insert user review -->
-	<select id="insert_review" parameterType="review" resultType="int">
-		insert into user_review (user_review_idx, user_email, place_list_id, contents, my_rating, write_date, write_time)
-		values (seq_user_review.nextval, #{user_email}, #{place_list_id}, #{contents}, #{my_rating}, to_char(sysdate , 'yy.MM.dd'), to_char(sysdate, 'hh24:mi'))
+	<select id="insert_review" parameterType="review"
+		resultType="int">
+		insert into user_review (user_review_idx, user_email,
+		place_list_id, contents, my_rating, write_date, write_time)
+		values
+		(seq_user_review.nextval, #{user_email}, #{place_list_id},
+		#{contents}, #{my_rating}, to_char(sysdate , 'yy.MM.dd'),
+		to_char(sysdate, 'hh24:mi'))
 	</select>
 
 </mapper>
