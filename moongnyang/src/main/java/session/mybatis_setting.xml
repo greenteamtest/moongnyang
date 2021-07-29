@@ -4,6 +4,10 @@
     "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
+	<settings>
+		<!-- <setting name="cacheEnabled" value="false" /> -->
+		<setting name="jdbcTypeForNull" value="NULL" />
+	</settings>
 	<typeAliases>
 		<!-- (민승준) -->
 		<typeAlias type="com.health.dto.HealthPlaceVo" alias="place" />
@@ -32,7 +36,9 @@
 	</environments>
 	<mappers>
 		<mapper resource="dbconnect/mybatis_health_mapper.xml" />
+		<mapper resource="dbconnect/mybatis_Login_mapper.xml" />
 	</mappers>
+
 </configuration>
 
 

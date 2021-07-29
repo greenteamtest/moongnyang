@@ -226,11 +226,11 @@
 
 					<h5 class="modal-title" id="staticBackdropLabel">
 						시간외근무신청 <strong>#사전신청</strong> <input type="hidden"
-							name="user_email" value="${loginUser.email}" id="user_email">
-						<input type="hidden" name="user_nick"
-							value="${loginUser.nickname}" id="user_nick">
-						<input type="hidden" name="command"
-							value="start_timeover" id="command">
+							name="user_email_timeover" value="${loginUser.email}"
+							id="user_email_timeover"> <input type="hidden"
+							name="user_nick_timeover" value="${loginUser.nickname}"
+							id="user_nick_timeover"> <input type="hidden"
+							name="command" value="start_timeover" id="command">
 					</h5>
 					<button type="button" class="btn-close" data-bs-dismiss="modal"
 						aria-label="Close"></button>
@@ -256,7 +256,7 @@
 				<div class="modal-body">
 					<div class="form-floating">
 						<textarea class="form-control" placeholder="Leave a comment here"
-							id="content" name="content" style="height: 200px"></textarea>
+							id="reason_timeover" name="reason_timeover" style="height: 200px"></textarea>
 						<label for="floatingTextarea2">사유를 입력해주세요.</label>
 						<h1 class="h1-clock"></h1>
 					</div>

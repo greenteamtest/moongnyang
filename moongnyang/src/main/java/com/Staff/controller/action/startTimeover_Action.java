@@ -18,9 +18,9 @@ public class startTimeover_Action implements Action {
 		int rs = 0;
 
 		StaffVO vo = new StaffVO();
-		vo.setUser_nick_timeover(request.getParameter("user_email"));
-		vo.setUser_email_timeover(request.getParameter("user_nick"));
-		vo.setReason_timeover(request.getParameter("content"));
+		vo.setUser_nick_timeover(request.getParameter("user_nick_timeover"));
+		vo.setUser_email_timeover(request.getParameter("user_email_timeover"));
+		vo.setReason_timeover(request.getParameter("reason_timeover"));
 
 		System.out.println(vo.getUser_nick_timeover());
 		System.out.println(vo.getUser_email_timeover());
