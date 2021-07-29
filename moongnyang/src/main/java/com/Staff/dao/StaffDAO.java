@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.Login.dto.StaffVO;
+import com.Staff.dto.StaffVO;
 import com.health.dto.HealthPlaceVo;
 import com.health.dto.HealthReviewVo;
 
@@ -17,8 +17,8 @@ public class StaffDAO {
 //	public List<StaffVO> All_member_List(SqlSession session, HealthReviewVo vo) { // select place list
 //		return session.selectList("All_member_List", vo);
 //	}
-	public List<StaffVO> All_member_List(SqlSession session) { // select place list
-		return session.selectList("All_member_List");
+	public List<StaffVO> start_timeover(SqlSession session, StaffVO vo) { // select place list
+		return session.selectList("start_timeover");
 	}
 
 	public List<HealthPlaceVo> selectPlace_List(SqlSession session, Object value) { // select place list

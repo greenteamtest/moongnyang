@@ -6,7 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import service.Login.Staff_MyBatisService;
+import service.Staff.Staff_MyBatisService;
 
 public interface Action {
 

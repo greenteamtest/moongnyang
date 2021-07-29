@@ -214,8 +214,11 @@
 </body>
 </html>
 <!-- 모달 사전신청 초과근무 신청 -->
-<form name="requestvacation">
+<form action="staffServlet" name="requestvacation">
 	<script type="text/javascript" src="js/login/manage.js"></script>
+	<%-- 	<input type="hidden" name="user_email" value="${loginUser.email}" --%>
+	<!-- 		id="user_email"> <input type="hidden" name="user_email" -->
+	<%-- 		value="${loginUser.nick}" id="user_nick"> --%>
 	<div class="modal fade" id="requestOvertimeBefore"
 		data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
 		aria-labelledby="requestOvertimeBefore" aria-hidden="true">
@@ -249,7 +252,7 @@
 				<div class="modal-body">
 					<div class="form-floating">
 						<textarea class="form-control" placeholder="Leave a comment here"
-							id="reason" style="height: 200px"></textarea>
+							id="content" name="content" style="height: 200px"></textarea>
 						<label for="floatingTextarea2">사유를 입력해주세요.</label>
 						<h1 class="h1-clock"></h1>
 					</div>
@@ -257,7 +260,8 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-bs-dismiss="modal">닫기</button>
-					<button type="button" class="btn btn-primary">신청하기</button>
+					<button type="submit" class="btn btn-primary">신청하기</button>
+					<button type="submit" class="btn btn-primary">종료하기</button>
 				</div>
 			</div>
 		</div>

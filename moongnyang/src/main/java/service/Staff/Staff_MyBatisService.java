@@ -1,11 +1,11 @@
-package service.Login;
+package service.Staff;
 
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.Login.dao.StaffDAO;
-import com.Login.dto.StaffVO;
+import com.Staff.dao.StaffDAO;
+import com.Staff.dto.StaffVO;
 import com.health.dto.HealthReviewVo;
 
 import dbconnect.MybatisSessionFactory;
@@ -18,13 +18,13 @@ public class Staff_MyBatisService {
 		dao = new StaffDAO();
 	}
 
-	// 유저전체출력(원래있지만 그래도 연습겸!)
-	public List<StaffVO> All_member_List() {
+	// 초과근무 시작!하면서 DB에 저장시키는 것
+	public List<StaffVO> start_timeover(StaffVO vo) {
 		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
 		List<StaffVO> list = null;
 
 		try {
-			list = dao.All_member_List(session);
+			list = dao.start_timeover(session, vo);
 		} finally {
 			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
 		}
