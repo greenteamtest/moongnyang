@@ -1,6 +1,6 @@
 package com.Staff.controller;
 
-import com.Login.controller.action.Action;
+import com.Staff.controller.action.Action;
 
 public class ActionFactory {
 	private static ActionFactory instance = new ActionFactory();
@@ -15,12 +15,15 @@ public class ActionFactory {
 
 	public Action getAction(String command) throws InstantiationException, IllegalAccessException {
 		Action action = null;
-		System.out.println("ActionFactory : " + command);
 
-		if (command.equals("member_list")) {
-			action = new All_member_list();
+		try {
+			Class<?> ActionType = Class.forName("com.Staff.controller.action.Staff_" + command + "_Action");
+			action = (Action) ActionType.newInstance();
+
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-
 		return action;
 	}
 }
