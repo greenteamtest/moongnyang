@@ -24,6 +24,7 @@ public class Staff_MyBatisService {
 		int rs = 0;
 
 		try {
+			System.out.println("서비스"+vo);
 			rs = dao.start_timeover(session, vo); // dao에 SqlSession 전송
 
 			if (rs > 0) {

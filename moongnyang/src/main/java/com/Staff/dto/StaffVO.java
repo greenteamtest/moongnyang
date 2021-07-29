@@ -20,9 +20,9 @@ public class StaffVO {
 	private String user_email_timeover;
 	private String reason_timeover;
 	private String check_timeover;
-	private Timestamp start_timeover;
-	private Timestamp end_timeover;
-	private Timestamp date_timeover;
+	private String start_timeover;
+	private String end_timeover;
+	private String date_timeover;
 
 	@Override
 	public String toString() {
@@ -139,30 +139,6 @@ public class StaffVO {
 		this.check_timeover = check_timeover;
 	}
 
-	public Timestamp getStart_timeover() {
-		return start_timeover;
-	}
-
-	public void setStart_timeover(Timestamp start_timeover) {
-		this.start_timeover = start_timeover;
-	}
-
-	public Timestamp getEnd_timeover() {
-		return end_timeover;
-	}
-
-	public void setEnd_timeover(Timestamp end_timeover) {
-		this.end_timeover = end_timeover;
-	}
-
-	public Timestamp getDate_timeover() {
-		return date_timeover;
-	}
-
-	public void setDate_timeover(Timestamp date_timeover) {
-		this.date_timeover = date_timeover;
-	}
-
 	public String getUser_email() {
 		return user_email;
 	}
@@ -193,6 +169,30 @@ public class StaffVO {
 
 	public void setUser_pwd(String user_pwd) {
 		this.user_pwd = user_pwd;
+	}
+
+	public String getStart_timeover() {
+		return start_timeover;
+	}
+
+	public void setStart_timeover(String start_timeover) {
+		this.start_timeover = start_timeover;
+	}
+
+	public String getEnd_timeover() {
+		return end_timeover;
+	}
+
+	public void setEnd_timeover(String end_timeover) {
+		this.end_timeover = end_timeover;
+	}
+
+	public String getDate_timeover() {
+		return date_timeover;
+	}
+
+	public void setDate_timeover(String date_timeover) {
+		this.date_timeover = date_timeover;
 	}
 
 }

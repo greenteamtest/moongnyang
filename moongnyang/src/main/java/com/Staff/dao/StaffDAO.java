@@ -18,6 +18,7 @@ public class StaffDAO {
 //		return session.selectList("All_member_List", vo);
 //	}
 	public int start_timeover(SqlSession session, StaffVO vo) { // select place list
+		System.out.println("다오"+vo);
 		return session.insert("start_timeover");
 	}
 
