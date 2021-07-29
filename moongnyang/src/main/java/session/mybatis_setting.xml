@@ -12,6 +12,9 @@
         <!-- 로그인/회원 및 직원 페이지 전용(김은호) -->
         <typeAlias type="com.Login.dto.boardVO" alias="board"/>
         <typeAlias type="com.Login.dto.MemberVO" alias="Member"/>
+        
+        <!-- picnic(백찬호) -->
+        <typeAlias type="com.picnic.dto.PicnicVO" alias="picnic"/>        
     </typeAliases>
     
     <environments default="development">

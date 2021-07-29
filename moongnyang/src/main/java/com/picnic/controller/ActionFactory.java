@@ -3,6 +3,7 @@ package com.picnic.controller;
 import com.picnic.controller.action.Action;
 import com.picnic.controller.action.Cafe_Action_Kakao;
 import com.picnic.controller.action.Cafe_Action_Naver;
+import com.picnic.controller.action.Cafe_View_Action;
 import com.picnic.controller.action.Index_Action;
 import com.picnic.controller.action.Picnic_Action;
 import com.picnic.controller.action.Abandonment_Action;
@@ -33,6 +34,8 @@ public class ActionFactory {
 			action = new Cafe_Action_Kakao();
 		} else if(command.equals("cafe_naver")) {
 			action = new Cafe_Action_Naver();
+		} else if(command.equals("cafe_view_action")) {
+			action = new Cafe_View_Action();
 		}
 		
 		else {
