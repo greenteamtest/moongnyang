@@ -2,9 +2,6 @@
  * 
  */
 
-
-
-
 $('.ui.red.button').click((e) => {
 	
 	
