@@ -127,34 +127,42 @@
 							</tr>
 							<tread>
 							<tr>
-								<th scope="col">글번호</th>
 								<th scope="col">별명</th>
-								<th scope="col">시간/일정</th>
-								<th scope="col">사유</th>
-								<th scope="col">확인</th>
+								<th scopr="col">이메일</th>
+								<th scope="col">변경</th>
 							</tr>
 							</tread>
 							<tbody>
-
+								<c:forEach var="user" items="${userList}">
+									<tr>
+										<td>${user.user_nick}</td>
+										<td>${user.email}</td>
+										<td>정보변경</td>
+									</tr>
+								</c:forEach>
 							</tbody>
 						</table>
 					</div>
 					<div class="col">
-						<table class="table table-dark table-hover">
+						<table class="table table-success table-striped">
 							<tr>
 								<h2>#사업자List #고마우신분들</h2>
 							</tr>
 							<tread>
 							<tr>
-								<th scope="col">글번호</th>
 								<th scope="col">별명</th>
-								<th scope="col">시간/일정</th>
-								<th scope="col">사유</th>
-								<th scope="col">확인</th>
+								<th scopr="col">이메일</th>
+								<th scope="col">변경</th>
 							</tr>
 							</tread>
 							<tbody>
-
+								<c:forEach var="user" items="${busiList}">
+									<tr>
+										<td>${user.user_nick}</td>
+										<td>${user.email}</td>
+										<td>정보변경</td>
+									</tr>
+								</c:forEach>
 							</tbody>
 						</table>
 					</div>

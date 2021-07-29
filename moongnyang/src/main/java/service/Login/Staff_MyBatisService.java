@@ -19,12 +19,12 @@ public class Staff_MyBatisService {
 	}
 
 	// 유저전체출력(원래있지만 그래도 연습겸!)
-	public List<StaffVO> All_member_List(HealthReviewVo vo) {
+	public List<StaffVO> All_member_List() {
 		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
 		List<StaffVO> list = null;
 
 		try {
-			list = dao.All_member_List(session, vo);
+			list = dao.All_member_List(session);
 		} finally {
 			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
 		}

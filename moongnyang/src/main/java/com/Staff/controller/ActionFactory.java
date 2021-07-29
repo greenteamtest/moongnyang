@@ -13,9 +13,10 @@ public class ActionFactory {
 		return instance;
 	}
 
-	public Action getAction(String command) {
+	public Action getAction(String command) throws InstantiationException, IllegalAccessException {
 		Action action = null;
 		System.out.println("ActionFactory : " + command);
+
 		if (command.equals("member_list")) {
 			action = new All_member_list();
 		}

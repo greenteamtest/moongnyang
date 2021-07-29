@@ -1,4 +1,4 @@
-package com.Login.dto;
+package com.Staff.dto;
 
 import java.sql.Timestamp;
 
