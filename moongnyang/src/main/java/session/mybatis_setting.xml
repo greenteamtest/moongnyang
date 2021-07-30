@@ -38,6 +38,7 @@
 	<mappers>
 		<mapper resource="dbconnect/mybatis_health_mapper.xml" />
 		<mapper resource="dbconnect/mybatis_Login_mapper.xml" />
+		<mapper resource="dbconnect/mybatis_picnic_mapper.xml" />
 	</mappers>
 </configuration>
 

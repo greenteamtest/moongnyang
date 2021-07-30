@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dao.BookingDAO">
+<mapper namespace="com.picnic.dao.Picnic_DAO">
 
 	<!-- 카테고리별 장소 목록 -->
 <!-- 	
-	<select id="picnic_search" parameterType="picnicVo" resultType="int">
+	<select id="picnic_search" parameterType="PicnicVo" resultType="int">
 		insert into Abandonment_sido(orgCd, orgdownNm) values(#{orgCd} ,#{orgdownNm})
 	</select> 
 -->
 	
-	<select id="picnic_Update_Insert" parameterType="picnicVO" resultType="int">
-		MERGE INTO PICNIC_LIST USING DUAL ON (KEY = #{KEY})
-		WHEN MATCHED THEN UPDATE SET NAME=#{place_name}, PLACE=#{address_name}, ROAD_PLACE=#{road_address_name}, PHONE=#{phone}, X=#{x}, Y=#{y}, CATEGORY=#{categori_code}
-		WHEN NOT MATCHED THEN INSERT(NAME, PLACE, ROAD_PLACE, PHONE, X, Y, KEY, CATEGORI) VALUES(#{place_name}, #{address_name}, #{road_address_name}, #{phone}, #{x}, #{y}, #{key}, #{categori_code})
+	<select id="picnic_Update_Insert" parameterType="picnic" resultType="int">
+		MERGE INTO PICNIC_LIST USING DUAL ON (key = #{key})
+		WHEN MATCHED THEN UPDATE SET NAME=#{place_name}, PLACE=#{address_name}, ROAD_PLACE=#{road_address_name}, PHONE=#{phone}, X=#{x}, Y=#{y}, CATEGORY=#{category_code}
+		WHEN NOT MATCHED THEN INSERT(NAME, PLACE, ROAD_PLACE, PHONE, X, Y, KEY, CATEGORY) VALUES(#{place_name}, #{address_name}, #{road_address_name}, #{phone}, #{x}, #{y}, #{key}, #{category_code})
 	</select>
 	
 	<select id="picnic_Select" parameterType="String" resultType="com.picnic.dto.PicnicVO">
-		SELECT * FROM PICNIC_LIST WHERE KEY=#{KEY}
+		SELECT * FROM PICNIC_LIST WHERE KEY=#{key}
 	</select>
 	
 </mapper>

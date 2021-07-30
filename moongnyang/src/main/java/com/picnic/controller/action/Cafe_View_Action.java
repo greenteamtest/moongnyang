@@ -12,7 +12,6 @@ import com.picnic.dto.PicnicVO;
 public class Cafe_View_Action implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "picnic/cafe/cafe_view.jsp";
-		String str = "";
 		
 		PicnicVO pVo = new PicnicVO();
 		pVo.setPlace_name(request.getParameter("place_name"));
@@ -22,18 +21,15 @@ public class Cafe_View_Action implements Action {
 		pVo.setX(request.getParameter("x"));
 		pVo.setY(request.getParameter("y"));
 		pVo.setKey(request.getParameter("id"));
-		pVo.setCategori_code(request.getParameter("categori_group_code"));
+		pVo.setCategory_code(request.getParameter("category_group_code"));
+		
+		System.out.println("view1");
 		System.out.println(pVo.getKey());
+		System.out.println("view2");
+		service.picnic_Update_Insert(pVo);
+		System.out.println("view3");
 		PicnicVO rs = service.picnic_Select(pVo.getKey());
-		if(rs == null) {
-			int rs2 = service.picnic_Update_Insert(pVo);
-			if(rs2 > 0) {
-				System.out.println("DB저장");
-			}else {
-				System.out.println("DB저장 실패");
-			}
-			rs = service.picnic_Select(str);
-		}	
+		System.out.println("view4");
 		request.setAttribute("rs", rs);
 		
 

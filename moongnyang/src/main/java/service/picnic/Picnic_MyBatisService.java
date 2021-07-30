@@ -18,10 +18,11 @@ public class Picnic_MyBatisService {
 	public int picnic_Update_Insert(PicnicVO bVo) {
 		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
 		int rs = 0;
-
+		System.out.println("ui1");
 		try {
+			System.out.println("ui2");
 			rs = dao.picnic_Update_Insert(session, bVo); // dao에 SqlSession 전송
-
+			System.out.println("ui3");
 			if (rs > 0) {
 				session.commit();
 				System.out.println("join success");
@@ -36,14 +37,14 @@ public class Picnic_MyBatisService {
 	}
 
 	public PicnicVO picnic_Select(String str) {
+		
 		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
 		PicnicVO rs = null;
 		try {
 			rs = dao.picnic_Select(session, str); // dao에 SqlSession 전송
-
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
+		} finally {			
 			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
 		}
 		return rs;
