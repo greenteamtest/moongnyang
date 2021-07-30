@@ -3,7 +3,6 @@
 <%@ include file="/member/manage/bar/managerHaeder.jsp"%>
 <%@ include file="/member/manage/bar/managerSidebar.jsp"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!doctype html>
 <html lang="ko">
 <head>
@@ -93,9 +92,7 @@
 					</div>
 					<div class="col">
 						<c:if test="${!empty stateTimeover}">
-							<h6>현재상태 : 시간외 근무적용중</h6>
-<!-- 							<h6>현재상태 : 시간외 근무적용중(시작시간 : -->
-<%-- 								${stateTimeover.user_nick_timeover})</h6> --%>
+							<h6>현재상태 : 시간외 근무진행중</h6>
 						</c:if>
 						<c:if test="${empty stateTimeover}">
 							<h6>좋은하루보내세요</h6>
