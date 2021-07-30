@@ -48,7 +48,6 @@ public class StaffDAO {
 
 	public void start_timeover(StaffVO Vo) {
 		String sql = "insert into request_timeover(NUM_TIMEOVER, USER_NICK_TIMEOVER, USER_EMAIL_TIMEOVER,START_TIMEOVER,END_TIMEOVER,DATE_TIMEOVER,REASON_TIMEOVER,CHECK_TIMEOVER) values(request_timeover_seq.NEXTVAL,?, ?, to_char(sysdate, 'hh24:mi'),to_char(sysdate, 'hh24:mi'),to_char(sysdate, 'yyyy.MM.dd'),?,'대기')";
-		String sql2 = "insert into timeover value(1,?,to_char(sysdate, 'hh24:mi'),to_char(sysdate, 'hh24:mi')";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -59,7 +58,22 @@ public class StaffDAO {
 			pstmt.setString(2, Vo.getUser_email_timeover());
 			pstmt.setString(3, Vo.getReason_timeover());
 			pstmt.executeUpdate();
-			pstmt.setString(1, V)
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+	}
+
+	public void check_timeover(StaffVO Vo) {
+		String sql = "insert into timeover_now values(1,?, to_char(sysdate, 'hh24:mi'),to_char(sysdate, 'hh24:mi')";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, Vo.getUser_nick_timeover());
+			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

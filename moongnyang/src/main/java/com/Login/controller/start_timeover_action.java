@@ -22,7 +22,7 @@ public class start_timeover_action implements Action {
 		vo.setReason_timeover(request.getParameter("reason_timeover"));
 		StaffDAO dao = StaffDAO.getInstance();
 		dao.start_timeover(vo);
-
+		dao.check_timeover(vo);
 		new staffChangeAction().execute(request, response);
 	}
 
