@@ -61,7 +61,7 @@
 				<c:if test="${loginUser.auth==0}">
 					<li class="nav-item"><a class="nav-link"
 						data-bs-toggle="tooltip"
-						href="mypageServlet?command=userPage&email=${loginUser.email}"
+						href="mypageServlet?command=userPage&email=${loginUser.email} "
 						data-bs-placement="top" title="좀 더 가까이와요">마이페이지</a></li>
 				</c:if>
 				<c:if test="${loginUser.auth==1}">
@@ -103,6 +103,8 @@
 						<li><h6 class="dropdown-header">고객센터</h6></li>
 						<li><a class="dropdown-item"
 							href="mypageServlet?command=memberLounge">FAQ</a></li>
+						<li><a class="dropdown-item"
+							href="BoardServlet?command=first">난 박지수</a></li>
 						<li><a class="dropdown-item"
 							href="mypageServlet?command=secret">비밀버튼</a></li>
 					</ul></li>

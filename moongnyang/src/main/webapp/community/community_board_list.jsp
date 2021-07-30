@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%@ include file="../top&down/header.jsp"%>
+
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -224,11 +224,10 @@
 				<div
 					class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
 					<div class="col p-4 d-flex flex-column position-static">
-						<strong class="d-inline-block mb-2 text-primary">아이디: 릴리냥</strong>
-						<h3 class="mb-0">${board.title }</h3>
-						<div class="mb-1 text-muted">date: 3시간 전</div>
-						<p class="card-text mb-auto">contents : 드디어 캣타워를 장만 했답니다! 그동안은
-							책꽃이 위에서만 놀다가 캣타워가 생기니 너무 잘 노네요~!</p>
+						<strong class="d-inline-block mb-2 text-primary">${board.user_email}</strong>
+						<h3 class="mb-0">${board.title}</h3>
+						<div class="mb-1 text-muted">${board.write_date}</div>
+						<p class="card-text mb-auto">${board.contents}</p>
 						<div class="btn-group">
 							<button type="button" class="btn btn-sm btn-outline-secondary">like_count
 								:좋아요</button>
@@ -249,32 +248,7 @@
 				</div>
 			</c:forEach>
 
-			<div
-				class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-				<div class="col p-4 d-flex flex-column position-static">
-					<strong class="d-inline-block mb-2 text-primary">아이디: 릴리냥</strong>
-					<h3 class="mb-0">게시물 제목 , title</h3>
-					<div class="mb-1 text-muted">date: 3시간 전</div>
-					<p class="card-text mb-auto">contents : 드디어 캣타워를 장만 했답니다! 그동안은
-						책꽃이 위에서만 놀다가 캣타워가 생기니 너무 잘 노네요~!</p>
-					<div class="btn-group">
-						<button type="button" class="btn btn-sm btn-outline-secondary">like_count
-							:좋아요</button>
-						<button type="button" class="btn btn-sm btn-outline-secondary">comment:
-							댓글</button>
-					</div>
-					<a href="#" class="stretched-link">Continue reading</a>
-				</div>
-				<div class="col-auto d-none d-lg-block">
-					<svg class="bd-placeholder-img" width="200" height="250"
-						xmlns="http://www.w3.org/2000/svg" role="img"
-						aria-label="Placeholder: Thumbnail"
-						preserveAspectRatio="xMidYMid slice" focusable="false">
-							<title>Placeholder</title><rect width="100%" height="100%"
-							fill="#55595c" />
-							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-				</div>
-			</div>
+			
 
 
 

@@ -1,4 +1,4 @@
-package com.community.dto;
+package com.Community.dto;
 
 public class CommunityVO {
 	private Integer board_idx;
