@@ -1,13 +1,11 @@
 package com.Staff.dto;
 
-import java.sql.Timestamp;
-
 public class StaffVO {
 	private int num_vacation;
 	private String user_nick_vacation;
 	private String user_email_vacation;
-	private Timestamp start_vacation;
-	private Timestamp end_vacation;
+	private String start_vacation;
+	private String end_vacation;
 	private String reason_vacation;
 	private String val_vacation;
 	private String check_vacation;
@@ -23,17 +21,6 @@ public class StaffVO {
 	private String start_timeover;
 	private String end_timeover;
 	private String date_timeover;
-
-	@Override
-	public String toString() {
-		return "StaffVO [num_vacation=" + num_vacation + ", user_nick_vacation=" + user_nick_vacation
-				+ ", user_email_vacation=" + user_email_vacation + ", start_vacation=" + start_vacation
-				+ ", end_vacation=" + end_vacation + ", reason_vacation=" + reason_vacation + ", val_vacation="
-				+ val_vacation + ", check_vacation=" + check_vacation + ", num_timeover=" + num_timeover
-				+ ", user_nick_timeover=" + user_nick_timeover + ", user_email_timeover=" + user_email_timeover
-				+ ", reason_timeover=" + reason_timeover + ", check_timeover=" + check_timeover + ", start_timeover="
-				+ start_timeover + ", end_timeover=" + end_timeover + ", date_timeover=" + date_timeover + "]";
-	}
 
 	public int getNum_vacation() {
 		return num_vacation;
@@ -59,19 +46,19 @@ public class StaffVO {
 		this.user_email_vacation = user_email_vacation;
 	}
 
-	public Timestamp getStart_vacation() {
+	public String getStart_vacation() {
 		return start_vacation;
 	}
 
-	public void setStart_vacation(Timestamp start_vacation) {
+	public void setStart_vacation(String start_vacation) {
 		this.start_vacation = start_vacation;
 	}
 
-	public Timestamp getEnd_vacation() {
+	public String getEnd_vacation() {
 		return end_vacation;
 	}
 
-	public void setEnd_vacation(Timestamp end_vacation) {
+	public void setEnd_vacation(String end_vacation) {
 		this.end_vacation = end_vacation;
 	}
 

@@ -50,7 +50,7 @@
 <!-- Custom styles for this template -->
 <link href="member/manage/dashboard.css" rel="stylesheet">
 </head>
-<body onload="printClock()">
+<body>
 	<script type="text/javascript" src="js/login/member.js"></script>
 	<div class="container-fluid">
 		<div class="row">
@@ -88,7 +88,19 @@
 					<div class="btn-toolbar mb-2 mb-md-0"></div>
 				</div>
 				<div class="row">
-					<h2>#근태관리 #휴가</h2>
+					<div class="col">
+						<h2>#근태관리 #휴가</h2>
+					</div>
+					<div class="col">
+						<c:if test="${!empty stateTimeover}">
+							<h6>현재상태 : 시간외 근무적용중</h6>
+<!-- 							<h6>현재상태 : 시간외 근무적용중(시작시간 : -->
+<%-- 								${stateTimeover.user_nick_timeover})</h6> --%>
+						</c:if>
+						<c:if test="${empty stateTimeover}">
+							<h6>좋은하루보내세요</h6>
+						</c:if>
+					</div>
 				</div>
 				<div
 					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">

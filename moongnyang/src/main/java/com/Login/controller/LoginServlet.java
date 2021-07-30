@@ -67,7 +67,7 @@ public class LoginServlet extends HttpServlet {
 			MemberVO vo = dao.getMeber(userid);
 			HttpSession session = request.getSession();
 			session.setAttribute("loginUser", vo);
-			request.setAttribute("meesage", "로그인이 완료되었어요!");
+			request.setAttribute("message", "로그인이 완료되었어요!");
 			url = "index.jsp";
 		} else if (result == 0) {
 			request.setAttribute("message", "이런, 회원정보가 맞지않아요 ㅠ");
