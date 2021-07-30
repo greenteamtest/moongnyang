@@ -8,7 +8,7 @@ public class PicnicVO {
 	private String x;
 	private String y;
 	private String key;
-	private String categori_code;
+	private String category_code;
 	
 	public String getPlace_name() {
 		return place_name;
@@ -52,10 +52,10 @@ public class PicnicVO {
 	public void setKey(String key) {
 		this.key = key;
 	}
-	public String getCategori_code() {
-		return categori_code;
+	public String getCategory_code() {
+		return category_code;
 	}
-	public void setCategori_code(String categori_code) {
-		this.categori_code = categori_code;
+	public void setCategory_code(String category_code) {
+		this.category_code = category_code;
 	}
 }

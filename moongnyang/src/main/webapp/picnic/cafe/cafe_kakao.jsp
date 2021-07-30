@@ -2,12 +2,6 @@
 	pageEncoding="UTF-8"%>
 <jsp:include page="../../top&down/header.jsp" flush="ture" />
 <jsp:include page="../../bootstrap/boot.jsp" flush="ture" />
-<%@page import="java.sql.*"%>
-<%@page import="dbconnect.MybatisSessionFactory"%>
-<%@page import="org.apache.ibatis.session.SqlSessionFactory"%>
-<%@page import="org.apache.ibatis.session.SqlSession"%>
-<%@page import="com.picnic.dto.PicnicVO"%>
-<%@page import="service.picnic.Picnic_MyBatisService"%>
 <!DOCTYPE html>
 <html>
 <br>
@@ -232,12 +226,7 @@
 				</div>
 			</div>
 			<hr>
-			<form>
-
-				<button type="submit" name="command" value="cafe_view_action">
-					<ul id="placesList"></ul>
-				</button>
-			</form>
+					<ul id="placesList"></ul>			
 			<div id="pagination"></div>
 		</div>
 	</div>
@@ -352,11 +341,6 @@
 							function() {
 								infowindow.close();
 							});
-
-					kakao.maps.event.addListener(marker, 'mouseup', function() {
-						placeInfo(places);
-					});
-
 					itemEl.onmouseover = function() {
 						displayInfowindow(marker, places.name);
 					};
@@ -366,10 +350,9 @@
 					};
 
 					itemEl.onmouseup = function() {
-						alert(places.id);
-						placeInfo(places);
-
-						//	alert(JSON.stringify(places));
+			//			alert(places.id);
+			//			placeInfo(places);
+						alert(JSON.stringify(places));
 					};
 
 				})(marker, places[i]);
@@ -402,9 +385,19 @@
 				itemStr += '    <span>' + places.address_name + '</span>';
 			}
 
-			itemStr += '  <span class="tel">' + places.phone + '</span>'
-					+ '</div>';
-
+			itemStr += '  <span class="tel">' + places.phone + '</span>';
+			itemStr += '<form method="POST" action="BoardServlet_picnic">'
+						+ '<input type="hidden" name="command" value="cafe_view_action">'
+						+ '<input type="hidden" name="place_name" value="'+places.place_name+'">'
+						+ '<input type="hidden" name="address_name" value="'+places.address_name+'">'
+						+ '<input type="hidden" name="road_address_name" value="'+places.road_address_name+'">'
+						+ '<input type="hidden" name="phone" value="'+places.phone+'">'
+						+ '<input type="hidden" name="x" value="'+places.x+'">'
+						+ '<input type="hidden" name="y" value="'+places.y+'">'
+						+ '<input type="hidden" name="id" value="'+places.id+'">'
+						+ '<input type="hidden" name="category_group_code" value="'+places.category_group_code+'">'
+						+ '<input type="submit" value="자세히">'
+						+'</form></div>'
 			el.innerHTML = itemStr;
 			el.className = 'item';
 
@@ -485,19 +478,6 @@
 			while (el.hasChildNodes()) {
 				el.removeChild(el.lastChild);
 			}
-		}
-		//목록중 하나를 클릭했을때 db조회
-		function placeInfo(places) {
-			var listEl = document.getElementById('placesList')
-			var content = '<input type=hidden id=place_name value='+places.place_name+'>'
-					+ '<input type=hidden id=address_name value='+places.address_name+'>'
-					+ '<input type=hidden id=road_address_name value='+places.road_address_name+'>'
-					+ '<input type=hidden id=phone value='+places.phone+'>'
-					+ '<input type=hidden id=x value='+places.x+'>'
-					+ '<input type=hidden id=y value='+places.y+'>'
-					+ '<input type=hidden id=key value='+places.key+'>'
-					+ '<input type=hidden id=categori_code value='+places.categori_group_code+'>'
-			listEl.setContent(content);
 		}
 	</script>
 </body>
