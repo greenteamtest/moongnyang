@@ -1,60 +1,68 @@
 package com.Login.dao;
 
-import java.util.List;
-import java.util.Map;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
-import org.apache.ibatis.session.SqlSession;
-
+import com.Login.dto.DBManager;
 import com.Login.dto.StaffVO;
-import com.health.dto.HealthPlaceVo;
-import com.health.dto.HealthReviewVo;
 
 public class StaffDAO {
 	public StaffDAO() {
 
 	}
 
-//	public List<StaffVO> All_member_List(SqlSession session, HealthReviewVo vo) { // select place list
-//		return session.selectList("All_member_List", vo);
+	private static StaffDAO instance = new StaffDAO();
+
+	public static StaffDAO getInstance() {
+		return instance;
+	}
+//
+//	public List<StaffVO> selectAllBoards() {
+//		String sql = "select * from businessboard order by businessnum desc";
+//		List<StaffVO> list = new ArrayList<StaffVO>();
+//		Connection conn = null;
+//		Statement stmt = null;
+//		ResultSet rs = null;
+//		System.out.println("DB접속은된듯?");
+//		try {
+//			conn = DBManager.getConnection();
+//			stmt = conn.createStatement();
+//			rs = stmt.executeQuery(sql);
+//			while (rs.next()) {
+//				StaffVO Vo = new StaffVO();
+//				Vo.set(rs.getInt("businessnum"));
+//				Vo.setEmail(rs.getString("user_email"));
+//				Vo.setContent(rs.getString("businesscontent"));
+//				Vo.setReadval(rs.getInt("businessread"));
+//				Vo.setWritedate(rs.getTimestamp("writedate"));
+//				list.add(Vo);
+//			}
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			DBManager.close(conn, stmt, rs);
+//		}
+//		return list;
 //	}
-	public List<StaffVO> All_member_List(SqlSession session) { // select place list
-		return session.selectList("All_member_List");
-	}
 
-	public List<HealthPlaceVo> selectPlace_List(SqlSession session, Object value) { // select place list
-		return session.selectList("selectPlace_List", value);
-	}
+	public void start_timeover(StaffVO Vo) {
+		String sql = "insert into request_timeover(NUM_TIMEOVER, USER_NICK_TIMEOVER, USER_EMAIL_TIMEOVER,START_TIMEOVER,END_TIMEOVER,DATE_TIMEOVER,REASON_TIMEOVER,CHECK_TIMEOVER) values(request_timeover_seq.NEXTVAL,?, ?, to_char(sysdate, 'hh24:mi'),to_char(sysdate, 'hh24:mi'),to_char(sysdate, 'yyyy.MM.dd'),?,'대기')";
 
-	public List<HealthReviewVo> selectUser_Review(SqlSession session, int place_idx) { // select place list
-		return session.selectList("selectUser_Review", place_idx);
-	}
-
-	public List<HealthReviewVo> checkOverlapReview(SqlSession session, HealthReviewVo vo) { // 리뷰 중복 확인
-		return session.selectList("checkOverlapReview", vo);
-	}
-
-	public int insert_review(SqlSession session, HealthReviewVo vo) { // 리뷰 등록
-		return session.insert("insert_review", vo);
-	}
-
-	public int reviseReview(SqlSession session, HealthReviewVo vo) { // 리뷰 수정
-		return session.update("reviseReview", vo);
-	}
-
-	public int deleteReview(SqlSession session, HealthReviewVo vo) { // 리뷰 수정
-		return session.delete("deleteReview", vo);
-	}
-
-	public int updatePlaceDips(SqlSession session, Map<String, Object> map) { // 찜 update
-		return session.update("updatePlaceDips", map);
-	}
-
-	public int getPlaceDips(SqlSession session, Map<String, Object> map) { // 찜 count
-		return session.selectOne("getPlaceDips", map);
-	}
-
-	public int controlUserDips(SqlSession session, Map<String, Object> map) { // 찜 count
-		return session.insert("controlUserDips", map);
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, Vo.getUser_nick_timeover());
+			pstmt.setString(2, Vo.getUser_email_timeover());
+			pstmt.setString(3, Vo.getReason_timeover());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
 	}
 
 }

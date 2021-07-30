@@ -214,7 +214,8 @@
 </body>
 </html>
 <!-- 모달 사전신청 초과근무 신청 -->
-<form action="staffServlet" method="post" name="start_timeover">
+<form action="mypageServlet" method="post" name="start_timeover">
+	<input type="hidden" name="command" value="start_timeover" id="command">
 	<script type="text/javascript" src="js/login/manage.js"></script>
 
 	<div class="modal fade" id="requestOvertimeBefore"
@@ -229,8 +230,7 @@
 							name="user_email_timeover" value="${loginUser.email}"
 							id="user_email_timeover"> <input type="hidden"
 							name="user_nick_timeover" value="${loginUser.nickname}"
-							id="user_nick_timeover"> <input type="hidden"
-							name="command" value="start_timeover" id="command">
+							id="user_nick_timeover">
 					</h5>
 					<button type="button" class="btn-close" data-bs-dismiss="modal"
 						aria-label="Close"></button>
