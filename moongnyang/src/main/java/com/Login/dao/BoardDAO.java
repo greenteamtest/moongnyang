@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.Login.dto.DBManager;
-import com.Login.dto.StaffVO;
 import com.Login.dto.boardVO;
 
 public class BoardDAO {
