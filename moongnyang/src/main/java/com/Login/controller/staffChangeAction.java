@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.Login.controller.action.Action;
-import com.Login.dao.StaffDAO;
-import com.Login.dto.StaffVO;
+import com.Login.dao.StaffDAO_org;
+import com.Login.dto.StaffVO_org;
 
 public class staffChangeAction implements Action {
 
@@ -19,8 +19,8 @@ public class staffChangeAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String url = "member/manage/managerPageStaff.jsp";
-		StaffDAO dao = StaffDAO.getInstance();
-		List<StaffVO> state = dao.load_state(request.getParameter("email"));
+		StaffDAO_org dao = StaffDAO_org.getInstance();
+		List<StaffVO_org> state = dao.load_state(request.getParameter("email"));
 		HttpSession session = request.getSession();
 
 		session.setAttribute("stateTimeover", state);

@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.Login.dao.MemberDAO;
-import com.Login.dao.StaffDAO;
+import com.Login.dao.StaffDAO_org;
 import com.Login.dto.MemberVO;
-import com.Login.dto.StaffVO;
+import com.Login.dto.StaffVO_org;
 
 /**
  * Servlet implementation class LoginServlet
@@ -64,14 +64,14 @@ public class LoginServlet extends HttpServlet {
 		System.out.println(userid);
 		System.out.println(pwd);
 		MemberDAO dao = MemberDAO.getInstance();
-		StaffDAO sdao = StaffDAO.getInstance();
-		StaffVO svo = new StaffVO();
+		StaffDAO_org sdao = StaffDAO_org.getInstance();
+		StaffVO_org svo = new StaffVO_org();
 		int result = dao.userCheck(userid, pwd);
 		int val = sdao.find_timeover(svo);
 		if (result == 1) {
 			if (val == 0) {
 				System.out.println("초과근무 신청기록이있음,불러오겠엄");
-				List<StaffVO> state = sdao.load_state(userid);
+				List<StaffVO_org> state = sdao.load_state(userid);
 				HttpSession session = request.getSession();
 
 				session.setAttribute("stateTimeover", state);
