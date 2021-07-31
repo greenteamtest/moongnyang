@@ -2,7 +2,8 @@ package com.Community.controller;
 
 import com.Community.controller.action.Community_Action;
 import com.Community.controller.action.Community_BoardList_Action;
-
+import com.Community.controller.action.Community_BoardWriteForm_Action;
+import com.Community.controller.action.Community_BoardWrite_Action;
 
 public class Community_ActionFactory {
 	private static Community_ActionFactory instance = new Community_ActionFactory();
@@ -19,10 +20,16 @@ public class Community_ActionFactory {
 	public Community_Action getAction(String command) {
 		Community_Action action = null;
 		System.out.println("Community_ActionFactory :" + command);
-		
+
 		/* 추가된 부분- 지수 */
 		if (command.equals("board_list")) {
 			action = new Community_BoardList_Action();
+		}
+		if (command.equals("board_write_form")) {
+			action = new Community_BoardWriteForm_Action();
+		}
+		if(command.equals("board_write")) {
+			action=new Community_BoardWrite_Action();
 		}
 
 		return action;
