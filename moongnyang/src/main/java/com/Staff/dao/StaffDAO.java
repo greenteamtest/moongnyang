@@ -21,4 +21,9 @@ public class StaffDAO {
 		return session.insert("start_timeover", vo);
 	}
 
+	public int request_vacation(SqlSession session, StaffVO vo) {
+		System.out.println("qqw3");
+		return session.insert("request_vacation", vo);
+	}
+
 }

@@ -28,4 +28,10 @@
 		#{user_email_timeover},#{start_timeover},#{end_timeover},
 		#{date_timeover},#{reason_timeover},'대기')
 	</insert>
+	<insert id="request_vacation" parameterType="staff">
+		insert into
+		request_vacation
+		values(request_vacation_seq.NEXTVAL,#{user_nick_vacation},#{user_email_vacation},
+		#{start_vacation},#{end_vacation},#{reason_vacation},#{val_vacation},'신청완료')
+	</insert>
 </mapper>

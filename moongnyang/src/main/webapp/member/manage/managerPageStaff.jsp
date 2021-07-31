@@ -366,7 +366,7 @@
 		</div>
 	</div>
 </form>
-<!-- 모달 신청 내역보기 -->
+<!--  모달 초과근무 신청 내역보기 -->
 <div class="modal fade" id="viewOvertime" tabindex="-1"
 	aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
@@ -408,7 +408,12 @@
 </div>
 
 <!-- 모달 휴가신청 -->
-<form>
+<form action="staffServlet" method="post">
+	<input type="hidden" name="command" value="request_vacation"
+		id="command"> <input type="hidden" name="user_email_vacation"
+		value="${loginUser.email}" id="user_email_vacation"> <input
+		type="hidden" name="user_nick_vacation" value="${loginUser.nickname}"
+		id="user_nick_vacation">
 	<script type="text/javascript">
 		//<![CDATA[
 		$(function() {
@@ -437,7 +442,7 @@
 				<div class="container">
 					<br>
 					<h6>휴가유형</h6>
-					<select class="form-select" aria-label="Default select example">
+					<select class="form-select" aria-label="Default select example" name="val_vacation">
 						<option value="연차" selected>연차</option>
 						<option value="반차">반차</option>
 						<option value="보상휴가">보상휴가</option>
@@ -458,12 +463,12 @@
 					</div>
 					<div class="row">
 						<div class="col">
-							<input type="text" class="form-control" name="startDate"
+							<input type="text" class="form-control" name="start_vacation"
 								id="date1" readonly aria-describedby="button-addon2">
 
 						</div>
 						<div class="col">
-							<input type="text" class="form-control" name="startDate"
+							<input type="text" class="form-control" name="end_vacation"
 								id="date2" readonly aria-describedby="button-addon2">
 						</div>
 					</div>
@@ -471,7 +476,8 @@
 				<div class="modal-body">
 					<div class="form-floating">
 						<textarea class="form-control" placeholder="Leave a comment here"
-							id="floatingTextarea2" style="height: 100px"></textarea>
+							id="floatingTextarea2" style="height: 100px"
+							name="reason_vacation"></textarea>
 						<label for="floatingTextarea2">보상 및 보건 휴가사용 시 설명 간단히
 							작성해주세용</label>
 					</div>
@@ -479,7 +485,7 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-bs-dismiss="modal">닫기</button>
-					<button type="button" class="btn btn-primary">신청하기</button>
+					<button type="submit" class="btn btn-primary">신청하기</button>
 				</div>
 			</div>
 		</div>
