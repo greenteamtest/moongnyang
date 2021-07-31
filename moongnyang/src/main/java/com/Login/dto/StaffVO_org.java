@@ -1,6 +1,6 @@
 package com.Login.dto;
 
-public class StaffVO {
+public class StaffVO_org {
 	private int num_vacation;
 	private String user_nick_vacation;
 	private String user_email_vacation;

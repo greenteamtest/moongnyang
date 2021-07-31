@@ -82,6 +82,18 @@
 						</ul>
 					</div>
 				</nav>
+				<c:if test="${loginUser.auth==3}">
+					<div
+						class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+						<div class="btn-toolbar mb-2 mb-md-0"></div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<h2>#인사과 직원화면</h2>
+						</div>
+						<div class="col"></div>
+					</div>
+				</c:if>
 				<div
 					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 					<div class="btn-toolbar mb-2 mb-md-0"></div>
@@ -196,16 +208,6 @@
 							</table>
 						</div>
 					</div>
-
-
-
-
-
-
-
-
-
-
 				</c:if>
 			</main>
 		</div>
@@ -223,7 +225,7 @@
 </body>
 </html>
 <!-- 모달 사전신청 초과근무 신청 -->
-<form action="mypageServlet" method="post" name="start_timeover">
+<form action="staffServlet" method="post" name="start_timeover">
 	<input type="hidden" name="command" value="start_timeover" id="command">
 	<script type="text/javascript" src="js/login/manage.js"></script>
 
@@ -274,26 +276,22 @@
 					<button type="button" class="btn btn-secondary"
 						data-bs-dismiss="modal">닫기</button>
 					<button type="submit" class="btn btn-primary">신청하기</button>
-					<button type="submit" class="btn btn-primary">종료하기</button>
+					<button type="button"
+						onclick="location.href='staffServlet?command=end_timeover&email=${loginUser.email
+						}'"
+						class="btn btn-primary">종료하기</button>
 				</div>
 			</div>
 		</div>
 	</div>
 </form>
 <!-- 모달 소급신청 초과근무 신청 -->
-<form>
-	<script type="text/javascript">
-		//<![CDATA[
-		$(function() {
-			$("#date3").datepicker({
-				onSelect : function(dateText, inst) {
-					console.log(dateText);
-					console.log(inst);
-				}
-			});
-		});
-		//]]>
-	</script>
+<form action="staffServlet" method="post" name="after_request_timeover">
+	<input type="hidden" name="command" value="after_request_timeover"
+		id="command"> <input type="hidden" name="user_email_timeover"
+		value="${loginUser.email}" id="user_email_timeover"> <input
+		type="hidden" name="user_nick_timeover" value="${loginUser.nickname}"
+		id="user_nick_timeover">
 	<div class="modal fade" id="requestOvertimeAfter"
 		data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
 		aria-labelledby="requestOvertimeAfter" aria-hidden="true">
@@ -327,7 +325,7 @@
 				</div>
 				<div class="modal-body">
 					<div class="input-group mb-3">
-						<input type="text" class="form-control" name="date" id="date3"
+						<input type="text" class="form-control" name="date_" id="date3"
 							readonly aria-describedby="button-addon2"><input
 							type="button" class="btn btn-outline-secondary" value="달력"
 							onclick="$('#date3').datepicker('show');" />
@@ -339,13 +337,13 @@
 								<h6>시작시간</h6>
 							</div>
 							<div class="col">
-								<input type="time" class="form-control">
+								<input type="time" class="form-control" name="start_timeover">
 							</div>
 							<div class="col">
 								<h6>종료시간</h6>
 							</div>
 							<div class="col">
-								<input type="time" class="form-control">
+								<input type="time" class="form-control" name="end_timeover">
 							</div>
 						</div>
 					</div>
@@ -355,14 +353,14 @@
 					<h4>사유를 입력해주세요.</h4>
 					<div class="form-floating">
 						<textarea class="form-control" placeholder="사유입력"
-							style="height: 200px"></textarea>
+							style="height: 200px" name="reason_timeover"></textarea>
 						<label for="floatingTextarea2">사유입력</label>
 					</div>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-bs-dismiss="modal">닫기</button>
-					<button type="button" class="btn btn-primary">초과근무 소급신청하기</button>
+					<button type="submit" class="btn btn-primary">초과근무 소급신청하기</button>
 				</div>
 			</div>
 		</div>

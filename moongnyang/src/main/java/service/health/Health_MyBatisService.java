@@ -201,4 +201,16 @@ public class Health_MyBatisService {
 		return rs;
 	}
 
+	// get place list for array type
+	public List<HealthPlaceVo> selectPlaceListForArrayType(String type) {
+		SqlSession session = MybatisSessionFactory.getSqlSession();
+		List<HealthPlaceVo> list = null;
+		System.out.println(" ?? : " + type);
+		try {
+			list = dao.selectPlaceListForArrayType(session, type);
+		} finally {
+			session.close();
+		}
+		return list;
+	}
 }

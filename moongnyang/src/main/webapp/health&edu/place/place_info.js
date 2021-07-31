@@ -16,7 +16,7 @@ const showPlaceInfoAJAX = (param) => {
 			rs[0].place.replace("\"", "");
 			rs[0].idx.replace("\"", "");
 
-			const imgs = document.getElementsByClassName('d-block w-100');
+			const imgs = $('#showPhoto .d-block.w-100');
 
 			for (let index = 0; index < imgs.length; index++) {
 				if (index == 0) {
