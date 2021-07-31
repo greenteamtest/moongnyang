@@ -56,26 +56,21 @@ public class LoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		doGet(request, response);
-		System.out.println("로그인 서블릿 진입");
 		String url = "member/login.jsp";
-
 		String userid = request.getParameter("email");
 		String pwd = request.getParameter("pwd");
-		System.out.println(userid);
-		System.out.println(pwd);
 		MemberDAO dao = MemberDAO.getInstance();
 		StaffDAO_org sdao = StaffDAO_org.getInstance();
 		StaffVO_org svo = new StaffVO_org();
 		int result = dao.userCheck(userid, pwd);
 		int val = sdao.find_timeover(svo);
 		if (result == 1) {
-			if (val == 0) {
-				System.out.println("초과근무 신청기록이있음,불러오겠엄");
+			if (val == 1) {
+				System.out.println("초과근무 신청기록이있음,불러오겠음");
 				List<StaffVO_org> state = sdao.load_state(userid);
 				HttpSession session = request.getSession();
-
 				session.setAttribute("stateTimeover", state);
-				System.out.println("세션저장완료");
+				System.out.println("세션저장완료, 로그인서블릿세션 저장단계 종료");
 			}
 			MemberVO vo = dao.getMeber(userid);
 			HttpSession session = request.getSession();

@@ -25,7 +25,7 @@ public class StaffDAO_org {
 //
 	public int find_timeover(StaffVO_org vo) {
 		String sql = "select check_timeover from request_timeover where user_email_timeover ='"
-				+ vo.getUser_email_timeover() + "'";
+				+ vo.getUser_email_timeover() + "' and check_timeover='진행중'";
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -35,7 +35,7 @@ public class StaffDAO_org {
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
 			if (rs.next()) {
-				if (rs.getString("check_timeover").equals("대기")) {
+				if (rs.getString("check_timeover").equals("진행중")) {
 					val = 1;
 				}
 			}

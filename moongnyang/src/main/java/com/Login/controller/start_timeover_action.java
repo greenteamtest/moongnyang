@@ -3,7 +3,6 @@ package com.Login.controller;
 import java.io.IOException;
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,7 +28,7 @@ public class start_timeover_action implements Action {
 		StaffDAO_org dao = StaffDAO_org.getInstance();
 		val = dao.find_timeover(vo);
 		System.out.println("스타트 타임오버 액션 val : " + val + "// 0=이미 초과근무 신청되었다는것임 1= 기록없음");
-		if (val == 1) {
+		if (val == 0) {
 			System.out.println("기록없음, 추가하겠음");
 			dao.start_timeover(vo);
 			System.out.println("결과 : 추가완료");
@@ -41,9 +40,8 @@ public class start_timeover_action implements Action {
 
 		session.setAttribute("stateTimeover", state);
 		System.out.println("세션저장완료");
-		String url = "member/manage/managerPageStaff.jsp";
-		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-		dispatcher.forward(request, response);
+//		String url = "member/manage/managerPageStaff.jsp";
+		new staffChangeAction().execute(request, response);
 //		new staffChangeAction().execute(request, response);
 	}
 

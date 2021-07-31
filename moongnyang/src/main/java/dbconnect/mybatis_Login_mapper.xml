@@ -3,10 +3,29 @@
 <!-- <mapper namespace="dao.StaffDAO"> -->
 <mapper namespace="com.Staff.dao.StaffDAO">
 
-	<select id="end_timeover" parameterType="staff" resultType="int">
-		merge into request_timeover using dual on(user_email_timeover
+	<select id="start_timeover" parameterType="staff"
+		resultType="int">
+		merge into
+		request_timeover using dual
+		on(user_email_timeover=#{user_email_timeover} and
+		check_timeover='진행중') when not matched
+		then insert
+		values(request_timeover_seq.NEXTVAL,#{user_nick_timeover},#{user_email_timeover},
+		TO_CHAR(sysdate, 'HH24:MI'),TO_CHAR(sysdate,
+		'HH24:MI'),TO_CHAR(sysdate, 'YYYY.MM:DD'),#{reason_timeover},'진행중')
+	</select>
+	<update id="end_timeover" parameterType="staff">
+		merge into
+		request_timeover using dual on(user_email_timeover
 		=#{user_email_timeover}) when matched then update set check_timeover
 		='대기' where user_email_timeover=#{user_email_timeover} and
 		check_timeover='진행중'
-	</select>
+	</update>
+	<insert id="after_request_timeover" parameterType="staff">
+		insert into
+		request_timeover
+		values(request_timeover_seq.NEXTVAL,#{user_nick_timeover},
+		#{user_email_timeover},#{start_timeover},#{end_timeover},
+		#{date_timeover},#{reason_timeover},'대기')
+	</insert>
 </mapper>

@@ -46,7 +46,6 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				if (rs.getString("user_pwd") != null && rs.getString("user_pwd").equals(pwd)) {
-					System.out.println("비번은 일치함");
 					result = 1;
 				} else {
 					result = 0;

@@ -9,11 +9,16 @@ public class StaffDAO {
 
 	}
 
-//	public List<StaffVO> All_member_List(SqlSession session, HealthReviewVo vo) { // select place list
-//		return session.selectList("All_member_List", vo);
-//	}
-	public int end_timeover(SqlSession session, StaffVO vo) { // select place list
-		return session.insert("end_timeover", vo);
+	public int end_timeover(SqlSession session, StaffVO vo) {
+		return session.update("end_timeover", vo);
+	}
+
+	public int after_request_timeover(SqlSession session, StaffVO vo) {
+		return session.insert("after_request_timeover", vo);
+	}
+
+	public int start_timeover(SqlSession session, StaffVO vo) {
+		return session.insert("start_timeover", vo);
 	}
 
 }
