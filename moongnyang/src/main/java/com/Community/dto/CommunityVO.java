@@ -17,7 +17,7 @@ public class CommunityVO {
 	private String pic_url_4;
 	private String pic_url_5;
 
-//총 9개
+//총 14개
 	public Integer getBoard_idx() {
 		return board_idx;
 	}

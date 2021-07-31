@@ -8,9 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.Community.dto.DBManager;
-
 import com.Community.dto.CommunityVO;
+import com.Community.dto.DBManager;
 
 public class CommunityDAO {
 
@@ -30,14 +29,14 @@ public class CommunityDAO {
 		List<CommunityVO> list = new ArrayList<CommunityVO>();
 
 		Connection conn = null;
-		Statement stmt=null;
+		Statement stmt = null;
 		ResultSet rs = null;
 
 		try {
 			conn = DBManager.getConnection();
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
-			
+
 			while (rs.next()) { // 이동은 행(로우) 단위로
 				CommunityVO cVO = new CommunityVO();
 				cVO.setBoard_idx(rs.getInt("BOARD_IDX"));
@@ -64,5 +63,34 @@ public class CommunityDAO {
 			DBManager.close(conn, stmt, rs);
 		}
 		return list;
-	}// selectAllProducts() {
+	}// selectAllProducts() 끝
+
+	//게시글 등록
+	public void insertBoard(CommunityVO cVO) {
+		String sql = "INSERT INTO COMMUNITY_BOARD (" + "BOARD_IDX, USER_EMAIL, TITLE, CONTENTS, ANIMAL_TAG, BOARD_TAG)"
+
+				+ "values (seq_community_board.nextval,?,?,?,?,?)";
+		// 사진 url 컬럼값도 추가하는 쿼리문 추후 만들어야함
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, cVO.getUser_email());
+			pstmt.setString(2, cVO.getTitle());
+			pstmt.setString(3, cVO.getContents());
+			pstmt.setInt(4, cVO.getAnimal_tag());
+			pstmt.setInt(5, cVO.getBoard_tag());
+
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+	} //insertBoard() 메쏘드 끝
+
 }// CommunityDAO{

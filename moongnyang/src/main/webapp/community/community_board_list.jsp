@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ include file="../bootstrap/boot.jsp"%>
+<%@ include file="../top&down/header.jsp"%>
 
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -160,26 +161,13 @@
 
 			</div>
 			<div class="col-md-auto">
-
-
-				<c:if test="${empty loginUser}">
+				<div class="row">
 					<button type="button" class="btn btn-warning"
-						onclick="location.href='../member/login.do' ">로그인</button>
-
-					<a class="nav-link" href="login.do" data-bs-toggle="tooltip"
-						data-bs-placement="top" title="함께해요!">로그인</a>
-				</c:if>
-
-				<c:if test="${!empty loginUser}">
-					<li class="nav-item"><a class="nav-link" href="logout.do"
-						data-bs-toggle="tooltip" data-bs-placement="top" title="정말 나가시게요?">내가
-							쓴 글</a></li>
-				</c:if>
-
-				<div class="row">내</div>
-				<div class="row">3</div>
-				<div class="row">4</div>
-
+						onclick="location.href='../member/login.do' ">게시글 쓰러가기</button>
+					<a href="Community_BoardServlet?command=board_write_form">게시글
+						등록</a> 
+					<a href="Community_BoardServlet?command=board_list">Community</a>
+				</div>
 			</div>
 		</div>
 		<!-- 필터 고르는 부분 -->
@@ -199,8 +187,8 @@
 						<div class="row">게시판 필터</div>
 						<div class="row">
 							<div class="col">
-								<button type="button" class="btn btn-outline-primary">제품추천</button>
-								<button type="button" class="btn btn-outline-secondary">일상공유</button>
+								<button type="button" class="btn btn-outline-primary">일상공유</button>
+								<button type="button" class="btn btn-outline-secondary">제품추천</button>
 								<button type="button" class="btn btn-outline-success">벼룩시장</button>
 								<button type="button" class="btn btn-outline-danger">궁금해요</button>
 								<button type="button" class="btn btn-outline-warning">기타</button>
@@ -248,7 +236,7 @@
 				</div>
 			</c:forEach>
 
-			
+
 
 
 
