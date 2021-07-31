@@ -19,7 +19,6 @@ public class staffServlet extends HttpServlet {
 	 */
 	public staffServlet() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -30,11 +29,8 @@ public class staffServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
-		request.setCharacterEncoding("UTF-8");
-		response.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=UTF-8");
 		String command = request.getParameter("command");
-		System.out.println("staffServlet에서 요청을 받음으 확인 : " + command);
+		System.out.println("staffServlet에서 요청을 받음을 확인 : " + command);
 		ActionFactory af = ActionFactory.getInstance();
 		Action action = af.getAction(command);
 		if (action != null) {

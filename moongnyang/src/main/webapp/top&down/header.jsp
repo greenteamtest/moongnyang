@@ -105,8 +105,7 @@
 							href="mypageServlet?command=memberLounge">FAQ</a></li>
 						<li><a class="dropdown-item"
 							href="BoardServlet?command=first">난 박지수</a></li>
-						<li><a class="dropdown-item"
-							href="mypageServlet?command=secret">비밀버튼</a></li>
+						<li><a class="dropdown-item" href="mypageServlet?command=secret">비밀버튼</a></li>
 					</ul></li>
 			</ul>
 		</div>

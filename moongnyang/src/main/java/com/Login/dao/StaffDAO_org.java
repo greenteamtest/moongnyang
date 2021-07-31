@@ -34,11 +34,10 @@ public class StaffDAO_org {
 			conn = DBManager.getConnection();
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
-
 			if (rs.next()) {
-				System.out.println("check : " + rs.getString("check_timeover"));
-			} else {
-				val = 1;
+				if (rs.getString("check_timeover").equals("대기")) {
+					val = 1;
+				}
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

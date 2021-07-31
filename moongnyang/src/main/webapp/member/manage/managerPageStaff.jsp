@@ -274,7 +274,10 @@
 					<button type="button" class="btn btn-secondary"
 						data-bs-dismiss="modal">닫기</button>
 					<button type="submit" class="btn btn-primary">신청하기</button>
-					<button type="submit" class="btn btn-primary">종료하기</button>
+					<button type="button"
+						onclick="location.href='staffServlet?command=end_timeover&email=${loginUser.email
+						}'"
+						class="btn btn-primary">종료하기</button>
 				</div>
 			</div>
 		</div>
@@ -282,18 +285,6 @@
 </form>
 <!-- 모달 소급신청 초과근무 신청 -->
 <form>
-	<script type="text/javascript">
-		//<![CDATA[
-		$(function() {
-			$("#date3").datepicker({
-				onSelect : function(dateText, inst) {
-					console.log(dateText);
-					console.log(inst);
-				}
-			});
-		});
-		//]]>
-	</script>
 	<div class="modal fade" id="requestOvertimeAfter"
 		data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
 		aria-labelledby="requestOvertimeAfter" aria-hidden="true">
