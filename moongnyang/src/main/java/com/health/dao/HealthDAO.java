@@ -51,4 +51,8 @@ public class HealthDAO {
 		return session.insert("controlUserDips", map);
 	}
 
+	public List<HealthPlaceVo> selectPlaceListForArrayType(SqlSession session, String value) { // 찜 count
+		return session.selectList("selectPlaceListForArrayType", value);
+	}
+
 }

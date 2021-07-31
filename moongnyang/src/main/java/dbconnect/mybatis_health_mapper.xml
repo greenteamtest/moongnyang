@@ -8,17 +8,18 @@
 		from view_place
 		<choose>
 			<when test="value != null and value instanceof Integer">
-				where idx = #{key}
+				where idx = #{value}
 			</when>
 			<otherwise>
-				where field = #{key}
+				where field = #{value} order by dips_cont desc
 			</otherwise>
 		</choose>
 	</select>
-	
+					
+
 	<!-- 유저 찜 목록 select -->
 	<select id="selectUser_dips" parameterType="String" resultType="com.health.dto.HealthUserDipsVo">
-		select dips_place_list_id from user_dips  where user_email = #{email}
+		select dips_place_list_id from user_dips where user_email = #{value}
 	</select>
 
 
@@ -26,7 +27,7 @@
 	<select id="selectUser_Review" parameterType="int" resultType="com.health.dto.HealthReviewVo">
 		select place_list_id, user_email, contents, write_date, write_time,like_count, manager_comment, my_rating
 		from user_review
-		where place_list_id = #{place_idx}
+		where place_list_id = #{value}
 		order by 1 , 4 desc, 5 desc
 	</select>
 
@@ -40,33 +41,33 @@
 
 
 	<!-- insert user review -->
-	<select id="insert_review" parameterType="review" resultType="int">
+	<insert id="insert_review" parameterType="review">
 		insert into user_review (user_review_idx, user_email, place_list_id, contents, my_rating, write_date, write_time)
 		values (seq_user_review.nextval, #{user_email}, #{place_list_id}, #{contents}, #{my_rating}, to_char(sysdate , 'yy.MM.dd'), to_char(sysdate, 'hh24:mi'))
-	</select>
+	</insert>
 
 
 
 
 	<!-- revise user review -->
-	<select id="reviseReview" parameterType="review" resultType="int">
+	<update id="reviseReview" parameterType="review">
 		update user_review
 		set contents = #{contents} ,my_rating = #{my_rating},
 		write_date =to_char(sysdate , 'yy.MM.dd') , write_time =to_char(sysdate, 'hh24:mi')
 		where user_email = #{user_email} and place_list_id = #{place_list_id}
-	</select>
+	</update>
 
 
 
 	<!-- delete user review -->
-	<select id="deleteReview" parameterType="review" resultType="int">
+	<delete id="deleteReview" parameterType="review">
 		delete from user_review where user_email = #{user_email} and place_list_id = #{place_list_id}
-	</select>
+	</delete>
 
 
 
 	<!-- update place dips -->
-	<select id="updatePlaceDips" parameterType="Hashmap" resultType="int">
+	<update id="updatePlaceDips" parameterType="Hashmap">
 		update place_info set dips_cont =
 		<choose>
 			<when test="state eq 'positive'.toString()">
@@ -77,7 +78,7 @@
 			</otherwise>
 		</choose>
 		where place_list_id = #{idx}
-	</select>
+	</update>
 
 
 	<!-- get placedips -->
@@ -94,12 +95,42 @@
 				values (SEQ_USER_DIPS.nextval, #{email}, #{idx})
 			</when>
 			<otherwise>
-				delete from user_dips 
-				where user_email = #{email} 
+				delete from user_dips
+				where user_email = #{email}
 				and dips_place_list_id = #{idx}
 			</otherwise>
 		</choose>
 	</select>
 
+
+	<!-- select PlaceList For ArrayType -->
+	<select id="selectPlaceListForArrayType" parameterType="String" resultType="com.health.dto.HealthPlaceVo">
+
+		<choose>
+			<when test="_parameter eq 'popul'.toString()">
+					select idx, field, place, phone_num, address, open_time, introduce, dips_cont, pet_kind
+					from view_place
+					order by dips_cont desc
+			</when>
+			<when test="_parameter eq 'reviews'.toString()">
+				select idx, field, place, phone_num, address, open_time, introduce, dips_cont, pet_kind
+				,count(idx)
+				from view_place V
+				left join user_review R
+				on V.idx= R.place_list_id
+				group by idx, field, place, phone_num, address, open_time, introduce, dips_cont, pet_kind
+				order by 10 desc
+			</when>
+			<otherwise>
+				select idx, field, place, phone_num, address, open_time, introduce, dips_cont, pet_kind
+				, NVL(sum(my_rating),0)
+				from view_place V
+				left join user_review R
+				on V.idx= R.place_list_id
+				group by idx, field, place, phone_num, address, open_time, introduce, dips_cont, pet_kind
+				order by 10 desc
+			</otherwise>
+		</choose>
+	</select>
 
 </mapper>

@@ -32,8 +32,7 @@ public class Health_placeList_Action implements Action {
 				placeList = service.selectPlace_List(jo.get("idx").toString());
 
 				if (placeList.size() != 0) {
-					String rs = JSONArray.toJSONString(placeList);
-					response.getWriter().write(rs);
+					response.getWriter().write(JSONArray.toJSONString(placeList));
 				}
 			} catch (ParseException e) {
 				e.printStackTrace();
@@ -42,8 +41,6 @@ public class Health_placeList_Action implements Action {
 			String key = request.getParameter("key");
 			String email = request.getParameter("email");
 			String url = "health&edu/place/place_list.jsp";
-			System.out.println("key ? " + key);
-			System.out.println("email ? " + email);
 
 			placeList = service.selectPlace_List(key);
 
@@ -51,12 +48,7 @@ public class Health_placeList_Action implements Action {
 				request.setAttribute("placeList", placeList);
 
 				if (email != null && email.trim().length() != 0) {
-					System.out.println("이메일 넘어감 ");
 					dipsList = service.selectUser_dips(email);
-					for (HealthUserDipsVo vo : dipsList) {
-						System.out.println(vo.getUser_email());
-						System.out.println(vo.getDips_place_list_id());
-					}
 					request.setAttribute("dipsList", dipsList);
 				}
 

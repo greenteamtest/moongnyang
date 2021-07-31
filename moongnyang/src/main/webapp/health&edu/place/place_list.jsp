@@ -5,8 +5,8 @@
 <%@ include file="/semanticUI/semanticUI.jsp"%>
 <%@ include file="/jQuery/jquery.jsp"%>
 <%@ include file="/setting/setting.jsp"%>
-<%@ include file="/top&down/header.jsp"%>
-<%@ include file="/health&edu/nav.jsp"%>
+
+
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -27,13 +27,91 @@
 <script defer src="health&edu/place/delete_review.js" type="text/javascript"></script>
 <script defer src="health&edu/place/kakaomap.js" type="text/javascript"></script>
 <script defer src="health&edu/place/place_dips.js" type="text/javascript"></script>
+<script defer src="health&edu/place/array_type.js" type="text/javascript"></script>
 
 <style>
+#ad1 {
+	border: 2px solid gray;
+	width: 100%;
+	height: 50%;
+	background-size: 100%;
+	margin-bottom: 4rem;
+}
+
+#ad2 {
+	border: 2px solid gray;
+	width: 100%;
+	height: 50%;
+	background-size: 100%;
+}
+
+#ad1 .carousel-inner img, #ad2 .carousel-inner img {
+	height: 100%;
+}
+
+div[class="container-fluid"] {
+	text-align: center;
+}
+
+ul[class="nav nav-pills"] {
+	position: absolute;
+	right: 20rem;
+}
+
+nav[class="navbar navbar-light"] {
+	padding-left: 10rem;
+	padding-right: 10rem;
+}
+
+.d-flex {
+	margin-top: 1rem;
+}
+
+.d-flex input[class="form-control me-2"] {
+	width: 25rem;
+}
 </style>
+
 </head>
 <body>
 
+	<header>
+		<%@ include file="/top&down/header.jsp"%>
+		<%@ include file="/health&edu/logo.jsp"%>
+	</header>
+
+
+
 	<div id="maincontainer">
+		<%@ include file="/health&edu/nav.jsp"%>
+		<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+			<div class="container-fluid">
+				<ul class="nav nav-pills">
+
+
+					<li class="nav-item">
+						<a class="nav-link active" href="javascript:;" id="popul">인기순</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="javascript:;" id="reviews">리뷰 많은 순</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link" href="javascript:;" id="stars">별점순</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="javascript:;" id="distance">거리순</a>
+					</li>
+
+				</ul>
+				<form class="d-flex">
+					<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+					<button class="btn btn-outline-success" type="submit">Search</button>
+				</form>
+			</div>
+		</nav>
+
+
 		<main>
 			<section id="place_list">
 				<div id="user_email">
@@ -56,7 +134,8 @@
 								</div>
 								<ul class="list-group list-group-flush">
 									<li class="list-group-item">
-										<img src="health&edu/img/pets.png" class="pets-icons" alt="pet_icon"> ${place.getPet_kind() }
+										<img src="health&edu/img/pets.png" class="pets-icons" alt="pet_icon">
+										<span>${place.getPet_kind() }</span>
 									</li>
 									<li class="list-group-item"># 거리</li>
 									<li class="list-group-item">
@@ -365,10 +444,54 @@
 			</section>
 		</main>
 
+		<aside>
+			<div id="ad1" class="ui half page test ad" data-text="">
+				<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+					<div class="carousel-inner">
+						<div class="carousel-item active" data-bs-interval="3000">
+							<img src="health&edu/place/add_img/나라동물병원.png" class="d-block w-100" alt="...">
+						</div>
+						<div class="carousel-item" data-bs-interval="3000">
+							<img src="health&edu/place/add_img/동물병원.png" class="d-block w-100" alt="...">
+						</div>
+						<div class="carousel-item" data-bs-interval="3000">
+							<img src="health&edu/place/add_img/반려동물병원.png" class="d-block w-100" alt="...">
+						</div>
+					</div>
+				</div>
+			</div>
 
+			<div id="ad2" class="ui half page test ad" data-text="">
+				<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+					<div class="carousel-inner">
+						<div class="carousel-item active" data-bs-interval="3000">
+							<img src="health&edu/place/add_img/팝썸동물병원.png" class="d-block w-100" alt="...">
+						</div>
+						<div class="carousel-item" data-bs-interval="3000">
+							<img src="health&edu/place/add_img/리아망고.png" class="d-block w-100" alt="...">
+						</div>
+						<div class="carousel-item" data-bs-interval="3000">
+							<img src="health&edu/place/add_img/이벤트.png" class="d-block w-100" alt="...">
+						</div>
+					</div>
+				</div>
+			</div>
+		</aside>
 
 	</div>
 
+
+
+	<!--  toast  alert -->
+	<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+		<div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+			<div class="toast-header" style="font-size: 1.1rem; color: white; background-color: skyblue;">
+				<strong class="me-auto">※ 경고 ※</strong> <small>11 mins ago</small>
+				<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+			</div>
+			<div class="toast-body" style="font-size: 1.3rem; display: inline-block;">* 로그인 후 이용 가능합니다 *</div>
+		</div>
+	</div>
 	<%@ include file="../footer.jsp"%>
 
 </body>
