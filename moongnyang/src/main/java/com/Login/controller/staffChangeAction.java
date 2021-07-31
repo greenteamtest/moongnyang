@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import com.Login.controller.action.Action;
 import com.Login.dao.StaffDAO_org;
 import com.Login.dto.StaffVO_org;
+import com.Staff.dto.StaffVO;
 
 public class staffChangeAction implements Action {
 
@@ -20,10 +21,16 @@ public class staffChangeAction implements Action {
 		// TODO Auto-generated method stub
 		String url = "member/manage/managerPageStaff.jsp";
 		StaffDAO_org dao = StaffDAO_org.getInstance();
-		List<StaffVO_org> state = dao.load_state(request.getParameter("email"));
+		List<StaffVO_org> timeover = dao.load_state(request.getParameter("email"));
 		HttpSession session = request.getSession();
+		List<StaffVO> vacation = service.load_vacation(request.getParameter("email"));
+		List<StaffVO> timeover_ma = service.load_timeover(request.getParameter("email"));
+		
+		System.out.println(timeover_ma);
 
-		session.setAttribute("stateTimeover", state);
+		session.setAttribute("timeover", timeover);
+		session.setAttribute("timeover_ma", timeover_ma);
+		session.setAttribute("vacation", vacation);
 		System.out.println("세션저장완료");
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);

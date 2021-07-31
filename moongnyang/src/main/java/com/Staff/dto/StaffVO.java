@@ -21,6 +21,10 @@ public class StaffVO {
 	private String start_timeover;
 	private String end_timeover;
 	private String date_timeover;
+	
+	public StaffVO() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public int getNum_vacation() {
 		return num_vacation;
@@ -180,6 +184,18 @@ public class StaffVO {
 
 	public void setDate_timeover(String date_timeover) {
 		this.date_timeover = date_timeover;
+	}
+
+	@Override
+	public String toString() {
+		return "StaffVO [num_vacation=" + num_vacation + ", user_nick_vacation=" + user_nick_vacation
+				+ ", user_email_vacation=" + user_email_vacation + ", start_vacation=" + start_vacation
+				+ ", end_vacation=" + end_vacation + ", reason_vacation=" + reason_vacation + ", val_vacation="
+				+ val_vacation + ", check_vacation=" + check_vacation + ", user_email=" + user_email + ", user_auth="
+				+ user_auth + ", user_nick=" + user_nick + ", user_pwd=" + user_pwd + ", num_timeover=" + num_timeover
+				+ ", user_nick_timeover=" + user_nick_timeover + ", user_email_timeover=" + user_email_timeover
+				+ ", reason_timeover=" + reason_timeover + ", check_timeover=" + check_timeover + ", start_timeover="
+				+ start_timeover + ", end_timeover=" + end_timeover + ", date_timeover=" + date_timeover + "]";
 	}
 
 }

@@ -12,8 +12,20 @@
 		then insert
 		values(request_timeover_seq.NEXTVAL,#{user_nick_timeover},#{user_email_timeover},
 		TO_CHAR(sysdate, 'HH24:MI'),TO_CHAR(sysdate,
-		'HH24:MI'),TO_CHAR(sysdate, 'YYYY.MM:DD'),#{reason_timeover},'진행중')
+		'HH24:MI'),TO_CHAR(sysdate, 'YYYY/MM/DD'),#{reason_timeover},'진행중')
 	</select>
+	<select id="load_timeover" parameterType="String"
+		resultType="com.Staff.dto.StaffVO">
+		select * from request_timeover where user_email_timeover
+		=#{value} order by num_timeover desc
+	</select>
+	<select id="load_vacation" parameterType="String"
+		resultType="com.Staff.dto.StaffVO">
+		select * from request_vacation where user_email_vacation
+		=#{value} order by num_vacation desc
+	</select>
+
+
 	<update id="end_timeover" parameterType="staff">
 		merge into
 		request_timeover using dual on(user_email_timeover
@@ -34,4 +46,6 @@
 		values(request_vacation_seq.NEXTVAL,#{user_nick_vacation},#{user_email_vacation},
 		#{start_vacation},#{end_vacation},#{reason_vacation},#{val_vacation},'신청완료')
 	</insert>
+
+
 </mapper>

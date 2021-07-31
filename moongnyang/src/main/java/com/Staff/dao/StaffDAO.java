@@ -1,5 +1,7 @@
 package com.Staff.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.Staff.dto.StaffVO;
@@ -22,8 +24,15 @@ public class StaffDAO {
 	}
 
 	public int request_vacation(SqlSession session, StaffVO vo) {
-		System.out.println("qqw3");
 		return session.insert("request_vacation", vo);
+	}
+
+	public List<StaffVO> load_timeover(SqlSession session, String email) {
+		return session.selectList("load_timeover", email);
+	}
+
+	public List<StaffVO> load_vacation(SqlSession session, String email) {
+		return session.selectList("load_vacation", email);
 	}
 
 }

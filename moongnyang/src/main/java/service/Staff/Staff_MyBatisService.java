@@ -1,5 +1,7 @@
 package service.Staff;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.Staff.dao.StaffDAO;
@@ -63,7 +65,7 @@ public class Staff_MyBatisService {
 		}
 		return rs;
 	}
-	
+
 	public int request_vacation(StaffVO vo) {
 		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
 		System.out.println("qqw1");
@@ -82,4 +84,29 @@ public class Staff_MyBatisService {
 		return rs;
 	}
 
+	public List<StaffVO> load_timeover(String email) {
+		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
+		List<StaffVO> list = null;
+		try {
+			list = dao.load_timeover(session, email); // dao에 SqlSession 전송
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
+		}
+		return list;
+	}
+
+	public List<StaffVO> load_vacation(String email) {
+		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
+		List<StaffVO> list = null;
+		try {
+			list = dao.load_vacation(session, email); // dao에 SqlSession 전송
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
+		}
+		return list;
+	}
 }

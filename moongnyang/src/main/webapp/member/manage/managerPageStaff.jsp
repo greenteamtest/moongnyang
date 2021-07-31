@@ -3,6 +3,7 @@
 <%@ include file="/member/manage/bar/managerHaeder.jsp"%>
 <%@ include file="/member/manage/bar/managerSidebar.jsp"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!doctype html>
 <html lang="ko">
 <head>
@@ -103,10 +104,10 @@
 						<h2>#근태관리 #휴가</h2>
 					</div>
 					<div class="col">
-						<c:if test="${!empty stateTimeover}">
+						<c:if test="${!empty timeover}">
 							<h6>현재상태 : 시간외 근무진행중</h6>
 						</c:if>
-						<c:if test="${empty stateTimeover}">
+						<c:if test="${empty timeover}">
 							<h6>좋은하루보내세요</h6>
 						</c:if>
 					</div>
@@ -275,7 +276,12 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-bs-dismiss="modal">닫기</button>
-					<button type="submit" class="btn btn-primary">신청하기</button>
+					<!-- 					<button type="submit" class="btn btn-primary">신청하기</button> -->
+					<button type="submit"
+						onclick="location.href='staffServlet?
+					command=start_timeover&user_email_timeover=${loginUser.email
+						}'"
+						class="btn btn-primary">신청하기</button>
 					<button type="button"
 						onclick="location.href='staffServlet?command=end_timeover&email=${loginUser.email
 						}'"
@@ -325,8 +331,8 @@
 				</div>
 				<div class="modal-body">
 					<div class="input-group mb-3">
-						<input type="text" class="form-control" name="date_" id="date3"
-							readonly aria-describedby="button-addon2"><input
+						<input type="text" class="form-control" name="date_timeover"
+							id="date3" readonly aria-describedby="button-addon2"><input
 							type="button" class="btn btn-outline-secondary" value="달력"
 							onclick="$('#date3').datepicker('show');" />
 					</div>
@@ -385,19 +391,22 @@
 					</div>
 				</div>
 				<hr>
-				<div class="container">
-					<div class="row">
-						<div class="col" align="center">
-							<div class="alert alert-warning" role="alert">2021/07/21</div>
-						</div>
-						<div class="col" align="center">
-							<div class="alert alert-warning" role="alert">3</div>
-						</div>
-						<div class="col" align="center">
-							<div class="alert alert-warning" role="alert">승인</div>
+				<c:forEach var="timeover_ma" items="${timeover_ma}">
+					<div class="container">
+						<div class="row">
+							<div class="col" align="center">
+								<div class="alert alert-warning" role="alert">${timeover_ma.date_timeover}</div>
+							</div>
+							<div class="col" align="center">
+								<div class="alert alert-warning" role="alert">${timeover_ma.end_timeover}
+									~ ${timeover_ma.start_timeover}</div>
+							</div>
+							<div class="col" align="center">
+								<div class="alert alert-warning" role="alert">${timeover_ma.check_timeover}</div>
+							</div>
 						</div>
 					</div>
-				</div>
+				</c:forEach>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary"
@@ -442,7 +451,8 @@
 				<div class="container">
 					<br>
 					<h6>휴가유형</h6>
-					<select class="form-select" aria-label="Default select example" name="val_vacation">
+					<select class="form-select" aria-label="Default select example"
+						name="val_vacation">
 						<option value="연차" selected>연차</option>
 						<option value="반차">반차</option>
 						<option value="보상휴가">보상휴가</option>
@@ -510,20 +520,22 @@
 					</div>
 				</div>
 				<hr>
-				<div class="container">
-					<div class="row">
-						<div class="col" align="center">
-							<div class="alert alert-warning" role="alert">2021/07/21 ~
-								20210721</div>
-						</div>
-						<div class="col" align="center">
-							<div class="alert alert-warning" role="alert">3</div>
-						</div>
-						<div class="col" align="center">
-							<div class="alert alert-warning" role="alert">승인</div>
+				<c:forEach var="vacation" items="${vacation}">
+					<div class="container">
+						<div class="row">
+							<div class="col" align="center">
+								<div class="alert alert-warning" role="alert">${vacation.start_vacation}
+									~ ${vacation.end_vacation}</div>
+							</div>
+							<div class="col" align="center">
+								<div class="alert alert-warning" role="alert">${vacation.val_vacation}</div>
+							</div>
+							<div class="col" align="center">
+								<div class="alert alert-warning" role="alert">${vacation.check_vacation}</div>
+							</div>
 						</div>
 					</div>
-				</div>
+				</c:forEach>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary"
