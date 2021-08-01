@@ -124,7 +124,6 @@
 							<tr>
 								<th scope="col">별명</th>
 								<th scopr="col">이메일</th>
-								<th scope="col">변경</th>
 							</tr>
 							</tread>
 							<tbody>
@@ -132,7 +131,6 @@
 									<tr>
 										<td>${user.user_nick}</td>
 										<td>${user.email}</td>
-										<td>정보변경</td>
 									</tr>
 								</c:forEach>
 							</tbody>
@@ -147,7 +145,6 @@
 							<tr>
 								<th scope="col">별명</th>
 								<th scopr="col">이메일</th>
-								<th scope="col">변경</th>
 							</tr>
 							</tread>
 							<tbody>
@@ -155,7 +152,6 @@
 									<tr>
 										<td>${user.user_nick}</td>
 										<td>${user.email}</td>
-										<td>정보변경</td>
 									</tr>
 								</c:forEach>
 							</tbody>

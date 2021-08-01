@@ -3,6 +3,21 @@
 <!-- <mapper namespace="dao.StaffDAO"> -->
 <mapper namespace="com.Staff.dao.StaffDAO">
 
+
+	<!-- 초과근무 신청내역불러오기 (이건 신청날짜 정렬) -->
+	<select id="load_total_timeover" parameterType="staff"
+		resultType="com.Staff.dto.StaffVO">
+		select * from request_timeover order by date_timeover desc
+	</select>
+	<!-- 휴가 신청내역불러오기 (이건 신청순서대로 정렬) -->
+	<select id="load_total_vacation" parameterType="staff"
+		resultType="com.Staff.dto.StaffVO">
+		select * from request_vacation order by num_vacation desc
+	</select>
+	<select id="load_staffmember" parameterType="staff"
+		resultType="com.Staff.dto.StaffVO">
+		select * from user_info where user_auth=2 or user_auth=3
+	</select>
 	<select id="start_timeover" parameterType="staff"
 		resultType="int">
 		merge into

@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.Staff.dto.StaffVO;
+import com.Staff.dto.memberVO;
 
 public class StaffDAO {
 	public StaffDAO() {
@@ -33,6 +34,18 @@ public class StaffDAO {
 
 	public List<StaffVO> load_vacation(SqlSession session, String email) {
 		return session.selectList("load_vacation", email);
+	}
+
+	public List<StaffVO> load_staffmember(SqlSession session) {
+		return session.selectList("load_staffmember");
+	}
+
+	public List<StaffVO> load_total_vacation(SqlSession session) {
+		return session.selectList("load_total_vacation");
+	}
+
+	public List<StaffVO> load_total_timeover(SqlSession session) {
+		return session.selectList("load_total_timeover");
 	}
 
 }

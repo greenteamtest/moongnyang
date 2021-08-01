@@ -6,15 +6,14 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.Staff.dao.StaffDAO;
 import com.Staff.dto.StaffVO;
-import com.Staff.dto.memberVO;
 
 import dbconnect.MybatisSessionFactory;
 
-public class Staff_MyBatisService {
+public class memver_MyBatisService {
 
 	StaffDAO dao;
 
-	public Staff_MyBatisService() {
+	public memver_MyBatisService() {
 		dao = new StaffDAO();
 	}
 
@@ -103,45 +102,6 @@ public class Staff_MyBatisService {
 		List<StaffVO> list = null;
 		try {
 			list = dao.load_vacation(session, email); // dao에 SqlSession 전송
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
-		}
-		return list;
-	}
-
-	public List<StaffVO> load_staffmember() {
-		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
-		List<StaffVO> list = null;
-		try {
-			list = dao.load_staffmember(session); // dao에 SqlSession 전송
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
-		}
-		return list;
-	}
-
-	public List<StaffVO> load_total_timeover() {
-		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
-		List<StaffVO> list = null;
-		try {
-			list = dao.load_total_timeover(session); // dao에 SqlSession 전송
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
-		}
-		return list;
-	}
-
-	public List<StaffVO> load_total_vacation() {
-		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
-		List<StaffVO> list = null;
-		try {
-			list = dao.load_total_vacation(session); // dao에 SqlSession 전송
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

@@ -25,12 +25,15 @@ public class staffChangeAction implements Action {
 		HttpSession session = request.getSession();
 		List<StaffVO> vacation = service.load_vacation(request.getParameter("email"));
 		List<StaffVO> timeover_ma = service.load_timeover(request.getParameter("email"));
-		
-		System.out.println(timeover_ma);
-
+		List<StaffVO> staffmember = service.load_staffmember();
+		List<StaffVO> total_timeover = service.load_total_timeover();
+		List<StaffVO> total_vacation = service.load_total_vacation();
 		session.setAttribute("timeover", timeover);
 		session.setAttribute("timeover_ma", timeover_ma);
 		session.setAttribute("vacation", vacation);
+		session.setAttribute("staffmember", staffmember);
+		session.setAttribute("total_timeover", total_timeover);
+		session.setAttribute("total_vacation", total_vacation);
 		System.out.println("세션저장완료");
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);

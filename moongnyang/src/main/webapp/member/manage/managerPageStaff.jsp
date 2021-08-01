@@ -24,9 +24,6 @@
 <link rel="canonical"
 	href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
 
-
-
-
 <!-- Bootstrap core CSS -->
 <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -45,7 +42,6 @@
 	}
 }
 </style>
-
 
 <!-- Custom styles for this template -->
 <link href="member/manage/dashboard.css" rel="stylesheet">
@@ -90,7 +86,7 @@
 					</div>
 					<div class="row">
 						<div class="col">
-							<h2>#인사과 직원화면</h2>
+							<h2>#인사담당직원화면</h2>
 						</div>
 						<div class="col"></div>
 					</div>
@@ -147,22 +143,60 @@
 				</div>
 
 				<c:if test="${loginUser.auth==3}">
-					<h2>사원List #관리</h2>
+					<div class="row">
+						<div class="col">
+							<h2>사원List #관리</h2>
+						</div>
+						<div class="col"></div>
+						<div class="col-auto">
+							<label for="inputPassword2" class="visually-hidden">별명검색</label>
+							<input type="text" class="form-control" id="search_timeover"
+								placeholder="별명검색">
+						</div>
+						<div class="col-auto">
+							<button type="submit" class="btn btn-primary mb-3">검색</button>
+						</div>
+					</div>
 					<div class="table-responsive">
 						<table class="table table-striped table-sm">
 							<thead>
 								<tr>
-									<th scope="col">순번</th>
 									<th scope="col">이메일</th>
 									<th scope="col">별명</th>
-									<th scope="col">직급</th>
 									<th scope="col">등급조정</th>
 								</tr>
 							</thead>
 							<tbody>
-
+								<c:forEach var="staffmember" items="${staffmember}">
+									<tr>
+										<td>${staffmember.user_email}</td>
+										<td>${staffmember.user_nick}</td>
+										<td><button type="button">버튼</button></td>
+									</tr>
+								</c:forEach>
 							</tbody>
 						</table>
+					</div>
+					<div class="container">
+						<div class="row">
+							<div class="col"></div>
+							<div class="col">
+								<nav aria-label="Page navigation example">
+									<ul class="pagination">
+										<li class="page-item"><a class="page-link" href="#"
+											aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+										</a></li>
+										<li class="page-item"><a class="page-link" href="#">1</a></li>
+										<li class="page-item"><a class="page-link" href="#">2</a></li>
+										<li class="page-item"><a class="page-link" href="#">3</a></li>
+										<li class="page-item"><a class="page-link" href="#"
+											aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+										</a></li>
+									</ul>
+								</nav>
+							</div>
+							<div class="col"></div>
+						</div>
 					</div>
 					<div
 						class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -173,7 +207,15 @@
 						<div class="col">
 							<table class="table table-dark table-hover">
 								<tr>
-									<h2>초과근무내역</h2>
+									<td>
+										<h2>초과근무내역</h2>
+									</td>
+									<td><label for="inputPassword2" class="visually-hidden">별명검색</label>
+										<input type="text" class="form-control" id="search_timeover"
+										placeholder="별명검색"></td>
+									<td>
+										<button type="submit" class="btn btn-primary mb-3">검색</button>
+									</td>
 								</tr>
 								<tread>
 								<tr>
@@ -185,14 +227,30 @@
 								</tr>
 								</tread>
 								<tbody>
-
+									<c:forEach var="total_timeover" items="${total_timeover}">
+										<tr>
+											<td>${total_timeover.num_timeover}</td>
+											<td>${total_timeover.user_nick_timeover}</td>
+											<td>${total_timeover.date_timeover}</td>
+											<td>${total_timeover.reason_timeover}</td>
+											<td><button type="button">버튼</button></td>
+										</tr>
+									</c:forEach>
 								</tbody>
 							</table>
 						</div>
 						<div class="col">
 							<table class="table table-success table-striped ">
 								<tr>
-									<h2>휴가신청내역</h2>
+									<td>
+										<h2>휴가신청내역</h2>
+									</td>
+									<td><label for="inputPassword2" class="visually-hidden">별명검색</label>
+										<input type="text" class="form-control" id="search_vacation"
+										placeholder="별명검색"></td>
+									<td>
+										<button type="submit" class="btn btn-primary mb-3">검색</button>
+									</td>
 								</tr>
 								<tread>
 								<tr>
@@ -204,7 +262,15 @@
 								</tr>
 								</tread>
 								<tbody>
-
+									<c:forEach var="total_vacation" items="${total_vacation}">
+										<tr>
+											<td>${total_vacation.num_vacation}</td>
+											<td>${total_vacation.user_nick_vacation}</td>
+											<td>${total_vacation.start_vacation}~${total_vacation.end_vacation}</td>
+											<td>${total_vacation.val_vacation}</td>
+											<td><button type="button">버튼</button></td>
+										</tr>
+									</c:forEach>
 								</tbody>
 							</table>
 						</div>
