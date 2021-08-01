@@ -61,6 +61,14 @@
 		values(request_vacation_seq.NEXTVAL,#{user_nick_vacation},#{user_email_vacation},
 		#{start_vacation},#{end_vacation},#{reason_vacation},#{val_vacation},'신청완료')
 	</insert>
+	<insert id="insert_staff" parameterType="staff">
+		merge into
+		user_info
+		using dual on(user_email
+		=#{user_email}) when not
+		matched then insert
+		values(#{user_email},#{user_nick},#{user_pwd},#{user_auth})
+	</insert>
 
 
 </mapper>

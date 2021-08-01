@@ -10,7 +10,7 @@ public class StaffVO {
 	private String val_vacation;
 	private String check_vacation;
 	private String user_email;
-	private String user_auth;
+	private int user_auth;
 	private String user_nick;
 	private String user_pwd;
 	private int num_timeover;
@@ -21,7 +21,7 @@ public class StaffVO {
 	private String start_timeover;
 	private String end_timeover;
 	private String date_timeover;
-	
+
 	public StaffVO() {
 		// TODO Auto-generated constructor stub
 	}
@@ -138,11 +138,11 @@ public class StaffVO {
 		this.user_email = user_email;
 	}
 
-	public String getUser_auth() {
+	public int getUser_auth() {
 		return user_auth;
 	}
 
-	public void setUser_auth(String user_auth) {
+	public void setUser_auth(int user_auth) {
 		this.user_auth = user_auth;
 	}
 

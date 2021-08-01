@@ -12,6 +12,9 @@ public class StaffDAO {
 
 	}
 
+	public int insert_staff(SqlSession session, StaffVO vo) {
+		return session.update("insert_staff", vo);
+	}
 	public int end_timeover(SqlSession session, StaffVO vo) {
 		return session.update("end_timeover", vo);
 	}

@@ -156,6 +156,11 @@
 						<div class="col-auto">
 							<button type="submit" class="btn btn-primary mb-3">검색</button>
 						</div>
+						<div class="col-auto">
+							<button type="button" class="btn btn-primary"
+								data-bs-toggle="modal" data-bs-target="#insert_staff">
+								추가/수정</button>
+						</div>
 					</div>
 					<div class="table-responsive">
 						<table class="table table-striped table-sm">
@@ -562,6 +567,87 @@
 					<button type="button" class="btn btn-secondary"
 						data-bs-dismiss="modal">닫기</button>
 					<button type="submit" class="btn btn-primary">신청하기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+<!-- 모달 직원추가 및 수정 -->
+<form action="staffServlet" method="post">
+	<input type="hidden" name="command" value="insert_staff" id="command">
+	<input type="hidden" name="user_email" value="${loginUser.email}"
+		id="user_email"> <input type="hidden" name="user_nick"
+		value="${loginUser.nickname}" id="user_nick"> <input
+		type="hidden" name="user_pwd" value="${loginUser.pwd}" id="user_pwd">
+	<div class="modal fade" id="insert_staff" data-bs-backdrop="static"
+		data-bs-keyboard="false" tabindex="-1"
+		aria-labelledby="requestOvertimeBefore" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="staticBackdropLabel">직원추가/수정 #가족</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="container">
+					<br>
+					<h6>유형선택</h6>
+					<select class="form-select" aria-label="Default select example"
+						name="new_auth">
+						<option value="2" selected>일반</option>
+						<option value="3">인사담당자</option>
+					</select>
+					<hr>
+					<div class="row" align="center">
+						<div class="col">
+							<div class="input-group mb-3">
+								<input type="text" class="form-control"
+									placeholder="별명/닉네임/애칭을 입력해주세요!!"
+									aria-label="Recipient's username"
+									aria-describedby="button-addon2" name="new_nick">
+								<button class="btn btn-outline-secondary" type="button"
+									id="button-addon2">중복확인</button>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<div class="input-group mb-3">
+								<input type="text" class="form-control"
+									placeholder="앞으로 사용하실 이메일을 입력해주세요!"
+									aria-label="Recipient's username"
+									aria-describedby="button-addon2" name="new_email">
+								<button class="btn btn-outline-secondary" type="button"
+									id="button-addon2">중복확인</button>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<div class="input-group mb-3">
+								<span class="input-group-text" id="basic-addon1">비밀번호</span> <input
+									type="text" class="form-control" placeholder="비밀번호를 입력해주세요! "
+									aria-label="이메일을 입력해주세요!" aria-describedby="basic-addon1"
+									name="new_pwd">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<div class="input-group mb-3">
+								<span class="input-group-text" id="basic-addon1">비밀번호확인</span> <input
+									type="text" class="form-control"
+									placeholder="확인을위해 한번더 입력해주세요! " aria-label="이메일을 입력해주세요!"
+									aria-describedby="basic-addon1" name="check_pwd">
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">닫기</button>
+					<button type="submit" class="btn btn-primary">입력하기</button>
 				</div>
 			</div>
 		</div>

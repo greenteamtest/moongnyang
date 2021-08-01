@@ -3,6 +3,7 @@ package com.Staff.controller;
 import com.Staff.controller.action.Action;
 import com.Staff.controller.action.after_requestTimeover_Action;
 import com.Staff.controller.action.endTimeover_Action;
+import com.Staff.controller.action.insert_staff_Action;
 import com.Staff.controller.action.requestVaction_Action;
 import com.Staff.controller.action.startTimeover_Action;
 
@@ -31,6 +32,9 @@ public class ActionFactory {
 		}
 		if (command.equals("request_vacation")) {
 			action = new requestVaction_Action();
+		}
+		if (command.equals("insert_staff")) {
+			action = new insert_staff_Action();
 		}
 
 		else {
