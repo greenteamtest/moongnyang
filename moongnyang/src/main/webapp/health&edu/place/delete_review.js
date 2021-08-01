@@ -24,6 +24,7 @@ $('#deleteReviewContainer .ui.positive.button').click(() => {
 			if (result == '0') {
 				alert('리뷰가 삭제되었습니다');
 				showReviewsAJAX(param);
+				reflectAvgRating(param);
 				$('##deleteReviewContainer').modal('hide');
 				return;
 			}

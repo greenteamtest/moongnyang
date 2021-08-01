@@ -18,6 +18,10 @@ public class HealthPlaceVo {
 	private int dips_cont;
 	private String pet_kind;
 
+	private int sum_rating;
+	private int reviewers;
+	private double avg;
+
 	public HealthPlaceVo() {
 	}
 
@@ -123,6 +127,30 @@ public class HealthPlaceVo {
 
 	public void setPet_kind(String pet_kind) {
 		this.pet_kind = pet_kind;
+	}
+
+	public int getSum_rating() {
+		return sum_rating;
+	}
+
+	public void setSum_rating(int sum_rating) {
+		this.sum_rating = sum_rating;
+	}
+
+	public int getReviewers() {
+		return reviewers;
+	}
+
+	public void setReviewers(int reviewers) {
+		this.reviewers = reviewers;
+	}
+
+	public double getAvg() {
+		return avg;
+	}
+
+	public void setAvg(double avg) {
+		this.avg = avg;
 	}
 
 	public String toString() {

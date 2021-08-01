@@ -12,35 +12,39 @@ import com.health.dto.HealthUserDipsVo;
 public class HealthDAO {
 
 	public List<HealthPlaceVo> selectPlace_List(SqlSession session, Object value) { // select place list
-		return session.selectList("selectPlace_List", value);
+		return session.selectList("slcPlace_List", value);
 	}
 
 	public List<HealthUserDipsVo> selectUser_dips(SqlSession session, String email) { // select user dips
-		return session.selectList("selectUser_dips", email);
+		return session.selectList("slcUser_dips", email);
 	}
 
 	public List<HealthReviewVo> selectUser_Review(SqlSession session, int place_idx) { // select place list
-		return session.selectList("selectUser_Review", place_idx);
+		return session.selectList("slcUser_Review", place_idx);
 	}
 
 	public List<HealthReviewVo> checkOverlapReview(SqlSession session, HealthReviewVo vo) { // 리뷰 중복 확인
-		return session.selectList("checkOverlapReview", vo);
+		return session.selectList("chkOverlapReview", vo);
 	}
 
 	public int insert_review(SqlSession session, HealthReviewVo vo) { // 리뷰 등록
-		return session.insert("insert_review", vo);
+		return session.insert("istReview", vo);
+	}
+
+	public double selectPlaceAvgRating(SqlSession session, int idx) { // 찜 count
+		return session.selectOne("slcPlaceAvgRating", idx);
 	}
 
 	public int reviseReview(SqlSession session, HealthReviewVo vo) { // 리뷰 수정
-		return session.update("reviseReview", vo);
+		return session.update("rvsReview", vo);
 	}
 
 	public int deleteReview(SqlSession session, HealthReviewVo vo) { // 리뷰 수정
-		return session.delete("deleteReview", vo);
+		return session.delete("dltReview", vo);
 	}
 
 	public int updatePlaceDips(SqlSession session, Map<String, Object> map) { // 찜 update
-		return session.update("updatePlaceDips", map);
+		return session.update("udPlaceDips", map);
 	}
 
 	public int getPlaceDips(SqlSession session, Map<String, Object> map) { // 찜 count
@@ -52,7 +56,7 @@ public class HealthDAO {
 	}
 
 	public List<HealthPlaceVo> selectPlaceListForArrayType(SqlSession session, String value) { // 찜 count
-		return session.selectList("selectPlaceListForArrayType", value);
+		return session.selectList("slcPlaceListForArrayType", value);
 	}
 
 }

@@ -30,7 +30,7 @@
         
         
         <property name="java-output-path" value="/Hompage/build/classes"/>
-        <property name="context-root" value="moongnyang"/>
+        <property name="context-root" value="/"/>
                                             
     
     

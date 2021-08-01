@@ -30,21 +30,6 @@
 <script defer src="health&edu/place/array_type.js" type="text/javascript"></script>
 
 <style>
-#ad1 {
-	border: 2px solid gray;
-	width: 100%;
-	height: 50%;
-	background-size: 100%;
-	margin-bottom: 4rem;
-}
-
-#ad2 {
-	border: 2px solid gray;
-	width: 100%;
-	height: 50%;
-	background-size: 100%;
-}
-
 #ad1 .carousel-inner img, #ad2 .carousel-inner img {
 	height: 100%;
 }
@@ -69,6 +54,11 @@ nav[class="navbar navbar-light"] {
 
 .d-flex input[class="form-control me-2"] {
 	width: 25rem;
+}
+
+.rating-icons {
+	width: 2rem;
+	height: 2rem;
 }
 </style>
 
@@ -105,8 +95,9 @@ nav[class="navbar navbar-light"] {
 
 				</ul>
 				<form class="d-flex">
-					<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-					<button class="btn btn-outline-success" type="submit">Search</button>
+					<input class="form-control me-2" type="search" placeholder="검색하실 키워드를 입력 해 주세요" aria-label="Search">
+					&ensp;&ensp;&ensp;
+					<button class="btn btn-outline-success" type="submit">검 색</button>
 				</form>
 			</div>
 		</nav>
@@ -138,6 +129,17 @@ nav[class="navbar navbar-light"] {
 										<span>${place.getPet_kind() }</span>
 									</li>
 									<li class="list-group-item"># 거리</li>
+									<li class="list-group-item">
+										<img src="health&edu/img/ratings.png" class="rating-icons" alt="rating_icon"> &ensp;&ensp;
+										<c:choose>
+											<c:when test="${place.getAvg() == 0}">
+												<span class="avg_rating">0</span>
+											</c:when>
+											<c:otherwise>
+												<span class="avg_rating">${place.getAvg()}</span>
+											</c:otherwise>
+										</c:choose>
+									</li>
 									<li class="list-group-item">
 										<div class="ui labeled button" tabindex="0" style="margin-top: 1rem">
 
@@ -491,6 +493,15 @@ nav[class="navbar navbar-light"] {
 			</div>
 			<div class="toast-body" style="font-size: 1.3rem; display: inline-block;">* 로그인 후 이용 가능합니다 *</div>
 		</div>
+	</div>
+
+	<div id="link_btn">
+		<button class="ui facebook button">
+			<i class="facebook icon"></i> Facebook
+		</button><br>
+		<button class="ui instagram button">
+			<i class="instagram icon"></i> Instagram
+		</button>
 	</div>
 	<%@ include file="../footer.jsp"%>
 

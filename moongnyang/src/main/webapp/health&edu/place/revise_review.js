@@ -55,6 +55,7 @@ $('#reviseReviewContainer').find('#sucRvs').click(() => {
 			if (result == '0') {
 				alert('리뷰 수정이 완료되었습니다');
 				showReviewsAJAX(param);
+				reflectAvgRating(param);
 				$('#reviseReview').modal('hide');
 				return;
 			}

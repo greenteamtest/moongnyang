@@ -30,6 +30,11 @@ public class Health_placeList_Action implements Action {
 			try {
 				JSONObject jo = (JSONObject) new JSONParser().parse(jsonData);
 				placeList = service.selectPlace_List(jo.get("idx").toString());
+				System.out.println("idx ? " + jo.get("idx").toString());
+
+				for (HealthPlaceVo vo : placeList) {
+					System.out.println(vo.getAvg());
+				}
 
 				if (placeList.size() != 0) {
 					response.getWriter().write(JSONArray.toJSONString(placeList));

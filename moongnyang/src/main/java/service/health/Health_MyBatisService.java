@@ -97,7 +97,20 @@ public class Health_MyBatisService {
 		return rs;
 	}
 
-	// insert review
+	// select rating avg per place
+	public double selectPlaceAvgRating(int idx) {
+		SqlSession session = MybatisSessionFactory.getSqlSession();
+		double rs = 0;
+
+		try {
+			rs = dao.selectPlaceAvgRating(session, idx);
+		} finally {
+			session.close();
+		}
+		return rs;
+	}
+
+	// revise review
 	public int reviseReview(HealthReviewVo vo) {
 		SqlSession session = MybatisSessionFactory.getSqlSession();
 		int rs = 0;
@@ -205,7 +218,7 @@ public class Health_MyBatisService {
 	public List<HealthPlaceVo> selectPlaceListForArrayType(String type) {
 		SqlSession session = MybatisSessionFactory.getSqlSession();
 		List<HealthPlaceVo> list = null;
-		System.out.println(" ?? : " + type);
+
 		try {
 			list = dao.selectPlaceListForArrayType(session, type);
 		} finally {

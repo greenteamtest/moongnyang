@@ -10,35 +10,21 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import com.health.dto.HealthReviewVo;
-
-public class Health_insertReview_Action implements Action {
+public class Health_reflectEachAvgRating_Action implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String jsonData = request.getParameter("jsonData");
-
-		int rs = 0;
+		double avgRating = 0;
 
 		if (jsonData != null && jsonData.trim().length() != 0) {
 			try {
 				JSONObject jo = (JSONObject) new JSONParser().parse(jsonData);
 
-				HealthReviewVo vo = new HealthReviewVo();
+				avgRating = service.selectPlaceAvgRating(Integer.parseInt(jo.get("idx").toString()));
 
-				vo.setPlace_list_id(Integer.parseInt(jo.get("idx").toString()));
-				vo.setUser_email(jo.get("email").toString());
-				vo.setContents(jo.get("contents").toString());
-				vo.setMy_rating(Integer.parseInt(jo.get("my_rating").toString()));
-
-				rs = service.insert_review(vo);
-
-				if (rs > 0) {
-					response.getWriter().write(String.valueOf(rs));
-				} else {
-					response.getWriter().write("null");
-				}
+				response.getWriter().write(String.valueOf(avgRating));
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}

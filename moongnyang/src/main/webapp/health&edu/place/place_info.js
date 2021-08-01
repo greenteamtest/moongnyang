@@ -147,8 +147,20 @@ const getSessionAJAX = () => {
 	return rs;
 }
 
-$('.card-img-top').click((e) => {
+const reflectAvgRating = (param) => {
+	$.ajax({
+		"url": "controller.do?command=reflectEachAvgRating",
+		"data": { "jsonData": JSON.stringify({ "idx": param.idx }) },
+		"method": "post",
+		"success": (result) => {
+			$(document).find(`.photo_${param.idx}`).closest('.card-frame').find('.avg_rating').text(result);
+		}
+	})
+}
 
+
+
+$(document).on('click', '.card-img-top', (e) => {
 	const param = {
 		"idx": $(e.currentTarget).prev().val()
 	};
@@ -160,6 +172,8 @@ $('.card-img-top').click((e) => {
 
 
 
+
+
 $('.d-block.w-100').on('error', (e) => {
 	$(e.currentTarget).attr('src', 'health&edu/place/place_img/logo.png');
 })
@@ -168,7 +182,6 @@ $('.d-block.w-100').on('error', (e) => {
 $('.title').click((e) => {
 	$(e.currentTarget).next().toggle();
 	map.relayout();
-	roadview.relayout();
 })
 
 

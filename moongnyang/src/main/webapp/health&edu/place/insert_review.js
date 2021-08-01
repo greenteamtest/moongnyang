@@ -62,11 +62,11 @@ $('#write_container').find('.ui.positive.button').click(() => {
 		"data": { "jsonData": JSON.stringify(param) },
 		"method": "post",
 		"success": (result) => {
-			const rs = result;
 
-			if (rs == '1') {
+			if (result != 'null') {
 				alert('리뷰 등록이 완료되었습니다');
 				showReviewsAJAX(param);
+				reflectAvgRating(param);
 				$('#write_container').modal('hide');
 			} else {
 				alert('리뷰 등록 실패');
@@ -75,6 +75,8 @@ $('#write_container').find('.ui.positive.button').click(() => {
 		}
 	})
 })
+
+
 
 
 

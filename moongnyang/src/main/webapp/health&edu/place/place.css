@@ -21,6 +21,8 @@
 }
 
 .card-frame {
+	font-family: 'Cute Font', cursive;
+	font-size: 1.8rem;
 	display: inline-block;
 	margin: 2rem 2rem 2rem 2rem;
 	transition: transform 0.8s;
@@ -225,17 +227,61 @@ div[class="ui big comments"] {
 	position: relative;
 }
 
-aside {
-	width: 23rem;
-	height: 150rem;
-	position: absolute;
-	right: 4rem;
-	top: 40rem;
-}
-
 #liveToast {
 	text-align: center;
 	background-color: white;
 }
 
+aside {
+	width: 23rem;
+	height: 150rem;
+	position: absolute;
+	right: 6rem;
+	top: 50rem;
+}
+
+
+
+#ad1 {
+	border: 2px solid gray;
+	width: 100%;
+	height: 50%;
+	background-size: 100%;
+	margin-bottom: 4rem;
+}
+
+#ad2 {
+	border: 2px solid gray;
+	width: 100%;
+	height: 50%;
+	background-size: 100%;
+}
+
+#link_btn {
+	position: fixed;
+	left: 2rem;
+	bottom: 2rem;
+}
+
+#link_btn button {
+	border: 1px solid gray;
+	width: 12rem;
+	height: 3.5rem;
+	margin: 0.3rem;
+	border-radius: 2rem;
+	box-shadow: 1px 1px 3px 1px #dadce0;
+}
+
+.d-flex {
+	margin-top: 1rem;
+}
+
+.d-flex input[class="form-control me-2"] {
+	width: 25rem;
+	box-shadow: 1px 1px 3px 1px #dadce0;
+}
+
+#ad1 .carousel-inner img, #ad2 .carousel-inner img {
+	height: 100%;
+}
 
