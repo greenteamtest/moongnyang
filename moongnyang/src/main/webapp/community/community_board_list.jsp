@@ -165,8 +165,7 @@
 					<button type="button" class="btn btn-warning"
 						onclick="location.href='../member/login.do' ">게시글 쓰러가기</button>
 					<a href="Community_BoardServlet?command=board_write_form">게시글
-						등록</a> 
-					<a href="Community_BoardServlet?command=board_list">Community</a>
+						등록</a> <a href="Community_BoardServlet?command=board_list">Community</a>
 				</div>
 			</div>
 		</div>
@@ -213,7 +212,10 @@
 					class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
 					<div class="col p-4 d-flex flex-column position-static">
 						<strong class="d-inline-block mb-2 text-primary">${board.user_email}</strong>
-						<h3 class="mb-0">${board.title}</h3>
+						<h3 class="mb-0">
+							<a
+								href="Community_BoardServlet?command=board_view&board_idx=${board.board_idx} ">${board.title}</a>
+						</h3>
 						<div class="mb-1 text-muted">${board.write_date}</div>
 						<p class="card-text mb-auto">${board.contents}</p>
 						<div class="btn-group">

@@ -1,8 +1,9 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../bootstrap/boot.jsp"%>
-<%@ include file="../top&down/header.jsp"%>	
-	
+<%@ include file="../top&down/header.jsp"%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!doctype html>
@@ -14,7 +15,7 @@
 <meta name="author"
 	content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 <meta name="generator" content="Hugo 0.84.0">
-<title>글 작성하기</title>
+<title>글 등록하기</title>
 
 <link rel="canonical"
 	href="https://getbootstrap.com/docs/5.0/examples/checkout/">
@@ -23,6 +24,8 @@
 
 <!-- Bootstrap core CSS -->
 <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- 자바스크립트 추가하기 -->
+<script type="text/javascript" src="board.js"></script>
 
 <style>
 .bd-placeholder-img {
@@ -48,7 +51,6 @@
 
 
 <!-- body태그 시작! -->
->
 <body class="bg-light">
 
 	<div class="container">
@@ -71,7 +73,7 @@
 
 								<input class="w-100 btn btn-primary btn-lg" type="submit"
 								value="등록하기" onclick="return boardCheck()">
-								
+
 							</li>
 
 
@@ -82,19 +84,19 @@
 									<!-- name=animal_tag  -->
 									<div class="form-check">
 										<input class="form-check-input" type="radio" name="animal_tag"
-											id="flexRadioDefault1"> <label
+											id="flexRadioDefault1" value="1"> <label
 											class="form-check-label" for="flexRadioDefault1"> 강아지
 										</label>
 									</div>
 									<div class="form-check">
 										<input class="form-check-input" type="radio" name="animal_tag"
-											id="flexRadioDefault2" checked> <label
+											id="flexRadioDefault2" value="2" checked> <label
 											class="form-check-label" for="flexRadioDefault2"> 고양이
 										</label>
 									</div>
 									<div class="form-check">
 										<input class="form-check-input" type="radio" name="animal_tag"
-											id="flexRadioDefault3" checked> <label
+											id="flexRadioDefault3" value="0" checked> <label
 											class="form-check-label" for="flexRadioDefault2"> 기타
 										</label>
 									</div>
@@ -106,31 +108,31 @@
 									<!-- name=board_tag  -->
 									<div class="form-check">
 										<input class="form-check-input" type="radio" name="board_tag"
-											id="flexRadioDefault1"> <label
+											id="flexRadioDefault1" value="1"> <label
 											class="form-check-label" for="flexRadioDefault1">
 											일상공유 </label>
 									</div>
 									<div class="form-check">
 										<input class="form-check-input" type="radio" name="board_tag"
-											id="flexRadioDefault1"> <label
+											id="flexRadioDefault1" value="2"> <label
 											class="form-check-label" for="flexRadioDefault1">
 											제품추천 </label>
 									</div>
 									<div class="form-check">
 										<input class="form-check-input" type="radio" name="board_tag"
-											id="flexRadioDefault1"> <label
+											id="flexRadioDefault1" value="3"> <label
 											class="form-check-label" for="flexRadioDefault1">
 											벼룩시장 </label>
 									</div>
 									<div class="form-check">
 										<input class="form-check-input" type="radio" name="board_tag"
-											id="flexRadioDefault1"> <label
+											id="flexRadioDefault1" value="4"> <label
 											class="form-check-label" for="flexRadioDefault1">
 											궁금해요 </label>
 									</div>
 									<div class="form-check">
 										<input class="form-check-input" type="radio" name="board_tag"
-											id="flexRadioDefault1"> <label
+											id="flexRadioDefault1" value="0"> <label
 											class="form-check-label" for="flexRadioDefault1"> 기타
 										</label>
 									</div>
@@ -142,54 +144,60 @@
 					</div>
 					<div class="col-md-7 col-lg-8">
 
-						<form class="needs-validation" novalidate>
+						<!-- <form class="needs-validation" novalidate> -->
 
-							<div class="mb-3">
-								<label for="exampleFormControlInput1" class="form-label">제목</label>
-								<input type="text" class="form-control"
-									id="exampleFormControlInput1" placeholder="제목을 적어주세요"
-									name="title">
-							</div>
-
-
-							<hr class="my-4">
-							<!-- 구분 줄 -->
+						<div class="mb-3">
+							<label for="exampleFormControlInput1" class="form-label">제목</label>
+							<input type="text" class="form-control"
+								id="exampleFormControlInput1" placeholder="제목을 적어주세요"
+								name="title">
+						</div>
 
 
-							<div class="mb-3">
-								<label for="exampleFormControlTextarea1" class="form-label">내용</label>
-								<textarea class="form-control" id="exampleFormControlTextarea1"
-									rows="10" placeholder="내용을 적어주세요" name="contents"></textarea>
-							</div>
+						<hr class="my-4">
+						<!-- 구분 줄 -->
 
 
-							<div class="mb-3">
-								<label for="formFile" class="form-label">사진1</label> <input
-									class="form-control" type="file" id="formFile">
-							</div>
-							<div class="mb-3">
-								<label for="formFile" class="form-label">사진2</label> <input
-									class="form-control" type="file" id="formFile">
-							</div>
-							<div class="mb-3">
-								<label for="formFile" class="form-label">사진3</label> <input
-									class="form-control" type="file" id="formFile">
-							</div>
-							<div class="mb-3">
-								<label for="formFile" class="form-label">사진4</label> <input
-									class="form-control" type="file" id="formFile">
-							</div>
-							<div class="mb-3">
-								<label for="formFile" class="form-label">사진5</label> <input
-									class="form-control" type="file" id="formFile">
-							</div>
+						<div class="mb-3">
+							<label for="exampleFormControlTextarea1" class="form-label">내용</label>
+							<textarea class="form-control" id="exampleFormControlTextarea1"
+								rows="10" placeholder="내용을 적어주세요" name="contents"></textarea>
+						</div>
 
-							<hr class="my-4">
 
-						</form>
+						<div class="mb-3">
+							<label for="formFile" class="form-label">사진1</label> 
+							<input
+								class="form-control" type="file" id="formFile" name="file1">
+						</div>
+						<div class="mb-3">
+							<label for="formFile" class="form-label">사진2</label> 
+							<input
+								class="form-control" type="file" id="formFile" name="file2">
+						</div>
+						<div class="mb-3">
+							<label for="formFile" class="form-label">사진3</label> 
+							<input
+								class="form-control" type="file" id="formFile" name="file3">
+						</div>
+						<div class="mb-3">
+							<label for="formFile" class="form-label">사진4</label> 
+							<input
+								class="form-control" type="file" id="formFile" name="file4">
+						</div>
+						<div class="mb-3">
+							<label for="formFile" class="form-label">사진5</label> 
+							<input
+								class="form-control" type="file" id="formFile" name="file5">
+						</div>
+
+						<hr class="my-4">
+
+						<!-- </form> -->
 					</div>
+				</div>
 			</form>
-	</div>
+			<!-- 글쓴 내용 전부 다 -->
 	</main>
 
 	<footer class="my-5 pt-5 text-muted text-center text-small">

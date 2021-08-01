@@ -2,6 +2,7 @@ package com.Community.controller;
 
 import com.Community.controller.action.Community_Action;
 import com.Community.controller.action.Community_BoardList_Action;
+import com.Community.controller.action.Community_BoardView_Action;
 import com.Community.controller.action.Community_BoardWriteForm_Action;
 import com.Community.controller.action.Community_BoardWrite_Action;
 
@@ -30,6 +31,9 @@ public class Community_ActionFactory {
 		}
 		if(command.equals("board_write")) {
 			action=new Community_BoardWrite_Action();
+		}
+		if(command.equals("board_view")) {
+			action=new Community_BoardView_Action();
 		}
 
 		return action;
