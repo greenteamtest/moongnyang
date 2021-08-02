@@ -35,7 +35,6 @@ public class Community_ActionFactory {
 		if (command.equals("board_view")) {
 			action = new Community_BoardView_Action();
 		}
-
 		return action;
 	}
 }
