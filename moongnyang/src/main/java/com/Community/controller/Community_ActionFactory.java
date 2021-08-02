@@ -5,7 +5,6 @@ import com.Community.controller.action.Community_BoardList_Action;
 import com.Community.controller.action.Community_BoardView_Action;
 import com.Community.controller.action.Community_BoardWriteForm_Action;
 import com.Community.controller.action.Community_BoardWrite_Action;
-import com.Community.controller.action.Community_BoardWrite_Action2;
 
 public class Community_ActionFactory {
 	private static Community_ActionFactory instance = new Community_ActionFactory();
@@ -36,10 +35,7 @@ public class Community_ActionFactory {
 		if (command.equals("board_view")) {
 			action = new Community_BoardView_Action();
 		}
-		// 은호가 바티스 테스트하는거
-		if (command.equals("board_write2")) {
-			action = new Community_BoardWrite_Action2();
-		}
+
 		return action;
 	}
 }

@@ -63,7 +63,7 @@
 
 			</div>
 			<form name="frm" method="post" action="Community_BoardServlet">
-				<input type="hidden" name="command" value="board_write2"> <input
+				<input type="hidden" name="command" value="board_write"> <input
 					type="hidden" name="user_email" value="${loginUser.email}">
 				<div class="row g-5">
 					<div class="col-md-5 col-lg-4 order-md-last">

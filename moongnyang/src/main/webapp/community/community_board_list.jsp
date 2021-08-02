@@ -53,7 +53,7 @@
 </head>
 <body>
 	<div>
-		<br> <br> <br> <br>
+		<br> <br> <br> <br> <br>
 	</div>
 	<div class="container"></div>
 	<!-- 메인 화면 시작 -->
@@ -145,16 +145,17 @@
 			<div class="col-md-auto">
 				<div class="row">
 					<c:if test="${!empty loginUser}">
-						<input type="button" class="btn btn-warning"
-							href="Community_BoardServlet?command=board_write_form">게시글
+						<button type="button" class="btn btn-warning"
+							onclick="location.href='Community_BoardServlet?command=board_write_form'">게시글
 							쓰러가기</button>
 					</c:if>
 					<c:if test="${empty loginUser}">
 						<button type="button" class="btn btn-warning"
 							onclick="location.href='login.do' ">게시글 쓰러가기</button>
 					</c:if>
-					<a href="Community_BoardServlet?command=board_write_form">게시글
-						등록</a> <a href="Community_BoardServlet?command=board_list">Community</a>
+					<!-- 					<a href="Community_BoardServlet?command=board_write_form">게시글 -->
+					<!-- 						등록</a>  -->
+					<a href="Community_BoardServlet?command=board_list">Community</a>
 				</div>
 			</div>
 		</div>
