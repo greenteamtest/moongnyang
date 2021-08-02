@@ -14,7 +14,10 @@ public class Community_BoardWrite_Action2 implements Community_Action {
 
 		request.setCharacterEncoding("UTF-8");
 
-		String user_email = "email테스트용"; // 실제 이메일로 변경해줘야함 *수정요망*
+//		String user_email = "email테스트용"; // 실제 이메일로 변경해줘야함 *수정요망*
+		System.out.println("액션 접속");
+		String user_email = request.getParameter("user_email");
+		System.out.println("1" + request.getParameter("user_email"));
 		String title = request.getParameter("title");
 		String contents = request.getParameter("contents");
 		String animal_tag = request.getParameter("animal_tag");
@@ -23,7 +26,9 @@ public class Community_BoardWrite_Action2 implements Community_Action {
 		//////////////////////////////////////////////////////
 		CommunityVO cVO = new CommunityVO();
 		/* 1. 유저 이메일 (글쓴이) 설정 */
+//		cVO.setUser_email(user_email);
 		cVO.setUser_email(user_email);
+		System.out.println("이메일  : " + user_email);
 		/* 2. 글제목 설정 */
 		cVO.setTitle(title);
 		/* 3. 글 내용 설정 */
@@ -33,14 +38,14 @@ public class Community_BoardWrite_Action2 implements Community_Action {
 		/* 5. board_tag 세부게시판 종류 설정 */
 		cVO.setBoard_tag(Integer.parseInt(board_tag));
 		/* 6. picture 설정 */
-		// 추가해야함 
-		
+		// 추가해야함
+
 		/* read_count, like_count, write_date 는 디폴트 값 넣을 것임 - (0,0,오늘 일시) */
-		
+
 		/////////////////////////////////////////////////////
 		/* mybatis 연동 */
 		service.insert_board(cVO);
-		new Community_BoardList_Action().execute(request, response); //게시판 리스트 화면으로 이동
+		new Community_BoardList_Action().execute(request, response); // 게시판 리스트 화면으로 이동
 
 	}
 

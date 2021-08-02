@@ -10,9 +10,9 @@
 		values
 		(seq_community_board.nextval,#{user_email},#{title},#{contents},#{animal_tag},#{board_tag})
 	</insert>
-	<delete id="delete" parameterType="community">
-		delete from COMMUNITY_BOARD
-		where num =#{num}
-	</delete>
+	<!-- <delete id="delete" parameterType="community"> -->
+	<!-- delete from COMMUNITY_BOARD -->
+	<!-- where num =#{num} -->
+	<!-- </delete> -->
 
 </mapper>

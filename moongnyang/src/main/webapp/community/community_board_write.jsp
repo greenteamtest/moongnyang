@@ -63,7 +63,8 @@
 
 			</div>
 			<form name="frm" method="post" action="Community_BoardServlet">
-				<input type="hidden" name="command" value="board_write">
+				<input type="hidden" name="command" value="board_write2"> <input
+					type="hidden" name="user_email" value="${loginUser.email}">
 				<div class="row g-5">
 					<div class="col-md-5 col-lg-4 order-md-last">
 
@@ -166,28 +167,23 @@
 
 
 						<div class="mb-3">
-							<label for="formFile" class="form-label">사진1</label> 
-							<input
+							<label for="formFile" class="form-label">사진1</label> <input
 								class="form-control" type="file" id="formFile" name="file1">
 						</div>
 						<div class="mb-3">
-							<label for="formFile" class="form-label">사진2</label> 
-							<input
+							<label for="formFile" class="form-label">사진2</label> <input
 								class="form-control" type="file" id="formFile" name="file2">
 						</div>
 						<div class="mb-3">
-							<label for="formFile" class="form-label">사진3</label> 
-							<input
+							<label for="formFile" class="form-label">사진3</label> <input
 								class="form-control" type="file" id="formFile" name="file3">
 						</div>
 						<div class="mb-3">
-							<label for="formFile" class="form-label">사진4</label> 
-							<input
+							<label for="formFile" class="form-label">사진4</label> <input
 								class="form-control" type="file" id="formFile" name="file4">
 						</div>
 						<div class="mb-3">
-							<label for="formFile" class="form-label">사진5</label> 
-							<input
+							<label for="formFile" class="form-label">사진5</label> <input
 								class="form-control" type="file" id="formFile" name="file5">
 						</div>
 
@@ -198,16 +194,16 @@
 				</div>
 			</form>
 			<!-- 글쓴 내용 전부 다 -->
-	</main>
+		</main>
 
-	<footer class="my-5 pt-5 text-muted text-center text-small">
-		<p class="mb-1">&copy; 2017–2021 Company Name</p>
-		<ul class="list-inline">
-			<li class="list-inline-item"><a href="#">Privacy</a></li>
-			<li class="list-inline-item"><a href="#">Terms</a></li>
-			<li class="list-inline-item"><a href="#">Support</a></li>
-		</ul>
-	</footer>
+		<footer class="my-5 pt-5 text-muted text-center text-small">
+			<p class="mb-1">&copy; 2017–2021 Company Name</p>
+			<ul class="list-inline">
+				<li class="list-inline-item"><a href="#">Privacy</a></li>
+				<li class="list-inline-item"><a href="#">Terms</a></li>
+				<li class="list-inline-item"><a href="#">Support</a></li>
+			</ul>
+		</footer>
 	</div>
 
 
