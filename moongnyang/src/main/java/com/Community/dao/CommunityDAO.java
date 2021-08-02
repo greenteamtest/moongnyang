@@ -8,12 +8,14 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
+
 import com.Community.dto.CommunityVO;
 import com.Community.dto.DBManager;
 
 public class CommunityDAO {
 
-	private CommunityDAO() {
+	public CommunityDAO() {
 	}
 
 	private static CommunityDAO instance = new CommunityDAO();
@@ -156,6 +158,13 @@ public class CommunityDAO {
 			DBManager.close(conn, pstmt, rs);
 		}
 		return cVO;
-	}//selectOneBoardByNum() 끝
+	}// selectOneBoardByNum() 끝
 
+	public int insert_board(SqlSession session, CommunityVO vo) {
+		return session.insert("insert_board", vo);
+	}
+	
+	public int delete(SqlSession session, int num) {
+		return session.insert("insert_board", num);
+	}
 }// CommunityDAO{

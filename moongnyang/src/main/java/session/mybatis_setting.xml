@@ -20,6 +20,9 @@
 
 		<!-- picnic(백찬호) -->
 		<typeAlias type="com.picnic.dto.PicnicVO" alias="picnic" />
+		
+		<!-- 커뮤니티 박지수 -->
+		<typeAlias type="com.Community.dto.CommunityVO"	alias="community" />
 	</typeAliases>
 
 	<environments default="development">
