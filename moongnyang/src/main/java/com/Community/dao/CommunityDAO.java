@@ -163,8 +163,8 @@ public class CommunityDAO {
 	public int insert_board(SqlSession session, CommunityVO vo) {
 		return session.insert("insert_board", vo);
 	}
-	
-	public int delete(SqlSession session, int num) {
-		return session.insert("insert_board", num);
-	}
+
+//	public int delete(SqlSession session, int num) {
+//		return session.insert("insert_board", num);
+//	}
 }// CommunityDAO{

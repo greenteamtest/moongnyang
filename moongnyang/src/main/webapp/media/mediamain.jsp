@@ -370,44 +370,47 @@
 
 </body>
 </html>
-<div class="modal fade" id="uploadeMedia" data-bs-backdrop="static"
-	data-bs-keyboard="false" tabindex="-1"
-	aria-labelledby="staticBackdropLabel" aria-hidden="true">
-	<div class="modal-dialog modal-lg modal-dialog-centered">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="staticBackdropLabel">업로드하기</h5>
-				<button type="button" class="btn-close" data-bs-dismiss="modal"
-					aria-label="Close"></button>
-			</div>
-			<div class="modal-body">
-				<input type="text" class="form-control" name="title"
-					placeholder="제목을 입력해주세요!" aria-label="제목을 입력해주세요!" id="title"
-					aria-describedby="basic-addon1">
-				<hr>
-				<input type="text" class="form-control" name="hashtag"
-					placeholder="#태그를 추가해주세요!" aria-label="태그를 입력해주세요!" id="hashtag"
-					aria-describedby="basic-addon1">
-				<hr>
-				<div class="form-floating">
-					<textarea class="form-control" placeholder="Leave a comment here"
-						name="content" id="content" id="floatingTextarea2"
-						style="height: 100px"></textarea>
-					<label for="floatingTextarea2">내용을 입력해주세요!(최대 4000자 이내)</label>
+<form action="mediaServlet" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="email" value="${loginUser.email}">
+	<div class="modal fade" id="uploadeMedia" data-bs-backdrop="static"
+		data-bs-keyboard="false" tabindex="-1"
+		aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="staticBackdropLabel">업로드하기</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
 				</div>
-				<div>
-					<br> <br>
+				<div class="modal-body">
+					<input type="text" class="form-control" name="title"
+						placeholder="제목을 입력해주세요!" aria-label="제목을 입력해주세요!" id="title"
+						aria-describedby="basic-addon1">
+					<hr>
+					<input type="text" class="form-control" name="hashtag"
+						placeholder="#태그를 추가해주세요!" aria-label="태그를 입력해주세요!" id="hashtag"
+						aria-describedby="basic-addon1">
+					<hr>
+					<div class="form-floating">
+						<textarea class="form-control" placeholder="Leave a comment here"
+							name="content" id="content" id="floatingTextarea2"
+							style="height: 100px"></textarea>
+						<label for="floatingTextarea2">내용을 입력해주세요!(최대 4000자 이내)</label>
+					</div>
+					<div>
+						<br> <br>
+					</div>
+					<div class="mb-3">
+						<label for="formFile" class="form-label">올리실 파일을 선택해주세요!</label> <input
+							class="form-control" type="file" id="file">
+					</div>
 				</div>
-				<div class="mb-3">
-					<label for="formFile" class="form-label">올리실 파일을 선택해주세요!</label> <input
-						class="form-control" type="file" id="file">
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">닫기</button>
+					<button type="submit" class="btn btn-primary">업로드하기</button>
 				</div>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary"
-					data-bs-dismiss="modal">닫기</button>
-				<button type="button" class="btn btn-primary">업로드하기</button>
 			</div>
 		</div>
 	</div>
-</div>
+</form>

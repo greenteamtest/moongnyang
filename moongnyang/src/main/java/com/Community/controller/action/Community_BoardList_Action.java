@@ -14,10 +14,9 @@ import com.Community.dto.CommunityVO;
 public class Community_BoardList_Action implements Community_Action {
 
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) 
-			throws ServletException, IOException {
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String url = "/community/community_board_list.jsp"; // 여기 경로 수정 필요할 수도 있음
+		String url = "community/community_board_list.jsp"; // 여기 경로 수정 필요할 수도 있음
 		CommunityDAO cDao = CommunityDAO.getInstance();
 		List<CommunityVO> boardList = cDao.selectAllBoards();
 
@@ -25,6 +24,5 @@ public class Community_BoardList_Action implements Community_Action {
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
-
 	}
 }
