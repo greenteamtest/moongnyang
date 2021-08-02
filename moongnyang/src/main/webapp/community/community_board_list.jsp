@@ -52,29 +52,10 @@
 
 </head>
 <body>
-	<div class="container">
-		<header class="blog-header py-3">
-			<div
-				class="row flex-nowrap justify-content-between align-items-center">
-				<div class="col-4 pt-1">
-					<a class="link-secondary" href="#">Subscribe</a>
-				</div>
-				<div class="col-4 text-center">
-					<a class="blog-header-logo text-dark" href="#">뭉냥뭉냥</a>
-				</div>
-				<div class="col-4 d-flex justify-content-end align-items-center">
-					<a class="link-secondary" href="#" aria-label="Search"> <svg
-							xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-							fill="none" stroke="currentColor" stroke-linecap="round"
-							stroke-linejoin="round" stroke-width="2" class="mx-3" role="img"
-							viewBox="0 0 24 24">
-							<title>Search</title><circle cx="10.5" cy="10.5" r="7.5" />
-							<path d="M21 21l-5.2-5.2" /></svg>
-					</a> <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>
-				</div>
-			</div>
-		</header>
+	<div>
+		<br> <br> <br> <br>
 	</div>
+	<div class="container"></div>
 	<!-- 메인 화면 시작 -->
 	<main class="container">
 		<!-- Carousel 로 3개씩 묶어서 한 9개정도 보여주고 싶,,,,, -->
@@ -163,53 +144,55 @@
 			</div>
 			<div class="col-md-auto">
 				<div class="row">
-					<button type="button" class="btn btn-warning"
-						onclick="location.href='../member/login.do' ">게시글 쓰러가기</button>
+					<c:if test="${!empty loginUser}">
+						<input type="button" class="btn btn-warning"
+							href="Community_BoardServlet?command=board_write_form">게시글
+							쓰러가기</button>
+					</c:if>
+					<c:if test="${empty loginUser}">
+						<button type="button" class="btn btn-warning"
+							onclick="location.href='login.do' ">게시글 쓰러가기</button>
+					</c:if>
 					<a href="Community_BoardServlet?command=board_write_form">게시글
 						등록</a> <a href="Community_BoardServlet?command=board_list">Community</a>
 				</div>
 			</div>
 		</div>
 		<!-- 필터 고르는 부분 -->
-
 		<section class="filter">
-			<section class=".container-sm">
-				<div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
-					<div class="container">
-						<div class="row">동물 필터</div>
-						<div class="row">
-							<div class="col">
+			<!-- 			<section class=".container-sm"> -->
+			<div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+				<div class="container">
+					<div class="row">동물 필터</div>
+					<div class="row">
+						<div class="col">
 							<input class="w-100 btn btn-primary btn-lg" type="submit"
 								value="예시- 아직 누르지 말것" onclick="return boardCheck()">
-							
-								<button type="button" class="btn btn-outline-primary" onclick="">강아지</button>
-								<button type="button" class="btn btn-outline-secondary">고양이</button>
-								<button type="button" class="btn btn-outline-success">기타</button>
-							</div>
-						</div>
-						<div class="row">게시판 필터</div>
-						<div class="row">
-							<div class="col">
-								<button type="button" class="btn btn-outline-primary">일상공유</button>
-								<button type="button" class="btn btn-outline-secondary">제품추천</button>
-								<button type="button" class="btn btn-outline-success">벼룩시장</button>
-								<button type="button" class="btn btn-outline-danger">궁금해요</button>
-								<button type="button" class="btn btn-outline-warning">기타</button>
 
-							</div>
-						</div>
-						<div class="row">
-							<button type="button" class="btn btn-primary">적용</button>
+							<button type="button" class="btn btn-outline-primary" onclick="">강아지</button>
+							<button type="button" class="btn btn-outline-secondary">고양이</button>
+							<button type="button" class="btn btn-outline-success">기타</button>
 						</div>
 					</div>
+					<div class="row">게시판 필터</div>
+					<div class="row">
+						<div class="col">
+							<button type="button" class="btn btn-outline-primary">일상공유</button>
+							<button type="button" class="btn btn-outline-secondary">제품추천</button>
+							<button type="button" class="btn btn-outline-success">벼룩시장</button>
+							<button type="button" class="btn btn-outline-danger">궁금해요</button>
+							<button type="button" class="btn btn-outline-warning">기타</button>
+
+						</div>
+					</div>
+					<div class="row">
+						<button type="button" class="btn btn-primary">적용</button>
+					</div>
 				</div>
-
-			</section>
-
+			</div>
+			<!-- 			</section> -->
 		</section>
-
 		<!-- 개별 게시글 나오는 구간 ! -->
-
 		<section class="item_list">
 			<c:forEach var="board" items="${boardList}">
 
