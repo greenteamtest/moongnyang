@@ -4,6 +4,12 @@
 <mapper namespace="com.media.dao.mediaDAO">
 	<select id="load_medialist" parameterType="media"
 		resultType="com.media.dto.mediaVO">
-		select * from request_timeover order by date_timeover desc
+		select * from media_upload order by num_media desc
 	</select>
+	<insert id="upload_media" parameterType="media">
+	insert into media_upload
+	values(media_upload_seq.nextval,
+	#{title_media},#{hashtag_media},#{user_email_media},#{user_nick_media},
+	#{mediaurl},#{content_media},0,0)
+	</insert>
 </mapper>

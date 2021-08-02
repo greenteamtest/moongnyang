@@ -5,6 +5,8 @@
 <%@ page import="java.net.URLEncoder"%>
 <%@ page import="java.security.SecureRandom"%>
 <%@ page import="java.math.BigInteger"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <html>
 <head>
@@ -93,9 +95,32 @@
 
 
 					<!--  여기 밑에서 부터 옆 네이버게이션 따라다님 -->
+					<c:forEach var="medialist" items="${medialist}">
+						<div
+							class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+							<!--  한싸이클 시작 -->
+							<div class="col-auto d-none d-lg-block">
+								<svg class="bd-placeholder-img" width="200" height="250"
+									xmlns="http://www.w3.org/2000/svg" role="img"
+									aria-label="Placeholder: Thumbnail"
+									preserveAspectRatio="xMidYMid slice" focusable="false">
+							<title>Placeholder</title><rect width="100%" height="100%"
+										fill="#55595c" />
+							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+
+							</div>
+							<div class="col p-4 d-flex flex-column ">
+								<strong class="d-inline-block mb-2 text-success">${medialist.hashtag_media}</strong>
+								<h3 class="mb-0">${medialist.title_media}</h3>
+								<div class="mb-1 text-muted">${medialist.readcnt_media}</div>
+								<div class="mb-1 text-muted">${medialist.like_media}</div>
+								<p class="mb-auto">${medialist.content_media}</p>
+							</div>
+						</div>
+					</c:forEach>
+					<!-- 					 c: each 로 돌리면서 게시글 만들기 -->
 					<div
 						class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-						<!--  한싸이클 시작 -->
 						<div class="col-auto d-none d-lg-block">
 							<svg class="bd-placeholder-img" width="200" height="250"
 								xmlns="http://www.w3.org/2000/svg" role="img"
@@ -107,35 +132,11 @@
 
 						</div>
 						<div class="col p-4 d-flex flex-column ">
-							<strong class="d-inline-block mb-2 text-success">Design</strong>
-							<h3 class="mb-0">Post title</h3>
-							<div class="mb-1 text-muted">Nov 11</div>
-							<p class="mb-auto">This is a wider card with supporting text
-								below as a natural lead-in to additional content.</p>
-							<a href="#" class="stretched-link">Continue reading</a>
-						</div>
-					</div>
-
-					<!--  c: each 로 돌리면서 게시글 만들기 -->
-					<div
-						class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-						<div class="col-auto d-none d-lg-block">
-							<svg class="bd-placeholder-img" width="200" height="250"
-								xmlns="http://www.w3.org/2000/svg" role="img"
-								aria-label="Placeholder: Thumbnail"
-								preserveAspectRatio="xMidYMid slice" focusable="false">
-							<title>Placeholder</title><rect width="100%" height="100%"
-									fill="#55595c" />
-							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-						</div>
-						<div class="col p-4 d-flex flex-column ">
-							<strong class="d-inline-block mb-2 text-success">Design</strong>
-							<h3 class="mb-0">Post title</h3>
-							<div class="mb-1 text-muted">Nov 11</div>
-							<p class="mb-auto">This is a wider card with supporting text
-								below as a natural lead-in to additional content.</p>
-							<a href="#" class="stretched-link">Continue reading</a>
+							<strong class="d-inline-block mb-2 text-success">해시태그
+								#소통해요</strong>
+							<h3 class="mb-0">포스트제목</h3>
+							<div class="mb-1 text-muted">조회수</div>
+							<p class="mb-auto">내용이 들어오면 좋을것 같다</p>
 						</div>
 					</div>
 
@@ -370,8 +371,14 @@
 
 </body>
 </html>
-<form action="mediaServlet" method="post" enctype="multipart/form-data">
-	<input type="hidden" name="email" value="${loginUser.email}">
+<form action="uploadmedia.do" method="post" name="frm"
+	enctype="multipart/form-data">
+	<!-- 	 -->
+	<!-- <form action="mediaServlet" method="post" enctype="multipart/form-data" -->
+	<!-- 	name="frm"> -->
+	<input type="hidden" name="command" value="uploadmedia"> <input
+		type="hidden" name="email" value="${loginUser.email}"> <input
+		type="hidden" name="nick" value="${loginUser.nickname}">
 	<div class="modal fade" id="uploadeMedia" data-bs-backdrop="static"
 		data-bs-keyboard="false" tabindex="-1"
 		aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -402,7 +409,7 @@
 					</div>
 					<div class="mb-3">
 						<label for="formFile" class="form-label">올리실 파일을 선택해주세요!</label> <input
-							class="form-control" type="file" id="file">
+							class="form-control" type="file" id="file" name ="file">
 					</div>
 				</div>
 				<div class="modal-footer">

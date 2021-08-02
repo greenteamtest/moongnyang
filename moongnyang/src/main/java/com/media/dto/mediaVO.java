@@ -6,6 +6,43 @@ public class mediaVO {
 	private String user_nick_media;
 	private String content_media;
 	private String mediaurl;
+	private String title_media;
+	private String hashtag_media;
+	private int like_media;
+	private int readcnt_media;
+
+	public int getLike_media() {
+		return like_media;
+	}
+
+	public void setLike_media(int like_media) {
+		this.like_media = like_media;
+	}
+
+	public int getReadcnt_media() {
+		return readcnt_media;
+	}
+
+	public void setReadcnt_media(int readcnt_media) {
+		this.readcnt_media = readcnt_media;
+	}
+
+	public String getHashtag_media() {
+		return hashtag_media;
+	}
+
+	public void setHashtag_media(String hashtag_media) {
+		this.hashtag_media = hashtag_media;
+	}
+
+	public String getTitle_media() {
+
+		return title_media;
+	}
+
+	public void setTitle_media(String title_media) {
+		this.title_media = title_media;
+	}
 
 	public Integer getNum_media() {
 		return num_media;

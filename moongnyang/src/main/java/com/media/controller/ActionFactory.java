@@ -23,9 +23,7 @@ public class ActionFactory {
 		}
 		if (command.equals("uploadmedia")) {
 			action = new uploadmedia_Action();
-		}
-
-		else {
+		} else {
 			System.out.println("ActionFactroy : action이 선택되지 않았어!!");
 		}
 		return action;
