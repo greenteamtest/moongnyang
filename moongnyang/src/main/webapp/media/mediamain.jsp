@@ -62,13 +62,11 @@
 	<main class="container">
 		<div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
 			<div class="col-md-6 px-0">
-				<h1 class="display-4 fst-italic">Title of a longer featured
-					blog post</h1>
-				<p class="lead my-3">Multiple lines of text that form the lede,
-					informing new readers quickly and efficiently about what’s most
-					interesting in this post’s contents.</p>
+				<h1 class="display-4 fst-italic">파일업로드는 됩니다.</h1>
+				<p class="lead my-3">기능구현을 위해서는 DB가 필요합니다. 그리고 동영상썸네일도 정해야하고,
+					업로드시 동영상이름 패턴을 적용해서 저장시켜야함, 그래서 DB에서 편하게 불러올 수 있게됨</p>
 				<p class="lead mb-0">
-					<a href="#" class="text-white fw-bold">Continue reading...</a>
+					<a href="#" class="text-white fw-bold"></a>
 				</p>
 			</div>
 		</div>
@@ -336,7 +334,7 @@
 					<div class="p-4 mb-3 bg-light rounded">
 						<h4 class="fst-italic">미디어</h4>
 						<p class="mb-0">여러분의 사랑스러운 천사들과의 소중한 추억을 담아, 모두와 공유하고 주인공이
-							되어보세요!</p>
+							되어보세요!//지금 DB연결하고 하면 정상적으로 기능수행합니다ㅡ조금만 기다려주세요 (ㅠㅅㅠ)</p>
 					</div>
 
 					<div class="p-4">
@@ -409,7 +407,7 @@
 					</div>
 					<div class="mb-3">
 						<label for="formFile" class="form-label">올리실 파일을 선택해주세요!</label> <input
-							class="form-control" type="file" id="file" name ="file">
+							class="form-control" type="file" id="file" name="file">
 					</div>
 				</div>
 				<div class="modal-footer">
