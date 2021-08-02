@@ -26,3 +26,4 @@ function Change_board_tag(x) {
 		return "궁금해요";
 	}
 }
+function colorChange(){}

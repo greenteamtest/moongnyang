@@ -47,7 +47,7 @@
 
 <link href="community_board_list.css" rel="stylesheet">
 <!-- 자바스크립트 연결 -->
-<script type="text/javascript" src="community/script/filter.js"></script>
+<script type="text/javascript" src="community/script/board_view.js"></script>
 
 
 </head>
@@ -158,24 +158,23 @@
 				</div>
 			</div>
 		</div>
-		<!-- 필터 고르는 부분 -->
-		<section class="filter">
-			<!-- 			<section class=".container-sm"> -->
+		<!-- 		<!-- 필터 고르는 부분 -->
+		<div class="filter container">
+
 			<div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
 				<div class="container">
 					<div class="row">동물 필터</div>
 					<div class="row">
 						<div class="col">
-							<input class="w-100 btn btn-primary btn-lg" type="submit"
-								value="예시- 아직 누르지 말것" onclick="return boardCheck()">
-
-							<button type="button" class="btn btn-outline-primary" onclick="">강아지</button>
+							<button type="button" class="btn btn-outline-primary"
+								onclick="colorChange()">강아지</button>
 							<button type="button" class="btn btn-outline-secondary">고양이</button>
 							<button type="button" class="btn btn-outline-success">기타</button>
 						</div>
 					</div>
 					<div class="row">게시판 필터</div>
 					<div class="row">
+						<br>
 						<div class="col">
 							<button type="button" class="btn btn-outline-primary">일상공유</button>
 							<button type="button" class="btn btn-outline-secondary">제품추천</button>
@@ -190,10 +189,9 @@
 					</div>
 				</div>
 			</div>
-			<!-- 			</section> -->
-		</section>
-		<!-- 개별 게시글 나오는 구간 ! -->
-		<section class="item_list">
+		</div>
+		<!-- 		<!-- 개별 게시글 나오는 구간 ! -->
+		<div class="item_list container">
 			<c:forEach var="board" items="${boardList}">
 
 				<div
@@ -207,14 +205,14 @@
 						</h3>
 						<div class="mb-1 text-muted">${board.write_date}</div>
 						<p class="card-text mb-auto">${board.contents}</p>
-						<div class="btn-group">
-							<button type="button" class="btn btn-sm btn-outline-secondary">like_count
-								:좋아요</button>
+						<div class="info">
+							<button type="button" class="btn btn-sm btn-outline-secondary">
+								좋아요 🧡 ${board.like_count}</button>
+							<button type="button" class="btn btn-sm btn-outline-secondary">
+								조회수 ${board.read_count}</button>
 							<button type="button" class="btn btn-sm btn-outline-secondary">comment:
 								댓글</button>
 						</div>
-						<a
-							href="Community_BoardServlet?command=board_view&board_idx=${board.board_idx} ">바로가기</a>
 					</div>
 					<div class="col-auto d-none d-lg-block">
 						<svg class="bd-placeholder-img" width="200" height="250"
@@ -227,12 +225,7 @@
 					</div>
 				</div>
 			</c:forEach>
-
-
-
-
-
-		</section>
+		</div>
 
 		<div class="position-relative">
 			<div class="position-absolute top-0 start-50 translate-middle">

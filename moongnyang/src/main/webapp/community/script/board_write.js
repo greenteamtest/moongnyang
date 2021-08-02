@@ -1,6 +1,6 @@
 function boardCheck() {
 	if (document.frm.title.value.length == 0) {
-		alert("작성자를 입력하세요");
+		alert("제목을 입력하세요");
 		return false;
 	}
 	if (document.frm.contents.value.length == 0) {

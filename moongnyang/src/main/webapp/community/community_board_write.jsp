@@ -25,7 +25,7 @@
 <!-- Bootstrap core CSS -->
 <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 <!-- 자바스크립트 추가하기 -->
-<script type="text/javascript" src="board.js"></script>
+<script type="text/javascript" src="community/script/board_write.js"></script>
 
 <style>
 .bd-placeholder-img {
