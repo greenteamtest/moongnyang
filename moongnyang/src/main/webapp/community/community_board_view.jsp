@@ -22,7 +22,7 @@
 <!-- Bootstrap core CSS -->
 <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 <!-- 자바스크립트 추가하기 -->
-<script type="text/javascript" src="board.js"></script>
+<script type="text/javascript" src="community/script/board_view.js"></script>
 
 <style>
 .bd-placeholder-img {
@@ -66,25 +66,27 @@
 
 					<div class="row">
 						<div class="col-auto">
-							<div class="mb-1 text-muted">#애니멀 태그 ${board.animal_tag}</div>
+							<div class="mb-1 text-muted" >#애니멀 태그 ${board.animal_tag}
+							
+							</div>
 						</div>
 						<div class="col-auto">
-							<div class="mb-1 text-muted">#보드 태그 ${board.board_tag}</div>
+							<div class="mb-1 text-muted" >#보드 태그 ${board.board_tag}</div>
 						</div>
 					</div>
 
 					<hr class="my-4">
 					<!-- 구분 줄 -->
-					
-					<h3 class="mb-0">제목 ${board.title}</h3>
-					<strong class="d-inline-block mb-2 text-primary">글쓴이
+
+					<h3 class="mb-0">${board.title}</h3>
+					<strong class="d-inline-block mb-2 text-primary">
 						${board.user_email}</strong>
-					<div class="mb-1 text-muted">일시 ${board.write_date}</div>
+					<div class="mb-1 text-muted">${board.write_date}</div>
 
 					<hr class="my-4">
 					<!-- 구분 줄 -->
 
-					<p class="card-text mb-auto">내용 ${board.contents}</p>
+					<p class="card-text mb-auto">${board.contents}</p>
 
 					<hr class="my-4">
 					<!-- 구분 줄 -->
@@ -102,7 +104,7 @@
 									preserveAspectRatio="xMidYMid slice" focusable="false">
 								<title>Placeholder</title><rect width="100%" height="100%"
 										fill="#55595c" />
-								<text x="50%" y="50%" fill="#eceeef" dy=".3em">인기게시물 1</text></svg>
+								<text x="50%" y="50%" fill="#eceeef" dy=".3em">사진 1</text></svg>
 							</div>
 						</div>
 						<div class="col">
@@ -113,7 +115,7 @@
 									preserveAspectRatio="xMidYMid slice" focusable="false">
 								<title>Placeholder</title><rect width="100%" height="100%"
 										fill="#55595c" />
-								<text x="50%" y="50%" fill="#eceeef" dy=".3em">인기게시물 2</text></svg>
+								<text x="50%" y="50%" fill="#eceeef" dy=".3em">사진 2</text></svg>
 							</div>
 						</div>
 						<div class="col">
@@ -124,7 +126,7 @@
 									preserveAspectRatio="xMidYMid slice" focusable="false">
 								<title>Placeholder</title><rect width="100%" height="100%"
 										fill="#55595c" />
-								<text x="50%" y="50%" fill="#eceeef" dy=".3em">인기게시물 3</text></svg>
+								<text x="50%" y="50%" fill="#eceeef" dy=".3em">사진 3</text></svg>
 							</div>
 						</div>
 					</div>

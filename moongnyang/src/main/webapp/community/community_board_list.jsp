@@ -46,7 +46,8 @@
 <!-- Custom styles for this template -->
 
 <link href="community_board_list.css" rel="stylesheet">
-
+<!-- 자바스크립트 연결 -->
+<script type="text/javascript" src="community/script/filter.js"></script>
 
 
 </head>
@@ -178,7 +179,10 @@
 						<div class="row">동물 필터</div>
 						<div class="row">
 							<div class="col">
-								<button type="button" class="btn btn-outline-primary">강아지</button>
+							<input class="w-100 btn btn-primary btn-lg" type="submit"
+								value="예시- 아직 누르지 말것" onclick="return boardCheck()">
+							
+								<button type="button" class="btn btn-outline-primary" onclick="">강아지</button>
 								<button type="button" class="btn btn-outline-secondary">고양이</button>
 								<button type="button" class="btn btn-outline-success">기타</button>
 							</div>
@@ -208,13 +212,15 @@
 
 		<section class="item_list">
 			<c:forEach var="board" items="${boardList}">
+
 				<div
 					class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+
 					<div class="col p-4 d-flex flex-column position-static">
 						<strong class="d-inline-block mb-2 text-primary">${board.user_email}</strong>
-						<h3 class="mb-0">
+						<h3>
 							<a
-								href="Community_BoardServlet?command=board_view&board_idx=${board.board_idx} ">${board.title}</a>
+								href="Community_BoardServlet?command=board_view&board_idx=${board.board_idx}">${board.title}</a>
 						</h3>
 						<div class="mb-1 text-muted">${board.write_date}</div>
 						<p class="card-text mb-auto">${board.contents}</p>
@@ -224,7 +230,8 @@
 							<button type="button" class="btn btn-sm btn-outline-secondary">comment:
 								댓글</button>
 						</div>
-						<a href="#" class="stretched-link">Continue reading</a>
+						<a
+							href="Community_BoardServlet?command=board_view&board_idx=${board.board_idx} ">바로가기</a>
 					</div>
 					<div class="col-auto d-none d-lg-block">
 						<svg class="bd-placeholder-img" width="200" height="250"
