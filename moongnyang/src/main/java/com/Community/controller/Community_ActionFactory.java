@@ -35,6 +35,9 @@ public class Community_ActionFactory {
 		if (command.equals("board_view")) {
 			action = new Community_BoardView_Action();
 		}
+//		if (command.equals("comment_list")) {
+//			action = new Community_CommentList_Action();
+//		}
 		return action;
 	}
 }

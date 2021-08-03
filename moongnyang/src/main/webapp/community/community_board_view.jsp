@@ -108,7 +108,7 @@ window.onload=function Change_board_tag(x) {
 		return "궁금해요";
 	}
 }
-window.alert( Change_animal_tag(${board.animal_tag})+"/"+Change_board_tag(${board.board_tag}));
+// window.alert( Change_animal_tag(${board.animal_tag})+"/"+Change_board_tag(${board.board_tag}));
 
 var str = document.getElementById("animal_tag");
 str.innerHTML = Change_animal_tag(${board.animal_tag});
@@ -175,24 +175,30 @@ str1.innerHTML = Change_board_tag(${board.board_tag});
 			</section>
 
 
-
-
-
-
-
 			<div class="btn-group">
 				<button type="button" class="btn btn-sm btn-outline-secondary">
 					좋아요 🧡 ${board.like_count}</button>
 				<button type="button" class="btn btn-sm btn-outline-secondary">
 					조회수 ${board.read_count}</button>
-				<button type="button" class="btn btn-sm btn-outline-secondary">comment:
+				<button type="button" class="btn btn-sm btn-outline-secondary">
 					댓글</button>
 			</div>
 
-
-
-
-
+			<div class="comment_list container">
+				<c:forEach var="comment" items="${commentList}">
+					<div
+						class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+						<div class="col p-4 d-flex flex-column position-static">
+							<strong class="d-inline-block mb-2 text-primary">
+								${comment.user_email}</strong>
+							<p class="card-text mb-auto">${comment.comment_content}</p>
+							<div class="mb-1 text-muted">${comment.write_date}</div>
+						</div>
+					</div>
+				</c:forEach>
+			</div>
+			<button type="button" class="btn btn-warning"
+							onclick="location.href='Community_BoardServlet?command=board_list'">목록으로 돌아가기</button>
 
 		</main>
 
