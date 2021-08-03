@@ -1,32 +1,31 @@
 package com.picnic.dto;
 
 public class PicnicVO {
-	private String place_name;
-	private String address_name;
-	private String road_address_name;
+	private String name;
+	private String place;
+	private String road_place;
 	private String phone;
 	private String x;
 	private String y;
 	private String key;
-	private String category_code;
-	
-	public String getPlace_name() {
-		return place_name;
+	private String category;
+	public String getName() {
+		return name;
 	}
-	public void setPlace_name(String place_name) {
-		this.place_name = place_name;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getAddress_name() {
-		return address_name;
+	public String getPlace() {
+		return place;
 	}
-	public void setAddress_name(String address_name) {
-		this.address_name = address_name;
+	public void setPlace(String place) {
+		this.place = place;
 	}
-	public String getRoad_address_name() {
-		return road_address_name;
+	public String getRoad_place() {
+		return road_place;
 	}
-	public void setRoad_address_name(String road_address_name) {
-		this.road_address_name = road_address_name;
+	public void setRoad_place(String road_place) {
+		this.road_place = road_place;
 	}
 	public String getPhone() {
 		return phone;
@@ -52,10 +51,11 @@ public class PicnicVO {
 	public void setKey(String key) {
 		this.key = key;
 	}
-	public String getCategory_code() {
-		return category_code;
+	public String getCategory() {
+		return category;
 	}
-	public void setCategory_code(String category_code) {
-		this.category_code = category_code;
+	public void setCategory(String category) {
+		this.category = category;
 	}
+	
 }

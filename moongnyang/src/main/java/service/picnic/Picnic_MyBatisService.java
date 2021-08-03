@@ -18,11 +18,8 @@ public class Picnic_MyBatisService {
 	public int picnic_Update_Insert(PicnicVO bVo) {
 		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
 		int rs = 0;
-		System.out.println("ui1");
 		try {
-			System.out.println("ui2");
 			rs = dao.picnic_Update_Insert(session, bVo); // dao에 SqlSession 전송
-			System.out.println("ui3");
 			if (rs > 0) {
 				session.commit();
 				System.out.println("join success");

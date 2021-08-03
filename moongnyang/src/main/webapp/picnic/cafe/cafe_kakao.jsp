@@ -200,7 +200,6 @@
 </style>
 </head>
 <body>
-
 	<div class="map_wrap" align="center">
 
 		<div id="map"
@@ -334,7 +333,7 @@
 				(function(marker, places) {
 					kakao.maps.event.addListener(marker, 'mouseover',
 							function() {
-								displayInfowindow(marker, places.name);
+								displayInfowindow(marker, places.place_name);
 							});
 
 					kakao.maps.event.addListener(marker, 'mouseout',
@@ -342,7 +341,7 @@
 								infowindow.close();
 							});
 					itemEl.onmouseover = function() {
-						displayInfowindow(marker, places.name);
+						displayInfowindow(marker, places.address_name);
 					};
 
 					itemEl.onmouseout = function() {
@@ -350,8 +349,8 @@
 					};
 
 					itemEl.onmouseup = function() {
-			//			alert(places.id);
-			//			placeInfo(places);
+				//		alert(places.id);
+				//		placeInfo(places);
 						alert(JSON.stringify(places));
 					};
 
@@ -386,6 +385,7 @@
 			}
 
 			itemStr += '  <span class="tel">' + places.phone + '</span>';
+			itemStr += '  <span class="tel">' + places.x +"/"+ places.y + '</span>';
 			itemStr += '<form method="POST" action="BoardServlet_picnic">'
 						+ '<input type="hidden" name="command" value="cafe_view_action">'
 						+ '<input type="hidden" name="place_name" value="'+places.place_name+'">'

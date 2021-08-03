@@ -11,12 +11,11 @@
 	
 	<select id="picnic_Update_Insert" parameterType="picnic" resultType="int">
 		MERGE INTO PICNIC_LIST USING DUAL ON (key = #{key})
-		WHEN MATCHED THEN UPDATE SET NAME=#{place_name}, PLACE=#{address_name}, ROAD_PLACE=#{road_address_name}, PHONE=#{phone}, X=#{x}, Y=#{y}, CATEGORY=#{category_code}
-		WHEN NOT MATCHED THEN INSERT(NAME, PLACE, ROAD_PLACE, PHONE, X, Y, KEY, CATEGORY) VALUES(#{place_name}, #{address_name}, #{road_address_name}, #{phone}, #{x}, #{y}, #{key}, #{category_code})
+		WHEN MATCHED THEN UPDATE SET NAME=#{name}, PLACE=#{place}, ROAD_PLACE=#{road_place}, PHONE=#{phone}, X=#{x}, Y=#{y}, CATEGORY=#{category}
+		WHEN NOT MATCHED THEN INSERT(NAME, PLACE, ROAD_PLACE, PHONE, X, Y, KEY, CATEGORY) VALUES(#{name}, #{place}, #{road_place}, #{phone}, #{x}, #{y}, #{key}, #{category})
 	</select>
 	
 	<select id="picnic_Select" parameterType="String" resultType="com.picnic.dto.PicnicVO">
 		SELECT * FROM PICNIC_LIST WHERE KEY=#{key}
-	</select>
-	
+	</select>	
 </mapper>

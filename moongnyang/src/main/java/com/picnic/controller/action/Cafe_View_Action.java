@@ -14,23 +14,18 @@ public class Cafe_View_Action implements Action {
 		String url = "picnic/cafe/cafe_view.jsp";
 		
 		PicnicVO pVo = new PicnicVO();
-		pVo.setPlace_name(request.getParameter("place_name"));
-		pVo.setAddress_name(request.getParameter("address_name"));
-		pVo.setRoad_address_name(request.getParameter("road_address_name"));
+		pVo.setName(request.getParameter("place_name"));
+		pVo.setPlace(request.getParameter("address_name"));
+		pVo.setRoad_place(request.getParameter("road_address_name"));
 		pVo.setPhone(request.getParameter("phone"));
 		pVo.setX(request.getParameter("x"));
 		pVo.setY(request.getParameter("y"));
 		pVo.setKey(request.getParameter("id"));
-		pVo.setCategory_code(request.getParameter("category_group_code"));
-		
-		System.out.println("view1");
-		System.out.println(pVo.getKey());
-		System.out.println("view2");
+		pVo.setCategory(request.getParameter("category_group_code"));
 		service.picnic_Update_Insert(pVo);
-		System.out.println("view3");
-		PicnicVO rs = service.picnic_Select(pVo.getKey());
-		System.out.println("view4");
-		request.setAttribute("rs", rs);
+		PicnicVO vo = service.picnic_Select(pVo.getKey());
+
+		request.setAttribute("vo", vo);
 		
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
