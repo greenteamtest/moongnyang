@@ -22,7 +22,10 @@
 <!-- Bootstrap core CSS -->
 <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 <!-- 자바스크립트 추가하기 -->
-<script type="text/javascript" src="board.js"></script>
+<script type="text/javascript" src="community/script/board_view.js"></script>
+
+
+
 
 <style>
 .bd-placeholder-img {
@@ -65,26 +68,66 @@
 					class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
 
 					<div class="row">
+						태그
 						<div class="col-auto">
-							<div class="mb-1 text-muted">#애니멀 태그 ${board.animal_tag}</div>
+							#
+							<div class="mb-1 text-muted" id="animal_tag">${board.animal_tag}</div>
 						</div>
 						<div class="col-auto">
-							<div class="mb-1 text-muted">#보드 태그 ${board.board_tag}</div>
+							#
+							<div class="mb-1 text-muted" id="board_tag">${board.board_tag}</div>
 						</div>
 					</div>
+					<!-- animal_tag, board_tag 의 숫자 결과값을 정해진 게시판 태그로 바꿔줌 -->
+					<script>
+window.onload=function Change_animal_tag(x) {
+	if (x == 0) {
+		return "기타";
+	}
+	if (x == 1) {
+		return "강아지";
+	}
+	if (x == 2) {
+		return "고양이";
+	}
+}
+window.onload=function Change_board_tag(x) {
+	if (x == 0) {
+		return "기타";
+	}
+	if (x == 1) {
+		return "일상공유";
+	}
+	if (x == 2) {
+		return "제품추천";
+	}
+	if (x == 3) {
+		return "벼룩시장";
+	}
+	if (x == 4) {
+		return "궁금해요";
+	}
+}
+window.alert( Change_animal_tag(${board.animal_tag})+"/"+Change_board_tag(${board.board_tag}));
+
+var str = document.getElementById("animal_tag");
+str.innerHTML = Change_animal_tag(${board.animal_tag});
+var str1 = document.getElementById("board_tag");
+str1.innerHTML = Change_board_tag(${board.board_tag});
+</script>
 
 					<hr class="my-4">
 					<!-- 구분 줄 -->
-					
-					<h3 class="mb-0">제목 ${board.title}</h3>
-					<strong class="d-inline-block mb-2 text-primary">글쓴이
+
+					<h3 class="mb-0">${board.title}</h3>
+					<strong class="d-inline-block mb-2 text-primary">
 						${board.user_email}</strong>
-					<div class="mb-1 text-muted">일시 ${board.write_date}</div>
+					<div class="mb-1 text-muted">${board.write_date}</div>
 
 					<hr class="my-4">
 					<!-- 구분 줄 -->
 
-					<p class="card-text mb-auto">내용 ${board.contents}</p>
+					<p class="card-text mb-auto">${board.contents}</p>
 
 					<hr class="my-4">
 					<!-- 구분 줄 -->
@@ -102,7 +145,7 @@
 									preserveAspectRatio="xMidYMid slice" focusable="false">
 								<title>Placeholder</title><rect width="100%" height="100%"
 										fill="#55595c" />
-								<text x="50%" y="50%" fill="#eceeef" dy=".3em">인기게시물 1</text></svg>
+								<text x="50%" y="50%" fill="#eceeef" dy=".3em">사진 1</text></svg>
 							</div>
 						</div>
 						<div class="col">
@@ -113,7 +156,7 @@
 									preserveAspectRatio="xMidYMid slice" focusable="false">
 								<title>Placeholder</title><rect width="100%" height="100%"
 										fill="#55595c" />
-								<text x="50%" y="50%" fill="#eceeef" dy=".3em">인기게시물 2</text></svg>
+								<text x="50%" y="50%" fill="#eceeef" dy=".3em">사진 2</text></svg>
 							</div>
 						</div>
 						<div class="col">
@@ -124,7 +167,7 @@
 									preserveAspectRatio="xMidYMid slice" focusable="false">
 								<title>Placeholder</title><rect width="100%" height="100%"
 										fill="#55595c" />
-								<text x="50%" y="50%" fill="#eceeef" dy=".3em">인기게시물 3</text></svg>
+								<text x="50%" y="50%" fill="#eceeef" dy=".3em">사진 3</text></svg>
 							</div>
 						</div>
 					</div>
@@ -138,8 +181,10 @@
 
 
 			<div class="btn-group">
-				<button type="button" class="btn btn-sm btn-outline-secondary">like_count
-					:좋아요</button>
+				<button type="button" class="btn btn-sm btn-outline-secondary">
+					좋아요 🧡 ${board.like_count}</button>
+				<button type="button" class="btn btn-sm btn-outline-secondary">
+					조회수 ${board.read_count}</button>
 				<button type="button" class="btn btn-sm btn-outline-secondary">comment:
 					댓글</button>
 			</div>

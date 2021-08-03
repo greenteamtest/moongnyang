@@ -17,9 +17,14 @@
 		<!-- 로그인/회원 및 직원 페이지 전용(김은호) -->
 		<typeAlias type="com.Staff.dto.StaffVO" alias="staff" />
 		<typeAlias type="com.Staff.dto.memberVO" alias="member" />
+		<typeAlias type="com.media.dto.mediaVO" alias="media" />
 
 		<!-- picnic(백찬호) -->
 		<typeAlias type="com.picnic.dto.PicnicVO" alias="picnic" />
+
+		<!-- 커뮤니티 박지수 -->
+		<typeAlias type="com.Community.dto.CommunityVO"
+			alias="community" />
 	</typeAliases>
 
 	<environments default="development">
@@ -40,6 +45,8 @@
 		<mapper resource="dbconnect/mybatis_health_mapper.xml" />
 		<mapper resource="dbconnect/mybatis_Login_mapper.xml" />
 		<mapper resource="dbconnect/mybatis_picnic_mapper.xml" />
+		<mapper resource="dbconnect/mybatis_community_mapper.xml" />
+		<mapper resource="dbconnect/mybatis_media_mapper.xml" />
 	</mappers>
 </configuration>
 

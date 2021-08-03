@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- <mapper namespace="dao.StaffDAO"> -->
+<mapper namespace="com.media.dao.mediaDAO">
+	<select id="load_medialist" parameterType="media"
+		resultType="com.media.dto.mediaVO">
+		select * from media_upload order by num_media desc
+	</select>
+	<insert id="upload_media" parameterType="media">
+	insert into media_upload
+	values(media_upload_seq.nextval,
+	#{title_media},#{hashtag_media},#{user_email_media},#{user_nick_media},
+	#{mediaurl},#{content_media},0,0)
+	</insert>
+</mapper>

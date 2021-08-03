@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.Community.dao.CommunityDAO">
+	<insert id="insert_board" parameterType="community">
+		INSERT INTO
+		COMMUNITY_BOARD (BOARD_IDX,
+		USER_EMAIL, TITLE, CONTENTS,
+		ANIMAL_TAG,
+		BOARD_TAG)
+		values
+		(seq_community_board.nextval,#{user_email},#{title},#{contents},#{animal_tag},#{board_tag})
+	</insert>
+	<!-- <delete id="delete" parameterType="community"> -->
+	<!-- delete from COMMUNITY_BOARD -->
+	<!-- where num =#{num} -->
+	<!-- </delete> -->
+
+</mapper>

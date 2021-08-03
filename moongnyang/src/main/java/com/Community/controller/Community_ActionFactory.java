@@ -29,13 +29,12 @@ public class Community_ActionFactory {
 		if (command.equals("board_write_form")) {
 			action = new Community_BoardWriteForm_Action();
 		}
-		if(command.equals("board_write")) {
-			action=new Community_BoardWrite_Action();
+		if (command.equals("board_write")) {
+			action = new Community_BoardWrite_Action();
 		}
-		if(command.equals("board_view")) {
-			action=new Community_BoardView_Action();
+		if (command.equals("board_view")) {
+			action = new Community_BoardView_Action();
 		}
-
 		return action;
 	}
 }

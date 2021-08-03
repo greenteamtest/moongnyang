@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.Staff.dto.StaffVO;
-import com.Staff.dto.memberVO;
 
 public class StaffDAO {
 	public StaffDAO() {
@@ -15,6 +14,7 @@ public class StaffDAO {
 	public int insert_staff(SqlSession session, StaffVO vo) {
 		return session.update("insert_staff", vo);
 	}
+
 	public int end_timeover(SqlSession session, StaffVO vo) {
 		return session.update("end_timeover", vo);
 	}

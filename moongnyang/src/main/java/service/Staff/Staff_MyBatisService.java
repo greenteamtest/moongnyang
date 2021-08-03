@@ -6,7 +6,6 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.Staff.dao.StaffDAO;
 import com.Staff.dto.StaffVO;
-import com.Staff.dto.memberVO;
 
 import dbconnect.MybatisSessionFactory;
 

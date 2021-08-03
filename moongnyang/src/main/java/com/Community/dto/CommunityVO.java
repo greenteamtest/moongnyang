@@ -11,6 +11,8 @@ public class CommunityVO {
 	private Integer like_count;
 	private String write_date;
 
+	
+	
 	private String pic_url_1;
 	private String pic_url_2;
 	private String pic_url_3;
