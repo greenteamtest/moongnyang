@@ -3,7 +3,7 @@ package com.media.dto;
 public class mediaVO {
 	private Integer num_media;
 	private String user_email_media;
-	private String user_nick_media;
+	private String user_nick;
 	private String content_media;
 	private String mediaurl;
 	private String title_media;
@@ -60,12 +60,12 @@ public class mediaVO {
 		this.user_email_media = user_email_media;
 	}
 
-	public String getUser_nick_media() {
-		return user_nick_media;
+	public String getUser_nick() {
+		return user_nick;
 	}
 
-	public void setUser_nick_media(String user_nick_media) {
-		this.user_nick_media = user_nick_media;
+	public void setUser_nick(String user_nick_media) {
+		this.user_nick = user_nick_media;
 	}
 
 	public String getContent_media() {

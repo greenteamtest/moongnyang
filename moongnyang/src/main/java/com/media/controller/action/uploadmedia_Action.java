@@ -32,7 +32,7 @@ public class uploadmedia_Action extends HttpServlet implements Action {
 		mediaVO vo = new mediaVO();
 		MultipartRequest multi = new MultipartRequest(request, path, sizeLimit, encType, new DefaultFileRenamePolicy());
 		vo.setUser_email_media(multi.getParameter("email"));
-		vo.setUser_nick_media(multi.getParameter("nick"));
+		vo.setUser_nick(multi.getParameter("nick"));
 		vo.setTitle_media(multi.getParameter("title"));
 		vo.setHashtag_media(multi.getParameter("hashtag"));
 		vo.setContent_media(multi.getParameter("content"));

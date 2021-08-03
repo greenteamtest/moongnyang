@@ -56,6 +56,7 @@
 <link href="blog.css" rel="stylesheet">
 </head>
 <body>
+
 	<div>
 		<br> <br> <br> <br> <br>
 	</div>
@@ -72,44 +73,83 @@
 		</div>
 
 		<div class="row g-5">
-			<div class="col-md-8">
+			<div class="col-md-9">
 				<article class="blog-post">
-					<div class="position-sticky" style="top: 5rem;" id="box1-1">
-						<div class="container">
-							<div class="row">
-								<div class="col-sm-10">
-									<input type="text" class="form-control" placeholder=""
-										aria-label="찾으시는 글의 제목 및 #태그를 입력해서 검색해보세요!"
-										aria-describedby="basic-addon1">
-								</div>
-								<div class="col-sm-2">
-									<button type="button" class="btn btn-primary">검색</button>
-								</div>
-							</div>
-						</div>
-					</div>
 					<hr>
 					<!--  여기 밑에서 부터 옆 네이버게이션 따라다님 -->
 					<c:forEach var="medialist" items="${medialist}">
-						<div class="container">
-							<div class="row">
-								<div class="col-md-7">
-									<div>
-										<video src="media/upload/${medialist.mediaurl}" width='400'
-											controls autoplay loop></video>
+						<div
+							class="row g-0 border rounded overflow-hidden flex-md-row mb-4 
+							shadow-sm h-md-250 position-relative">
+							<div class="container">
+								<div class="row">
+									<div class="col-md-5">
+										<div>
+											<video src="media/upload/${medialist.mediaurl}" width='400'
+												controls loop></video>
+										</div>
 									</div>
-								</div>
-								<div class="col-md-5">
-									<div
-										class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"
-										height="640">
-										<!--  한싸이클 시작 -->
-										<div class="col p-4 d-flex flex-column ">
-											<strong class="d-inline-block mb-2 text-success">${medialist.hashtag_media}</strong>
-											<h3 class="mb-0">${medialist.title_media}</h3>
-											<div class="mb-1 text-muted">${medialist.readcnt_media}</div>
-											<div class="mb-1 text-muted">${medialist.like_media}</div>
-											<p class="mb-auto">${medialist.content_media}</p>
+									<div class="col-md-7">
+										<div class="card md-center">
+											<!-- 										style="height: 25%" -->
+											<!--  한싸이클 시작 -->
+											<div class="col p-4 d-flex flex-column ">
+												<div class="card-header">
+													<strong class="d-inline-block mb-3 text-success">
+														${medialist.hashtag_media}</strong>
+												</div>
+												<div class="card-body">
+													<h5 class="card-title">${medialist.user_nick}</h5>
+													<div style="overflow: auto; height: 50px; width: 100%;">
+														<p class="card-text">${medialist.content_media}</p>
+													</div>
+													<div>
+														<form action="mediaServlet" method="post">
+															<input type="hidden" name="command" value="clicklike"
+																id="command"> <input type="hidden" name="email"
+																value="${loginUser.email}" id="email"> <input
+																type="hidden" name="num" value="${medialist.num_media}"
+																id="num">
+															<!-- 																 <a -->
+															<%-- 																href="mediaServlet?command=clicklike&&email=${loginUser.email}&num=${medialist.num_media}">좋아요</a> --%>
+															<button type="submit"
+																class="btn btn-sm btn-outline-secondary">좋아요🧡
+																${medialist.like_media}</button>
+															<!-- 															<button type="button" -->
+															<%-- 																onclick="location.href='mediaServlet?command=clicklike&email=${loginUser.email} --%>
+															<%-- 																&num_media=${medialist.num_media}'" --%>
+															<!-- 																class="btn btn-sm btn-outline-secondary">좋아요🧡 -->
+															<%-- 																${medialist.like_media}</button> --%>
+														</form>
+													</div>
+
+													<!-- 															 -->
+													<!-- 														 -->
+												</div>
+											</div>
+										</div>
+
+										<div class="card md-center">
+											<!-- 										style="height: 40%">
+														-->
+											<!--  한싸이클 시작 -->
+											<div class="col p-4 d-flex flex-column ">
+												<div class="card-header">
+													<div class="input-group mb-3">
+														<input type="text" class="form-control" name="comment"
+															placeholder="댓글을 통해 마음을 전하세요!"
+															aria-label="댓글을 통해 마음을 전하세요!"
+															aria-describedby="button-addon2">
+														<button class="btn btn-outline-secondary" type="button"
+															id="button-addon2">입력</button>
+													</div>
+												</div>
+												<div class="card-body">
+													<div style="overflow: auto; height: 330px; width: 100%;">
+
+													</div>
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -117,93 +157,55 @@
 						</div>
 					</c:forEach>
 					<!-- 					 c: each 로 돌리면서 게시글 만들기 -->
-					<div
-						class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-						<div class="col-auto d-none d-lg-block">
-							<svg class="bd-placeholder-img" width="200" height="250"
-								xmlns="http://www.w3.org/2000/svg" role="img"
-								aria-label="Placeholder: Thumbnail"
-								preserveAspectRatio="xMidYMid slice" focusable="false">
-							<title>Placeholder</title><rect width="100%" height="100%"
-									fill="#55595c" />
-							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-						</div>
-						<div class="col p-4 d-flex flex-column ">
-							<strong class="d-inline-block mb-2 text-success">해시태그
-								#소통해요</strong>
-							<h3 class="mb-0">포스트제목</h3>
-							<div class="mb-1 text-muted">조회수</div>
-							<p class="mb-auto">내용이 들어오면 좋을것 같다</p>
-						</div>
-					</div>
-
 					<h2>Inline HTML elements</h2>
-					<p>
-						HTML defines a long list of available inline tags, a complete list
-						of which can be found on the <a
-							href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">Mozilla
-							Developer Network</a>.
-					</p>
 				</article>
-
-				<article class="blog-post">
-					<h2 class="blog-post-title">Another blog post</h2>
-					<p class="blog-post-meta">
-						December 23, 2020 by <a href="#">Jacob</a>
-					</p>
-
-					<p>This is some additional paragraph placeholder content. It
-						has been written to fill the available space and show how a longer
-						snippet of text affects the surrounding content. We'll repeat it
-						often to keep the demonstration flowing, so be on the lookout for
-						this exact same string of text.</p>
-
-
-				</article>
-
-				<article class="blog-post">
-					<h2 class="blog-post-title">New feature</h2>
-					<p class="blog-post-meta">
-						December 14, 2020 by <a href="#">Chris</a>
-				</article>
-
-				<nav class="blog-pagination" aria-label="Pagination">
-					<a class="btn btn-outline-primary" href="#">Older</a> <a
-						class="btn btn-outline-secondary disabled" href="#" tabindex="-1"
-						aria-disabled="true">Newer</a>
-				</nav>
 
 			</div>
 
-			<div class="col-md-4">
-				<div class="position-sticky" style="top: 5rem;">
+			<div class="col-md-3">
+				<div class="position-sticky border rounded" style="top: 5rem;">
+					<div>
+						<div class="input-group mb-3">
+							<input type="text" class="form-control" placeholder="#태그 검색해보세요!"
+								aria-label="#태그 검색해보세요!" aria-describedby="button-addon2">
+							<button class="btn btn-outline-secondary" type="button"
+								id="button-addon2">Button</button>
+						</div>
+
+					</div>
+					<div>
+						<br>
+					</div>
 					<div class="p-4 mb-3 bg-light rounded">
 						<h4 class="fst-italic">미디어</h4>
 						<p class="mb-0">여러분의 사랑스러운 천사들과의 소중한 추억을 담아, 모두와 공유하고 주인공이
-							되어보세요!//지금 DB연결하고 하면 정상적으로 기능수행합니다ㅡ조금만 기다려주세요 (ㅠㅅㅠ)</p>
+							되어보세요!//지금 DB연결하고 하면 정상적으로 기능수행합니다ㅡ조금만 기다려주세요(ㅠㅅㅠ)</p>
 					</div>
-
 					<div class="p-4">
 						<div>
 							<br>
 						</div>
+
 						<h4 class="fst-italic">글올리기</h4>
+
+
 						<ol class="list-unstyled mb-0">
 
 							<li><div class="d-grid gap-2">
-									<button class="btn btn-primary" type="button"
-										data-bs-toggle="modal" data-bs-target="#uploadeMedia">글올리기</button>
+									<c:if test="${!empty loginUser}">
+										<button class="btn btn-primary" type="button"
+											data-bs-toggle="modal" data-bs-target="#uploadeMedia">글올리기</button>
+									</c:if>
 									<button class="btn btn-primary" type="button">새글보기</button>
 								</div></li>
-
 						</ol>
 					</div>
 
 					<div class="p-4">
 						<h4 class="fst-italic">Elsewhere</h4>
 						<ol class="list-unstyled">
-							<li><a href="#">GitHub</a></li>
+							<li><a
+								href="https://github.com/greenteamtest/moongnyang/tree/master/moongnyang">GitHub</a></li>
 							<li><a href="#">Twitter</a></li>
 							<li><a href="#">Facebook</a></li>
 						</ol>
@@ -211,15 +213,13 @@
 				</div>
 			</div>
 		</div>
-
 	</main>
-
+	</form>
 </body>
 </html>
 <form action="uploadmedia.do" method="post" name="frm"
 	enctype="multipart/form-data">
 	<!-- 	 -->
-	<!-- <form action="mediaServlet" method="post" enctype="multipart/form-data" -->
 	<!-- 	name="frm"> -->
 	<input type="hidden" name="command" value="uploadmedia"> <input
 		type="hidden" name="email" value="${loginUser.email}"> <input
@@ -227,7 +227,7 @@
 	<div class="modal fade" id="uploadeMedia" data-bs-backdrop="static"
 		data-bs-keyboard="false" tabindex="-1"
 		aria-labelledby="staticBackdropLabel" aria-hidden="true">
-		<div class="modal-dialog modal-lg modal-dialog-centered">
+		<div class="modal-dialog modal-dialog-centered">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h5 class="modal-title" id="staticBackdropLabel">업로드하기</h5>
@@ -235,10 +235,6 @@
 						aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
-					<input type="text" class="form-control" name="title"
-						placeholder="제목을 입력해주세요!" aria-label="제목을 입력해주세요!" id="title"
-						aria-describedby="basic-addon1">
-					<hr>
 					<input type="text" class="form-control" name="hashtag"
 						placeholder="#태그를 추가해주세요!" aria-label="태그를 입력해주세요!" id="hashtag"
 						aria-describedby="basic-addon1">
@@ -265,4 +261,3 @@
 			</div>
 		</div>
 	</div>
-</form>

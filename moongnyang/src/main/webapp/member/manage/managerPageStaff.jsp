@@ -354,8 +354,8 @@
 						}'"
 						class="btn btn-primary">신청하기</button>
 					<button type="button"
-						onclick="location.href='staffServlet?command=end_timeover&email=${loginUser.email
-						}'"
+						onclick="location.href='staffServlet?command=end_timeover&email=
+						${loginUser.email}'"
 						class="btn btn-primary">종료하기</button>
 				</div>
 			</div>
