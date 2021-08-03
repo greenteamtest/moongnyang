@@ -6,6 +6,19 @@
 	<!-- resultType="com.media.dto.mediaVO"> -->
 	<!-- select * from media_upload order by num_media desc -->
 	<!-- </select> -->
+	<!-- <select id="load_comment" parameterType="media" -->
+	<!-- resultType="com.media.dto.mediaVO"> -->
+	<!-- SELECT -->
+	<!-- num_media,hashtag_media,user_email_media,mediaurl,content_media,like_media,user_info.user_nick -->
+	<!-- FROM media_upload LEFT OUTER JOIN user_info ON -->
+	<!-- media_upload.user_email_media = user_info.user_email order by -->
+	<!-- num_media desc -->
+	<!-- </select> -->
+	<select id="search_media" parameterType="String"
+		resultType="com.media.dto.mediaVO">
+		SELECT * FROM media_upload WHERE hashtag_media LIKE
+		'%'||#{search_value}||'%'
+	</select>
 	<select id="load_medialist" parameterType="media"
 		resultType="com.media.dto.mediaVO">
 		SELECT
@@ -20,6 +33,11 @@
 		#{title_media},#{hashtag_media},#{user_email_media},#{user_nick_media},
 		#{mediaurl},#{content_media},0,0)
 	</insert>
+	<!-- <insert id="add_comment" parameterType="media"> -->
+	<!-- insert into media_comment -->
+	<!-- values(media_comment_seq.nextval, -->
+	<!-- #{user_email_media},#{comment_content},#{num_media}) -->
+	<!-- </insert> -->
 	<insert id="click_like" parameterType="media">
 		merge into likecnt_media
 		using dual on (user_email=

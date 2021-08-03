@@ -10,6 +10,24 @@ public class mediaVO {
 	private String hashtag_media;
 	private int like_media;
 	private int readcnt_media;
+	private String comment_content;
+	private String num_comment;
+
+	public String getComment_content() {
+		return comment_content;
+	}
+
+	public void setComment_content(String comment_content) {
+		this.comment_content = comment_content;
+	}
+
+	public String getNum_comment() {
+		return num_comment;
+	}
+
+	public void setNum_comment(String num_comment) {
+		this.num_comment = num_comment;
+	}
 
 	public int getLike_media() {
 		return like_media;

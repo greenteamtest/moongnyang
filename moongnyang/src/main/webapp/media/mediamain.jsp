@@ -56,7 +56,6 @@
 <link href="blog.css" rel="stylesheet">
 </head>
 <body>
-
 	<div>
 		<br> <br> <br> <br> <br>
 	</div>
@@ -64,14 +63,13 @@
 		<div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
 			<div class="col-md-6 px-0">
 				<h1 class="display-4 fst-italic">파일업로드는 됩니다.</h1>
-				<p class="lead my-3">기능구현을 위해서는 DB가 필요합니다. 그리고 동영상썸네일도 정해야하고,
-					업로드시 동영상이름 패턴을 적용해서 저장시켜야함, 그래서 DB에서 편하게 불러올 수 있게됨</p>
+				<p class="lead my-3">기능구현을 위해서는 DB가 필요합니다. 좋아요 기능도 구현됩니다. 그런데
+					댓글은 아직안됩니다. ajax가 필요한건지..</p>
 				<p class="lead mb-0">
 					<a href="#" class="text-white fw-bold"></a>
 				</p>
 			</div>
 		</div>
-
 		<div class="row g-5">
 			<div class="col-md-9">
 				<article class="blog-post">
@@ -91,7 +89,6 @@
 									</div>
 									<div class="col-md-7">
 										<div class="card md-center">
-											<!-- 										style="height: 25%" -->
 											<!--  한싸이클 시작 -->
 											<div class="col p-4 d-flex flex-column ">
 												<div class="card-header">
@@ -100,9 +97,10 @@
 												</div>
 												<div class="card-body">
 													<h5 class="card-title">${medialist.user_nick}</h5>
-													<div style="overflow: auto; height: 50px; width: 100%;">
+													<div style="overflow: auto; height: 60px; width: 100%;">
 														<p class="card-text">${medialist.content_media}</p>
 													</div>
+													<hr>
 													<div>
 														<form action="mediaServlet" method="post">
 															<input type="hidden" name="command" value="clicklike"
@@ -110,8 +108,6 @@
 																value="${loginUser.email}" id="email"> <input
 																type="hidden" name="num" value="${medialist.num_media}"
 																id="num">
-															<!-- 																 <a -->
-															<%-- 																href="mediaServlet?command=clicklike&&email=${loginUser.email}&num=${medialist.num_media}">좋아요</a> --%>
 															<button type="submit"
 																class="btn btn-sm btn-outline-secondary">좋아요🧡
 																${medialist.like_media}</button>
@@ -122,34 +118,39 @@
 															<%-- 																${medialist.like_media}</button> --%>
 														</form>
 													</div>
-
-													<!-- 															 -->
-													<!-- 														 -->
 												</div>
 											</div>
 										</div>
-
 										<div class="card md-center">
-											<!-- 										style="height: 40%">
-														-->
 											<!--  한싸이클 시작 -->
-											<div class="col p-4 d-flex flex-column ">
-												<div class="card-header">
-													<div class="input-group mb-3">
-														<input type="text" class="form-control" name="comment"
-															placeholder="댓글을 통해 마음을 전하세요!"
-															aria-label="댓글을 통해 마음을 전하세요!"
-															aria-describedby="button-addon2">
-														<button class="btn btn-outline-secondary" type="button"
-															id="button-addon2">입력</button>
+											<form>
+												<input type="hidden" name="command" value="add_comment"
+													id="command"> <input type="hidden" name="email"
+													value="${loginUser.email}" id="email"> <input
+													type="hidden" name="num" value="${medialist.num_media}"
+													id="num">
+												<div class="col p-4 d-flex flex-column ">
+													<div class="card-header">
+														<div class="input-group mb-3">
+															<input type="text" class="form-control"
+																name="comment_content" placeholder="댓글을 통해 마음을 전하세요!"
+																aria-label="댓글을 통해 마음을 전하세요!"
+																aria-describedby="button-addon2" name="comment">
+															<button class="btn btn-outline-secondary" type="submit"
+																id="button-addon2">입력</button>
+														</div>
 													</div>
-												</div>
-												<div class="card-body">
-													<div style="overflow: auto; height: 330px; width: 100%;">
+													<div class="card-body">
+														<div style="overflow: auto; height: 300px; width: 100%;">
+															<%-- 														<c:forEach var="medialist" items="${medialist}"> --%>
+															<div></div>
+															<div></div>
+															<%-- 														</c:forEach> --%>
 
+														</div>
 													</div>
 												</div>
-											</div>
+											</form>
 										</div>
 									</div>
 								</div>
@@ -157,7 +158,6 @@
 						</div>
 					</c:forEach>
 					<!-- 					 c: each 로 돌리면서 게시글 만들기 -->
-					<h2>Inline HTML elements</h2>
 				</article>
 
 			</div>
@@ -165,13 +165,17 @@
 			<div class="col-md-3">
 				<div class="position-sticky border rounded" style="top: 5rem;">
 					<div>
-						<div class="input-group mb-3">
-							<input type="text" class="form-control" placeholder="#태그 검색해보세요!"
-								aria-label="#태그 검색해보세요!" aria-describedby="button-addon2">
-							<button class="btn btn-outline-secondary" type="button"
-								id="button-addon2">Button</button>
-						</div>
-
+						<form action="mediaServlet" method="post">
+							<input type="hidden" name="command" value="search_media"
+								id="command">
+							<div class="input-group mb-3">
+								<input type="text" class="form-control"
+									placeholder="#태그 검색해보세요!" aria-label="#태그 검색해보세요!"
+									aria-describedby="button-addon2" name="search">
+								<button class="btn btn-outline-secondary" type="submit"
+									id="button-addon2">Button</button>
+							</div>
+						</form>
 					</div>
 					<div>
 						<br>
@@ -261,3 +265,4 @@
 			</div>
 		</div>
 	</div>
+</form>

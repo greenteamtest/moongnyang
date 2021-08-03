@@ -5,26 +5,28 @@ import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.media.dto.mediaVO;
 
-public class mediamain_Action implements Action {
+public class search_media_Action extends HttpServlet implements Action {
+
+	private static final long serialVersionUID = 1L;
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-
 		String url = "media/mediamain.jsp";
-		System.out.println("미디어 액션");
+		System.out.println("여긴접속함");
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
 
-		List<mediaVO> vo = service.load_medialist();
+		List<mediaVO> vo = service.search_media(request.getParameter("search"));
 		session.setAttribute("medialist", vo);
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
-//		List<mediaVO> vo = service.load_comment();
-//		session.setAttribute("medialist", vo);
 	}
 }
