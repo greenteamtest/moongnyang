@@ -91,7 +91,7 @@
 						<li><h6 class="dropdown-header">요기오때?</h6></li>
 						<li><a class="dropdown-item"
 							href="BoardServlet_picnic?command=picnic">Picnic </a></li>
-						<li><a class="dropdown-item" href="health&edu/main.jsp">Health
+						<li><a class="dropdown-item" href="controller.do?command=main">Health
 								& Edu</a></li>
 						<li><hr class="dropdown-divider"></li>
 						<li><h6 class="dropdown-header">함께해요!</h6></li>

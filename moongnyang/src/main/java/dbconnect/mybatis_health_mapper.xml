@@ -141,4 +141,29 @@
 		</choose>
 	</select>
 
+
+	<!--select idx for searching keyword -->
+	<select id="slcIdxForSearchingKeyword" parameterType="Hashmap" resultType="com.health.dto.HealthPlaceVo">
+		select idx from view_place where
+		<choose>
+			<when test="field eq 'place'.toString()">
+				place
+			</when>
+			<when test="field eq 'address'.toString()">
+				address
+			</when>
+			<when test="field eq 'introduce'.toString()">
+				introduce
+			</when>
+			<otherwise>
+				pet_kind
+			</otherwise>
+		</choose>
+		like '%'||#{keyword}||'%'
+	</select>
+
+
+
 </mapper>
+
+
