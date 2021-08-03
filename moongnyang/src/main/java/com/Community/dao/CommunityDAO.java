@@ -168,7 +168,7 @@ public class CommunityDAO {
 //	public int delete(SqlSession session, int num) {
 //		return session.insert("insert_board", num);
 //	}
-	
+//////////////////[ 댓글 관련 method ]/////////////////////////////////	
 	/* c Read u d -게시판 상세보기 화면속 댓글 리스트 출력 */
 	public List<Community_CommentVO> selectAllComments(String num) {
 		
@@ -211,5 +211,9 @@ public class CommunityDAO {
 		return list;
 	}// selectAllComments() 끝
 	
+	/* 댓글 생성 - Create */
+	public int insert_comment(SqlSession session, Community_CommentVO ccVO) {
+		return session.insert("insert_comment", ccVO);
+	}
 	
 }// CommunityDAO{
