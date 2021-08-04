@@ -81,6 +81,24 @@ public class Staff_MyBatisService {
 		}
 		return rs;
 	}
+	
+	public int change_staff_val(StaffVO vo) {
+		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
+		System.out.println("qqw1");
+		int rs = 0;
+		try {
+			rs = dao.change_staff_val(session, vo); // dao에 SqlSession 전송
+			if (rs > 0) {
+				session.commit();
+				System.out.println("qqw2");
+			} else {
+				session.rollback();
+			}
+		} finally {
+			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
+		}
+		return rs;
+	}
 
 	public int request_vacation(StaffVO vo) {
 		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료

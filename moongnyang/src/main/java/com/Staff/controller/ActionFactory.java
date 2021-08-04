@@ -2,6 +2,7 @@ package com.Staff.controller;
 
 import com.Staff.controller.action.Action;
 import com.Staff.controller.action.after_requestTimeover_Action;
+import com.Staff.controller.action.change_staff_val_Action;
 import com.Staff.controller.action.endTimeover_Action;
 import com.Staff.controller.action.insert_staff_Action;
 import com.Staff.controller.action.requestVaction_Action;
@@ -35,6 +36,9 @@ public class ActionFactory {
 		}
 		if (command.equals("insert_staff")) {
 			action = new insert_staff_Action();
+		}
+		if (command.equals("change_staff_val")) {
+			action = new change_staff_val_Action();
 		}
 
 		else {

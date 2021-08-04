@@ -10,6 +10,10 @@ public class StaffDAO {
 	public StaffDAO() {
 
 	}
+	
+	public int change_staff_val(SqlSession session, StaffVO vo) {
+		return session.update("change_staff_val", vo);
+	}
 
 	public int insert_staff(SqlSession session, StaffVO vo) {
 		return session.update("insert_staff", vo);
