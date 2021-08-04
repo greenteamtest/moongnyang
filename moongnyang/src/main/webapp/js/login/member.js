@@ -24,7 +24,18 @@ function emailCheck() {
 	window.open(url, "_blank_1",
 		"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=600, height=150");
 }
-function test() {
+function emailCheck_modal() {
+	if (document.joinmodal.userEmail.value == "") {
+		alert('이런 이메일을 입력하지 않으셨어요 ∑(O_O;)');
+		document.joinmodal.userEmail.focus();
+		return false;
+	}
+	var url = "emailCheck.do?user_email=" + document.joinmodal.userEmail.value + "@" + document.joinmodal.selectemail.value;
+	window.open(url, "_blank_1",
+		"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=600, height=150");
+}
+function emailok_modal() {
+	opener.joinmodal.reEmail.value = "1";
 	self.close();
 }
 function emailok() {
@@ -32,20 +43,65 @@ function emailok() {
 	self.close();
 }
 
-function nicknameCheck() {
-	if (document.frm.nickname.value == "") {
+function nicknameCheck_modal() {
+	if (document.joinmodal.nickname.value == "") {
 		alert('이런 별명을 입력하지 않으셨어요 ∑(O_O;)');
-		document.frm.nickname.focus();
+		document.joinmodal.nickname.focus();
 		return false;
 	}
-	var url = "nicknameCheck.do?nickname=" + document.frm.nickname.value;
+	var url = "nicknameCheck.do?nickname=" + document.joinmodal.nickname.value;
 	window.open(url, "_blank_1",
 		"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=600, height=150");
 }
+function nickok_modal() {
+	opener.joinmodal.renickname.value = "1";
+	self.close();
+}
+function test_modal() {
+	self.close();
+}
 
 function nickok() {
-	opener.frm.renickname.value = "1";
+	opener.joinmodal.renickname.value = "1";
 	self.close();
+}
+
+function joinCheck_modal() {
+	if (document.joinmodal.userEmail.value.length == 0) {
+		alert("이런, 이메일을 입력하지 않으셨어요 ∑(O_O;)");
+		joinmodal.userEmail.focus();
+		return false;
+	}
+	if (document.joinmodal.selectemail.value == "15") {
+		alert("이런, 이메일도메인을 선택하지 않으셨어요 ∑(O_O;)");
+		joinmodal.selectemail.focus();
+		return false;
+	}
+	if (document.joinmodal.pwd.value == "") {
+		alert("암호를 입력하지 않으셨어요 !(°ロ°) !");
+		joinmodal.pwd.focus();
+		return false;
+	}
+	if (document.joinmodal.pwd.value != document.joinmodal.pwd_check.value) {
+		alert("암호가 일치하지않아욧 ㅠㅠΣ(꒪ȏ꒪)");
+		joinmodal.pwd_check.focus();
+		return false;
+	}
+	if (document.joinmodal.reEmail.value != "1") {
+		alert("이메일 중복체크를 하지 않았어용ㅇㅇㅇ(⑉⊙ȏ⊙)");
+		joinmodal.userEmail.focus();
+		return false;
+	}
+	if (document.joinmodal.renickname.value != "1") {
+		alert("별명 중복체크를 하지 않았어용ㅇㅇㅇ(⑉⊙ȏ⊙)");
+		joinmodal.nickname.focus();
+		return false;
+	}
+	if (!$(ckeck).is(":checked")) {
+		alert("약관에 동의해주세요><");
+		return false;
+	}
+	return true;
 }
 
 function joinCheck() {

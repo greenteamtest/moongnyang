@@ -233,7 +233,7 @@
 					<button type="button" class="btn-close" data-bs-dismiss="modal"
 						aria-label="Close"></button>
 				</div>
-				<div class="modal-body">백찬호)본인이 작업한 내용이라던가 본인 설명</div>
+				<div cl0ass="modal-body">백찬호)본인이 작업한 내용이라던가 본인 설명</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-bs-dismiss="modal">Close</button>

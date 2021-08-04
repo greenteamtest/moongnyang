@@ -157,6 +157,7 @@ public class MemberDAO {
 	public int confirmNickname(String nick) {
 		int result = -1;
 		String sql = "select user_nick from user_info where user_nick=?";
+		System.out.println(nick);
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -168,9 +169,11 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				result = 1;
+				System.out.println("중복안됨");
 
 			} else {
 				result = -1;
+				System.out.println("중복됨");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

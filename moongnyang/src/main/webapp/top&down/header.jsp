@@ -51,6 +51,8 @@
 				<c:if test="${empty loginUser}">
 					<li class="nav-item"><a class="nav-link" href="login.do"
 						data-bs-toggle="tooltip" data-bs-placement="top" title="함께해요!">로그인</a>
+						<!-- 					<li class="nav-item"><a class="nav-link" --> <!-- 						data-bs-toggle="modal" data-bs-target="#login" -->
+						<!-- 						data-bs-toggle="tooltip" data-bs-placement="top" title="함께해요!">로그인</a> -->
 				</c:if>
 				<c:if test="${!empty loginUser}">
 					<li class="nav-item"><a class="nav-link" href="logout.do"
@@ -91,8 +93,8 @@
 						<li><h6 class="dropdown-header">요기오때?</h6></li>
 						<li><a class="dropdown-item"
 							href="BoardServlet_picnic?command=picnic">Picnic </a></li>
-						<li><a class="dropdown-item" href="controller.do?command=main">Health
-								& Edu</a></li>
+						<li><a class="dropdown-item"
+							href="controller.do?command=main">Health & Edu</a></li>
 						<li><hr class="dropdown-divider"></li>
 						<li><h6 class="dropdown-header">함께해요!</h6></li>
 						<li><a class="dropdown-item"
@@ -148,3 +150,50 @@
 		</div>
 	</div>
 </div>
+<!--  로그인 모달(나중에 에이젝스나 리엑트 공부할때 쓰면좋을것같다) -->
+<form>
+	<div class="modal fade" id="login" aria-hidden="true"
+		aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+		<div class="modal-dialog modal-dialog-centered modal modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalToggleLabel">로그인</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<img class="mb-4" src="img/logo.png" alt="" width="100" width="72"
+						height="57">
+					<div class="container">
+						<div class="d-grid gap-2">
+							<div class="form-floating">
+
+								<input type="email" class="form-control" id="floatingInput"
+									name="email" value="${user_email}"
+									placeholder="name@example.com"> <label
+									for="floatingInput">🐶이메일주소입력🐱</label>
+							</div>
+							<div class="form-floating">
+								<input type="password" class="form-control"
+									id="floatingPassword" value="${user_pwd}" name="pwd"
+									placeholder="Password"> <label for="floatingPassword">🐶비밀번호입력🐱</label>
+							</div>
+							<button class="btn btn-warning" type="submit"
+								onclick="return loginCheck()">입장하기</button>
+							<button class="btn btn-warning" type="button"
+								onclick="location.href='join.do'">회원가입</button>
+						</div>
+						<div class="d-grid gap-2"></div>
+						<div>
+							<div class="modal-footer">
+								<div class="card">
+									<div class="card-body">${message}</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
