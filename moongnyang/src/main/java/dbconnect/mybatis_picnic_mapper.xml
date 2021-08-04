@@ -30,19 +30,17 @@
 		desc
 	</select>
 	<insert id="picnic_Write" parameterType="picnic">
-	<![CDATA[
 		INSERT INTO
 		PICNIC_COMENT (key, num, user_email, coment_content, coment_date)
 		VALUES(#{key}, PICNIC_COMENT_SEQ.nextval,
 		#{user_email},
-		#{coment_content}, TO_CHAR(sysdate, 'YYYY/MM/DD'))
+		#{coment_content}, TO_CHAR(sysdate, 'YY/MM/DD'))
 		<!-- to_char(sysdate,'yyyy.mm.dd hh24:mi') -->
-		]]>
 	</insert>
 
-	<select id="picnic_Delete" parameterType="int">
-		DELETE * FROM
+	<delete id="picnic_Delete" parameterType="int">
+		DELETE FROM
 		PICNIC_COMENT WHERE NUM=#{NUM}
-	</select>
+	</delete>
 
 </mapper>

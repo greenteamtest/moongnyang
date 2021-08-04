@@ -16,12 +16,10 @@ public class Picnic_DAO {
 	}
 
 	public List<PicnicVO> picnic_Select2(SqlSession session, String str) {
-		System.out.println(str);
 		return session.selectList("picnic_Select2", str);
 	}
 
 	public int picnic_Write(SqlSession session, PicnicVO bVo) {
-		System.out.println("logging : " + 2);
 		return session.insert("picnic_Write", bVo);
 	}
 

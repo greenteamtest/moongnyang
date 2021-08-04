@@ -80,14 +80,11 @@ public class Picnic_MyBatisService {
 	public void picnic_Write(PicnicVO vo) {
 
 		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
-		System.out.println("logging : "+1);
 		try {
 			dao.picnic_Write(session, vo); // dao에 SqlSession 전송
 		} catch (Exception e) {
-			System.out.println("logging : "+3);
 			e.printStackTrace();
 		} finally {
-			System.out.println("logging : "+1000);
 			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
 		}
 		return;

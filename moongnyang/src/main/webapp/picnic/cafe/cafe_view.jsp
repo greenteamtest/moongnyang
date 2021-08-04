@@ -63,8 +63,12 @@ textarea {
 			<button class="btn btn-outline-secondary" type="button">${list.coment_date }</button>
 			<c:choose>
 				<c:when test = "${email1 eq email2}">
-				<input type="hidden" id="num" value="${list.num }">
-				<button class="btn btn-outline-secondary" type="submit" id="delete">삭제</button>				
+				<form method="POST" action="BoardServlet_picnic">
+				<input type="hidden" id="num" name="num" value="${list.num }">
+				<input type="hidden" id="key" name="key" value="${vo.key }">
+				<input type="hidden" name="command" value="delete">
+				<button class="btn btn-outline-secondary" type="submit" id="delete">삭제</button>
+				</form>				
 				</c:when>
 			</c:choose>
 		</div>
