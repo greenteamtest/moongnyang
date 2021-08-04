@@ -17,7 +17,7 @@ public class endTimeover_Action implements Action {
 		StaffVO vo = new StaffVO();
 		vo.setUser_email_timeover(request.getParameter("email"));
 
-		System.out.println(vo.getUser_email_timeover());
+		System.out.println("gma : " +vo.getUser_email_timeover());
 		service.end_timeover(vo);
 
 		new staffChangeAction().execute(request, response);

@@ -18,6 +18,7 @@ public class search_media_Action extends HttpServlet implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		HttpSession session = request.getSession();
 		String url = "media/mediamain.jsp";
 		System.out.println("여긴접속함");

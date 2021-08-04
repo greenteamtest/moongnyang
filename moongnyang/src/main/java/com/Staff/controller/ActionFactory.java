@@ -6,6 +6,7 @@ import com.Staff.controller.action.change_staff_val_Action;
 import com.Staff.controller.action.endTimeover_Action;
 import com.Staff.controller.action.insert_staff_Action;
 import com.Staff.controller.action.requestVaction_Action;
+import com.Staff.controller.action.search_staff_Action;
 import com.Staff.controller.action.startTimeover_Action;
 
 public class ActionFactory {
@@ -39,6 +40,9 @@ public class ActionFactory {
 		}
 		if (command.equals("change_staff_val")) {
 			action = new change_staff_val_Action();
+		}
+		if (command.equals("search_staff")) {
+			action = new search_staff_Action();
 		}
 
 		else {

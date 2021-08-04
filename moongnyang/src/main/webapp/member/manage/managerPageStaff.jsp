@@ -23,10 +23,8 @@
 <script src="./jquery-ui-1.12.1/datepicker-ko.js"></script>
 <link rel="canonical"
 	href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
-
 <!-- Bootstrap core CSS -->
 <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
-
 <style>
 .bd-placeholder-img {
 	font-size: 1.125rem;
@@ -42,7 +40,6 @@
 	}
 }
 </style>
-
 <!-- Custom styles for this template -->
 <link href="member/manage/dashboard.css" rel="stylesheet">
 </head>
@@ -101,7 +98,11 @@
 					</div>
 					<div class="col">
 						<c:if test="${!empty timeover}">
-							<h6>현재상태 : 시간외 근무진행중</h6>
+							<h6>
+								현재상태 : 시간외 근무진행중
+								<%-- 								<fmt:formatDate value="${timeover.start_timeover}" --%>
+								<%-- 									pattern="dd HH:mm" /> --%>
+							</h6>
 						</c:if>
 						<c:if test="${empty timeover}">
 							<h6>좋은하루보내세요</h6>
@@ -143,25 +144,31 @@
 				</div>
 
 				<c:if test="${loginUser.auth==3}">
-					<div class="row">
-						<div class="col">
-							<h2>사원List #관리</h2>
+					<form action="staffServlet" method="post">
+						<div class="row">
+							<div class="col">
+								<h2>사원List #관리</h2>
+							</div>
+							<div class="col"></div>
+
+							<input type="hidden" value="search_staff" id="command"
+								name="command">
+							<div class="col-auto">
+								<label for="inputPassword2" class="visually-hidden">별명검색</label>
+								<input type="text" class="form-control" id="search_timeover"
+									name="search_timeover" placeholder="별명검색">
+							</div>
+							<div class="col-auto">
+								<button type="submit" class="btn btn-primary mb-3">검색</button>
+							</div>
+
+							<div class="col-auto">
+								<button type="button" class="btn btn-primary"
+									data-bs-toggle="modal" data-bs-target="#insert_staff">
+									추가/수정</button>
+							</div>
 						</div>
-						<div class="col"></div>
-						<div class="col-auto">
-							<label for="inputPassword2" class="visually-hidden">별명검색</label>
-							<input type="text" class="form-control" id="search_timeover"
-								placeholder="별명검색">
-						</div>
-						<div class="col-auto">
-							<button type="submit" class="btn btn-primary mb-3">검색</button>
-						</div>
-						<div class="col-auto">
-							<button type="button" class="btn btn-primary"
-								data-bs-toggle="modal" data-bs-target="#insert_staff">
-								추가/수정</button>
-						</div>
-					</div>
+					</form>
 					<div class="table-responsive">
 						<table class="table table-striped table-sm">
 							<thead>
@@ -175,12 +182,12 @@
 							</thead>
 							<tbody>
 								<c:forEach var="staffmember" items="${staffmember}">
-
 									<tr>
 										<form action="staffServlet" method="post">
 											<input type="hidden" value="change_staff_val" id="command"
-												name="command">
-											<td name="email">${staffmember.user_email}</td>
+												name="command"> <input type="hidden"
+												value="${staffmember.user_email}" id="email" name="email">
+											<td>${staffmember.user_email}</td>
 											<td>${staffmember.user_nick}</td>
 											<c:choose>
 												<c:when test="${staffmember.user_auth==2}">
@@ -258,7 +265,8 @@
 									<th scope="col">확인</th>
 								</tr>
 								</tread>
-								<tbody>
+
+								<tbody style='height: 400px; overflow: scroll;'>
 									<c:forEach var="total_timeover" items="${total_timeover}">
 										<tr>
 											<td>${total_timeover.num_timeover}</td>
@@ -322,9 +330,21 @@
 		crossorigin="anonymous"></script>
 	<script src="member/manage/dashboard.js"></script>
 </body>
-</html>
-<!-- 모달 사전신청 초과근무 신청 -->
 <form action="staffServlet" method="post" name="start_timeover">
+	<script type="text/JavaScript"
+		src="http://code.jquery.com/jquery-1.7.min.js"></script>
+	<script type="text/JavaScript">
+		function start() {
+			const email = document.getElementById("user_email_timeover").value;
+			const nick = document.getElementById("user_nick_timeover").value;
+			const reason = document.getElementById("reason_timeover").value;
+			document.location.href = "staffServlet?command=start_timeover&user_email_timeover="
+					+ email
+					+ "&user_nick_timeover="
+					+ nick
+					+ "&reason_timeover=" + reason;
+		};
+	</script>
 	<input type="hidden" name="command" value="start_timeover" id="command">
 	<script type="text/javascript" src="js/login/manage.js"></script>
 
@@ -374,20 +394,15 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-bs-dismiss="modal">닫기</button>
-					<!-- 					<button type="submit" class="btn btn-primary">신청하기</button> -->
-					<button type="submit"
-						onclick="location.href='staffServlet?
-					command=start_timeover&user_email_timeover=${loginUser.email
-						}'"
-						class="btn btn-primary">신청하기</button>
+					<button type="button" onclick="start()" class="btn btn-primary">신청하기</button>
 					<button type="button"
-						onclick="location.href='staffServlet?command=end_timeover&email=
-						${loginUser.email}'"
+						onclick="location.href='staffServlet?command=end_timeover&email=${loginUser.email}'"
 						class="btn btn-primary">종료하기</button>
 				</div>
 			</div>
 		</div>
 	</div>
+
 </form>
 <!-- 모달 소급신청 초과근무 신청 -->
 <form action="staffServlet" method="post" name="after_request_timeover">
@@ -429,10 +444,8 @@
 				</div>
 				<div class="modal-body">
 					<div class="input-group mb-3">
-						<input type="text" class="form-control" name="date_timeover"
-							id="date3" readonly aria-describedby="button-addon2"><input
-							type="button" class="btn btn-outline-secondary" value="달력"
-							onclick="$('#date3').datepicker('show');" />
+						<input type="date" class="form-control" name="date_timeover"
+							id="date3">
 					</div>
 
 					<div class="container">
@@ -471,6 +484,12 @@
 	</div>
 </form>
 <!--  모달 초과근무 신청 내역보기 -->
+
+
+<!-- 모달 휴가신청 -->
+
+</html>
+<!-- 모달 사전신청 초과근무 신청 -->
 <div class="modal fade" id="viewOvertime" tabindex="-1"
 	aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
@@ -496,8 +515,8 @@
 								<div class="alert alert-warning" role="alert">${timeover_ma.date_timeover}</div>
 							</div>
 							<div class="col" align="center">
-								<div class="alert alert-warning" role="alert">${timeover_ma.end_timeover}
-									~ ${timeover_ma.start_timeover}</div>
+								<div class="alert alert-warning" role="alert">${timeover_ma.start_timeover}
+									~ ${timeover_ma.end_timeover}</div>
 							</div>
 							<div class="col" align="center">
 								<div class="alert alert-warning" role="alert">${timeover_ma.check_timeover}</div>
@@ -513,8 +532,6 @@
 		</div>
 	</div>
 </div>
-
-<!-- 모달 휴가신청 -->
 <form action="staffServlet" method="post">
 	<input type="hidden" name="command" value="request_vacation"
 		id="command"> <input type="hidden" name="user_email_vacation"
@@ -571,13 +588,11 @@
 					</div>
 					<div class="row">
 						<div class="col">
-							<input type="text" class="form-control" name="start_vacation"
-								id="date1" readonly aria-describedby="button-addon2">
+							<input type="date" class="form-control" name="start_vacation">
 
 						</div>
 						<div class="col">
-							<input type="text" class="form-control" name="end_vacation"
-								id="date2" readonly aria-describedby="button-addon2">
+							<input type="date" class="form-control" name="end_vacation">
 						</div>
 					</div>
 				</div>
