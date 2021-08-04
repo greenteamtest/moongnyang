@@ -197,4 +197,30 @@ public class Staff_MyBatisService {
 		return list;
 	}
 
+	public List<StaffVO> search_timeover(String s) {
+		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
+		List<StaffVO> list = null;
+		try {
+			list = dao.search_timeover(session, s); // dao에 SqlSession 전송
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
+		}
+		return list;
+	}
+
+	public List<StaffVO> search_vacation(String s) {
+		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
+		List<StaffVO> list = null;
+		try {
+			list = dao.search_vacation(session, s); // dao에 SqlSession 전송
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
+		}
+		return list;
+	}
+
 }

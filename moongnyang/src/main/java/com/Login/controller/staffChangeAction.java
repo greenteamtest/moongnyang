@@ -19,6 +19,8 @@ public class staffChangeAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
 		String url = "member/manage/managerPageStaff.jsp";
 		StaffDAO_org dao = StaffDAO_org.getInstance();
 		List<StaffVO_org> timeover = dao.load_state(request.getParameter("email"));

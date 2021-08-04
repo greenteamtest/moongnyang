@@ -13,7 +13,7 @@ import com.Login.dao.StaffDAO_org;
 import com.Login.dto.StaffVO_org;
 import com.Staff.dto.StaffVO;
 
-public class search_staff_Action implements Action {
+public class search_timeover_Action implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -25,15 +25,15 @@ public class search_staff_Action implements Action {
 		HttpSession session = request.getSession();
 		List<StaffVO> vacation = service.load_vacation(request.getParameter("email"));
 		List<StaffVO> timeover_ma = service.load_timeover(request.getParameter("email"));
-		List<StaffVO> staffmember = service.search_staff(request.getParameter("search_timeover"));
+		List<StaffVO> staffmember = service.load_staffmember();
 		System.out.println(request.getParameter("search_timeover"));
-		List<StaffVO> total_timeover = service.load_total_timeover();
+		List<StaffVO> searched = service.search_timeover(request.getParameter("search_timeover"));
 		List<StaffVO> total_vacation = service.load_total_vacation();
 		session.setAttribute("timeover", timeover);
 		session.setAttribute("timeover_ma", timeover_ma);
 		session.setAttribute("vacation", vacation);
 		session.setAttribute("staffmember", staffmember);
-		session.setAttribute("total_timeover", total_timeover);
+		session.setAttribute("total_timeover", searched);
 		session.setAttribute("total_vacation", total_vacation);
 		System.out.println("세션저장완료");
 

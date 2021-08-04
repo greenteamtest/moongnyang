@@ -5,6 +5,16 @@
 
 
 	<!-- 초과근무 신청내역불러오기 (이건 신청날짜 정렬) -->
+	<select id="search_vacation" parameterType="String"
+		resultType="com.Staff.dto.StaffVO">
+		select * from request_vacation where user_nick_vacation
+		=#{value}
+	</select>
+	<select id="search_timeover" parameterType="String"
+		resultType="com.Staff.dto.StaffVO">
+		select * from request_timeover where user_nick_timeover
+		=#{value}
+	</select>
 	<select id="search_staff" parameterType="String"
 		resultType="com.Staff.dto.StaffVO">
 		select * from user_info where user_nick =#{user_nick}

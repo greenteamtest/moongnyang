@@ -35,6 +35,13 @@ public class StaffDAO {
 		return session.insert("request_vacation", vo);
 	}
 
+	public List<StaffVO> search_vacation(SqlSession session, String s) {
+		return session.selectList("search_vacation", s);
+	}
+	public List<StaffVO> search_timeover(SqlSession session, String s) {
+		return session.selectList("search_timeover", s);
+	}
+
 	public List<StaffVO> search_staff(SqlSession session, String s) {
 		return session.selectList("search_staff", s);
 	}

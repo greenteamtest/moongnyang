@@ -198,7 +198,6 @@
 												</c:when>
 
 											</c:choose>
-											<%-- 										<td>${staffmember.user_auth}</td> --%>
 											<td><select class="form-select" id="floatingSelect"
 												name="val" aria-label="Floating label select example">
 													<option selected>등급조정</option>
@@ -244,75 +243,90 @@
 
 					<div class="row">
 						<div class="col">
-							<table class="table table-dark table-hover">
-								<tr>
-									<td>
+							<form action="staffServlet" method="post">
+								<div class="row">
+									<div class="col-sm-5">
 										<h2>초과근무내역</h2>
-									</td>
-									<td><label for="inputPassword2" class="visually-hidden">별명검색</label>
+									</div>
+									<div class="col-sm-4">
+										<label for="inputPassword2" class="visually-hidden">별명검색</label>
 										<input type="text" class="form-control" id="search_timeover"
-										placeholder="별명검색"></td>
-									<td>
+											name="search_timeover" placeholder="별명검색">
+									</div>
+									<div class="col-sm-3">
 										<button type="submit" class="btn btn-primary mb-3">검색</button>
-									</td>
-								</tr>
-								<tread>
-								<tr>
-									<th scope="col">글번호</th>
-									<th scope="col">별명</th>
-									<th scope="col">시간/일정</th>
-									<th scope="col">사유</th>
-									<th scope="col">확인</th>
-								</tr>
-								</tread>
+									</div>
+								</div>
+								<table class="table table-dark table-hover">
 
-								<tbody style='height: 400px; overflow: scroll;'>
-									<c:forEach var="total_timeover" items="${total_timeover}">
-										<tr>
-											<td>${total_timeover.num_timeover}</td>
-											<td>${total_timeover.user_nick_timeover}</td>
-											<td>${total_timeover.date_timeover}</td>
-											<td>${total_timeover.reason_timeover}</td>
-											<td><button type="button">버튼</button></td>
-										</tr>
-									</c:forEach>
-								</tbody>
-							</table>
+									<tr>
+										<th scope="col">글번호</th>
+										<th scope="col">별명</th>
+										<th scope="col">시간/일정</th>
+										<th scope="col">확인</th>
+									</tr>
+									<tbody style='height: 400px; overflow: scroll;'>
+										<c:forEach var="total_timeover" items="${total_timeover}">
+
+											<input type="hidden" value="search_timeover" id="command"
+												name="command">
+											<tr>
+												<td>${total_timeover.num_timeover}</td>
+												<td>${total_timeover.user_nick_timeover}</td>
+												<td>${total_timeover.date_timeover}</td>
+												<td><button type="submit" class="btn-primary">버튼</button></td>
+											</tr>
+
+										</c:forEach>
+									</tbody>
+								</table>
+							</form>
 						</div>
 						<div class="col">
-							<table class="table table-success table-striped ">
-								<tr>
-									<td>
-										<h2>휴가신청내역</h2>
-									</td>
-									<td><label for="inputPassword2" class="visually-hidden">별명검색</label>
-										<input type="text" class="form-control" id="search_vacation"
-										placeholder="별명검색"></td>
-									<td>
-										<button type="submit" class="btn btn-primary mb-3">검색</button>
-									</td>
-								</tr>
-								<tread>
-								<tr>
-									<th scope="col">글번호</th>
-									<th scope="col">별명</th>
-									<th scope="col">기간</th>
-									<th scope="col">종류</th>
-									<th scope="col">확인</th>
-								</tr>
-								</tread>
-								<tbody>
-									<c:forEach var="total_vacation" items="${total_vacation}">
-										<tr>
-											<td>${total_vacation.num_vacation}</td>
-											<td>${total_vacation.user_nick_vacation}</td>
-											<td>${total_vacation.start_vacation}~${total_vacation.end_vacation}</td>
-											<td>${total_vacation.val_vacation}</td>
-											<td><button type="button">버튼</button></td>
-										</tr>
-									</c:forEach>
-								</tbody>
-							</table>
+							<form action="staffServlet" method="post">
+								<input type="hidden" value="search_vacation" id="command"
+									name="command">
+								<div class="container">
+									<div class="row">
+										<div class="col-sm-5">
+											<h2>휴가신청내역</h2>
+										</div>
+										<div class="col-sm-4">
+											<label for="inputPassword2" class="visually-hidden">별명검색</label>
+											<input type="text" class="form-control" id="search_vacation"
+												name="search_vacation" placeholder="별명검색">
+										</div>
+										<div class="col-sm-3">
+											<button type="submit" class="btn btn-primary mb-3">검색</button>
+										</div>
+									</div>
+								</div>
+
+								<table class="table table-success table-striped ">
+
+									<tr>
+										<th scope="col">글번호</th>
+										<th scope="col">별명</th>
+										<th scope="col">기간</th>
+										<th scope="col">종류</th>
+										<th scope="col">확인</th>
+									</tr>
+									<tbody>
+										<c:forEach var="total_vacation" items="${total_vacation}">
+
+
+											<tr>
+												<td>${total_vacation.num_vacation}</td>
+												<td>${total_vacation.user_nick_vacation}</td>
+												<td>${total_vacation.start_vacation}~${total_vacation.end_vacation}</td>
+												<td>${total_vacation.val_vacation}</td>
+												<td><button type="button" class="btn-primary">버튼</button></td>
+											</tr>
+
+										</c:forEach>
+									</tbody>
+								</table>
+							</form>
 						</div>
 					</div>
 				</c:if>
