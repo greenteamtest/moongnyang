@@ -169,15 +169,31 @@
 									<th scope="col">이메일</th>
 									<th scope="col">별명</th>
 									<th scope="col">등급조정</th>
+									<th scope="col"></th>
 								</tr>
 							</thead>
 							<tbody>
 								<c:forEach var="staffmember" items="${staffmember}">
+
 									<tr>
-										<td>${staffmember.user_email}</td>
-										<td>${staffmember.user_nick}</td>
-										<td><button type="button">버튼</button></td>
+										<form action="staffServlet" method="post">
+											<input type="hidden" value="change_staff_val" id="command"
+												name="command">
+											<td name="email">${staffmember.user_email}</td>
+											<td>${staffmember.user_nick}</td>
+											<td><select class="form-select" id="floatingSelect"
+												name="val" aria-label="Floating label select example">
+													<option selected>등급조정</option>
+													<option value="1">평사원</option>
+													<option value="2">팀장</option>
+											</select></td>
+
+											<td>
+												<button type="submit" class="btn btn-primary">버튼</button>
+											</td>
+										</form>
 									</tr>
+
 								</c:forEach>
 							</tbody>
 						</table>

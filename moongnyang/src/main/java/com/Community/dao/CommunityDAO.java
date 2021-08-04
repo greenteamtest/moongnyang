@@ -13,6 +13,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.Community.dto.CommunityVO;
 import com.Community.dto.Community_CommentVO;
 import com.Community.dto.DBManager;
+import com.media.dto.mediaVO;
 
 public class CommunityDAO {
 
@@ -70,10 +71,11 @@ public class CommunityDAO {
 
 	/* Create r u d -게시글 등록 */
 	public void insertBoard(CommunityVO cVO) {
-		String sql = "INSERT INTO COMMUNITY_BOARD (" + "BOARD_IDX, USER_EMAIL, TITLE, CONTENTS, ANIMAL_TAG, BOARD_TAG)"
 
-				+ "values (seq_community_board.nextval,?,?,?,?,?)";
-		// 사진 url 컬럼값도 추가하는 쿼리문 추후 만들어야함
+		String sql = "INSERT INTO COMMUNITY_BOARD"
+				+ "(BOARD_IDX, USER_EMAIL, TITLE, CONTENTS, ANIMAL_TAG, BOARD_TAG,READ_COUNT,LIKE_COUNT,WRITE_DATE,"
+				+ "	PIC_URL_1,PIC_URL_2,PIC_URL_3,PIC_URL_4,PIC_URL_5)"
+				+ "	values (seq_community_board.nextval,?,?,?,?,?,default,default,default,?,?,?,?,?)";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -87,10 +89,14 @@ public class CommunityDAO {
 			pstmt.setString(3, cVO.getContents());
 			pstmt.setInt(4, cVO.getAnimal_tag());
 			pstmt.setInt(5, cVO.getBoard_tag());
-			// 사진 url 컬럼값도 추가하는 쿼리문 추후 만들어야함
+			pstmt.setString(6, cVO.getPic_url_1());
+			pstmt.setString(7, cVO.getPic_url_2());
+			pstmt.setString(8, cVO.getPic_url_3());
+			pstmt.setString(9, cVO.getPic_url_4());
+			pstmt.setString(10, cVO.getPic_url_5());
 
-			pstmt.executeUpdate();
-		} catch (SQLException e) {
+			pstmt.executeUpdate(); // 실행
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			DBManager.close(conn, pstmt);
@@ -161,8 +167,30 @@ public class CommunityDAO {
 		return cVO;
 	}// selectOneBoardByNum() 끝
 
-	public int insert_board(SqlSession session, CommunityVO vo) {
-		return session.insert("insert_board", vo);
+	/* 게시물 등록시 썼던 mybatis 코드 ,,, 모델 1으로 변경하면서 쓸일이 없어짐,, ㅠ */
+//	public int insert_board(SqlSession session, CommunityVO vo) {
+//		return session.insert("insert_board", vo);
+//	}
+
+	public void write_board(mediaVO vo) {
+		String sql = "insert into media_upload values(media_upload_seq.nextval, ?, ?, ?, ?,?,?,0,0)";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getTitle_media());
+			pstmt.setString(2, vo.getHashtag_media());
+			pstmt.setString(3, vo.getUser_email_media());
+			pstmt.setString(4, vo.getUser_nick());
+			pstmt.setString(5, vo.getMediaurl());
+			pstmt.setString(6, vo.getContent_media());
+			pstmt.executeUpdate(); // 실행
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
 	}
 
 //	public int delete(SqlSession session, int num) {
@@ -171,9 +199,9 @@ public class CommunityDAO {
 //////////////////[ 댓글 관련 method ]/////////////////////////////////	
 	/* c Read u d -게시판 상세보기 화면속 댓글 리스트 출력 */
 	public List<Community_CommentVO> selectAllComments(String num) {
-		
-		String sql = "select * from community_board_comment where BOARD_IDX="+num ;
-		
+
+		String sql = "select * from community_board_comment where BOARD_IDX=" + num;
+
 		List<Community_CommentVO> list = new ArrayList<Community_CommentVO>();
 
 		Connection conn = null;
@@ -187,20 +215,20 @@ public class CommunityDAO {
 
 			while (rs.next()) { // 이동은 행(로우) 단위로
 				Community_CommentVO ccVO = new Community_CommentVO();
-				
-				//DB Community_board_comment 속 칼럼명
+
+				// DB Community_board_comment 속 칼럼명
 //				COMMENT_IDX
 //				USER_EMAIL
 //				COMMENT_CONTENT
 //				BOARD_IDX
 //				WRITE_DATE
-				
+
 				ccVO.setComment_idx(rs.getInt("COMMENT_IDX"));
 				ccVO.setUser_email(rs.getString("USER_EMAIL"));
 				ccVO.setComment_content(rs.getString("COMMENT_CONTENT"));
 				ccVO.setBoard_idx(rs.getInt("BOARD_IDX"));
 				ccVO.setWrite_date(rs.getString("WRITE_DATE"));
-				
+
 				list.add(ccVO);
 			} // while문 끝
 		} catch (SQLException e) {
@@ -210,10 +238,10 @@ public class CommunityDAO {
 		}
 		return list;
 	}// selectAllComments() 끝
-	
+
 	/* 댓글 생성 - Create */
 	public int insert_comment(SqlSession session, Community_CommentVO ccVO) {
 		return session.insert("insert_comment", ccVO);
 	}
-	
+
 }// CommunityDAO{
