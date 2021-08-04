@@ -1,5 +1,7 @@
 package service.picnic;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.picnic.dao.Picnic_DAO;
@@ -45,5 +47,18 @@ public class Picnic_MyBatisService {
 			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
 		}
 		return rs;
+	}
+public List<PicnicVO> picnic_Select2(String str) {
+		
+		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
+		List<PicnicVO> list = null;
+		try {
+			list = dao.picnic_Select2(session, str); // dao에 SqlSession 전송
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {			
+			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
+		}
+		return list;
 	}
 }

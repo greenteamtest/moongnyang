@@ -17,5 +17,11 @@
 	
 	<select id="picnic_Select" parameterType="String" resultType="com.picnic.dto.PicnicVO">
 		SELECT * FROM PICNIC_LIST WHERE KEY=#{key}
-	</select>	
+	</select>
+	<select id="picnic_Select2" parameterType="String" resultType="com.picnic.dto.PicnicVO">
+		SELECT * FROM PICNIC_COMENT WHERE KEY=#{key} order by num desc
+	</select>
+	<select id="picnic_Insert" parameterType="picnic" resultType="int">
+		INSERT INTO PICNIC_COMENT VALUES(#{key}, PICNIC_COMENT_SEQ.nextval, #{user_email}, #{coment_content}, to_date(sysdate,'yyyy.mm.dd hh24:mi'))
+	</select>		
 </mapper>

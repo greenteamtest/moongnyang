@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Ethereal by HTML5 UP</title>
+		<title>뭉냥뭉냥</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 	</head>
@@ -19,15 +19,13 @@
 									document.getElementById('maintext').innerText = name;
 									</script>
 									</h2>
-									<p>주소 : <b id="contents"></b></p>
-									<p>연락처 : <b id="contents"></b></p>
-									<p>주소 : <b id="contents"></b></p>
+									<p>주소 : <b id="address"></b></p>
+									<p>연락처 : <b id="phone"></b></p>
 									<script>
 									const text = window.parent.document.getElementById("address").value;
-									document.getElementById('contents').innerText = text11;
+									document.getElementById('address').innerText = text;
 									const text1 = window.parent.document.getElementById("phone").value;
-									alert(text);
-									document.getElementById('contents').innerText = text111;
+									document.getElementById('phone').innerText = text1;
 									
 									</script>
 									
@@ -44,6 +42,7 @@
 								<div class="gallery">
 									<a href="images/test3.jpg" class="image filtered span-2-5" data-position="top"><img src="images/test3.jpg" alt="" /></a>							
 								</div>
+								</section>
 							</div>
 									
 		<!-- Scripts -->
