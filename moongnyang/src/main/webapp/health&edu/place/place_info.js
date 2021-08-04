@@ -227,7 +227,6 @@ $('.ui.button').click(() => { // static modal hide
 
 
 $('#searchmapBtn').click(() => {
-	alert(`${placeX}, ${placeY}`);
 	var t = `https://map.kakao.com/link/map/${placeY},${placeX}`;
 	window.open('about:blank').location.href = t;
 })
