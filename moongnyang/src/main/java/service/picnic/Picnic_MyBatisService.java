@@ -36,29 +36,60 @@ public class Picnic_MyBatisService {
 	}
 
 	public PicnicVO picnic_Select(String str) {
-		
+
 		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
 		PicnicVO rs = null;
 		try {
 			rs = dao.picnic_Select(session, str); // dao에 SqlSession 전송
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {			
+		} finally {
 			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
 		}
 		return rs;
 	}
-public List<PicnicVO> picnic_Select2(String str) {
-		
+
+	public List<PicnicVO> picnic_Select2(String str) {
+
 		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
 		List<PicnicVO> list = null;
 		try {
 			list = dao.picnic_Select2(session, str); // dao에 SqlSession 전송
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {			
+		} finally {
 			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
 		}
 		return list;
+	}
+
+	public void picnic_Delete(int num) {
+
+		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
+
+		try {
+			dao.picnic_Delete(session, num); // dao에 SqlSession 전송
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
+		}
+		return;
+	}
+
+	public void picnic_Write(PicnicVO vo) {
+
+		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
+		System.out.println("logging : "+1);
+		try {
+			dao.picnic_Write(session, vo); // dao에 SqlSession 전송
+		} catch (Exception e) {
+			System.out.println("logging : "+3);
+			e.printStackTrace();
+		} finally {
+			System.out.println("logging : "+1000);
+			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
+		}
+		return;
 	}
 }

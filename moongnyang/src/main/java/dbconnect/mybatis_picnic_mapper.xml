@@ -3,25 +3,46 @@
 <mapper namespace="com.picnic.dao.Picnic_DAO">
 
 	<!-- 카테고리별 장소 목록 -->
-<!-- 	
-	<select id="picnic_search" parameterType="PicnicVo" resultType="int">
-		insert into Abandonment_sido(orgCd, orgdownNm) values(#{orgCd} ,#{orgdownNm})
-	</select> 
--->
-	
-	<select id="picnic_Update_Insert" parameterType="picnic" resultType="int">
+	<!-- <select id="picnic_search" parameterType="PicnicVo" resultType="int"> 
+		insert into Abandonment_sido(orgCd, orgdownNm) values(#{orgCd} ,#{orgdownNm}) 
+		</select> -->
+
+	<select id="picnic_Update_Insert" parameterType="picnic"
+		resultType="int">
 		MERGE INTO PICNIC_LIST USING DUAL ON (key = #{key})
-		WHEN MATCHED THEN UPDATE SET NAME=#{name}, PLACE=#{place}, ROAD_PLACE=#{road_place}, PHONE=#{phone}, X=#{x}, Y=#{y}, CATEGORY=#{category}
-		WHEN NOT MATCHED THEN INSERT(NAME, PLACE, ROAD_PLACE, PHONE, X, Y, KEY, CATEGORY) VALUES(#{name}, #{place}, #{road_place}, #{phone}, #{x}, #{y}, #{key}, #{category})
+		WHEN
+		MATCHED THEN UPDATE SET NAME=#{name}, PLACE=#{place},
+		ROAD_PLACE=#{road_place}, PHONE=#{phone}, X=#{x}, Y=#{y},
+		CATEGORY=#{category}
+		WHEN NOT MATCHED THEN INSERT(NAME, PLACE,
+		ROAD_PLACE, PHONE, X, Y, KEY, CATEGORY) VALUES(#{name}, #{place},
+		#{road_place}, #{phone}, #{x}, #{y}, #{key}, #{category})
 	</select>
-	
-	<select id="picnic_Select" parameterType="String" resultType="com.picnic.dto.PicnicVO">
+
+	<select id="picnic_Select" parameterType="String"
+		resultType="com.picnic.dto.PicnicVO">
 		SELECT * FROM PICNIC_LIST WHERE KEY=#{key}
 	</select>
-	<select id="picnic_Select2" parameterType="String" resultType="com.picnic.dto.PicnicVO">
-		SELECT * FROM PICNIC_COMENT WHERE KEY=#{key} order by num desc
+
+	<select id="picnic_Select2" parameterType="String"
+		resultType="com.picnic.dto.PicnicVO">
+		SELECT * FROM PICNIC_COMENT WHERE KEY=#{key} order by num
+		desc
 	</select>
-	<select id="picnic_Insert" parameterType="picnic" resultType="int">
-		INSERT INTO PICNIC_COMENT VALUES(#{key}, PICNIC_COMENT_SEQ.nextval, #{user_email}, #{coment_content}, to_date(sysdate,'yyyy.mm.dd hh24:mi'))
-	</select>		
+	<insert id="picnic_Write" parameterType="picnic">
+	<![CDATA[
+		INSERT INTO
+		PICNIC_COMENT (key, num, user_email, coment_content, coment_date)
+		VALUES(#{key}, PICNIC_COMENT_SEQ.nextval,
+		#{user_email},
+		#{coment_content}, TO_CHAR(sysdate, 'YYYY/MM/DD'))
+		<!-- to_char(sysdate,'yyyy.mm.dd hh24:mi') -->
+		]]>
+	</insert>
+
+	<select id="picnic_Delete" parameterType="int">
+		DELETE * FROM
+		PICNIC_COMENT WHERE NUM=#{NUM}
+	</select>
+
 </mapper>

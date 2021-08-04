@@ -11,6 +11,7 @@
 <input type="hidden" id="phone" name="phone" value="${vo.phone }">
 <input type="hidden" id="x" name="x" value="${vo.x }">
 <input type="hidden" id="y" name="y" value="${vo.y }">
+<input type="hidden" id="key" name="key" value="${vo.key }">
 <head>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -39,9 +40,11 @@ textarea {
 </p>
 	<form method="POST" action="BoardServlet_picnic">
 	<div class="input-group mb-3" style="width: 80%; float:none; margin:0 auto">
-		<input type="text" class="form-control" id="content" placeholder="내용을 입력하세요.(최대 글자수 : ??)" > 
-		<input type="hidden" id="email" value="${loginUser.email}">
-		<button class="btn btn-outline-secondary" type="button" onclick="return contents()">등록</button>
+		<input type="text" class="form-control" id="content" name="content" placeholder="내용을 입력하세요.(최대 글자수 : ??)" > 
+		<input type="hidden" id="email" name="email" value="${loginUser.email}">
+		<input type="hidden" id="key" name="key" value="${vo.key }">
+		<input type="hidden" name="command" value="write">
+		<button class="btn btn-outline-secondary" type="submit" onclick="return contents()">등록</button>
 		
 	</div>
 	</form>

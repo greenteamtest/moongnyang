@@ -10,8 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 public class Review_Delete implements Action{
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException{
-		service.picnic_Delete();
-	//	RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-	//	dispatcher.forward(request, response);
+		String url = "picnic/cafe/cafe_view.jsp";
+		int num = Integer.parseInt(request.getParameter("num"));
+		service.picnic_Delete(num);
+		
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+		dispatcher.forward(request, response);
 	}
 }
