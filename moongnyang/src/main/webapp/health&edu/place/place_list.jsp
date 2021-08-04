@@ -28,6 +28,7 @@
 <script defer src="health&edu/place/place_dips.js" type="text/javascript"></script>
 <script defer src="health&edu/place/array_type.js" type="text/javascript"></script>
 <script defer src="health&edu/place/search.js" type="text/javascript"></script>
+<script defer src="health&edu/place/insert_distance.js" type="text/javascript"></script>
 
 <style>
 #ad1 .carousel-inner img, #ad2 .carousel-inner img {
@@ -135,7 +136,10 @@ nav[class="navbar navbar-light"] {
 											<img src="health&edu/img/pets.png" class="pets-icons" alt="pet_icon">
 											<span>${place.getPet_kind() }</span>
 										</li>
-										<li class="list-group-item"># 거리</li>
+										<li class="list-group-item">
+											<span class="placeDistance"></span>
+											&nbsp; km
+										</li>
 										<li class="list-group-item">
 											<img src="health&edu/img/ratings.png" class="rating-icons" alt="rating_icon"> &ensp;&ensp;
 											<c:choose>
@@ -343,8 +347,7 @@ nav[class="navbar navbar-light"] {
 										</div>
 									</div>
 									<div class="modal-footer">
-										<button type="button" id="close_outside" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-										<button type="button" class="btn btn-primary">Save changes</button>
+										<button type="button" class="btn btn-primary">예약하러 가기</button>
 									</div>
 
 									<!-- request text count Modal -->

@@ -1,7 +1,7 @@
 
+let placeX; // 경도 longitude
+let placeY; // 위도 latitude
 
-let placeX;
-let placeY;
 
 const container = document.getElementById('container'), // 지도와 로드뷰를 감싸고 있는 div 입니다
 	mapWrapper = document.getElementById('mapWrapper'), // 지도를 감싸고 있는 div 입니다
@@ -62,8 +62,8 @@ function myMarker(address) {
 			const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 			placeX = result[0].x;
 			placeY = result[0].y;
-			
-			
+
+
 			// 결과값으로 받은 위치를 마커로 표시합니다
 			const marker = new kakao.maps.Marker({
 				map: map,
@@ -105,10 +105,10 @@ function myMarker(address) {
 
 			// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
 			map.setCenter(coords);
-
-
-
 		}
 	});
 }
+
+
+
 
