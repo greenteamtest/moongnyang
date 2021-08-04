@@ -10,7 +10,7 @@ for(let index =0; index < ct.length ; index++){
 		const frm =	document.forms[index];
 		
 		frm.method = 'post';
-		frm.action = '../controller.do';
+		frm.action = 'controller.do';
 		frm.submit();
 	})
 };

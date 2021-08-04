@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@ include file="/health&edu/bootstrap/boot.jsp"%>
-<%@ include file="/startbootstrap/startbootstrap.jsp"%>
 <%@ include file="/jQuery/jquery.jsp"%>
 <%@ include file="/setting/setting.jsp"%>
 
@@ -17,7 +16,7 @@
 <meta name="author" content="" />
 <title>뭉냥뭉냥-반려동물과의 즐거운 하루 !</title>
 
-<script defer src="main.js" type="text/javascript"></script>
+<script defer src="health&edu/main.js" type="text/javascript"></script>
 
 <style>
 .icon {
@@ -95,7 +94,7 @@ div[class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"]
 											<input type="hidden" name="key" value="beauty" />
 											<input type="hidden" name="command" value="placeList" />
 											<h2 class="fs-4 fw-bold">
-												<img class="icon" alt="beauty" src="img/beauty.png">
+												<img class="icon" alt="beauty" src="health&edu/img/beauty.png">
 											</h2>
 										</a>
 										<p class="mb-0">미 용</p>
@@ -118,7 +117,7 @@ div[class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"]
 											<input type="hidden" name="key" value="hospital" />
 											<input type="hidden" name="command" value="placeList" />
 											<h2 class="fs-4 fw-bold">
-												<img class="icon" alt="hospital" src="img/hospital.png">
+												<img class="icon" alt="hospital" src="health&edu/img/hospital.png">
 											</h2>
 										</a>
 										<p class="mb-0">병 원</p>
@@ -141,7 +140,7 @@ div[class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"]
 											<input type="hidden" name="key" value="kindergaden" />
 											<input type="hidden" name="command" value="placeList" />
 											<h2 class="fs-4 fw-bold">
-												<img class="icon" alt="kindergaden" src="img/dog-training.png">
+												<img class="icon" alt="kindergaden" src="health&edu/img/dog-training.png">
 											</h2>
 										</a>
 										<p class="mb-0">유치원</p>

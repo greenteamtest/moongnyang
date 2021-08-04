@@ -14,8 +14,27 @@ public class mediaDAO {
 
 	}
 
+//	public List<mediaVO> load_comment(SqlSession session) {
+//		return session.selectList("load_comment");
+//	}
+	public List<mediaVO> search_media(SqlSession session, String s) {
+		return session.selectList("search_media", s);
+	}
+
 	public List<mediaVO> load_medialist(SqlSession session) {
 		return session.selectList("load_medialist");
+	}
+
+//	public int add_comment(SqlSession session, mediaVO vo) {
+//		return session.insert("add_comment", vo);
+//	}
+
+	public int update_like(SqlSession session, mediaVO vo) {
+		return session.update("update_like", vo);
+	}
+
+	public int click_like(SqlSession session, mediaVO vo) {
+		return session.insert("click_like", vo);
 	}
 
 	public int upload_media(SqlSession session, mediaVO vo) {
@@ -38,7 +57,7 @@ public class mediaDAO {
 			pstmt.setString(1, vo.getTitle_media());
 			pstmt.setString(2, vo.getHashtag_media());
 			pstmt.setString(3, vo.getUser_email_media());
-			pstmt.setString(4, vo.getUser_nick_media());
+			pstmt.setString(4, vo.getUser_nick());
 			pstmt.setString(5, vo.getMediaurl());
 			pstmt.setString(6, vo.getContent_media());
 			pstmt.executeUpdate(); // 실행

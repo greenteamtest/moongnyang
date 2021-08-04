@@ -51,6 +51,7 @@ public class Health_placeList_Action implements Action {
 
 			if (placeList.size() != 0) {
 				request.setAttribute("placeList", placeList);
+				request.setAttribute("key", key);
 
 				if (email != null && email.trim().length() != 0) {
 					dipsList = service.selectUser_dips(email);

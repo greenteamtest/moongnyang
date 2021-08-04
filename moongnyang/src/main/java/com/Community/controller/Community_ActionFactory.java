@@ -5,6 +5,7 @@ import com.Community.controller.action.Community_BoardList_Action;
 import com.Community.controller.action.Community_BoardView_Action;
 import com.Community.controller.action.Community_BoardWriteForm_Action;
 import com.Community.controller.action.Community_BoardWrite_Action;
+import com.Community.controller.action.Community_CommentWrite_Action;
 
 public class Community_ActionFactory {
 	private static Community_ActionFactory instance = new Community_ActionFactory();
@@ -34,6 +35,9 @@ public class Community_ActionFactory {
 		}
 		if (command.equals("board_view")) {
 			action = new Community_BoardView_Action();
+		}
+		if (command.equals("comment_write")) {
+			action = new Community_CommentWrite_Action();
 		}
 		return action;
 	}

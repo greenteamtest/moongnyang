@@ -226,4 +226,17 @@ public class Health_MyBatisService {
 		}
 		return list;
 	}
+
+	// select idx for searching keyword
+	public List<HealthPlaceVo> selectIdxForSearchingKeyword(Map<String, String> map) {
+		SqlSession session = MybatisSessionFactory.getSqlSession();
+		List<HealthPlaceVo> list = null;
+
+		try {
+			list = dao.selectIdxForSearchingKeyword(session, map);
+		} finally {
+			session.close();
+		}
+		return list;
+	}
 }

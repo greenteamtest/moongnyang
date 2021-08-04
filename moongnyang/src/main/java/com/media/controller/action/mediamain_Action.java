@@ -20,9 +20,11 @@ public class mediamain_Action implements Action {
 		String url = "media/mediamain.jsp";
 		System.out.println("미디어 액션");
 
-		List<mediaVO> mVO = service.load_medialist();
-		session.setAttribute("medialist", mVO);
+		List<mediaVO> vo = service.load_medialist();
+		session.setAttribute("medialist", vo);
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
+//		List<mediaVO> vo = service.load_comment();
+//		session.setAttribute("medialist", vo);
 	}
 }

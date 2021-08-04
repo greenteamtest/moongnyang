@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/health&edu/bootstrap/getboot.jsp"%>
 <%@ include file="/health&edu/bootstrap/boot.jsp"%>
-<%@ include file="/startbootstrap/startbootstrap.jsp"%>
 <%@ include file="/semanticUI/semanticUI.jsp"%>
 <%@ include file="/jQuery/jquery.jsp"%>
 <%@ include file="/setting/setting.jsp"%>
@@ -28,6 +27,7 @@
 <script defer src="health&edu/place/kakaomap.js" type="text/javascript"></script>
 <script defer src="health&edu/place/place_dips.js" type="text/javascript"></script>
 <script defer src="health&edu/place/array_type.js" type="text/javascript"></script>
+<script defer src="health&edu/place/search.js" type="text/javascript"></script>
 
 <style>
 #ad1 .carousel-inner img, #ad2 .carousel-inner img {
@@ -40,16 +40,12 @@ div[class="container-fluid"] {
 
 ul[class="nav nav-pills"] {
 	position: absolute;
-	right: 20rem;
+	right: 30rem;
 }
 
 nav[class="navbar navbar-light"] {
 	padding-left: 10rem;
 	padding-right: 10rem;
-}
-
-.d-flex {
-	margin-top: 1rem;
 }
 
 .d-flex input[class="form-control me-2"] {
@@ -59,6 +55,11 @@ nav[class="navbar navbar-light"] {
 .rating-icons {
 	width: 2rem;
 	height: 2rem;
+}
+
+.nav-item {
+	margin-left: 1rem;
+	margin-right: 1rem;
 }
 </style>
 
@@ -94,233 +95,240 @@ nav[class="navbar navbar-light"] {
 					</li>
 
 				</ul>
-				<form class="d-flex">
+				<div class="d-flex">
+					<form name="showPlaceListFrm">
+						<button class="tiny ui button">전체 목록 보기</button>
+						<input type="hidden" value="placeList" name="command" />
+						<input type="hidden" value="${loginUser.getEmail()}" name="email" />
+						<input type="hidden" value="${key}" name="key" />
+					</form>
 					<input class="form-control me-2" type="search" placeholder="검색하실 키워드를 입력 해 주세요" aria-label="Search">
 					&ensp;&ensp;&ensp;
-					<button class="btn btn-outline-success" type="submit">검 색</button>
-				</form>
+					<button id="search-btn" class="btn btn-outline-success" type="submit">검 색</button>
+				</div>
 			</div>
 		</nav>
 
+		<div id="subcontainer">
+			<main>
+				<section id="place_list">
+					<div id="user_email">
+						<input type="hidden" value="${loginUser.getEmail()}" />
+					</div>
+					<div id="card-border">
+						<c:if test="${empty placeList }">
+							<span id="no-data">데이터가 없습니다 </span>
+						</c:if>
+						<c:forEach var="place" items="${ placeList }">
+							<div class="card-frame">
+								<div class="card" style="width: 23rem;">
+									<input type="hidden" value="${place.getIdx()}" class="photo_${place.getIdx()}" />
+									<img src="health&edu/place/place_img/${place.getPlace()}_${place.getIdx()}.png" class="card-img-top"
+										alt="place_photo" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#place_info" />
 
-		<main>
-			<section id="place_list">
-				<div id="user_email">
-					<input type="hidden" value="${loginUser.getEmail()}" />
-				</div>
-				<div id="card-border">
-					<c:if test="${empty placeList }">
-						<span id="no-data">데이터가 없습니다 </span>
-					</c:if>
-					<c:forEach var="place" items="${ placeList }">
-						<div class="card-frame">
-							<div class="card" style="width: 23rem;">
-								<input type="hidden" value="${place.getIdx()}" class="photo_${place.getIdx()}" />
-								<img src="health&edu/place/place_img/${place.getPlace()}_${place.getIdx()}.png" class="card-img-top"
-									alt="place_photo" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#place_info" />
-
-								<div class="card-body">
-									<h5 class="card-title">${place.getPlace() }</h5>
-									<p class="card-text">${place.getAddress() }</p>
-								</div>
-								<ul class="list-group list-group-flush">
-									<li class="list-group-item">
-										<img src="health&edu/img/pets.png" class="pets-icons" alt="pet_icon">
-										<span>${place.getPet_kind() }</span>
-									</li>
-									<li class="list-group-item"># 거리</li>
-									<li class="list-group-item">
-										<img src="health&edu/img/ratings.png" class="rating-icons" alt="rating_icon"> &ensp;&ensp;
-										<c:choose>
-											<c:when test="${place.getAvg() == 0}">
-												<span class="avg_rating">0</span>
-											</c:when>
-											<c:otherwise>
-												<span class="avg_rating">${place.getAvg()}</span>
-											</c:otherwise>
-										</c:choose>
-									</li>
-									<li class="list-group-item">
-										<div class="ui labeled button" tabindex="0" style="margin-top: 1rem">
-
-											<c:set var="flag" value="false" />
-
-											<c:forEach var="dips" items="${ dipsList }">
-												<c:if test="${ flag eq false}">
-													<c:if test="${place.getIdx() == dips.getDips_place_list_id()}">
-														<c:set var="flag" value="true" />
-													</c:if>
-												</c:if>
-
-											</c:forEach>
-
+									<div class="card-body">
+										<h5 class="card-title">${place.getPlace() }</h5>
+										<p class="card-text">${place.getAddress() }</p>
+									</div>
+									<ul class="list-group list-group-flush">
+										<li class="list-group-item">
+											<img src="health&edu/img/pets.png" class="pets-icons" alt="pet_icon">
+											<span>${place.getPet_kind() }</span>
+										</li>
+										<li class="list-group-item"># 거리</li>
+										<li class="list-group-item">
+											<img src="health&edu/img/ratings.png" class="rating-icons" alt="rating_icon"> &ensp;&ensp;
 											<c:choose>
-												<c:when test="${flag eq true}">
-													<div class="ui red button activated" style="background-color: red; border: 2px solid red; color: white">
-														<i class="heart icon"></i> 찜
-													</div>
+												<c:when test="${place.getAvg() == 0}">
+													<span class="avg_rating">0</span>
 												</c:when>
 												<c:otherwise>
-													<div class="ui red button" style="background-color: white; border: 2px solid red; color: red">
-														<i class="heart icon"></i> 찜
-													</div>
+													<span class="avg_rating">${place.getAvg()}</span>
 												</c:otherwise>
 											</c:choose>
+										</li>
+										<li class="list-group-item">
+											<div class="ui labeled button" tabindex="0" style="margin-top: 1rem">
 
-											<a class="ui basic red left pointing label"> ${ place.getDips_cont() } </a>
-										</div>
-										<div class="ui labeled button" tabindex="0" style="margin-top: 1rem">
-											<div class="ui basic blue button">
-												<i class="fork icon"></i> Forks
-											</div>
-											<a class="ui basic left pointing blue label"> 1,048 </a>
-										</div>
-									</li>
-								</ul>
+												<c:set var="flag" value="false" />
 
-							</div>
-						</div>
-					</c:forEach>
+												<c:forEach var="dips" items="${ dipsList }">
+													<c:if test="${ flag eq false}">
+														<c:if test="${place.getIdx() == dips.getDips_place_list_id()}">
+															<c:set var="flag" value="true" />
+														</c:if>
+													</c:if>
 
+												</c:forEach>
 
-					<!-- Modal -->
-
-					<div class="modal fade" id="place_info" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-						<div class="modal-dialog modal-lg modal-dialog-scrollable">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title" id="place_infoLabel">살펴보기</h5>
-									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-								</div>
-								<div class="modal-body">
-
-									<div id="showPhoto" class="carousel slide carousel-fade" data-bs-ride="carousel">
-										<div class="carousel-inner">
-											<div class="carousel-item active" data-bs-interval="2500">
-												<img src="" class="d-block w-100" alt="업체사진">
-											</div>
-											<div class="carousel-item" data-bs-interval="2500">
-												<img src="" class="d-block w-100" alt="업체사진">
-											</div>
-											<div class="carousel-item" data-bs-interval="2500">
-												<img src="" class="d-block w-100" alt="업체사진">
-											</div>
-										</div>
-										<button class="carousel-control-prev" type="button" data-bs-target="#showPhoto" data-bs-slide="prev">
-											<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-											<span class="visually-hidden">Previous</span>
-										</button>
-										<button class="carousel-control-next" type="button" data-bs-target="#showPhoto" data-bs-slide="next">
-											<span class="carousel-control-next-icon" aria-hidden="true"></span>
-											<span class="visually-hidden">Next</span>
-										</button>
-									</div>
-									<div class="text_contents">
-										<div class="ui divider"></div>
-										<span class="place"></span>
-										<div class="ui divider"></div>
-										<div class="ui divider1"></div>
-										<i class="fas fa-home"></i> &emsp;
-										<span class="address"></span>
-										<div class="ui divider1"></div>
-										<i class="fas fa-phone-alt"></i> &emsp;
-										<span class="phone_num"></span>
-										<div class="ui divider1"></div>
-										<i class="far fa-clock"></i> &emsp;
-										<span class="open_time"></span>
-										<div class="ui divider1"></div>
-										<div class="ui divider1"></div>
-										<i class="fas fa-paw"></i> &emsp;
-										<span class="pet_kind"></span>
-										<div class="ui divider1"></div>
-										<div class="ui divider1"></div>
-
-										<div class="ui styled fluid accordion">
-											<div class="title">
-												<i class="dropdown icon"></i> 매장 소개
-											</div>
-											<div class="content">
-												<span class="introduce"></span>
-											</div>
-										</div>
-
-										<div class="ui styled fluid accordion">
-											<div class="title">
-												<i class="dropdown icon"></i> 매장 위치
-											</div>
-											<div class="content" id="map-frame">
-												<div id="container" class="view_map">
-													<div id="mapWrapper">
-														<div id="map" style="width: 100%; height: 100%"></div>
-														<!-- 지도를 표시할 div 입니다 -->
-														<input type="button" id="btnRoadview" onclick="toggleMap(false)" title="로드뷰 보기" value="로드뷰">
-													</div>
-													<div id="rvWrapper">
-														<div id="roadview" style="height: 100%"></div>
-														<!-- 로드뷰를 표시할 div 입니다 -->
-														<input type="button" id="btnMap" onclick="toggleMap(true)" title="지도 보기" value="지도">
-													</div>
-												</div>
-												<div id="searchmap">
-													<button id="searchmapBtn" class="ui inverted secondary button">카카오 지도 검색</button>
-												</div>
-											</div>
-
-										</div>
-
-										<div class="ui styled fluid accordion">
-											<div class="title">
-												<i class="dropdown icon"></i> 리뷰 보기
-											</div>
-											<div class="content">
-
-												<div class="comments_frame">
-													<div class="ui massive comments">
-														<h3 class="ui dividing header" style="color: teal;">
-															'
-															<span id="header_comment"> </span>
-															' 에대한 이쁜 리뷰를 작성 해 주세요!
-														</h3>
-
-														<div class="comment"></div>
-
-
-														<div class="ui blue labeled submit icon button" class="btn btn-primary" id="btn1" data-bs-toggle="modal"
-															data-bs-target="#">
-															<i class="icon edit"></i> 리뷰를 등록하세요
+												<c:choose>
+													<c:when test="${flag eq true}">
+														<div class="ui red button activated" style="background-color: red; border: 2px solid red; color: white">
+															<i class="heart icon"></i> 찜
 														</div>
+													</c:when>
+													<c:otherwise>
+														<div class="ui red button" style="background-color: white; border: 2px solid red; color: red">
+															<i class="heart icon"></i> 찜
+														</div>
+													</c:otherwise>
+												</c:choose>
 
-														<!-- insert Review Modal -->
-														<div class="modal fade" id="write_container" data-bs-backdrop="static" data-bs-keyboard="false"
-															tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-															<div class="modal-dialog modal-dialog-centered">
-																<div class="modal-content">
-																	<div class="modal-header">
-																		<h5 class="modal-title" id="staticBackdropLabel">리뷰 등록</h5>
-																	</div>
-																	<div class="modal-body">
-																		<form class="ui reply form">
-																			<div class="field">
-																				<input type="hidden" value="${loginUser.getEmail()}" />
-																				<textarea class="review_textarea" style="font-size: 1.5rem"></textarea>
-																			</div>
-																		</form>
-																	</div>
-																	<div class="modal-footer" id="sub-footer">
-																		<div id="cntNum_frame">
-																			[
-																			<span id="cntNum">0</span>
-																			/ 500 ]&nbsp;
+												<a class="ui basic red left pointing label"> ${ place.getDips_cont() } </a>
+											</div>
+											<div class="ui labeled button" tabindex="0" style="margin-top: 1rem">
+												<div class="ui basic blue button">
+													<i class="fork icon"></i> Forks
+												</div>
+												<a class="ui basic left pointing blue label"> 1,048 </a>
+											</div>
+										</li>
+									</ul>
+
+								</div>
+							</div>
+						</c:forEach>
+
+
+						<!-- Modal -->
+
+						<div class="modal fade" id="place_info" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<div class="modal-dialog modal-lg modal-dialog-scrollable">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="place_infoLabel">살펴보기</h5>
+										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+									</div>
+									<div class="modal-body">
+
+										<div id="showPhoto" class="carousel slide carousel-fade" data-bs-ride="carousel">
+											<div class="carousel-inner">
+												<div class="carousel-item active" data-bs-interval="2500">
+													<img src="" class="d-block w-100" alt="업체사진">
+												</div>
+												<div class="carousel-item" data-bs-interval="2500">
+													<img src="" class="d-block w-100" alt="업체사진">
+												</div>
+												<div class="carousel-item" data-bs-interval="2500">
+													<img src="" class="d-block w-100" alt="업체사진">
+												</div>
+											</div>
+											<button class="carousel-control-prev" type="button" data-bs-target="#showPhoto" data-bs-slide="prev">
+												<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+												<span class="visually-hidden">Previous</span>
+											</button>
+											<button class="carousel-control-next" type="button" data-bs-target="#showPhoto" data-bs-slide="next">
+												<span class="carousel-control-next-icon" aria-hidden="true"></span>
+												<span class="visually-hidden">Next</span>
+											</button>
+										</div>
+										<div class="text_contents">
+											<div class="ui divider"></div>
+											<span class="place"></span>
+											<div class="ui divider"></div>
+											<div class="ui divider1"></div>
+											<i class="fas fa-home"></i> &emsp;
+											<span class="address"></span>
+											<div class="ui divider1"></div>
+											<i class="fas fa-phone-alt"></i> &emsp;
+											<span class="phone_num"></span>
+											<div class="ui divider1"></div>
+											<i class="far fa-clock"></i> &emsp;
+											<span class="open_time"></span>
+											<div class="ui divider1"></div>
+											<div class="ui divider1"></div>
+											<i class="fas fa-paw"></i> &emsp;
+											<span class="pet_kind"></span>
+											<div class="ui divider1"></div>
+											<div class="ui divider1"></div>
+
+											<div class="ui styled fluid accordion">
+												<div class="title">
+													<i class="dropdown icon"></i> 매장 소개
+												</div>
+												<div class="content">
+													<span class="introduce"></span>
+												</div>
+											</div>
+
+											<div class="ui styled fluid accordion">
+												<div class="title">
+													<i class="dropdown icon"></i> 매장 위치
+												</div>
+												<div class="content" id="map-frame">
+													<div id="container" class="view_map">
+														<div id="mapWrapper">
+															<div id="map" style="width: 100%; height: 100%"></div>
+															<!-- 지도를 표시할 div 입니다 -->
+															<input type="button" id="btnRoadview" onclick="toggleMap(false)" title="로드뷰 보기" value="로드뷰">
+														</div>
+														<div id="rvWrapper">
+															<div id="roadview" style="height: 100%"></div>
+															<!-- 로드뷰를 표시할 div 입니다 -->
+															<input type="button" id="btnMap" onclick="toggleMap(true)" title="지도 보기" value="지도">
+														</div>
+													</div>
+													<div id="searchmap">
+														<button id="searchmapBtn" class="ui inverted secondary button">카카오 지도 검색</button>
+													</div>
+												</div>
+
+											</div>
+
+											<div class="ui styled fluid accordion">
+												<div class="title">
+													<i class="dropdown icon"></i> 리뷰 보기
+												</div>
+												<div class="content">
+
+													<div class="comments_frame">
+														<div class="ui massive comments">
+															<h3 class="ui dividing header" style="color: teal;">
+																'
+																<span id="header_comment"> </span>
+																' 에대한 이쁜 리뷰를 작성 해 주세요!
+															</h3>
+
+															<div class="comment"></div>
+
+
+															<div class="ui blue labeled submit icon button" class="btn btn-primary" id="btn1" data-bs-toggle="modal"
+																data-bs-target="#">
+																<i class="icon edit"></i> 리뷰를 등록하세요
+															</div>
+
+															<!-- insert Review Modal -->
+															<div class="modal fade" id="write_container" data-bs-backdrop="static" data-bs-keyboard="false"
+																tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+																<div class="modal-dialog modal-dialog-centered">
+																	<div class="modal-content">
+																		<div class="modal-header">
+																			<h5 class="modal-title" id="staticBackdropLabel">리뷰 등록</h5>
 																		</div>
-																		<span id="select_rating_insert" style="font-size: 1.2rem">
-																			별점 <i class="hand point right outline icon"></i> <i class="star icon" style="color: pink"></i> <i
-																				class="star icon" style="color: pink"></i> <i class="star icon" style="color: pink"></i> <i
-																				class="star icon" style="color: pink"></i> <i class="star icon" style="color: pink"></i>
-																		</span>
-																		<div class="ui buttons">
-																			<button class="ui button">취소</button>
-																			<div class="or"></div>
-																			<button class="ui positive button">등록</button>
+																		<div class="modal-body">
+																			<form class="ui reply form">
+																				<div class="field">
+																					<input type="hidden" value="${loginUser.getEmail()}" />
+																					<textarea class="review_textarea" style="font-size: 1.5rem"></textarea>
+																				</div>
+																			</form>
+																		</div>
+																		<div class="modal-footer" id="sub-footer">
+																			<div id="cntNum_frame">
+																				[
+																				<span id="cntNum">0</span>
+																				/ 500 ]&nbsp;
+																			</div>
+																			<span id="select_rating_insert" style="font-size: 1.2rem">
+																				별점 <i class="hand point right outline icon"></i> <i class="star icon" style="color: pink"></i> <i
+																					class="star icon" style="color: pink"></i> <i class="star icon" style="color: pink"></i> <i
+																					class="star icon" style="color: pink"></i> <i class="star icon" style="color: pink"></i>
+																			</span>
+																			<div class="ui buttons">
+																				<button class="ui button">취소</button>
+																				<div class="or"></div>
+																				<button class="ui positive button">등록</button>
+																			</div>
 																		</div>
 																	</div>
 																</div>
@@ -329,111 +337,111 @@ nav[class="navbar navbar-light"] {
 													</div>
 												</div>
 											</div>
-										</div>
 
-										<div class="ui divider1"></div>
-										<div class="ui left labeled button" tabindex="0"></div>
-									</div>
-								</div>
-								<div class="modal-footer">
-									<button type="button" id="close_outside" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-									<button type="button" class="btn btn-primary">Save changes</button>
-								</div>
-
-								<!-- request text count Modal -->
-								<div class="modal fade" id="minText" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-									<div class="modal-dialog modal-dialog-centered">
-										<div class="modal-content">
-											<div class="modal-header"></div>
-											<div class="modal-body">■ &nbsp; 10 글자 이상 입력 해 주세요 &nbsp;■</div>
-											<div class="modal-footer"></div>
+											<div class="ui divider1"></div>
+											<div class="ui left labeled button" tabindex="0"></div>
 										</div>
 									</div>
-								</div>
-
-								<!-- request text count Modal -->
-								<div class="modal fade" id="maxText" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-									<div class="modal-dialog modal-dialog-centered">
-										<div class="modal-content">
-											<div class="modal-header"></div>
-											<div class="modal-body">■ &nbsp; 1000 글자 이하로 작성 해 주세요 &nbsp;■</div>
-											<div class="modal-footer"></div>
-										</div>
+									<div class="modal-footer">
+										<button type="button" id="close_outside" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+										<button type="button" class="btn btn-primary">Save changes</button>
 									</div>
-								</div>
 
-								<!-- request login Modal -->
-								<div class="modal fade" id="requestLogin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-									<div class="modal-dialog modal-dialog-centered">
-										<div class="modal-content">
-											<div class="modal-header"></div>
-											<div class="modal-body">■ &nbsp; 로그인 후 이용 가능 합니다 &nbsp;■</div>
-											<div class="modal-footer"></div>
-										</div>
-									</div>
-								</div>
-
-								<!-- checkForOverlap Modal -->
-								<div class="modal fade" id="checkOverlap" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-									<div class="modal-dialog modal-dialog-centered">
-										<div class="modal-content">
-											<div class="modal-header"></div>
-											<div class="modal-body">■ &nbsp; 리뷰는 한개만 등록 할 수 있습니다 &nbsp;■</div>
-											<div class="modal-footer"></div>
-										</div>
-									</div>
-								</div>
-
-								<!-- delete Modal -->
-								<div class="modal fade" id="deleteReviewContainer" tabindex="-1" aria-labelledby="exampleModalLabel"
-									aria-hidden="true">
-									<div class="modal-dialog modal-dialog-centered">
-										<div class="modal-content">
-											<div class="modal-header"></div>
-											<div class="modal-body">■ &nbsp; 등록하신 리뷰를 삭제하시겠습니까 ? &nbsp;■</div>
-											<div class="modal-footer">
-												<div class="ui buttons">
-													<button class="ui button">취소</button>
-													<div class="or"></div>
-													<button class="ui positive button">확인</button>
-												</div>
+									<!-- request text count Modal -->
+									<div class="modal fade" id="minText" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+										<div class="modal-dialog modal-dialog-centered">
+											<div class="modal-content">
+												<div class="modal-header"></div>
+												<div class="modal-body">■ &nbsp; 10 글자 이상 입력 해 주세요 &nbsp;■</div>
+												<div class="modal-footer"></div>
 											</div>
-											<input type="hidden" value="${loginUser.getEmail()}" />
 										</div>
 									</div>
-								</div>
 
-								<!-- revise Review Modal -->
-								<div class="modal fade" id="reviseReviewContainer" data-bs-backdrop="static" data-bs-keyboard="false"
-									tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-									<div class="modal-dialog modal-dialog-centered">
-										<div class="modal-content">
-											<div class="modal-header">
-												<h5 class="modal-title" id="staticBackdropLabel">리뷰 수정</h5>
+									<!-- request text count Modal -->
+									<div class="modal fade" id="maxText" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+										<div class="modal-dialog modal-dialog-centered">
+											<div class="modal-content">
+												<div class="modal-header"></div>
+												<div class="modal-body">■ &nbsp; 1000 글자 이하로 작성 해 주세요 &nbsp;■</div>
+												<div class="modal-footer"></div>
 											</div>
-											<div class="modal-body">
-												<form class="ui reply form">
-													<div class="field">
-														<input type="hidden" value="${loginUser.getEmail()}" />
-														<textarea class="review_textarea"></textarea>
+										</div>
+									</div>
+
+									<!-- request login Modal -->
+									<div class="modal fade" id="requestLogin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+										<div class="modal-dialog modal-dialog-centered">
+											<div class="modal-content">
+												<div class="modal-header"></div>
+												<div class="modal-body">■ &nbsp; 로그인 후 이용 가능 합니다 &nbsp;■</div>
+												<div class="modal-footer"></div>
+											</div>
+										</div>
+									</div>
+
+									<!-- checkForOverlap Modal -->
+									<div class="modal fade" id="checkOverlap" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+										<div class="modal-dialog modal-dialog-centered">
+											<div class="modal-content">
+												<div class="modal-header"></div>
+												<div class="modal-body">■ &nbsp; 리뷰는 한개만 등록 할 수 있습니다 &nbsp;■</div>
+												<div class="modal-footer"></div>
+											</div>
+										</div>
+									</div>
+
+									<!-- delete Modal -->
+									<div class="modal fade" id="deleteReviewContainer" tabindex="-1" aria-labelledby="exampleModalLabel"
+										aria-hidden="true">
+										<div class="modal-dialog modal-dialog-centered">
+											<div class="modal-content">
+												<div class="modal-header"></div>
+												<div class="modal-body">■ &nbsp; 등록하신 리뷰를 삭제하시겠습니까 ? &nbsp;■</div>
+												<div class="modal-footer">
+													<div class="ui buttons">
+														<button class="ui button">취소</button>
+														<div class="or"></div>
+														<button class="ui positive button">확인</button>
 													</div>
-												</form>
-											</div>
-											<div class="modal-footer" id="sub-footer">
-												<div id="cntNum_frame">
-													[
-													<span id="cntNum">0</span>
-													/ 500 ]&nbsp;
 												</div>
-												<span id="select_rating_revise" style="font-size: 1.2rem">
-													별점 <i class="hand point right outline icon"></i> <i class="star icon" style="color: pink"></i> <i
-														class="star icon" style="color: pink"></i> <i class="star icon" style="color: pink"></i> <i
-														class="star icon" style="color: pink"></i> <i class="star icon" style="color: pink"></i>
-												</span>
-												<div class="ui buttons">
-													<button class="ui button">취소</button>
-													<div class="or"></div>
-													<button class="ui positive button" id="sucRvs">수정 완료</button>
+												<input type="hidden" value="${loginUser.getEmail()}" />
+											</div>
+										</div>
+									</div>
+
+									<!-- revise Review Modal -->
+									<div class="modal fade" id="reviseReviewContainer" data-bs-backdrop="static" data-bs-keyboard="false"
+										tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+										<div class="modal-dialog modal-dialog-centered">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title" id="staticBackdropLabel">리뷰 수정</h5>
+												</div>
+												<div class="modal-body">
+													<form class="ui reply form">
+														<div class="field">
+															<input type="hidden" value="${loginUser.getEmail()}" />
+															<textarea class="review_textarea"></textarea>
+														</div>
+													</form>
+												</div>
+												<div class="modal-footer" id="sub-footer">
+													<div id="cntNum_frame">
+														[
+														<span id="cntNum">0</span>
+														/ 500 ]&nbsp;
+													</div>
+													<span id="select_rating_revise" style="font-size: 1.2rem">
+														별점 <i class="hand point right outline icon"></i> <i class="star icon" style="color: pink"></i> <i
+															class="star icon" style="color: pink"></i> <i class="star icon" style="color: pink"></i> <i
+															class="star icon" style="color: pink"></i> <i class="star icon" style="color: pink"></i>
+													</span>
+													<div class="ui buttons">
+														<button class="ui button">취소</button>
+														<div class="or"></div>
+														<button class="ui positive button" id="sucRvs">수정 완료</button>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -442,44 +450,43 @@ nav[class="navbar navbar-light"] {
 							</div>
 						</div>
 					</div>
-				</div>
-			</section>
-		</main>
+				</section>
+			</main>
 
-		<aside>
-			<div id="ad1" class="ui half page test ad" data-text="">
-				<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-					<div class="carousel-inner">
-						<div class="carousel-item active" data-bs-interval="3000">
-							<img src="health&edu/place/add_img/나라동물병원.png" class="d-block w-100" alt="...">
-						</div>
-						<div class="carousel-item" data-bs-interval="3000">
-							<img src="health&edu/place/add_img/동물병원.png" class="d-block w-100" alt="...">
-						</div>
-						<div class="carousel-item" data-bs-interval="3000">
-							<img src="health&edu/place/add_img/반려동물병원.png" class="d-block w-100" alt="...">
+			<aside>
+				<div id="ad1" class="ui half page test ad" data-text="">
+					<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+						<div class="carousel-inner">
+							<div class="carousel-item active" data-bs-interval="3000">
+								<img src="health&edu/place/add_img/나라동물병원.png" class="d-block w-100" alt="...">
+							</div>
+							<div class="carousel-item" data-bs-interval="3000">
+								<img src="health&edu/place/add_img/동물병원.png" class="d-block w-100" alt="...">
+							</div>
+							<div class="carousel-item" data-bs-interval="3000">
+								<img src="health&edu/place/add_img/반려동물병원.png" class="d-block w-100" alt="...">
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
 
-			<div id="ad2" class="ui half page test ad" data-text="">
-				<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-					<div class="carousel-inner">
-						<div class="carousel-item active" data-bs-interval="3000">
-							<img src="health&edu/place/add_img/팝썸동물병원.png" class="d-block w-100" alt="...">
-						</div>
-						<div class="carousel-item" data-bs-interval="3000">
-							<img src="health&edu/place/add_img/리아망고.png" class="d-block w-100" alt="...">
-						</div>
-						<div class="carousel-item" data-bs-interval="3000">
-							<img src="health&edu/place/add_img/이벤트.png" class="d-block w-100" alt="...">
+				<div id="ad2" class="ui half page test ad" data-text="">
+					<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+						<div class="carousel-inner">
+							<div class="carousel-item active" data-bs-interval="3000">
+								<img src="health&edu/place/add_img/팝썸동물병원.png" class="d-block w-100" alt="...">
+							</div>
+							<div class="carousel-item" data-bs-interval="3000">
+								<img src="health&edu/place/add_img/리아망고.png" class="d-block w-100" alt="...">
+							</div>
+							<div class="carousel-item" data-bs-interval="3000">
+								<img src="health&edu/place/add_img/이벤트.png" class="d-block w-100" alt="...">
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</aside>
-
+			</aside>
+		</div>
 	</div>
 
 
@@ -498,7 +505,8 @@ nav[class="navbar navbar-light"] {
 	<div id="link_btn">
 		<button class="ui facebook button">
 			<i class="facebook icon"></i> Facebook
-		</button><br>
+		</button>
+		<br>
 		<button class="ui instagram button">
 			<i class="instagram icon"></i> Instagram
 		</button>

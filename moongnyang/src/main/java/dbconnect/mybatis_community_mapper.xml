@@ -10,6 +10,13 @@
 		values
 		(seq_community_board.nextval,#{user_email},#{title},#{contents},#{animal_tag},#{board_tag})
 	</insert>
+		
+	<insert id="insert_comment" parameterType="community">
+		INSERT INTO community_board_comment 
+		(COMMENT_IDX,USER_EMAIL,COMMENT_CONTENT,BOARD_IDX,WRITE_DATE)
+		VALUES
+		(SEQ_COMMUNITY_BOARD_COMMENT.nextval,#{user_email},#{comment_content},#{board_idx},default)
+	</insert>
 	<!-- <delete id="delete" parameterType="community"> -->
 	<!-- delete from COMMUNITY_BOARD -->
 	<!-- where num =#{num} -->

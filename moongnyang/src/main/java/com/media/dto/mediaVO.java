@@ -3,13 +3,31 @@ package com.media.dto;
 public class mediaVO {
 	private Integer num_media;
 	private String user_email_media;
-	private String user_nick_media;
+	private String user_nick;
 	private String content_media;
 	private String mediaurl;
 	private String title_media;
 	private String hashtag_media;
 	private int like_media;
 	private int readcnt_media;
+	private String comment_content;
+	private String num_comment;
+
+	public String getComment_content() {
+		return comment_content;
+	}
+
+	public void setComment_content(String comment_content) {
+		this.comment_content = comment_content;
+	}
+
+	public String getNum_comment() {
+		return num_comment;
+	}
+
+	public void setNum_comment(String num_comment) {
+		this.num_comment = num_comment;
+	}
 
 	public int getLike_media() {
 		return like_media;
@@ -60,12 +78,12 @@ public class mediaVO {
 		this.user_email_media = user_email_media;
 	}
 
-	public String getUser_nick_media() {
-		return user_nick_media;
+	public String getUser_nick() {
+		return user_nick;
 	}
 
-	public void setUser_nick_media(String user_nick_media) {
-		this.user_nick_media = user_nick_media;
+	public void setUser_nick(String user_nick_media) {
+		this.user_nick = user_nick_media;
 	}
 
 	public String getContent_media() {

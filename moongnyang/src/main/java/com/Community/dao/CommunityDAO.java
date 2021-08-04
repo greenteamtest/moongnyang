@@ -11,6 +11,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.Community.dto.CommunityVO;
+import com.Community.dto.Community_CommentVO;
 import com.Community.dto.DBManager;
 
 public class CommunityDAO {
@@ -167,4 +168,52 @@ public class CommunityDAO {
 //	public int delete(SqlSession session, int num) {
 //		return session.insert("insert_board", num);
 //	}
+//////////////////[ 댓글 관련 method ]/////////////////////////////////	
+	/* c Read u d -게시판 상세보기 화면속 댓글 리스트 출력 */
+	public List<Community_CommentVO> selectAllComments(String num) {
+		
+		String sql = "select * from community_board_comment where BOARD_IDX="+num ;
+		
+		List<Community_CommentVO> list = new ArrayList<Community_CommentVO>();
+
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = DBManager.getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+
+			while (rs.next()) { // 이동은 행(로우) 단위로
+				Community_CommentVO ccVO = new Community_CommentVO();
+				
+				//DB Community_board_comment 속 칼럼명
+//				COMMENT_IDX
+//				USER_EMAIL
+//				COMMENT_CONTENT
+//				BOARD_IDX
+//				WRITE_DATE
+				
+				ccVO.setComment_idx(rs.getInt("COMMENT_IDX"));
+				ccVO.setUser_email(rs.getString("USER_EMAIL"));
+				ccVO.setComment_content(rs.getString("COMMENT_CONTENT"));
+				ccVO.setBoard_idx(rs.getInt("BOARD_IDX"));
+				ccVO.setWrite_date(rs.getString("WRITE_DATE"));
+				
+				list.add(ccVO);
+			} // while문 끝
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, stmt, rs);
+		}
+		return list;
+	}// selectAllComments() 끝
+	
+	/* 댓글 생성 - Create */
+	public int insert_comment(SqlSession session, Community_CommentVO ccVO) {
+		return session.insert("insert_comment", ccVO);
+	}
+	
 }// CommunityDAO{

@@ -15,9 +15,10 @@
 }
 
 #card-border {
+	margin-left : 20rem;
 	text-align: center;
 	width: 100rem;
-	margin-right: 30rem;
+	margin-right: 20rem;
 }
 
 .card-frame {
@@ -232,34 +233,40 @@ div[class="ui big comments"] {
 	background-color: white;
 }
 
-aside {
-	width: 23rem;
-	height: 150rem;
-	position: absolute;
-	right: 6rem;
-	top: 50rem;
+#subcontainer {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
 }
 
-
+aside {
+	width: 23rem;
+	height: 200rem;
+	right: 6rem;
+	top: 50rem;
+	padding-top: 10rem;
+	padding-bottom: 10rem;
+}
 
 #ad1 {
-	border: 2px solid gray;
-	width: 100%;
+	border: 1px solid gray;
+	width: 20rem;
 	height: 50%;
 	background-size: 100%;
 	margin-bottom: 4rem;
 }
 
 #ad2 {
-	border: 2px solid gray;
-	width: 100%;
+	border: 1px solid gray;
+	width: 20rem;
 	height: 50%;
 	background-size: 100%;
+	margin-bottom: 4rem;
 }
 
 #link_btn {
 	position: fixed;
-	left: 2rem;
+	left: 1rem;
 	bottom: 2rem;
 }
 
@@ -272,16 +279,34 @@ aside {
 	box-shadow: 1px 1px 3px 1px #dadce0;
 }
 
-.d-flex {
-	margin-top: 1rem;
+#search-btn {
+	margin-top: 0.5rem;
+	height: 3rem;
 }
 
 .d-flex input[class="form-control me-2"] {
+	margin-left: 10rem;
 	width: 25rem;
+	border-radius: 4rem;
 	box-shadow: 1px 1px 3px 1px #dadce0;
+	height: 2.8rem;
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
 }
 
 #ad1 .carousel-inner img, #ad2 .carousel-inner img {
 	height: 100%;
 }
 
+.tiny.ui.button{
+	border-radius: 1.3rem;
+	box-shadow: 1px 1px 4px 1px #b4b4b4;
+	background-color : 	#AFFFEE;
+	margin-top : 0.5rem;
+	border : 1px solid gray;
+	height : 3rem;
+	transition : background-color 0.5s;
+}
+.tiny.ui.button:hover{
+	background-color : 	#87EEC6;
+}

@@ -2,11 +2,11 @@
  * 
  */
 
-const arr = new Array($('.card-frame').length);
+const cardArr = new Array($('.card-frame').length);
 
 
-for (let index = 0; index < arr.length; index++) {
-	arr[index] = $('.card-frame').get(index);
+for (let index = 0; index < cardArr.length; index++) {
+	cardArr[index] = $('.card-frame').get(index);
 }
 
 
@@ -32,11 +32,11 @@ $('.navbar.navbar-light .nav-link').click((e) => {
 			const rs = JSON.parse(result);
 			
 			for (let i = 0; i < rs.length; i++) {
-				for (let index = 0; index < arr.length; index++) {
-					if ($(arr[index]).find('input[type="hidden"]').val() == rs[i].idx) {
-						let $temp = $(arr[i]).html();
-						$(arr[i]).html($(arr[index]).html());
-						$(arr[index]).html($temp);
+				for (let index = 0; index < cardArr.length; index++) {
+					if ($(cardArr[index]).find('input[type="hidden"]').val() == rs[i].idx) {
+						let $temp = $(cardArr[i]).html();
+						$(cardArr[i]).html($(cardArr[index]).html());
+						$(cardArr[index]).html($temp);
 					}
 				}
 

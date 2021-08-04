@@ -233,7 +233,13 @@ $('#searchmapBtn').click(() => {
 })
 
 
-
+$('.tiny.ui.button').click(()=>{
+	const frm = document.showPlaceListFrm;
+	
+	frm.method='post';
+	frm.action='controller.do';
+	frm.submit();
+})
 
 
 

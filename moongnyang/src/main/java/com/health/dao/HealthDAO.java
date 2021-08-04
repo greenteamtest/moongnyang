@@ -59,4 +59,8 @@ public class HealthDAO {
 		return session.selectList("slcPlaceListForArrayType", value);
 	}
 
+	public List<HealthPlaceVo> selectIdxForSearchingKeyword(SqlSession session, Map<String, String> map) { //
+		return session.selectList("slcIdxForSearchingKeyword", map);
+	}
+
 }
