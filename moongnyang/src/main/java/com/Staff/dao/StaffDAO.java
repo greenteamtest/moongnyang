@@ -4,14 +4,15 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.Login.dto.MemberVO;
 import com.Staff.dto.StaffVO;
 
 public class StaffDAO {
 	public StaffDAO() {
 
 	}
-	
-	public int change_staff_val(SqlSession session, StaffVO vo) {
+
+	public int change_staff_val(SqlSession session, MemberVO vo) {
 		return session.update("change_staff_val", vo);
 	}
 

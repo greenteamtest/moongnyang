@@ -168,6 +168,7 @@
 								<tr>
 									<th scope="col">이메일</th>
 									<th scope="col">별명</th>
+									<th scope="col">비고</th>
 									<th scope="col">등급조정</th>
 									<th scope="col"></th>
 								</tr>
@@ -181,11 +182,21 @@
 												name="command">
 											<td name="email">${staffmember.user_email}</td>
 											<td>${staffmember.user_nick}</td>
+											<c:choose>
+												<c:when test="${staffmember.user_auth==2}">
+													<td>평사원</td>
+												</c:when>
+												<c:when test="${staffmember.user_auth==3}">
+													<td><strong>관리자</strong></td>
+												</c:when>
+
+											</c:choose>
+											<%-- 										<td>${staffmember.user_auth}</td> --%>
 											<td><select class="form-select" id="floatingSelect"
 												name="val" aria-label="Floating label select example">
 													<option selected>등급조정</option>
-													<option value="1">평사원</option>
-													<option value="2">팀장</option>
+													<option value="2">평사원</option>
+													<option value="3">팀장</option>
 											</select></td>
 
 											<td>

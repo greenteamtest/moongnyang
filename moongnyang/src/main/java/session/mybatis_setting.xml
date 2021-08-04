@@ -17,6 +17,7 @@
 		<!-- 로그인/회원 및 직원 페이지 전용(김은호) -->
 		<typeAlias type="com.Staff.dto.StaffVO" alias="staff" />
 		<typeAlias type="com.Staff.dto.memberVO" alias="member" />
+		<typeAlias type="com.Login.dto.MemberVO" alias="Login" />
 		<typeAlias type="com.media.dto.mediaVO" alias="media" />
 
 		<!-- picnic(백찬호) -->

@@ -48,9 +48,9 @@
 		='대기' where user_email_timeover=#{user_email_timeover} and
 		check_timeover='진행중'
 	</update>
-	<update id="change_staff_val" parameterType="staff">
+	<update id="change_staff_val" parameterType="Login">
 		UPDATE user_info SET
-		user_auth = #{user_auth} WHERE user_email=#{User_email_vacation}
+		user_auth = #{auth} WHERE user_email=#{email}
 	</update>
 	<insert id="after_request_timeover" parameterType="staff">
 		insert into

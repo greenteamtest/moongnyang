@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.Login.dao.MemberDAO;
+import com.Login.dto.MemberVO;
 import com.Staff.dao.StaffDAO;
 import com.Staff.dto.StaffVO;
 
@@ -12,6 +14,7 @@ import dbconnect.MybatisSessionFactory;
 public class Staff_MyBatisService {
 
 	StaffDAO dao;
+	MemberDAO mdao;
 
 	public Staff_MyBatisService() {
 		dao = new StaffDAO();
@@ -81,8 +84,8 @@ public class Staff_MyBatisService {
 		}
 		return rs;
 	}
-	
-	public int change_staff_val(StaffVO vo) {
+
+	public int change_staff_val(MemberVO vo) {
 		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
 		System.out.println("qqw1");
 		int rs = 0;
