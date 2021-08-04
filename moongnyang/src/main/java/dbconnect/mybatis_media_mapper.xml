@@ -17,7 +17,7 @@
 	<select id="search_media" parameterType="String"
 		resultType="com.media.dto.mediaVO">
 		SELECT * FROM media_upload WHERE hashtag_media LIKE
-		'%'||#{search_value}||'%' order by num_media desc;
+		'%'||#{search_value}||'%' order by num_media desc
 	</select>
 	<select id="load_medialist" parameterType="media"
 		resultType="com.media.dto.mediaVO">
