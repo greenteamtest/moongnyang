@@ -9,6 +9,11 @@ public class PicnicVO {
 	private String y;
 	private String key;
 	private String category;
+	private String num;
+	private String user_email;
+	private String coment_content;
+	private String coment_date;
+
 	public String getName() {
 		return name;
 	}
@@ -57,5 +62,31 @@ public class PicnicVO {
 	public void setCategory(String category) {
 		this.category = category;
 	}
+	public String getNum() {
+		return num;
+	}
+	public void setNum(String num) {
+		this.num = num;
+	}
+	public String getUser_email() {
+		return user_email;
+	}
+	public void setUser_email(String user_email) {
+		this.user_email = user_email;
+	}
+	public String getComent_content() {
+		return coment_content;
+	}
+	public void setComent_content(String coment_content) {
+		this.coment_content = coment_content;
+	}
+	public String getComent_date() {
+		return coment_date;
+	}
+	public void setComent_date(String coment_date) {
+		this.coment_date = coment_date;
+	}
+	
+
 	
 }

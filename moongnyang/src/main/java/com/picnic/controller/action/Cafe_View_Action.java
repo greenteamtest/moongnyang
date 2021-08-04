@@ -1,6 +1,8 @@
 package com.picnic.controller.action;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -24,10 +26,11 @@ public class Cafe_View_Action implements Action {
 		pVo.setCategory(request.getParameter("category_group_code"));
 		service.picnic_Update_Insert(pVo);
 		PicnicVO vo = service.picnic_Select(pVo.getKey());
+		List<PicnicVO> list =  service.picnic_Select2(pVo.getKey());
 
 		request.setAttribute("vo", vo);
+		request.setAttribute("list", list);
 		
-
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 	}
