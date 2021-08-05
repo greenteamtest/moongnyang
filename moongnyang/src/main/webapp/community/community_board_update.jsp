@@ -165,31 +165,19 @@
 						<div class="mb-3">
 							<label for="exampleFormControlTextarea1" class="form-label">내용</label>
 							<textarea class="form-control" id="exampleFormControlTextarea1"
-								rows="10" name="contents" value="${board.contents}"></textarea>
+								rows="10" name="contents">${board.contents}</textarea>
 						</div>
 
 
-						<div class="mb-3">
-							<label for="formFile" class="form-label">사진1</label> <input
-								class="form-control" type="file" id="formFile" name="file1">
+						<div class="col-auto d-none d-lg-block">
+							<svg class="bd-placeholder-img" width="200" height="250"
+								xmlns="http://www.w3.org/2000/svg" role="img"
+								aria-label="Placeholder: Thumbnail"
+								preserveAspectRatio="xMidYMid slice" focusable="false">
+								<title>Placeholder</title>
+								<rect width="100%" height="100%" fill="#55595c" />
+								<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
 						</div>
-						<div class="mb-3">
-							<label for="formFile" class="form-label">사진2</label> <input
-								class="form-control" type="file" id="formFile" name="file2">
-						</div>
-						<div class="mb-3">
-							<label for="formFile" class="form-label">사진3</label> <input
-								class="form-control" type="file" id="formFile" name="file3">
-						</div>
-						<div class="mb-3">
-							<label for="formFile" class="form-label">사진4</label> <input
-								class="form-control" type="file" id="formFile" name="file4">
-						</div>
-						<div class="mb-3">
-							<label for="formFile" class="form-label">사진5</label> <input
-								class="form-control" type="file" id="formFile" name="file5">
-						</div>
-
 						<hr class="my-4">
 
 						<!-- </form> -->

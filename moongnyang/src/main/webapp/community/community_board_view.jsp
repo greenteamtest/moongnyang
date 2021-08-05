@@ -132,43 +132,27 @@ str1.innerHTML = Change_board_tag(${board.board_tag});
 					<hr class="my-4">
 					<!-- 구분 줄 -->
 
-
-
-
 					<!-- 글쓴 내용 전부 다 -->
 					<div class="row">
 						<div class="col">
-							<div class="card shadow-sm">
-								<svg class="bd-placeholder-img card-img-top" width="100%"
-									height="225" xmlns="http://www.w3.org/2000/svg" role="img"
-									aria-label="Placeholder: Thumbnail"
-									preserveAspectRatio="xMidYMid slice" focusable="false">
-								<title>Placeholder</title><rect width="100%" height="100%"
-										fill="#55595c" />
-								<text x="50%" y="50%" fill="#eceeef" dy=".3em">사진 1</text></svg>
-							</div>
+							<img src="community/upload/${board.pic_url_1}"
+								class="img-thumbnail" alt="...">
 						</div>
 						<div class="col">
-							<div class="card shadow-sm">
-								<svg class="bd-placeholder-img card-img-top" width="100%"
-									height="225" xmlns="http://www.w3.org/2000/svg" role="img"
-									aria-label="Placeholder: Thumbnail"
-									preserveAspectRatio="xMidYMid slice" focusable="false">
-								<title>Placeholder</title><rect width="100%" height="100%"
-										fill="#55595c" />
-								<text x="50%" y="50%" fill="#eceeef" dy=".3em">사진 2</text></svg>
-							</div>
+							<img src="community/upload/${board.pic_url_2}"
+								class="img-thumbnail" alt="...">
 						</div>
 						<div class="col">
-							<div class="card shadow-sm">
-								<svg class="bd-placeholder-img card-img-top" width="100%"
-									height="225" xmlns="http://www.w3.org/2000/svg" role="img"
-									aria-label="Placeholder: Thumbnail"
-									preserveAspectRatio="xMidYMid slice" focusable="false">
-								<title>Placeholder</title><rect width="100%" height="100%"
-										fill="#55595c" />
-								<text x="50%" y="50%" fill="#eceeef" dy=".3em">사진 3</text></svg>
-							</div>
+							<img src="community/upload/${board.pic_url_3}"
+								class="img-thumbnail" alt="...">
+						</div>
+						<div class="col">
+							<img src="community/upload/${board.pic_url_4}"
+								class="img-thumbnail" alt="...">
+						</div>
+						<div class="col">
+							<img src="community/upload/${board.pic_url_5}"
+								class="img-thumbnail" alt="...">
 						</div>
 					</div>
 				</div>
@@ -197,38 +181,39 @@ str1.innerHTML = Change_board_tag(${board.board_tag});
 					</div>
 				</c:forEach>
 			</div>
-			
+
 			<!-- 댓글 쓰기 부분 -->
 			<div class="row">
-				<c:if test="${!empty loginUser}"><!-- 로그인 되어 있을 때  -->
+				<c:if test="${!empty loginUser}">
+					<!-- 로그인 되어 있을 때  -->
 					<form name="frm" method="post" action="Community_BoardServlet">
 						<input type="hidden" name="command" value="comment_write">
 						<input type="hidden" name="board_idx" value="${board.board_idx}">
 						<input type="hidden" name="user_email" value="${loginUser.email}">
 						<b>${loginUser.email}</b>
 						<div class="row g-0">
-							<div class="col-sm-6 col-md-8"><!-- Text Area -->
+							<div class="col-sm-6 col-md-8">
+								<!-- Text Area -->
 								<textarea class="form-control" id="exampleFormControlTextarea1"
 									rows="3" placeholder="댓글을 적어주세요" name="comment_content"></textarea>
 							</div>
-							<div class="col -auto"><!-- 등록버튼 -->
+							<div class="col -auto">
+								<!-- 등록버튼 -->
 								<input class="w-100 btn btn-primary btn-lg" type="submit"
 									value="등록" onclick="return commentCheck()">
-								<!-- 여기 js 함수 수정해야할듯.... -->	
+								<!-- 여기 js 함수 수정해야할듯.... -->
 							</div>
 						</div>
 					</form>
 				</c:if>
-				<c:if test="${empty loginUser}"><!-- 로그인 안 되어 있을 때  -->
+				<c:if test="${empty loginUser}">
+					<!-- 로그인 안 되어 있을 때  -->
 					<div class="comment_list container">
 						<a href="login.do"> 로그인</a> 후 댓글을 작성할 수 있어요
 					</div>
 				</c:if>
 			</div>
-			<br>
-			<br>
-			<br>
-			<br>
+			<br> <br> <br> <br>
 			<button type="button" class="btn btn-warning"
 				onclick="location.href='Community_BoardServlet?command=board_list'">목록으로
 				돌아가기</button>

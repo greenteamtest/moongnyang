@@ -76,7 +76,7 @@
 								<div class="col-sm-auto">
 								<!--  수정해야하는 부분.......... -->
 									<button type="button" class="btn btn-outline-secondary"
-										onclick="location.href='Community_BoardServlet?command=board_write_form'">수정</button>
+										onclick="location.href='Community_BoardServlet?command=board_update_form&board_idx=${board.board_idx}'">수정</button>
 									<button type="button" class="btn btn-outline-secondary">삭제</button>
 									
 								<!-- !!!!!!!!!!!!!!!!!!!!!!! -->
