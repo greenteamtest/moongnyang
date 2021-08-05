@@ -16,6 +16,12 @@ public class ActionFactory {
 	public Action getAction(String command) {
 		Action action = null;
 		System.out.println("ActionFactory : " + command);
+		if (command.equals("loginpage")) {
+			action = new loginpage_Action();
+		}
+		if (command.equals("login")) {
+			action = new login_Action();
+		}
 		if (command.equals("userPage")) {
 			action = new userPageAction();
 		}

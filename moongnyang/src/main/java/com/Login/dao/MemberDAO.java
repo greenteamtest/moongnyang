@@ -154,6 +154,45 @@ public class MemberDAO {
 		return result;
 	}
 
+	public int count_answer(String email) {
+		int result = 0;
+		String sql = "select count(*) from answerboard where user_email=? and ANSWERREAD=1";
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, email);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				result = rs.getInt(1);
+				System.out.println("result1 : " + result);
+			} else {
+				result = 0;
+				System.out.println("result2 : " + result);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+
 	public int confirmNickname(String nick) {
 		int result = -1;
 		String sql = "select user_nick from user_info where user_nick=?";
