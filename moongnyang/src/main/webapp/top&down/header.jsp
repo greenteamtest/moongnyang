@@ -101,7 +101,7 @@
 							href="Community_BoardServlet?command=board_list">Community</a></li>
 						<li><a class="dropdown-item"
 							href="mediaServlet?command=mediamain">Media</a></li>
-						<li><a class="dropdown-item" href="#">Abandoned pets</a></li>
+						<li><a class="dropdown-item" href="BoardServlet_picnic?command=abandonment_search">Abandoned pets</a></li>
 						<li><hr class="dropdown-divider"></li>
 						<li><h6 class="dropdown-header">고객센터</h6></li>
 						<li><a class="dropdown-item"

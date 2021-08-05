@@ -32,11 +32,9 @@ public class Abandonment_Action implements Action {
 		if (request.getParameter("pageNo") != null) {
 			temp = request.getParameter("pageNo");
 			urlBuilder.append("?pageNo=" + temp); /* 페이지 번호 */
-			System.out.println(urlBuilder.toString());
 		} else {
 			temp = "1";
 			urlBuilder.append("?pageNo=" + temp); /* 페이지 번호 */
-			System.out.println(urlBuilder.toString());
 		}
 		
 		//urlBuilder.append("&numOfRows=10");
@@ -45,27 +43,21 @@ public class Abandonment_Action implements Action {
 		if (request.getParameter("org_cd") != null && request.getParameter("org_cd") != "") {
 			temp = request.getParameter("org_cd");
 			urlBuilder.append("&org_cd=" + temp); /* 시,군,구 */
-			System.out.println(urlBuilder.toString());
 		} else if (request.getParameter("upr_cd") != null && request.getParameter("upr_cd") != "") {
 			temp = request.getParameter("upr_cd");
 			urlBuilder.append("&upr_cd=" + temp); /* 시,도 */
-			System.out.println(urlBuilder.toString());
 		}
 
 		// 품종 코드가 있을시 품종코드만 넣고 없으면 축종코드 있는지 확인 축종->개,고양이 등등 품종->도베르만,골든 리트리버 등등
 		if (request.getParameter("kind") != null && request.getParameter("kind") != "") {
-			System.out.println(urlBuilder.toString());
 			temp = request.getParameter("kind");
 			urlBuilder.append("&kind=" + temp); /* 품종 코드 */
-			System.out.println(urlBuilder.toString());
 		} else if (request.getParameter("upkind") != null && request.getParameter("upkind") != "") {			
 			temp = request.getParameter("upkind");
 			urlBuilder.append("&upkind=" + temp); /* 축종코드 */
-			System.out.println(urlBuilder.toString());
 		}
 
 		urlBuilder.append("&" + URLEncoder.encode("ServiceKey", "UTF-8") + sKey); /* Service Key */
-		System.out.println(urlBuilder.toString());
 		DocumentBuilderFactory dbFactoty = DocumentBuilderFactory.newInstance();
 		List<BoardVO> list = new ArrayList<BoardVO>();
 		try {

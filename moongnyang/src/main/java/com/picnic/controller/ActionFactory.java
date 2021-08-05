@@ -1,14 +1,16 @@
 package com.picnic.controller;
 
 import com.picnic.controller.action.Action;
-import com.picnic.controller.action.Cafe_Action_Kakao;
-import com.picnic.controller.action.Cafe_Action_Naver;
-import com.picnic.controller.action.Cafe_View_Action;
+import com.picnic.controller.action.Board_View_Action;
 import com.picnic.controller.action.Index_Action;
+import com.picnic.controller.action.Kakao_Search_Action;
+import com.picnic.controller.action.Modify_Action;
+import com.picnic.controller.action.Modify_Write_Action;
 import com.picnic.controller.action.Picnic_Action;
-import com.picnic.controller.action.Review_Delete;
-import com.picnic.controller.action.Review_Write;
+import com.picnic.controller.action.Review_Delete_Action;
+import com.picnic.controller.action.Review_Write_Action;
 import com.picnic.controller.action.Abandonment_Action;
+import com.picnic.controller.action.Abandonment_Search_Action;
 
 
 public class ActionFactory {
@@ -32,16 +34,20 @@ public class ActionFactory {
 			action = new Index_Action();
 		} else if(command.equals("abandonment")) {
 			action = new Abandonment_Action();
-		} else if(command.equals("cafe_kakao")) {
-			action = new Cafe_Action_Kakao();
-		} else if(command.equals("cafe_naver")) {
-			action = new Cafe_Action_Naver();
-		} else if(command.equals("cafe_view_action")) {
-			action = new Cafe_View_Action();
+		} else if(command.equals("abandonment_search")) {
+			action = new Abandonment_Search_Action();
+		} else if(command.equals("search_kakao")) {
+			action = new Kakao_Search_Action();
+		} else if(command.equals("board_view_action")) {
+			action = new Board_View_Action();
 		} else if(command.equals("write")) {
-			action = new Review_Write();
+			action = new Review_Write_Action();
 		} else if(command.equals("delete")) {
-			action = new Review_Delete();
+			action = new Review_Delete_Action();
+		} else if(command.equals("modify")) {
+			action = new Modify_Action();
+		} else if(command.equals("modify_write")) {
+			action = new Modify_Write_Action();
 		}
 		
 		else {

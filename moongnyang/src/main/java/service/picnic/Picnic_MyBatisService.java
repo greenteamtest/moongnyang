@@ -89,4 +89,34 @@ public class Picnic_MyBatisService {
 		}
 		return;
 	}
+	public PicnicVO image_Select(String str) {
+
+		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
+			PicnicVO vo = null;
+		try {
+			vo = dao.image_Select(session, str); // dao에 SqlSession 전송
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
+		}
+		return vo;
+	}
+	public void board_Update(PicnicVO vo) {
+
+		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
+		try {
+			int rs = dao.board_Update(session, vo); // dao에 SqlSession 전송
+			if(rs > 0) {
+				System.out.println("업데이트 성공");
+			}else {
+				System.out.println("업데이트 실패");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
+		}
+		return;
+	}
 }

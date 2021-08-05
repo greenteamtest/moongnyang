@@ -27,7 +27,7 @@ table {
 		<input type="hidden" name="command" value="abandonment">
 		<div>
 			<select class="form-select" name="upr_cd" id="upr_cd"
-				onchange="category_org()">
+				onchange="category_org()" style="width: 80%; float:none; margin:0 auto">
 				<option value="">시/도</option>
 				<option value="6110000">서울특별시</option>
 				<option value="6260000">부산광역시</option>
@@ -49,14 +49,14 @@ table {
 			</select>
 		</div>
 		<div>
-			<select class="form-select" name="org_cd" id="org_cd">
+			<select class="form-select" name="org_cd" id="org_cd" style="width: 80%; float:none; margin:0 auto">
 				<option value="">시/군/구</option>
 			</select>
 		</div>
 		<br>
 		<div>
 			<select class="form-select" name="upkind" id="upkind"
-				onchange="category_kind()">
+				onchange="category_kind()" style="width: 80%; float:none; margin:0 auto">
 				<option value="">축종</option>
 				<option value="417000">개</option>
 				<option value="422400">고양이</option>
@@ -64,7 +64,7 @@ table {
 			</select>
 		</div>
 		<div>
-			<select class="form-select" name="kind" id="kind">
+			<select class="form-select" name="kind" id="kind" style="width: 80%; float:none; margin:0 auto">
 				<option value="">품종</option>
 			</select>
 
@@ -75,16 +75,12 @@ table {
 			<button type="submit" style="background: white">
 				<img src="picnic/images/loupe.png" width="100px" height="100px">
 			</button>
-			<br>↑↑검색↑↑
-		</div>
-
-		<div style="text-align: center">
-			<br> <img src="picnic/images/nongrym.jpg">
 		</div>
 	</form>
 	<table border="1">
 		
 		<c:forEach var="list" items="${list }" >
+		
 			<c:if test="${i%j == 0 }">
 				<tr>
 			</c:if>

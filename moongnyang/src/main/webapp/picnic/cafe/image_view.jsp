@@ -21,18 +21,28 @@
 									</h2>
 									<p>주소 : <b id="address"></b></p>
 									<p>연락처 : <b id="phone"></b></p>
+									<p>내용 : <b id="content"></b></p>
 									<script>
 									const text = window.parent.document.getElementById("address").value;
 									document.getElementById('address').innerText = text;
 									const text1 = window.parent.document.getElementById("phone").value;
 									document.getElementById('phone').innerText = text1;
-									
+									const text2 = window.parent.document.getElementById("content").value;
+									document.getElementById('content').innerText = text3;	
 									</script>
-									
 								</div>
-								<div class="gallery">
-									<a href="images/test.jpg" class="image filtered span-2-5" data-position="top"><img src="images/test.jpg" alt="" /></a>							
-								</div>
+								<!-- <div class="gallery">
+									<a href="images/test.jpg" class="image filtered span-2-5" data-position="top"><img id="img1" src="images/test.jpg" alt="" /></a>
+								<script>
+									if(window.parent.document.getElementById("fileNm1").value != null){
+										const img1 = window.parent.document.getElementById("fileNm1").value;
+										document.getElementById('img1').innerText = img1;
+									}else{
+										document.getElementById('img1').innerText = "images/test1.jpg";
+									}
+								</script>							
+								</div> -->
+								
 								<div class="gallery">
 									<a href="images/test1.jpg" class="image filtered span-2-5" data-position="top"><img src="images/test1.jpg" alt="" /></a>							
 								</div>
@@ -42,7 +52,7 @@
 								<div class="gallery">
 									<a href="images/test3.jpg" class="image filtered span-2-5" data-position="top"><img src="images/test3.jpg" alt="" /></a>							
 								</div>
-								</section>
+							</section>
 							</div>
 									
 		<!-- Scripts -->

@@ -213,9 +213,23 @@
 						지역 : <select id="place">
 							<option value="">전체</option>
 							<option value="서울">서울</option>
-							<option value="경기도">경기도</option>
+							<option value="부산">부산</option>
+							<option value="대구">대구</option>
+							<option value="인천">인천</option>
+							<option value="광주">광주</option>
+							<option value="대전">대전</option>
+							<option value="울산">울산</option>
+							<option value="세종시">세종</option>
+							<option value="경기도">경기</option>
+							<option value="강원도">강원</option>
+							<option value="충청북도">충청북도</option>
+							<option value="충청남도">충청남도</option>
+							<option value="전라북도">전라북도</option>
+							<option value="전라남도">전라남도</option>
+							<option value="경상북도">경상북도</option>
+							<option value="경상남도">경상남도</option>
+							<option value="제주도">제주도</option>						
 						</select> 항목 : <select id="cafe&hotel">
-							<option value="">전체</option>
 							<option value="카페">카페</option>
 							<option value="호텔">호텔</option>
 							<option value="식당">식당</option>
@@ -348,11 +362,11 @@
 						infowindow.close();
 					};
 
-					itemEl.onmouseup = function() {
+				//	itemEl.onmouseup = function() {
 				//		alert(places.id);
 				//		placeInfo(places);
-						alert(JSON.stringify(places));
-					};
+				//		alert(JSON.stringify(places));
+				//	};
 
 				})(marker, places[i]);
 
@@ -387,7 +401,7 @@
 			itemStr += '  <span class="tel">' + places.phone + '</span>';
 			itemStr += '  <span class="tel">' + places.x +"/"+ places.y + '</span>';
 			itemStr += '<form method="POST" action="BoardServlet_picnic">'
-						+ '<input type="hidden" name="command" value="cafe_view_action">'
+						+ '<input type="hidden" name="command" value="board_view_action">'
 						+ '<input type="hidden" name="place_name" value="'+places.place_name+'">'
 						+ '<input type="hidden" name="address_name" value="'+places.address_name+'">'
 						+ '<input type="hidden" name="road_address_name" value="'+places.road_address_name+'">'

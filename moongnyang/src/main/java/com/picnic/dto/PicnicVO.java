@@ -8,12 +8,45 @@ public class PicnicVO {
 	private String x;
 	private String y;
 	private String key;
+	private String list_content;
 	private String category;
 	private String num;
 	private String user_email;
 	private String coment_content;
 	private String coment_date;
+	private String fileNm1, fileNm2, fileNm3, fileNm4;
+	
 
+	public String getList_content() {
+		return list_content;
+	}
+	public void setList_content(String list_content) {
+		this.list_content = list_content;
+	}
+	public String getFileNm1() {
+		return fileNm1;
+	}
+	public void setFileNm1(String fileNm1) {
+		this.fileNm1 = fileNm1;
+	}
+	public String getFileNm2() {
+		return fileNm2;
+	}
+	public void setFileNm2(String fileNm2) {
+		this.fileNm2 = fileNm2;
+	}
+	public String getFileNm3() {
+		return fileNm3;
+	}
+	public void setFileNm3(String fileNm3) {
+		this.fileNm3 = fileNm3;
+	}
+	public String getFileNm4() {
+		return fileNm4;
+	}
+	public void setFileNm4(String fileNm4) {
+		this.fileNm4 = fileNm4;
+	}
 	public String getName() {
 		return name;
 	}

@@ -1,7 +1,7 @@
-function contents(){	
+function contents(){
 	var temp = document.getElementById("content").value;
 	if(!temp.replace(/^\s+|\s+$/g, '')){
-		alert("내용을 입력하세요");
+		alert("내용을 입력하세요.");
 		return false;
 	}
 	var temp1 = document.getElementById("email").value;
@@ -10,4 +10,10 @@ function contents(){
 		return false;
 	}
 	return ture;
+}
+
+function input_show(){
+	alert("1111");
+	parent.document.form.reset();
+	document.getElementById("content").value='';
 }

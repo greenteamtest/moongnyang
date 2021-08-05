@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.picnic.dto.PicnicVO;
 
-public class Cafe_View_Action implements Action {
+public class Board_View_Action implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "picnic/cafe/cafe_view.jsp";
+		String url = "picnic/cafe/board_view.jsp";
 		String key = null;
 
 		PicnicVO pVo = new PicnicVO();
@@ -28,6 +28,21 @@ public class Cafe_View_Action implements Action {
 		service.picnic_Update_Insert(pVo);
 
 		PicnicVO vo = service.picnic_Select(key);
+		PicnicVO voF = service.image_Select(key);
+		if(voF != null) {
+		if(voF.getFileNm1() != null) {
+		vo.setFileNm1(voF.getFileNm1());
+		}
+		if(voF.getFileNm2() != null) {
+		vo.setFileNm2(voF.getFileNm2());
+		}
+		if(voF.getFileNm3() != null) {
+		vo.setFileNm3(voF.getFileNm3());
+		}
+		if(voF.getFileNm4() != null) {
+		vo.setFileNm4(voF.getFileNm4());
+		}
+		}
 		List<PicnicVO> list = service.picnic_Select2(key);
 
 		request.setAttribute("vo", vo);

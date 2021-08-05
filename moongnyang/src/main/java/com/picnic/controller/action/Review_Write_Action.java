@@ -10,18 +10,21 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.picnic.dto.PicnicVO;
 
-public class Review_Delete implements Action{
+public class Review_Write_Action implements Action{
 	public void execute(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException{
-		String url = "picnic/cafe/cafe_view.jsp";
-		int num = Integer.parseInt(request.getParameter("num"));
-		service.picnic_Delete(num);
+		throws ServletException, IOException{
+		String url = "picnic/cafe/board_view.jsp";
+		
+		PicnicVO vo = new PicnicVO();
+		vo.setKey(request.getParameter("key"));
+		vo.setUser_email(request.getParameter("email"));
+		vo.setComent_content(request.getParameter("content"));
+		service.picnic_Write(vo);
 		
 		PicnicVO pVo = service.picnic_Select(request.getParameter("key"));
 		List<PicnicVO> list =  service.picnic_Select2(request.getParameter("key"));
 		request.setAttribute("vo", pVo);
 		request.setAttribute("list", list);
-		
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
