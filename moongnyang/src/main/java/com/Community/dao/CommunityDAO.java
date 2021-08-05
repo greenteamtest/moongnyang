@@ -244,4 +244,42 @@ public class CommunityDAO {
 		return session.insert("insert_comment", ccVO);
 	}
 
+	
+	/* 이메일 값으로 유저가 쓴 글 찾아오기 - 글 수정,삭제 */
+	public List<CommunityVO> selectAllbyUserEmail(String email) {
+		String sql = "select * from community_board where USER_EMAIL='"+email+"' order by board_idx desc";
+		
+		
+		List<CommunityVO> list = new ArrayList<CommunityVO>();
+
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = DBManager.getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+
+			while (rs.next()) { // 이동은 행(로우) 단위로
+				CommunityVO cVO = new CommunityVO();
+				//모든 컬럼 다 가져올 필요는 없어서 화면에 표시되는것+값넘길때 필요한 값만 VO에 넣어줌
+				cVO.setBoard_idx(rs.getInt("BOARD_IDX"));
+				cVO.setUser_email(rs.getString("USER_EMAIL"));
+				cVO.setTitle(rs.getString("TITLE"));
+				cVO.setContents(rs.getString("CONTENTS"));
+				cVO.setAnimal_tag(rs.getInt("ANIMAL_TAG"));
+				cVO.setBoard_tag(rs.getInt("BOARD_TAG"));
+				cVO.setWrite_date(rs.getString("WRITE_DATE"));
+
+				list.add(cVO);
+			} // while문 끝
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, stmt, rs);
+		}
+		return list;
+	}// selectAllbyUserEmail() 끝
+	
 }// CommunityDAO{

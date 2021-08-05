@@ -148,6 +148,9 @@
 						<button type="button" class="btn btn-warning"
 							onclick="location.href='Community_BoardServlet?command=board_write_form'">게시글
 							쓰러가기</button>
+						<button type="button" class="btn btn-dark"
+							onclick="location.href='Community_BoardServlet?command=board_update_delete_form&user_email=${loginUser.email}'">내가
+							쓴 글 확인하기</button>
 					</c:if>
 					<c:if test="${empty loginUser}">
 						<button type="button" class="btn btn-warning"
