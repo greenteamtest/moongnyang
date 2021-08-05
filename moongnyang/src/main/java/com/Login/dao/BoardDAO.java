@@ -17,7 +17,6 @@ public class BoardDAO {
 	}
 
 	private static BoardDAO instance = new BoardDAO();
-	private PreparedStatement pstmt;
 
 	public static BoardDAO getInstance() {
 		return instance;

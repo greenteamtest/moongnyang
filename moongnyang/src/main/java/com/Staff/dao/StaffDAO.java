@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.Login.dto.MemberVO;
 import com.Staff.dto.StaffVO;
 
 public class StaffDAO {
@@ -12,7 +11,7 @@ public class StaffDAO {
 
 	}
 
-	public int change_staff_val(SqlSession session, MemberVO vo) {
+	public int change_staff_val(SqlSession session, StaffVO vo) {
 		return session.update("change_staff_val", vo);
 	}
 
@@ -34,6 +33,17 @@ public class StaffDAO {
 
 	public int request_vacation(SqlSession session, StaffVO vo) {
 		return session.insert("request_vacation", vo);
+	}
+
+	public List<StaffVO> search_vacation(SqlSession session, String s) {
+		return session.selectList("search_vacation", s);
+	}
+	public List<StaffVO> search_timeover(SqlSession session, String s) {
+		return session.selectList("search_timeover", s);
+	}
+
+	public List<StaffVO> search_staff(SqlSession session, String s) {
+		return session.selectList("search_staff", s);
 	}
 
 	public List<StaffVO> load_timeover(SqlSession session, String email) {

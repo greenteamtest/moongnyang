@@ -1,4 +1,4 @@
-package com.Login.controller;
+package com.Staff.controller.action;
 
 import java.io.IOException;
 import java.util.List;
@@ -9,16 +9,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.Login.controller.action.Action;
 import com.Login.dao.StaffDAO_org;
 import com.Login.dto.StaffVO_org;
 import com.Staff.dto.StaffVO;
 
-public class staffChangeAction implements Action {
+public class search_staff_Action implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		String url = "member/manage/managerPageStaff.jsp";
@@ -27,7 +25,8 @@ public class staffChangeAction implements Action {
 		HttpSession session = request.getSession();
 		List<StaffVO> vacation = service.load_vacation(request.getParameter("email"));
 		List<StaffVO> timeover_ma = service.load_timeover(request.getParameter("email"));
-		List<StaffVO> staffmember = service.load_staffmember();
+		List<StaffVO> staffmember = service.search_staff(request.getParameter("search_timeover"));
+		System.out.println(request.getParameter("search_timeover"));
 		List<StaffVO> total_timeover = service.load_total_timeover();
 		List<StaffVO> total_vacation = service.load_total_vacation();
 		session.setAttribute("timeover", timeover);
@@ -41,5 +40,4 @@ public class staffChangeAction implements Action {
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 	}
-
 }

@@ -85,10 +85,10 @@ response.setContentType("text/html");
 	</script>
 
 	<main class="form-signin">
-		<form action="login.do" method="post" name="frm">
-
-			<img class="mb-4" src="img/logo.png" alt="" width="100" width="72"
-				height="57">
+		<form action="mypageServlet" method="post" name="frm">
+			<input type="hidden" name="command" value="login"
+				id="command"> <img class="mb-4" src="img/logo.png" alt=""
+				width="100" width="72" height="57">
 			<h1 class="h3 mb-3 fw-normal">뭉냥뭉냥</h1>
 			<div class="d-grid gap-2">
 				<div class="form-floating">

@@ -4,8 +4,6 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.Login.dao.MemberDAO;
-import com.Login.dto.MemberVO;
 import com.Staff.dao.StaffDAO;
 import com.Staff.dto.StaffVO;
 
@@ -14,7 +12,6 @@ import dbconnect.MybatisSessionFactory;
 public class Staff_MyBatisService {
 
 	StaffDAO dao;
-	MemberDAO mdao;
 
 	public Staff_MyBatisService() {
 		dao = new StaffDAO();
@@ -85,7 +82,7 @@ public class Staff_MyBatisService {
 		return rs;
 	}
 
-	public int change_staff_val(MemberVO vo) {
+	public int change_staff_val(StaffVO vo) {
 		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
 		System.out.println("qqw1");
 		int rs = 0;
@@ -95,6 +92,7 @@ public class Staff_MyBatisService {
 				session.commit();
 				System.out.println("qqw2");
 			} else {
+				System.out.println("qqw3");
 				session.rollback();
 			}
 		} finally {
@@ -185,4 +183,44 @@ public class Staff_MyBatisService {
 		}
 		return list;
 	}
+
+	public List<StaffVO> search_staff(String s) {
+		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
+		List<StaffVO> list = null;
+		try {
+			list = dao.search_staff(session, s); // dao에 SqlSession 전송
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
+		}
+		return list;
+	}
+
+	public List<StaffVO> search_timeover(String s) {
+		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
+		List<StaffVO> list = null;
+		try {
+			list = dao.search_timeover(session, s); // dao에 SqlSession 전송
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
+		}
+		return list;
+	}
+
+	public List<StaffVO> search_vacation(String s) {
+		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
+		List<StaffVO> list = null;
+		try {
+			list = dao.search_vacation(session, s); // dao에 SqlSession 전송
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
+		}
+		return list;
+	}
+
 }

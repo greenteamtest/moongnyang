@@ -5,6 +5,20 @@
 
 
 	<!-- 초과근무 신청내역불러오기 (이건 신청날짜 정렬) -->
+	<select id="search_vacation" parameterType="String"
+		resultType="com.Staff.dto.StaffVO">
+		select * from request_vacation where user_nick_vacation
+		=#{value}
+	</select>
+	<select id="search_timeover" parameterType="String"
+		resultType="com.Staff.dto.StaffVO">
+		select * from request_timeover where user_nick_timeover
+		=#{value}
+	</select>
+	<select id="search_staff" parameterType="String"
+		resultType="com.Staff.dto.StaffVO">
+		select * from user_info where user_nick =#{user_nick}
+	</select>
 	<select id="load_total_timeover" parameterType="staff"
 		resultType="com.Staff.dto.StaffVO">
 		select * from request_timeover order by date_timeover desc
@@ -18,17 +32,7 @@
 		resultType="com.Staff.dto.StaffVO">
 		select * from user_info where user_auth=2 or user_auth=3
 	</select>
-	<select id="start_timeover" parameterType="staff"
-		resultType="int">
-		merge into
-		request_timeover using dual
-		on(user_email_timeover=#{user_email_timeover} and
-		check_timeover='진행중') when not matched
-		then insert
-		values(request_timeover_seq.NEXTVAL,#{user_nick_timeover},#{user_email_timeover},
-		TO_CHAR(sysdate, 'HH24:MI'),TO_CHAR(sysdate,
-		'HH24:MI'),TO_CHAR(sysdate, 'YYYY/MM/DD'),#{reason_timeover},'진행중')
-	</select>
+
 	<select id="load_timeover" parameterType="String"
 		resultType="com.Staff.dto.StaffVO">
 		select * from request_timeover where user_email_timeover
@@ -40,17 +44,33 @@
 		=#{value} order by num_vacation desc
 	</select>
 
-
+	<insert id="start_timeover" parameterType="staff">
+		merge into
+		request_timeover using dual
+		on(user_email_timeover=#{user_email_timeover} and
+		check_timeover='진행중') when not matched
+		then insert
+		values(request_timeover_seq.NEXTVAL,#{user_nick_timeover},#{user_email_timeover},
+		TO_CHAR(sysdate, 'HH24:MI'),TO_CHAR(sysdate,
+		'HH24:MI'),TO_CHAR(sysdate, 'YYYY/MM/DD'),#{reason_timeover},'진행중')
+	</insert>
 	<update id="end_timeover" parameterType="staff">
+		<!-- merge into -->
+		<!-- request_timeover using dual on(user_email_timeover -->
+		<!-- =#{user_email_timeover}) when matched then update set check_timeover -->
+		<!-- ='대기' where user_email_timeover=#{user_email_timeover} and -->
+		<!-- check_timeover='진행중' -->
 		merge into
 		request_timeover using dual on(user_email_timeover
 		=#{user_email_timeover}) when matched then update set check_timeover
-		='대기' where user_email_timeover=#{user_email_timeover} and
+		='대기', end_timeover
+		=to_char(sysdate,'hh24:mi') where
+		user_email_timeover=#{user_email_timeover} and
 		check_timeover='진행중'
 	</update>
-	<update id="change_staff_val" parameterType="Login">
-		UPDATE user_info SET
-		user_auth = #{auth} WHERE user_email=#{email}
+	<update id="change_staff_val" parameterType="staff">
+		update user_info set
+		user_auth = #{user_auth} where user_email=#{user_email}
 	</update>
 	<insert id="after_request_timeover" parameterType="staff">
 		insert into

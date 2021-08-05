@@ -13,11 +13,13 @@ public class endTimeover_Action implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
 
 		StaffVO vo = new StaffVO();
 		vo.setUser_email_timeover(request.getParameter("email"));
 
-		System.out.println(vo.getUser_email_timeover());
+		System.out.println("gma : " +vo.getUser_email_timeover());
 		service.end_timeover(vo);
 
 		new staffChangeAction().execute(request, response);

@@ -42,17 +42,17 @@
 						title="읽지않은 알람을 확인하세요">
 						알림 <span
 							class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-							${unread_count}10 <span class="visually-hidden">unread
-								messages</span>
+							${unchecked}<span class="visually-hidden">unread messages</span>
 						</span>
 					</button>
 				</c:if>
 				<div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
 				<c:if test="${empty loginUser}">
-					<li class="nav-item"><a class="nav-link" href="login.do"
-						data-bs-toggle="tooltip" data-bs-placement="top" title="함께해요!">로그인</a>
-						<!-- 					<li class="nav-item"><a class="nav-link" --> <!-- 						data-bs-toggle="modal" data-bs-target="#login" -->
-						<!-- 						data-bs-toggle="tooltip" data-bs-placement="top" title="함께해요!">로그인</a> -->
+					<li class="nav-item"><a class="nav-link"
+						href="mypageServlet?command=loginpage
+" data-bs-toggle="tooltip"
+						data-bs-placement="top" title="함께해요!">로그인</a> <!-- 					<li class="nav-item"><a class="nav-link" -->
+						<!-- 						data-bs-toggle="modal" data-bs-target="#login" --> <!-- 						data-bs-toggle="tooltip" data-bs-placement="top" title="함께해요!">로그인</a> -->
 				</c:if>
 				<c:if test="${!empty loginUser}">
 					<li class="nav-item"><a class="nav-link" href="logout.do"
