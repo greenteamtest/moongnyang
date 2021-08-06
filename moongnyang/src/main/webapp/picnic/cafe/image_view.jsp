@@ -31,26 +31,37 @@
 									document.getElementById('content').innerText = text3;	
 									</script>
 								</div>
-								<!-- <div class="gallery">
-									<a href="images/test.jpg" class="image filtered span-2-5" data-position="top"><img id="img1" src="images/test.jpg" alt="" /></a>
-								<script>
-									if(window.parent.document.getElementById("fileNm1").value != null){
-										const img1 = window.parent.document.getElementById("fileNm1").value;
-										document.getElementById('img1').innerText = img1;
-									}else{
-										document.getElementById('img1').innerText = "images/test1.jpg";
-									}
-								</script>							
-								</div> -->
+					
 								
 								<div class="gallery">
-									<a href="images/test1.jpg" class="image filtered span-2-5" data-position="top"><img src="images/test1.jpg" alt="" /></a>							
+									<a href="" class="image filtered span-2-5" data-position="top"><img id="img1" src="" alt="" /></a>							
+									<script>
+										const img1 = window.parent.document.getElementById("fileNm1").value;
+										alert(img1);
+										document.getElementById('img1').src="../upload/"+img1;
+									</script>
+								</div>
+	
+								<div class="gallery">
+									<a href="" class="image filtered span-2-5" data-position="top"><img id="img2" src="" alt="" /></a>							
+									<script>
+										const img2 = window.parent.document.getElementById("fileNm2").value;
+										document.getElementById('img2').src="../upload/"+img2;
+									</script>
 								</div>
 								<div class="gallery">
-									<a href="images/test2.jpg" class="image filtered span-2-5" data-position="top"><img src="images/test2.jpg" alt="" /></a>							
+									<a href="" class="image filtered span-2-5" data-position="top"><img id="img3" src="" alt="" /></a>
+									<script>
+										const img3 = window.parent.document.getElementById("fileNm3").value;
+										document.getElementById('img3').src="../upload/"+img3;
+									</script>
 								</div>
 								<div class="gallery">
-									<a href="images/test3.jpg" class="image filtered span-2-5" data-position="top"><img src="images/test3.jpg" alt="" /></a>							
+									<a href="" class="image filtered span-2-5" data-position="top"><img id="img4" src="" alt="" /></a>							
+									<script>
+										const img4 = window.parent.document.getElementById("fileNm4").value;
+										document.getElementById('img4').src="../upload/"+img4;
+									</script>
 								</div>
 							</section>
 							</div>

@@ -14,39 +14,8 @@ public class PicnicVO {
 	private String user_email;
 	private String coment_content;
 	private String coment_date;
-	private String fileNm1, fileNm2, fileNm3, fileNm4;
+	private String file_name1, file_name2, file_name3, file_name4;
 	
-
-	public String getList_content() {
-		return list_content;
-	}
-	public void setList_content(String list_content) {
-		this.list_content = list_content;
-	}
-	public String getFileNm1() {
-		return fileNm1;
-	}
-	public void setFileNm1(String fileNm1) {
-		this.fileNm1 = fileNm1;
-	}
-	public String getFileNm2() {
-		return fileNm2;
-	}
-	public void setFileNm2(String fileNm2) {
-		this.fileNm2 = fileNm2;
-	}
-	public String getFileNm3() {
-		return fileNm3;
-	}
-	public void setFileNm3(String fileNm3) {
-		this.fileNm3 = fileNm3;
-	}
-	public String getFileNm4() {
-		return fileNm4;
-	}
-	public void setFileNm4(String fileNm4) {
-		this.fileNm4 = fileNm4;
-	}
 	public String getName() {
 		return name;
 	}
@@ -89,6 +58,12 @@ public class PicnicVO {
 	public void setKey(String key) {
 		this.key = key;
 	}
+	public String getList_content() {
+		return list_content;
+	}
+	public void setList_content(String list_content) {
+		this.list_content = list_content;
+	}
 	public String getCategory() {
 		return category;
 	}
@@ -119,7 +94,30 @@ public class PicnicVO {
 	public void setComent_date(String coment_date) {
 		this.coment_date = coment_date;
 	}
+	public String getFile_name1() {
+		return file_name1;
+	}
+	public void setFile_name1(String file_name1) {
+		this.file_name1 = file_name1;
+	}
+	public String getFile_name2() {
+		return file_name2;
+	}
+	public void setFile_name2(String file_name2) {
+		this.file_name2 = file_name2;
+	}
+	public String getFile_name3() {
+		return file_name3;
+	}
+	public void setFile_name3(String file_name3) {
+		this.file_name3 = file_name3;
+	}
+	public String getFile_name4() {
+		return file_name4;
+	}
+	public void setFile_name4(String file_name4) {
+		this.file_name4 = file_name4;
+	}
 	
 
-	
 }

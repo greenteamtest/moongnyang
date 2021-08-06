@@ -10,9 +10,7 @@
 	<select id="picnic_Update_Insert" parameterType="picnic" resultType="int">
 		MERGE INTO PICNIC_LIST USING DUAL ON (key = #{key})
 		WHEN
-		MATCHED THEN UPDATE SET NAME=#{name}, PLACE=#{place},
-		ROAD_PLACE=#{road_place}, PHONE=#{phone}, X=#{x}, Y=#{y},
-		CATEGORY=#{category}
+		MATCHED THEN UPDATE SET X=#{x}, Y=#{y}		
 		WHEN NOT MATCHED THEN INSERT(NAME, PLACE,
 		ROAD_PLACE, PHONE, X, Y, KEY, CATEGORY) VALUES(#{name}, #{place},
 		#{road_place}, #{phone}, #{x}, #{y}, #{key}, #{category})
@@ -43,10 +41,13 @@
 	<select id="image_Select" parameterType="String" resultType="picnic">
 		SELECT * FROM PICNIC_IMAGE WHERE KEY=#{KEY}
 	</select>
-	<update id="picnic_Update" parameterType="picnic">
-		UPDATE PICNIC_LIST SET NAME=#{NAME}, PLACE=#{PLACE}, ROAD_PLACE=#{ROAD+PLACE}, PHONE=#{PHONE}, LIST_CONTENT=#{LIST_CONTENT} WHERE KEY=#{KEY}
+	<update id="board_Update" parameterType="picnic" >
+		UPDATE PICNIC_LIST SET NAME=#{name}, PLACE=#{place}, ROAD_PLACE=#{road_place}, PHONE=#{phone}, LIST_CONTENT=#{list_content} WHERE KEY=#{key}
 	</update>
-	<update id="picnic_Update_Image" parameterType="picnic">
-		UPDATE PICNIC_IMAGE SET FILE_NAME1=#{FILENM1}, FILE_NAME2=#{FILENM2}, FILE_NAME3=#{FILENM3}, FILE_NAME4=#{FILENM4} WHERE KEY=#{KEY} 
+	<update id="board_Update_Image" parameterType="picnic" >
+		MERGE INTO PICNIC_IMAGE USING DUAL ON (KEY = #{key})
+		WHEN MATCHED THEN UPDATE SET FILE_NAME1=#{file_name1}, FILE_NAME2=#{file_name2}, FILE_NAME3=#{file_name3}, FILE_NAME4=#{file_name4}	
+		WHEN NOT MATCHED THEN INSERT(KEY, FILE_NAME1, FILE_NAME2, FILE_NAME3, FILE_NAME4) VALUES(#{key}, #{file_name1}, #{file_name2}, #{file_name3}, #{file_name4}) 
 	</update>
+	
 </mapper>

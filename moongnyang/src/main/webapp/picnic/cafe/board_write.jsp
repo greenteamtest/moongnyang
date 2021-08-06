@@ -15,7 +15,7 @@
 			<div class="py-5 text-center">
 				<h2>게시글 수정하기</h2>
 			</div>
-			<form name="frm" method="post" action="BoardServlet_picnic"	enctype="multipart/form-data">
+			<form name="frm" method="post" action="BoardServlet_picnic?command=modify_write"	enctype="multipart/form-data">
 				<input type="hidden" name="command" value="modify_write">
 				<input	type="hidden" name="user_email" value="${loginUser.email}">
 				<input	type="hidden" name="key" value="${vo.key}">
@@ -35,7 +35,7 @@
 						<!-- 도로명 주소 -->
 						<div class="mb-3">
 							<label class="form-label">도로명 주소</label>
-							<input type="text" class="form-control" id="RAddress" name="RAaddress" value="${vo.road_place }">
+							<input type="text" class="form-control" id="RAddress" name="RAddress" value="${vo.road_place }">
 						</div>
 						<!-- 연락처 -->
 						<div class="mb-3">
@@ -45,25 +45,25 @@
 						<!-- 내용 -->
 						<div class="mb-3">
 							<label for="exampleFormControlTextarea1" class="form-label">내용</label>
-							<textarea class="form-control" id="exampleFormControlTextarea1" rows="4" value="${list_content }" name="contents"></textarea>
+							<textarea class="form-control" id="exampleFormControlTextarea1" rows="4" name="contents"></textarea>
 						</div>
 						<hr class="my-4">
 						<!-- 이미지 업로드 -->
 						<div class="mb-3">
 							<label for="formFile" class="form-label">사진1</label>
-							<input class="form-control" type="file" id="formFile" name="file1" value="${fileNm1 }">
+							<input class="form-control" type="file" id="formFile" name="file1" value="${file_name1 }">
 						</div>
 						<div class="mb-3">
 							<label for="formFile" class="form-label">사진2</label>
-							<input class="form-control" type="file" id="formFile" name="file2 value="${fileNm2 }">
+							<input class="form-control" type="file" id="formFile" name="file2" value="${file_name2 }">
 						</div>
 						<div class="mb-3">
 							<label for="formFile" class="form-label">사진3</label>
-							<input class="form-control" type="file" id="formFile" name="file3" value="${fileNm3 }">
+							<input class="form-control" type="file" id="formFile" name="file3" value="${file_name3 }">
 						</div>
 						<div class="mb-3">
 							<label for="formFile" class="form-label">사진4</label>
-							<input class="form-control" type="file" id="formFile" name="file4" value="${fileNm4 }">
+							<input class="form-control" type="file" id="formFile" name="file4" value="${file_name4 }">
 						</div>
 						<hr class="my-4">
 
@@ -72,7 +72,7 @@
 				<div style="width: 80%; float:none; margin:0 auto">
 						<ul class="list-group mb-3">
 							<li class="list-group-item d-flex justify-content-between">
-								<input class="w-100 btn btn-primary btn-lg" type="submit" value="등록하기" onclick="return boardCheck()">
+								<input class="w-100 btn btn-primary btn-lg" type="submit" value="등록하기">
 							</li>
 						</ul>
 

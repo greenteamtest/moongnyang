@@ -29,19 +29,34 @@ public class Board_View_Action implements Action {
 
 		PicnicVO vo = service.picnic_Select(key);
 		PicnicVO voF = service.image_Select(key);
-		if(voF != null) {
-		if(voF.getFileNm1() != null) {
-		vo.setFileNm1(voF.getFileNm1());
-		}
-		if(voF.getFileNm2() != null) {
-		vo.setFileNm2(voF.getFileNm2());
-		}
-		if(voF.getFileNm3() != null) {
-		vo.setFileNm3(voF.getFileNm3());
-		}
-		if(voF.getFileNm4() != null) {
-		vo.setFileNm4(voF.getFileNm4());
-		}
+		//String savePath = request.getSession().getServletContext().getRealPath("/upload");
+		//String savePath = "../upload/";
+		if (voF != null) {
+			if (voF.getFile_name1() != null) {
+				vo.setFile_name1(voF.getFile_name1());
+				System.out.println("------------------");
+				System.out.println(vo.getFile_name1());
+				System.out.println(
+						"G:\\Java\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp1\\wtpwebapps\\Hompage\\upload");
+				System.out.println("------------------");
+			} else {
+				vo.setFile_name1("images/test1.jpg");
+			}
+			if (voF.getFile_name2() != null) {
+				vo.setFile_name2(voF.getFile_name2());
+			} else {
+				vo.setFile_name2("images/test1.jpg");
+			}
+			if (voF.getFile_name3() != null) {
+				vo.setFile_name3(voF.getFile_name3());
+			} else {
+				vo.setFile_name3("images/test1.jpg");
+			}
+			if (voF.getFile_name4() != null) {
+				vo.setFile_name4(voF.getFile_name4());
+			} else {
+				vo.setFile_name4("images/test1.jpg");
+			}
 		}
 		List<PicnicVO> list = service.picnic_Select2(key);
 

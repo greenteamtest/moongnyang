@@ -18,17 +18,17 @@ public class Modify_Action implements Action {
 		PicnicVO vo = service.picnic_Select(key);
 		PicnicVO voF = service.image_Select(key);
 		if (voF != null) {
-			if (voF.getFileNm1() != null) {
-				vo.setFileNm1(voF.getFileNm1());
+			if (voF.getFile_name1() != null) {
+				vo.setFile_name1(voF.getFile_name1());
 			}
-			if (voF.getFileNm2() != null) {
-				vo.setFileNm2(voF.getFileNm2());
+			if (voF.getFile_name2() != null) {
+				vo.setFile_name2(voF.getFile_name2());
 			}
-			if (voF.getFileNm3() != null) {
-				vo.setFileNm3(voF.getFileNm3());
+			if (voF.getFile_name3() != null) {
+				vo.setFile_name3(voF.getFile_name3());
 			}
-			if (voF.getFileNm4() != null) {
-				vo.setFileNm4(voF.getFileNm4());
+			if (voF.getFile_name4() != null) {
+				vo.setFile_name4(voF.getFile_name4());
 			}
 		}
 

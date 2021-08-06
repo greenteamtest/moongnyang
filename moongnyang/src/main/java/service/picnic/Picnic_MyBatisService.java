@@ -106,12 +106,22 @@ public class Picnic_MyBatisService {
 
 		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
 		try {
-			int rs = dao.board_Update(session, vo); // dao에 SqlSession 전송
-			if(rs > 0) {
-				System.out.println("업데이트 성공");
-			}else {
-				System.out.println("업데이트 실패");
-			}
+			dao.board_Update(session, vo); // dao에 SqlSession 전송
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
+		}
+		return;
+	}
+	public void board_Update_Image(PicnicVO vo) {
+
+		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
+		try {
+			System.out.println("1111");
+			dao.board_Update_Image(session, vo); // dao에 SqlSession 전송
+		
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
