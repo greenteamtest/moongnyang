@@ -13,10 +13,11 @@
 <input type="hidden" id="y" name="y" value="${vo.y }">
 <input type="hidden" id="key" name="key" value="${vo.key }">
 <input type="hidden" id="content" name="content" value="${vo.list_content }">
-<input type="hidden" id="fileNm1" name="fileNm1" value="${vo.fileNm1 }">
-<input type="hidden" id="fileNm2" name="fileNm2" value="${vo.fileNm2 }">
-<input type="hidden" id="fileNm3" name="fileNm3" value="${vo.fileNm3 }">
-<input type="hidden" id="fileNm4" name="fileNm4" value="${vo.fileNm4 }">
+<input type="hidden" id="fileNm1" name="fileNm1" value="${vo.file_name1 }">
+<input type="hidden" id="fileNm2" name="fileNm2" value="${vo.file_name2 }">
+<input type="hidden" id="fileNm3" name="fileNm3" value="${vo.file_name3 }">
+<input type="hidden" id="fileNm4" name="fileNm4" value="${vo.file_name4 }">
+
 <head>
 
 <link
@@ -27,7 +28,7 @@ textarea {
 	resize: none;
 }
 </style>
-<script type="text/javascript" src="picnic/cafe/check.js"></script>
+<script type="text/javascript" src="picnic/cafe/check.js?ver=123"></script>
 <meta charset="UTF-8" />
 <title>뭉냥뭉냥</title>
 </head>
@@ -38,24 +39,35 @@ textarea {
 	<iframe src="picnic/cafe/image_view.jsp"
 		style="width: 80%; height: 500px;">
 	</iframe><br>
-	<form method="POST" action="BoardServlet_picnic">
+	<form id="f2"method="POST" action="BoardServlet_picnic">
 	<input type="hidden" id="key" name="key" value="${vo.key }">
 	<input type="hidden" name="command" value="modify">
-	<input type="submit" value="정보 수정" style="width: 10%; float:none; margin:0 auto">
+	
+	<c:set var="key_board" value="${vo.key}" />
+	<c:set var="key_user" value="${loginUser.key}" />
+	<c:choose>
+				<c:when test = "${key_board eq key_user}">										
+					<input type="submit" value="정보 수정" style="width: 10%; float:none; margin:0 auto">					
+				</c:when>
+	</c:choose>
 	</form>
 </div>
+
 <div align="center">
 	<iframe src="picnic/cafe/map_kakao.jsp"
 		style="width: 81%; height: 400px"> </iframe>
 </div>
 <body>
+	
 	<form method="POST" action="BoardServlet_picnic">
 	<input type="hidden" id="key" name="key" value="${vo.key }">
 	<input type="hidden" id="email" name="email" value="${loginUser.email}">
 	<input type="hidden" name="command" value="write">
 	<div  class="input-group mb-3" style="width: 80%; float:none; margin:0 auto">
-		<input type="text" class="form-control" id="content" name="content" placeholder="내용을 입력하세요."> 
-		<button class="btn btn-outline-secondary" type="submit" onclick="return contents();">등록</button>
+	
+		<input type="text" class="form-control" id="content_re" name="content_re" placeholder="내용을 입력."> 
+		<button class="btn btn-outline-secondary" type="submit" onclick="return contents()">등록</button>
+		
 	</div>
 	</form>
 	
@@ -82,7 +94,7 @@ textarea {
 			</c:choose>
 		</div>
 	</c:forEach>
-	</form>		
+	</form>	
 	<%-- ${loginUser.email} --%>
 <p align="center">
 	<iframe style="width: 81%; height: 400px"> </iframe>

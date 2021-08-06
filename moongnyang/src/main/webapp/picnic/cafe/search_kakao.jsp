@@ -200,6 +200,7 @@
 </style>
 </head>
 <body>
+
 	<div class="map_wrap" align="center">
 
 		<div id="map"

@@ -41,6 +41,7 @@
 									<img class="roll-in-left" src="picnic/images/right.png" width="100px" height="100px">									
 									<a href="BoardServlet_picnic?command=search_kakao"><img src="picnic/images/run.gif" width="100px" height="100px"></a>
 									<img class="roll-in-right" src="picnic/images/left.png" width="100px" height="100px">
+									
 								</div>
 							</article>
 					</div>

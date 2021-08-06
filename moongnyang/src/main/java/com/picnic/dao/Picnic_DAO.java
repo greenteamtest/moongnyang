@@ -32,4 +32,7 @@ public class Picnic_DAO {
 	public int board_Update(SqlSession session, PicnicVO vo) {
 		return session.update("board_Update", vo);
 	}
+	public int board_Update_Image(SqlSession session, PicnicVO vo) {
+		return session.update("board_Update_Image", vo);
+	}
 }
