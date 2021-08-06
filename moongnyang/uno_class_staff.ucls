@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.4" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="com.Staff.controller.staffServlet" project="Hompage" 
+    file="/Hompage/src/main/java/com/Staff/controller/staffServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="156" width="281" x="661" y="77"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="com.Staff.controller.ActionFactory" project="Hompage" 
+    file="/Hompage/src/main/java/com/Staff/controller/ActionFactory.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="768" y="-6"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="com.Staff.controller.action.search_staff_Action" project="Hompage" 
+    file="/Hompage/src/main/java/com/Staff/controller/action/search_staff_Action.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="116" width="197" x="403" y="358"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="com.Staff.controller.action.endTimeover_Action" project="Hompage" 
+    file="/Hompage/src/main/java/com/Staff/controller/action/endTimeover_Action.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="116" width="211" x="621" y="349"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="com.Staff.controller.action.search_timeover_Action" project="Hompage" 
+    file="/Hompage/src/main/java/com/Staff/controller/action/search_timeover_Action.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="116" width="238" x="920" y="730"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="6" language="java" name="com.Staff.controller.action.Action" project="Hompage" 
+    file="/Hompage/src/main/java/com/Staff/controller/action/Action.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="664" y="610"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="7" language="java" name="com.Staff.controller.action.after_requestTimeover_Action" project="Hompage" 
+    file="/Hompage/src/main/java/com/Staff/controller/action/after_requestTimeover_Action.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="116" width="291" x="889" y="353"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="com.Staff.controller.action.change_staff_val_Action" project="Hompage" 
+    file="/Hompage/src/main/java/com/Staff/controller/action/change_staff_val_Action.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="116" width="238" x="975" y="565"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="com.Staff.controller.action.requestVaction_Action" project="Hompage" 
+    file="/Hompage/src/main/java/com/Staff/controller/action/requestVaction_Action.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="116" width="242" x="102" y="581"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="com.Staff.controller.action.startTimeover_Action" project="Hompage" 
+    file="/Hompage/src/main/java/com/Staff/controller/action/startTimeover_Action.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="116" width="215" x="654" y="730"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="com.Staff.controller.action.insert_staff_Action" project="Hompage" 
+    file="/Hompage/src/main/java/com/Staff/controller/action/insert_staff_Action.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="116" width="240" x="132" y="436"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="com.Staff.controller.action.search_vacation_Action" project="Hompage" 
+    file="/Hompage/src/main/java/com/Staff/controller/action/search_vacation_Action.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="116" width="233" x="359" y="727"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="com.Staff.dao.StaffDAO" project="Hompage" 
+    file="/Hompage/src/main/java/com/Staff/dao/StaffDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="180" width="279" x="656" y="-261"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="com.Staff.dto.StaffVO" project="Hompage" 
+    file="/Hompage/src/main/java/com/Staff/dto/StaffVO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="466" width="286" x="359" y="-263"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="15">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="16" name="instance"/>      
+      <multiplicity id="17" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="18">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="6"/>  
+  </realization>  
+  <realization id="19">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="6"/>  
+  </realization>  
+  <realization id="20">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="6"/>  
+  </realization>  
+  <realization id="21">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="6"/>  
+  </realization>  
+  <realization id="22">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="6"/>  
+  </realization>  
+  <realization id="23">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="6"/>  
+  </realization>  
+  <realization id="24">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="6"/>  
+  </realization>  
+  <realization id="25">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="6"/>  
+  </realization>  
+  <realization id="26">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="6"/>  
+  </realization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

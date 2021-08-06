@@ -27,6 +27,7 @@
 <!-- 자바스크립트 추가하기 -->
 <script type="text/javascript" src="community/script/board_write.js"></script>
 
+
 <style>
 .bd-placeholder-img {
 	font-size: 1.125rem;
@@ -62,11 +63,12 @@
 				<h2>게시글 수정하기</h2>
 
 			</div>
-			<form name="frm" method="post" action="community_writeBoard.do"
+			<form name="frm" method="post" action="community_updateBoard.do"
 				enctype="multipart/form-data">
 				<!-- 			<form name="frm" method="post" action="Community_BoardServlet" enctype="multipart/form-data"> -->
 				<!-- 				<input type="hidden" name="command" value="board_write">  -->
 				<input type="hidden" name="user_email" value="${loginUser.email}">
+				<input type="hidden" name="board_idx" value="${board.board_idx}">
 				<div class="row g-5">
 					<div class="col-md-5 col-lg-4 order-md-last">
 
@@ -75,11 +77,9 @@
 							<li class="list-group-item d-flex justify-content-between">
 
 								<input class="w-100 btn btn-primary btn-lg" type="submit"
-								value="등록하기" onclick="return boardCheck()">
+								value="수정하기" onclick="return boardCheck()">
 
 							</li>
-
-
 							<!-- Example single danger button -->
 							<li class="list-group-item d-flex justify-content-between">
 								<div class='row'>
@@ -146,39 +146,76 @@
 
 					</div>
 					<div class="col-md-7 col-lg-8">
-
-						<!-- <form class="needs-validation" novalidate> -->
-
+						<!-- 제목 부분 !  -->
 						<div class="mb-3">
 							<label for="exampleFormControlInput1" class="form-label">제목</label>
 							<input type="text" class="form-control"
 								id="exampleFormControlInput1" name="title"
 								value="${board.title}">
-							<!-- 제목 부분 !  -->
 						</div>
 
-
-						<hr class="my-4">
 						<!-- 구분 줄 -->
+						<hr class="my-4">
 
 
+						<!-- 내용 부분 !  -->
 						<div class="mb-3">
 							<label for="exampleFormControlTextarea1" class="form-label">내용</label>
 							<textarea class="form-control" id="exampleFormControlTextarea1"
 								rows="10" name="contents">${board.contents}</textarea>
 						</div>
 
-
-						<div class="col-auto d-none d-lg-block">
-							<svg class="bd-placeholder-img" width="200" height="250"
-								xmlns="http://www.w3.org/2000/svg" role="img"
-								aria-label="Placeholder: Thumbnail"
-								preserveAspectRatio="xMidYMid slice" focusable="false">
-								<title>Placeholder</title>
-								<rect width="100%" height="100%" fill="#55595c" />
-								<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-						</div>
+						<!-- 구분 줄 -->
 						<hr class="my-4">
+						
+						<!-- 사진 출력 부분! -->
+						<div class="row">
+							<div class="col">
+								<img src="community/upload/${board.pic_url_1}"
+									class="img-thumbnail" alt="...">
+							</div>
+							<div class="col">
+								<img src="community/upload/${board.pic_url_2}"
+									class="img-thumbnail" alt="...">
+							</div>
+							<div class="col">
+								<img src="community/upload/${board.pic_url_3}"
+									class="img-thumbnail" alt="...">
+							</div>
+							<div class="col">
+								<img src="community/upload/${board.pic_url_4}"
+									class="img-thumbnail" alt="...">
+							</div>
+							<div class="col">
+								<img src="community/upload/${board.pic_url_5}"
+									class="img-thumbnail" alt="...">
+							</div>
+						</div>
+						
+						<!-- 구분 선  -->
+						<hr class="my-4">
+						
+						<!-- 사진 업로드 -->
+						<div class="mb-3">
+							<label for="formFile" class="form-label">사진1</label> <input
+								class="form-control" type="file" id="formFile" name="file1">
+						</div>
+						<div class="mb-3">
+							<label for="formFile" class="form-label">사진2</label> <input
+								class="form-control" type="file" id="formFile" name="file2">
+						</div>
+						<div class="mb-3">
+							<label for="formFile" class="form-label">사진3</label> <input
+								class="form-control" type="file" id="formFile" name="file3">
+						</div>
+						<div class="mb-3">
+							<label for="formFile" class="form-label">사진4</label> <input
+								class="form-control" type="file" id="formFile" name="file4">
+						</div>
+						<div class="mb-3">
+							<label for="formFile" class="form-label">사진5</label> <input
+								class="form-control" type="file" id="formFile" name="file5">
+						</div>
 
 						<!-- </form> -->
 					</div>

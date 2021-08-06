@@ -172,26 +172,27 @@ public class CommunityDAO {
 //		return session.insert("insert_board", vo);
 //	}
 
-	public void write_board(mediaVO vo) {
-		String sql = "insert into media_upload values(media_upload_seq.nextval, ?, ?, ?, ?,?,?,0,0)";
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		try {
-			conn = DBManager.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, vo.getTitle_media());
-			pstmt.setString(2, vo.getHashtag_media());
-			pstmt.setString(3, vo.getUser_email_media());
-			pstmt.setString(4, vo.getUser_nick());
-			pstmt.setString(5, vo.getMediaurl());
-			pstmt.setString(6, vo.getContent_media());
-			pstmt.executeUpdate(); // 실행
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			DBManager.close(conn, pstmt);
-		}
-	}
+//	/*은호씨 코드*/
+//	public void write_board(mediaVO vo) {
+//		String sql = "insert into media_upload values(media_upload_seq.nextval, ?, ?, ?, ?,?,?,0,0)";
+//		Connection conn = null;
+//		PreparedStatement pstmt = null;
+//		try {
+//			conn = DBManager.getConnection();
+//			pstmt = conn.prepareStatement(sql);
+//			pstmt.setString(1, vo.getTitle_media());
+//			pstmt.setString(2, vo.getHashtag_media());
+//			pstmt.setString(3, vo.getUser_email_media());
+//			pstmt.setString(4, vo.getUser_nick());
+//			pstmt.setString(5, vo.getMediaurl());
+//			pstmt.setString(6, vo.getContent_media());
+//			pstmt.executeUpdate(); // 실행
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		} finally {
+//			DBManager.close(conn, pstmt);
+//		}
+//	}
 
 //	public int delete(SqlSession session, int num) {
 //		return session.insert("insert_board", num);
@@ -241,15 +242,14 @@ public class CommunityDAO {
 
 	/* 댓글 생성 - Create */
 	public int insert_comment(SqlSession session, Community_CommentVO ccVO) {
+		System.out.println("다오까지와쪙");
 		return session.insert("insert_comment", ccVO);
 	}
 
-	
 	/* 이메일 값으로 유저가 쓴 글 찾아오기 - 글 수정,삭제 */
 	public List<CommunityVO> selectAllbyUserEmail(String email) {
-		String sql = "select * from community_board where USER_EMAIL='"+email+"' order by board_idx desc";
-		
-		
+		String sql = "select * from community_board where USER_EMAIL='" + email + "' order by board_idx desc";
+
 		List<CommunityVO> list = new ArrayList<CommunityVO>();
 
 		Connection conn = null;
@@ -263,7 +263,7 @@ public class CommunityDAO {
 
 			while (rs.next()) { // 이동은 행(로우) 단위로
 				CommunityVO cVO = new CommunityVO();
-				//모든 컬럼 다 가져올 필요는 없어서 화면에 표시되는것+값넘길때 필요한 값만 VO에 넣어줌
+				// 모든 컬럼 다 가져올 필요는 없어서 화면에 표시되는것+값넘길때 필요한 값만 VO에 넣어줌
 				cVO.setBoard_idx(rs.getInt("BOARD_IDX"));
 				cVO.setUser_email(rs.getString("USER_EMAIL"));
 				cVO.setTitle(rs.getString("TITLE"));
@@ -281,5 +281,37 @@ public class CommunityDAO {
 		}
 		return list;
 	}// selectAllbyUserEmail() 끝
-	
+
+	/* 게시글 수정하기- 수정하기 버튼 눌렀을 때 */
+	public void updateBoard(CommunityVO cVO) {
+
+		String sql = "UPDATE COMMUNITY_BOARD SET" + " " + "TITLE=?, CONTENTS=?, ANIMAL_TAG=?, BOARD_TAG=?,"
+				+ "PIC_URL_1=?,PIC_URL_2=?,PIC_URL_3=?,PIC_URL_4=?,PIC_URL_5=? " + "where BOARD_IDX=?"; // 총 ?가 10개
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, cVO.getTitle());
+			pstmt.setString(2, cVO.getContents());
+			pstmt.setInt(3, cVO.getAnimal_tag());
+			pstmt.setInt(4, cVO.getBoard_tag());
+			pstmt.setString(5, cVO.getPic_url_1());
+			pstmt.setString(6, cVO.getPic_url_2());
+			pstmt.setString(7, cVO.getPic_url_3());
+			pstmt.setString(8, cVO.getPic_url_4());
+			pstmt.setString(9, cVO.getPic_url_5());
+			pstmt.setInt(10, cVO.getBoard_idx());
+
+			pstmt.executeUpdate(); // 실행
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+	} // updateBoard()끝
+
 }// CommunityDAO{

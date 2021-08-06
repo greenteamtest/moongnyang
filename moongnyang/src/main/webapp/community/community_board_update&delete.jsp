@@ -69,7 +69,8 @@
 							<div class="d-flex text-muted pt-3">
 
 								<div class="col">
-									<strong class="d-block text-gray-dark">${board.title}</strong>
+									<strong class="d-block text-gray-dark"><a
+								href="Community_BoardServlet?command=board_view&board_idx=${board.board_idx}">${board.title}</a></strong>
 									<div>${board.contents}</div>
 									<div>${board.write_date}</div>
 								</div>

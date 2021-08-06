@@ -28,7 +28,7 @@ public class Community_BoardWriteServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("community/community_board_write.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("community/community_board_update.jsp"); // 여기 경로 수정해야할 수도
 		dispatcher.forward(request, response);
 	}
 
