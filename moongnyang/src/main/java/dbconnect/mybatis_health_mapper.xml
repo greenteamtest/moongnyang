@@ -27,7 +27,8 @@
 
 	<!-- 업체당 user review -->
 	<select id="slcUser_Review" parameterType="int" resultType="com.health.dto.HealthReviewVo">
-		select place_list_id, user_email, contents, write_date, write_time,like_count, manager_comment, my_rating
+		select place_list_id, user_email, contents, write_date, write_time,like_count,
+		 manager_comment, my_rating
 		from user_review
 		where place_list_id = #{value}
 		order by 1 , 4 desc, 5 desc

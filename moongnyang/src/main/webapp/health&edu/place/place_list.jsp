@@ -41,12 +41,11 @@ div[class="container-fluid"] {
 
 ul[class="nav nav-pills"] {
 	position: absolute;
-	right: 30rem;
+	right: 10rem;
 }
 
 nav[class="navbar navbar-light"] {
 	padding-left: 10rem;
-	padding-right: 10rem;
 }
 
 .d-flex input[class="form-control me-2"] {
@@ -122,7 +121,7 @@ nav[class="navbar navbar-light"] {
 						</c:if>
 						<c:forEach var="place" items="${ placeList }">
 							<div class="card-frame">
-								<div class="card" style="width: 23rem;">
+								<div class="card" >
 									<input type="hidden" value="${place.getIdx()}" class="photo_${place.getIdx()}" />
 									<img src="health&edu/place/place_img/${place.getPlace()}_${place.getIdx()}.png" class="card-img-top"
 										alt="place_photo" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#place_info" />
@@ -151,8 +150,8 @@ nav[class="navbar navbar-light"] {
 												</c:otherwise>
 											</c:choose>
 										</li>
-										<li class="list-group-item">
-											<div class="ui labeled button" tabindex="0" style="margin-top: 1rem">
+										<li class="list-group-item-btn">
+											<div class="ui labeled button" tabindex="0" >
 
 												<c:set var="flag" value="false" />
 
@@ -180,9 +179,9 @@ nav[class="navbar navbar-light"] {
 
 												<a class="ui basic red left pointing label"> ${ place.getDips_cont() } </a>
 											</div>
-											<div class="ui labeled button" tabindex="0" style="margin-top: 1rem">
+											<div class="ui labeled button" tabindex="0" >
 												<div class="ui basic blue button">
-													<i class="fork icon"></i> Forks
+													<i class="fork icon"></i>
 												</div>
 												<a class="ui basic left pointing blue label"> 1,048 </a>
 											</div>
@@ -196,7 +195,7 @@ nav[class="navbar navbar-light"] {
 
 						<!-- Modal -->
 
-						<div class="modal fade" id="place_info" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div style="text-align: center;" class="modal fade" id="place_info" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 							<div class="modal-dialog modal-lg modal-dialog-scrollable">
 								<div class="modal-content">
 									<div class="modal-header">
