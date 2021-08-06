@@ -48,17 +48,18 @@ public class uploadmediaServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		ServletContext context = getServletContext();
+
 		String path = context.getRealPath("media/upload");
 		String encType = "UTF-8";
 		int sizeLimit = 20 * 1024 * 1024;
 		MultipartRequest multi = new MultipartRequest(request, path, sizeLimit, encType, new DefaultFileRenamePolicy());
 		mediaVO vo = new mediaVO();
-		vo.setUser_email_media(multi.getParameter("email"));
-		vo.setUser_nick(multi.getParameter("nick"));
-		vo.setTitle_media(multi.getParameter("title"));
-		vo.setHashtag_media(multi.getParameter("hashtag"));
-		vo.setContent_media(multi.getParameter("content"));
-		vo.setMediaurl(multi.getFilesystemName("file"));
+		vo.setUser_email_media(multi.getParameter("email")); // 이메일
+		vo.setUser_nick(multi.getParameter("nick")); // 별명
+		vo.setTitle_media(multi.getParameter("title")); // 제목
+		vo.setHashtag_media(multi.getParameter("hashtag")); // 해시태그
+		vo.setContent_media(multi.getParameter("content")); // 내용
+		vo.setMediaurl(multi.getFilesystemName("file")); //
 		System.out.println(multi.getFilesystemName("file"));
 		mediaDAO dao = mediaDAO.getInstance();
 		dao.insert_media(vo);

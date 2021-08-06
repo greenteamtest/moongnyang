@@ -86,9 +86,9 @@ response.setContentType("text/html");
 
 	<main class="form-signin">
 		<form action="mypageServlet" method="post" name="frm">
-			<input type="hidden" name="command" value="login"
-				id="command"> <img class="mb-4" src="img/logo.png" alt=""
-				width="100" width="72" height="57">
+			<input type="hidden" name="command" value="login" id="command">
+			<img class="mb-4" src="img/logo.png" alt="" width="100" width="72"
+				height="57">
 			<h1 class="h3 mb-3 fw-normal">뭉냥뭉냥</h1>
 			<div class="d-grid gap-2">
 				<div class="form-floating">
@@ -491,7 +491,6 @@ response.setContentType("text/html");
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary"
 					data-bs-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">Save changes</button>
 			</div>
 		</div>
 	</div>
