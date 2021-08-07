@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="/jQuery/jquery.jsp"%>
 <%@ include file="/health&edu/bootstrap/getboot.jsp"%>
 <%@ include file="/health&edu/bootstrap/boot.jsp"%>
 <%@ include file="/semanticUI/semanticUI.jsp"%>
-<%@ include file="/jQuery/jquery.jsp"%>
 <%@ include file="/setting/setting.jsp"%>
 
 
@@ -17,6 +17,9 @@
 <meta name="author" content="" />
 <title>HEALTH * EDU</title>
 
+
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=61eaf0ccb670c71fede5ee3ff459092e&libraries=services,clusterer,drawing"></script>
 <link href="health&edu/place/place.css" rel="stylesheet" />
@@ -29,8 +32,13 @@
 <script defer src="health&edu/place/array_type.js" type="text/javascript"></script>
 <script defer src="health&edu/place/search.js" type="text/javascript"></script>
 <script defer src="health&edu/place/insert_distance.js" type="text/javascript"></script>
+<script defer src="health&edu/place/sns_sharing.js" type="text/javascript"></script>
 
 <style>
+.modal-backdrop.fade.show {
+	background: rgba(0, 0, 0, 0.4);
+}
+
 #ad1 .carousel-inner img, #ad2 .carousel-inner img {
 	height: 100%;
 }
@@ -121,11 +129,13 @@ nav[class="navbar navbar-light"] {
 						</c:if>
 						<c:forEach var="place" items="${ placeList }">
 							<div class="card-frame">
-								<div class="card" >
+								<div class="card">
 									<input type="hidden" value="${place.getIdx()}" class="photo_${place.getIdx()}" />
-									<img src="health&edu/place/place_img/${place.getPlace()}_${place.getIdx()}.png" class="card-img-top"
-										alt="place_photo" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#place_info" />
-
+									<img
+										src="${pageContext.request.contextPath}/health&edu/place/place_img/${place.getPlace()}_${place.getIdx()}.png"
+										class="card-img-top" alt="place_photo" class="btn btn-primary" data-bs-toggle="modal"
+										data-bs-target="#place_info" />
+									<input type="hidden" value="${place.getImgURL()}" class="imgURL" />
 									<div class="card-body">
 										<h5 class="card-title">${place.getPlace() }</h5>
 										<p class="card-text">${place.getAddress() }</p>
@@ -151,7 +161,7 @@ nav[class="navbar navbar-light"] {
 											</c:choose>
 										</li>
 										<li class="list-group-item-btn">
-											<div class="ui labeled button" tabindex="0" >
+											<div class="ui labeled button" tabindex="0">
 
 												<c:set var="flag" value="false" />
 
@@ -177,17 +187,21 @@ nav[class="navbar navbar-light"] {
 													</c:otherwise>
 												</c:choose>
 
-												<a class="ui basic red left pointing label"> ${ place.getDips_cont() } </a>
+												<a class="ui basic red left pointing label">${place.getDips_cont()}</a>
 											</div>
-											<div class="ui labeled button" tabindex="0" >
+
+											<div class="ui labeled button" tabindex="0" data-bs-toggle="modal" data-bs-target="#sharingModal">
 												<div class="ui basic blue button">
 													<i class="fork icon"></i>
+													<input type="hidden" value="${place.getSharing_url() }" />
 												</div>
-												<a class="ui basic left pointing blue label"> 1,048 </a>
+												<a class="ui basic left pointing blue label">
+													<span class="sharingCnt">1048</span>
+												</a>
 											</div>
 										</li>
 									</ul>
-
+									<input type="hidden" value="${place.getReviewers() }" class="reviewersCnt" />
 								</div>
 							</div>
 						</c:forEach>
@@ -195,7 +209,8 @@ nav[class="navbar navbar-light"] {
 
 						<!-- Modal -->
 
-						<div style="text-align: center;" class="modal fade" id="place_info" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div style="text-align: center;" class="modal fade" id="place_info" tabindex="-1"
+							aria-labelledby="exampleModalLabel" aria-hidden="true">
 							<div class="modal-dialog modal-lg modal-dialog-scrollable">
 								<div class="modal-content">
 									<div class="modal-header">
@@ -448,12 +463,18 @@ nav[class="navbar navbar-light"] {
 											</div>
 										</div>
 									</div>
+
+
 								</div>
 							</div>
 						</div>
 					</div>
 				</section>
 			</main>
+
+
+
+
 
 			<aside>
 				<div id="ad1" class="ui half page test ad" data-text="">
@@ -513,6 +534,37 @@ nav[class="navbar navbar-light"] {
 			<i class="instagram icon"></i> Instagram
 		</button>
 	</div>
+
+
+	<!-- sharingModal -->
+	<div class="modal fade" id="sharingModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">공유 하기</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body" id="sharingModal-body" style="text-align: center;">
+					<button class="ui facebook button" style="display: inline-block;">
+						<i class="facebook icon"></i> Facebook
+					</button>
+					<input type="hidden" value="http://www.facebook.com/sharer/sharer.php?u=" />
+
+					<button class="ui twitter button">
+						<i class="twitter icon"></i> Twitter
+					</button>
+					<input type="hidden" value="https://twitter.com/intent/tweet?text=" />
+
+					<button class="ui linkedin button" id="create-kakao-link-btn">
+						<img alt="..." src="health&edu/place/logo_img/kakao.png" style="width : 1.5rem; height : 1.5rem;"> 
+						<span>kakao talk</span>
+					</button>
+				</div>
+				<div class="modal-footer"></div>
+			</div>
+		</div>
+	</div>
+
 	<%@ include file="../footer.jsp"%>
 
 </body>

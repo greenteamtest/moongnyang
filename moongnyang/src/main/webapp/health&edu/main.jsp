@@ -70,7 +70,11 @@ div[class="col-lg-6 col-xxl-4 mb-5"] {
 
 
 .enter-btn{
-	margin-top : 3rem;
+	margin-top : 1.5rem;
+}
+
+.fs-4.fw-bold{
+	margin-top : 1rem;
 }
 </style>
 
@@ -102,7 +106,6 @@ div[class="col-lg-6 col-xxl-4 mb-5"] {
 								<br>
 								뭉냥뭉냥은 반려동물과 함께 할 수 있는 장소를 제공합니다
 							</p>
-							<a class="btn btn-primary btn-lg" href="#!" style="background-color: yellow;">Call to action</a>
 						</div>
 					</div>
 				</div>
@@ -123,7 +126,7 @@ div[class="col-lg-6 col-xxl-4 mb-5"] {
 												<input type="hidden" name="email" value="${loginUser.getEmail()}" />
 												<input type="hidden" name="key" value="beauty" />
 												<input type="hidden" name="command" value="placeList" />
-												<h2 class="fs-4 fw-bold">
+												<h2 class="fs-4 fw-bold" >
 													<img class="icon" alt="beauty" src="health&edu/img/beauty.png">
 												</h2>
 											</a>
