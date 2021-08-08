@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.Community.dao.CommunityDAO;
 import com.Community.dto.Community_CommentVO;
 
 public class Community_CommentWrite_Action implements Community_Action{
@@ -25,9 +26,10 @@ public class Community_CommentWrite_Action implements Community_Action{
 		ccVO.setComment_content(comment_content);
 		/* comment_idx, write_date 는 디폴트 값 넣을 것임 - (시퀀스값, 오늘 일시) */
 		
-		////////////////////////////////////
-		/* mybatis 연동*/
-		service.insert_comment(ccVO);
+		/*Dao클래스 */
+		CommunityDAO cDAO=CommunityDAO.getInstance();
+		cDAO.insertComment(ccVO);
+		
 		new Community_BoardView_Action().execute(request, response);
 	}
 }

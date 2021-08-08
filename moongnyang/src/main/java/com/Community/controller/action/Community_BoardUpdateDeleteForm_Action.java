@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.Community.dao.CommunityDAO;
 import com.Community.dto.CommunityVO;
+import com.Community.dto.Community_CommentVO;
 
 public class Community_BoardUpdateDeleteForm_Action implements Community_Action {
 
@@ -22,11 +23,17 @@ public class Community_BoardUpdateDeleteForm_Action implements Community_Action 
 		String url = "community/community_board_update&delete.jsp"; // 여기 경로 수정 필요할 수도 있음
 		String user_email = request.getParameter("user_email");
 
+		//내가 쓴 게시글 확인하기
 		CommunityDAO cDao = CommunityDAO.getInstance();
-		/* 로그인된 유저의 이메일을 통해 유저가 쓴 글들 출력하는 메쏘드 */
 		List<CommunityVO> boardList = cDao.selectAllbyUserEmail(user_email);
-
+		
+		//내가 쓴 댓글 확인하기
+		CommunityDAO cDao1 = CommunityDAO.getInstance();
+		List<Community_CommentVO> commentList = cDao1.selectAllComment(user_email);
+		
+		//게시물 리스트, 댓글 리스트 두개 request에 담아 보내기
 		request.setAttribute("boardList", boardList);
+		request.setAttribute("commentList", commentList);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

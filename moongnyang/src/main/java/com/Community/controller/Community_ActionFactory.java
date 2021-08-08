@@ -8,6 +8,7 @@ import com.Community.controller.action.Community_BoardUpdateForm_Action;
 import com.Community.controller.action.Community_BoardView_Action;
 import com.Community.controller.action.Community_BoardWriteForm_Action;
 import com.Community.controller.action.Community_BoardWrite_Action;
+import com.Community.controller.action.Community_CommentDelete_Action;
 import com.Community.controller.action.Community_CommentWrite_Action;
 
 public class Community_ActionFactory {
@@ -26,7 +27,7 @@ public class Community_ActionFactory {
 		Community_Action action = null;
 		System.out.println("Community_ActionFactory :" + command);
 
-		/* 추가된 부분- 지수 */
+		//게시글 관련 command
 		if (command.equals("board_list")) {
 			action = new Community_BoardList_Action();
 		}
@@ -39,9 +40,6 @@ public class Community_ActionFactory {
 		if (command.equals("board_view")) {
 			action = new Community_BoardView_Action();
 		}
-		if (command.equals("comment_write")) {
-			action = new Community_CommentWrite_Action();
-		}
 		if (command.equals("board_update_delete_form")) {
 			action = new Community_BoardUpdateDeleteForm_Action();
 		}
@@ -50,6 +48,14 @@ public class Community_ActionFactory {
 		}
 		if (command.equals("board_delete")) {
 			action = new Community_BoardDelete_Action();
+		}
+		
+		//댓글 관련 command
+		if (command.equals("comment_write")) {
+			action = new Community_CommentWrite_Action();
+		}
+		if (command.equals("comment_delete")) {
+			action = new Community_CommentDelete_Action();
 		}
 		
 		
