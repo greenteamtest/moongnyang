@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.picnic.dao.Picnic_DAO">
 
-	<!-- 카테고리별 장소 목록 -->
-	<!-- <select id="picnic_search" parameterType="PicnicVo" resultType="int"> 
-		insert into Abandonment_sido(orgCd, orgdownNm) values(#{orgCd} ,#{orgdownNm}) 
-		</select> -->
-
-	<select id="picnic_Update_Insert" parameterType="picnic" resultType="int">
+	<select id="picnic_Update_Insert" parameterType="picnic"
+		resultType="int">
 		MERGE INTO PICNIC_LIST USING DUAL ON (key = #{key})
 		WHEN
-		MATCHED THEN UPDATE SET X=#{x}, Y=#{y}		
+		MATCHED THEN UPDATE SET X=#{x}, Y=#{y}
 		WHEN NOT MATCHED THEN INSERT(NAME, PLACE,
-		ROAD_PLACE, PHONE, X, Y, KEY, CATEGORY) VALUES(#{name}, #{place},
-		#{road_place}, #{phone}, #{x}, #{y}, #{key}, #{category})
+		ROAD_PLACE, PHONE, X, Y, KEY,
+		CATEGORY) VALUES(#{name}, #{place},
+		#{road_place}, #{phone}, #{x},
+		#{y}, #{key}, #{category})
 	</select>
 
 	<select id="picnic_Select" parameterType="String"
@@ -26,6 +25,7 @@
 		SELECT * FROM PICNIC_COMENT WHERE KEY=#{key} order by num
 		desc
 	</select>
+
 	<insert id="picnic_Write" parameterType="picnic">
 		INSERT INTO
 		PICNIC_COMENT (key, num, user_email, coment_content, coment_date)
@@ -38,16 +38,28 @@
 		DELETE FROM
 		PICNIC_COMENT WHERE NUM=#{NUM}
 	</delete>
-	<select id="image_Select" parameterType="String" resultType="picnic">
+
+	<select id="image_Select" parameterType="String"
+		resultType="picnic">
 		SELECT * FROM PICNIC_IMAGE WHERE KEY=#{KEY}
 	</select>
-	<update id="board_Update" parameterType="picnic" >
-		UPDATE PICNIC_LIST SET NAME=#{name}, PLACE=#{place}, ROAD_PLACE=#{road_place}, PHONE=#{phone}, LIST_CONTENT=#{list_content} WHERE KEY=#{key}
+
+	<update id="board_Update" parameterType="picnic">
+		UPDATE
+		PICNIC_LIST SET NAME=#{name}, PLACE=#{place},
+		ROAD_PLACE=#{road_place}, PHONE=#{phone}, LIST_CONTENT=#{list_content}
+		WHERE KEY=#{key}
 	</update>
-	<update id="board_Update_Image" parameterType="picnic" >
-		MERGE INTO PICNIC_IMAGE USING DUAL ON (KEY = #{key})
-		WHEN MATCHED THEN UPDATE SET FILE_NAME1=#{file_name1}, FILE_NAME2=#{file_name2}, FILE_NAME3=#{file_name3}, FILE_NAME4=#{file_name4}	
-		WHEN NOT MATCHED THEN INSERT(KEY, FILE_NAME1, FILE_NAME2, FILE_NAME3, FILE_NAME4) VALUES(#{key}, #{file_name1}, #{file_name2}, #{file_name3}, #{file_name4}) 
+
+	<update id="board_Update_Image" parameterType="picnic">
+		MERGE
+		INTO PICNIC_IMAGE USING DUAL ON (KEY = #{key})
+		WHEN MATCHED THEN UPDATE
+		SET FILE_NAME1=#{file_name1}, FILE_NAME2=#{file_name2},
+		FILE_NAME3=#{file_name3}, FILE_NAME4=#{file_name4}
+		WHEN NOT MATCHED THEN INSERT(KEY, FILE_NAME1, FILE_NAME2, FILE_NAME3,
+		FILE_NAME4) VALUES(#{key}, #{file_name1}, #{file_name2},
+		#{file_name3}, #{file_name4})
 	</update>
-	
+
 </mapper>

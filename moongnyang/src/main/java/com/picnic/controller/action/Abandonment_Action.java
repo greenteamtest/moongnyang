@@ -17,7 +17,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import com.picnic.dto.BoardVO;
+import com.picnic.dto.AbandonmentVO;
 
 public class Abandonment_Action implements Action {
 	@Override
@@ -59,7 +59,7 @@ public class Abandonment_Action implements Action {
 
 		urlBuilder.append("&" + URLEncoder.encode("ServiceKey", "UTF-8") + sKey); /* Service Key */
 		DocumentBuilderFactory dbFactoty = DocumentBuilderFactory.newInstance();
-		List<BoardVO> list = new ArrayList<BoardVO>();
+		List<AbandonmentVO> list = new ArrayList<AbandonmentVO>();
 		try {
 			DocumentBuilder dBuilder = dbFactoty.newDocumentBuilder();
 			Document doc = dBuilder.parse(urlBuilder.toString());
@@ -69,7 +69,7 @@ public class Abandonment_Action implements Action {
 			NodeList nList = doc.getElementsByTagName("item");
 
 			for (int i = 0; i < nList.getLength(); i++) {
-				BoardVO bVo = new BoardVO(); 	
+				AbandonmentVO bVo = new AbandonmentVO(); 	
 				Node nNode = nList.item(i);
 	
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {

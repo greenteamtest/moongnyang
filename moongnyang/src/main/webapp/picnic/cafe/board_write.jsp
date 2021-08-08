@@ -77,12 +77,7 @@
 						</ul>
 
 					</div>
-			</form>
-		<footer>
-			<p align="center" class="mb-1">&copy; 2017–2021 Company Name</p>
-			<ul class="list-inline">
-			</ul>
-		</footer>
+			</form>		
 	</div>
 </body>
 </html>

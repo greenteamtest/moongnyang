@@ -1,6 +1,6 @@
 package com.picnic.dto;
 
-public class BoardVO {
+public class AbandonmentVO {
 	//카페 Vo
 	private String title;
 	private String link;

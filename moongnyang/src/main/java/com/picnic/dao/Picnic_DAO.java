@@ -10,19 +10,15 @@ public class Picnic_DAO {
 	public int picnic_Update_Insert(SqlSession session, PicnicVO vo) {
 		return session.insert("picnic_Update_Insert", vo);
 	}
-
 	public PicnicVO picnic_Select(SqlSession session, String str) {
 		return session.selectOne("picnic_Select", str);
 	}
-
 	public List<PicnicVO> picnic_Select2(SqlSession session, String str) {
 		return session.selectList("picnic_Select2", str);
 	}
-
 	public int picnic_Write(SqlSession session, PicnicVO vo) {
 		return session.insert("picnic_Write", vo);
 	}
-
 	public int picnic_Delete(SqlSession session, int num) {
 		return session.insert("picnic_Delete", num);
 	}

@@ -20,10 +20,10 @@ span{
 	text-align:center;
 }
 .mb-3{
-	 margin-top: -1 !important;
-	 margin-bottom: -1 !important;
-	 margin-left: -20 !important;
-	 margin-right: 5 !important;
+	 margin-top: 0 !important;
+	 margin-bottom: 0 !important;
+	 margin-left: -25 !important;
+	 margin-right: 50 !important;
 	 height: 34px;
 }
 </style>
@@ -87,7 +87,7 @@ span{
 			</button>
 		</div>
 	</form>
-	<table border="1" frame=void>
+	<table border="1" frame="void">
 	<c:set var="i" value="0" />
 	<c:set var="j" value="2" />
 		<c:forEach var="list" items="${list }" >
@@ -95,11 +95,11 @@ span{
 			<c:if test="${i%j == 0 }">
 				<tr>
 			</c:if>
-			<td width="400" height="400">
-				<a href="${list.popfile }"><img src="${list.popfile }" width="400" height="400"></a><p></p>
+			<td width="450" height="450">
+				<a href="${list.popfile }"><img src="${list.popfile }" width="450" height="450"></a><p></p>
 			</td>
-			<td width="400" height="400">			
-				<div class="input-group mb-3" style="width: 100%; float:none; margin:0 auto">
+			<td width="450" height="450">			
+				<div class="input-group mb-3">
 					<span class="input-group-text" >접수일</span>
 					<input type="text" class="form-control" value="${list.happenDt}" readonly><br>
 				</div>
@@ -139,12 +139,12 @@ span{
 					<span class="input-group-text">담당자 연락처</span>
 					<input type="text" class="form-control" value="${list.officetel}" readonly><br> 
 				</div>
-				<%-- 
+				 
 				<div class="input-group mb-3">
 					<span class="input-group-text">보호소 연락처</span>
 					<input type="text" class="form-control" value="${list.careTel}" readonly><br> 
 				</div>
-				
+				<%--
 				<div class="input-group mb-3">
 					<span class="input-group-text">공고번호</span>
 					<input type="text" class="form-control" value="${list.noticeNo}" readonly><br> 
