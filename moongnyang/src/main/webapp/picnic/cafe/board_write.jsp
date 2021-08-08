@@ -45,7 +45,7 @@
 						<!-- 내용 -->
 						<div class="mb-3">
 							<label for="exampleFormControlTextarea1" class="form-label">내용</label>
-							<textarea class="form-control" id="exampleFormControlTextarea1" rows="4" name="contents"></textarea>
+							<textarea class="form-control" id="exampleFormControlTextarea1" rows="4" name="content">${vo.list_content }</textarea>
 						</div>
 						<hr class="my-4">
 						<!-- 이미지 업로드 -->

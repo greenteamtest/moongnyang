@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -28,7 +29,7 @@
 									const text1 = window.parent.document.getElementById("phone").value;
 									document.getElementById('phone').innerText = text1;
 									const text2 = window.parent.document.getElementById("content").value;
-									document.getElementById('content').innerText = text3;	
+									document.getElementById('content').innerText = text2;	
 									</script>
 								</div>
 					
@@ -37,7 +38,6 @@
 									<a href="" class="image filtered span-2-5" data-position="top"><img id="img1" src="" alt="" /></a>							
 									<script>
 										const img1 = window.parent.document.getElementById("fileNm1").value;
-										alert(img1);
 										document.getElementById('img1').src="../upload/"+img1;
 									</script>
 								</div>

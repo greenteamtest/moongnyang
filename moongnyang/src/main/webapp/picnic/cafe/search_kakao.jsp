@@ -4,10 +4,7 @@
 <jsp:include page="../../bootstrap/boot.jsp" flush="ture" />
 <!DOCTYPE html>
 <html>
-<br>
-<br>
-<br>
-<br>
+<br><br><br><br>
 <head>
 <meta charset="utf-8">
 <title>키워드로 장소검색하고 목록으로 표출하기</title>
@@ -400,7 +397,6 @@
 			}
 
 			itemStr += '  <span class="tel">' + places.phone + '</span>';
-			itemStr += '  <span class="tel">' + places.x +"/"+ places.y + '</span>';
 			itemStr += '<form method="POST" action="BoardServlet_picnic">'
 						+ '<input type="hidden" name="command" value="board_view_action">'
 						+ '<input type="hidden" name="place_name" value="'+places.place_name+'">'

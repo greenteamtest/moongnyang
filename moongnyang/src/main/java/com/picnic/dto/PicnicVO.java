@@ -7,6 +7,7 @@ public class PicnicVO {
 	private String phone;
 	private String x;
 	private String y;
+	private String email;
 	private String key;
 	private String list_content;
 	private String category;
@@ -51,6 +52,12 @@ public class PicnicVO {
 	}
 	public void setY(String y) {
 		this.y = y;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getKey() {
 		return key;

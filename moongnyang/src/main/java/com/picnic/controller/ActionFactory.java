@@ -2,7 +2,6 @@ package com.picnic.controller;
 
 import com.picnic.controller.action.Action;
 import com.picnic.controller.action.Board_View_Action;
-import com.picnic.controller.action.Index_Action;
 import com.picnic.controller.action.Kakao_Search_Action;
 import com.picnic.controller.action.Modify_Action;
 import com.picnic.controller.action.Modify_Write_Action;
@@ -30,8 +29,6 @@ public class ActionFactory {
 		System.out.println("ActionFactory :" + command);
 		if(command.equals("picnic")) {
 			action = new Picnic_Action();
-		} else if(command.equals("index")) {
-			action = new Index_Action();
 		} else if(command.equals("abandonment")) {
 			action = new Abandonment_Action();
 		} else if(command.equals("abandonment_search")) {

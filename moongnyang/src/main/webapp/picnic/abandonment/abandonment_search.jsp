@@ -91,14 +91,6 @@
 								</form>
 							</article>						
 					</div>
-
-				<!-- Footer -->
-					<div id="footer">
-						<ul class="copyright">
-							<li>&copy; (주)흥청망청</li><li><a href="BoardServlet_picnic?command=index">처음 화면으로</a></li>
-						</ul>
-					</div>
-
 			</div>
 
 		<!-- Scripts -->

@@ -30,15 +30,9 @@ public class Board_View_Action implements Action {
 		PicnicVO vo = service.picnic_Select(key);
 		PicnicVO voF = service.image_Select(key);
 		//String savePath = request.getSession().getServletContext().getRealPath("/upload");
-		//String savePath = "../upload/";
 		if (voF != null) {
 			if (voF.getFile_name1() != null) {
 				vo.setFile_name1(voF.getFile_name1());
-				System.out.println("------------------");
-				System.out.println(vo.getFile_name1());
-				System.out.println(
-						"G:\\Java\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp1\\wtpwebapps\\Hompage\\upload");
-				System.out.println("------------------");
 			} else {
 				vo.setFile_name1("images/test1.jpg");
 			}

@@ -43,13 +43,16 @@ textarea {
 	<input type="hidden" id="key" name="key" value="${vo.key }">
 	<input type="hidden" name="command" value="modify">
 	
-	<c:set var="key_board" value="${vo.key}" />
-	<c:set var="key_user" value="${loginUser.key}" />
-	<c:choose>
-				<c:when test = "${key_board eq key_user}">										
+	<c:set var="email_board" value="${vo.email}" />
+	<c:set var="email_user" value="${loginUser.email}" />
+	<c:if test = "${null != email_board}">
+	<c:choose>				
+					<c:when test = "${email_board eq email_user}">										
 					<input type="submit" value="정보 수정" style="width: 10%; float:none; margin:0 auto">					
 				</c:when>
+				
 	</c:choose>
+	</c:if>
 	</form>
 </div>
 
@@ -81,15 +84,15 @@ textarea {
 	<input type="hidden" id="key" name="key" value="${vo.key }">
 	<c:forEach var="list" items="${list }">
 	<c:set var="email2" value="${list.user_email}" />
-		<div class="input-group mb-3" style="width: 80%; float:none; margin:0 auto">		
+		<div class="input-group mb-3" style="width: 80%; float:none; margin:0 auto">
 			<span class="input-group-text">${list.user_email }</span>
 			<input type="text" class="form-control" value="${list.coment_content }" readonly>
 			<span class="input-group-text">${list.coment_date }</span>			
 			<c:choose>
-				<c:when test = "${email1 eq email2}">				
-				<input type="hidden" id="num" name="num" value="${list.num }">				
+				<c:when test = "${email1 eq email2}">
+				<input type="hidden" id="num" name="num" value="${list.num }">
 				<input type="hidden" name="command" value="delete">
-				<button class="btn btn-outline-secondary" type="submit" id="delete">삭제</button>						
+				<button class="btn btn-outline-secondary" type="submit" id="delete">삭제</button>
 				</c:when>
 			</c:choose>
 		</div>

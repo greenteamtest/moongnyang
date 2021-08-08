@@ -14,9 +14,6 @@ import com.picnic.dto.PicnicVO;
 public class Modify_Write_Action implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "picnic/cafe/search_kakao.jsp";
-		
-		System.out.println("1111");
-		
 			request.setCharacterEncoding("UTF-8");
 		  
 	        // 파일 업로드를 하기 위해서 cos.jar 추가 및 객체 생성
@@ -29,7 +26,6 @@ public class Modify_Write_Action implements Action {
 	    
 	       // String savePath = request.getSession().getServletContext().getRealPath("/upload"); 
 	        String savePath = "C:/Users/hodori/git/moongnyang/moongnyang/src/main/webapp/picnic/upload";
-	        System.out.println(savePath);
 	        // 
 	        try{
 	            multi=new MultipartRequest(
@@ -54,16 +50,14 @@ public class Modify_Write_Action implements Action {
 		vo.setPlace(multi.getParameter("address"));
 		vo.setRoad_place(multi.getParameter("RAddress"));
 		vo.setPhone(multi.getParameter("phone"));
-		vo.setList_content(multi.getParameter("list_content"));
+		vo.setList_content(multi.getParameter("content"));
 		vo.setFile_name1(file1);
 		vo.setFile_name2(file2);
 		vo.setFile_name3(file3);
 		vo.setFile_name4(file4);
-		System.out.println(file1);
 		vo.setKey(multi.getParameter("key"));
 		
-		service.board_Update_Image(vo);
-		
+		service.board_Update_Image(vo);		
 		service.board_Update(vo);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
