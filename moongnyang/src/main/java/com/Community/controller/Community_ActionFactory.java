@@ -1,6 +1,7 @@
 package com.Community.controller;
 
 import com.Community.controller.action.Community_Action;
+import com.Community.controller.action.Community_BoardDelete_Action;
 import com.Community.controller.action.Community_BoardList_Action;
 import com.Community.controller.action.Community_BoardUpdateDeleteForm_Action;
 import com.Community.controller.action.Community_BoardUpdateForm_Action;
@@ -46,6 +47,9 @@ public class Community_ActionFactory {
 		}
 		if (command.equals("board_update_form")) {
 			action = new Community_BoardUpdateForm_Action();
+		}
+		if (command.equals("board_delete")) {
+			action = new Community_BoardDelete_Action();
 		}
 		
 		

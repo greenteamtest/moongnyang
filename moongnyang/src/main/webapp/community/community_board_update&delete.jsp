@@ -26,6 +26,9 @@
 
 <!-- Bootstrap core CSS -->
 <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- 자바스크립트 추가하기 -->
+<script type="text/javascript" src="community/script/board_delete.js"></script>
+
 
 <style>
 .bd-placeholder-img {
@@ -70,26 +73,46 @@
 
 								<div class="col">
 									<strong class="d-block text-gray-dark"><a
-								href="Community_BoardServlet?command=board_view&board_idx=${board.board_idx}">${board.title}</a></strong>
+										href="Community_BoardServlet?command=board_view&board_idx=${board.board_idx}">${board.title}</a></strong>
 									<div>${board.contents}</div>
 									<div>${board.write_date}</div>
 								</div>
 								<div class="col-sm-auto">
-								<!--  수정해야하는 부분.......... -->
+									<!-- 수정 버튼  -->
 									<button type="button" class="btn btn-outline-secondary"
 										onclick="location.href='Community_BoardServlet?command=board_update_form&board_idx=${board.board_idx}'">수정</button>
-									<button type="button" class="btn btn-outline-secondary">삭제</button>
-									
-								<!-- !!!!!!!!!!!!!!!!!!!!!!! -->
+									<!-- 삭제 버튼 (Button trigger modal) -->
+									<button type="button" class="btn btn-outline-secondary"
+										data-bs-toggle="modal" data-bs-target="#exampleModal">
+										삭제</button>
+									<!-- Modal -->
+									<div class="modal fade" id="exampleModal" tabindex="-1"
+										aria-labelledby="exampleModalLabel" aria-hidden="true">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title" id="exampleModalLabel">알림</h5>
+													<button type="button" class="btn-close"
+														data-bs-dismiss="modal" aria-label="Close"></button>
+												</div>
+												<div class="modal-body">정말 삭제하시겠습니까?</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-secondary"
+														data-bs-dismiss="modal">아니오</button>
+													<button type="button" class="btn btn-primary"
+														onclick="location.href='Community_BoardServlet?command=board_delete&board_idx=${board.board_idx}&user_email=${board.user_email}'">예</button>
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
-
 							</div>
 							<hr class="my-6">
 						</c:forEach>
-
+						<!-- 내가 쓴 게시물 리스트 끝 -->
 					</div>
 				</section>
-
+				<!-- 내가 단 댓글 리스트 시작 -->
 				<section class="col">
 					<div
 						class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm">

@@ -314,4 +314,22 @@ public class CommunityDAO {
 		}
 	} // updateBoard()끝
 
+	/*게시물 삭제*/
+	public void deleteBoard(String num) {
+		String sql="delete community_board where board_idx=?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, num);
+			
+			pstmt.executeUpdate(); // 실행
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+	}//deleteBoard() 끝
+	
 }// CommunityDAO{
