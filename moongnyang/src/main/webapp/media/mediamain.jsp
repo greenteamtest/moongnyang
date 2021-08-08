@@ -223,10 +223,13 @@
 </html>
 <form action="uploadmedia.do" method="post" name="frm"
 	enctype="multipart/form-data">
+	<!-- <form action="mediaServlet?command=uploadmedia" method="post" name="frm" -->
+	<!-- 	enctype="multipart/form-data"> -->
 	<!-- 	 -->
 	<!-- 	name="frm"> -->
-	<input type="hidden" name="command" value="uploadmedia"> <input
-		type="hidden" name="email" value="${loginUser.email}"> <input
+	<!-- 		<input type="hidden" name="command" value="uploadmedia">  -->
+
+	<input type="hidden" name="email" value="${loginUser.email}"> <input
 		type="hidden" name="nick" value="${loginUser.nickname}">
 	<div class="modal fade" id="uploadeMedia" data-bs-backdrop="static"
 		data-bs-keyboard="false" tabindex="-1"

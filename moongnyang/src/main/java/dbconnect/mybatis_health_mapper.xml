@@ -4,7 +4,7 @@
 
 	<!-- 카테고리별 장소 목록 -->
 	<select id="slcPlace_List" parameterType="Object" resultType="com.health.dto.HealthPlaceVo">
-		select idx, field, place, phone_num, address, open_time, introduce, dips_cont, pet_kind
+		select idx, field, place, phone_num, address, open_time, introduce, dips_cont, pet_kind,sharing_url
 		<choose>
 			<when test="_parameter != null and _parameter instanceof Integer">
 				from view_place

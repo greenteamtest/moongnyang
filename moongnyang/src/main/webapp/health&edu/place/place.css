@@ -353,3 +353,36 @@ aside {
 .tiny.ui.button:hover{
 	background-color : 	#87EEC6;
 }
+
+a[class="ui basic left pointing blue label"]{
+	text-decoration-line : none;
+}
+
+#create-kakao-link-btn{
+	width : 10rem;
+	height : 2rem;
+}
+
+#create-kakao-link-btn{
+	width : 10rem;
+	height : 2.5rem;
+	background-color: #ffc800;
+	position : absolute;
+	top : 1rem;
+	padding : 0;
+}
+#create-kakao-link-btn:hover{
+	background-color: #cda30d;
+}
+
+.ui.linkedin.button > img {
+	width : 2rem;
+	height : 2rem;
+}
+#sharingModal-body{
+	width : 24rem;
+}
+#sharingModal-body > button{
+	margin-right : 0.8rem;
+	margin-left : 0.6rem;
+}

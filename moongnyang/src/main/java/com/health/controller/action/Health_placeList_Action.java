@@ -13,6 +13,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import com.health.RestAPI.PlaceImgAPI;
 import com.health.dto.HealthPlaceVo;
 import com.health.dto.HealthUserDipsVo;
 
@@ -52,6 +53,10 @@ public class Health_placeList_Action implements Action {
 			if (placeList.size() != 0) {
 				request.setAttribute("placeList", placeList);
 				request.setAttribute("key", key);
+
+				for (int i = 0; i < placeList.size(); i++) {
+					placeList.get(i).setImgURL(PlaceImgAPI.requestAPI(placeList.get(i).getPlace()));
+				}
 
 				if (email != null && email.trim().length() != 0) {
 					dipsList = service.selectUser_dips(email);

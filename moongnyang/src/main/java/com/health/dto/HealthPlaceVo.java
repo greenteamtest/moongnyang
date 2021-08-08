@@ -17,10 +17,13 @@ public class HealthPlaceVo {
 	private String introduce;
 	private int dips_cont;
 	private String pet_kind;
+	private String sharing_url;
 
 	private int sum_rating;
 	private int reviewers;
 	private double avg;
+
+	private String imgURL;
 
 	public HealthPlaceVo() {
 	}
@@ -151,6 +154,22 @@ public class HealthPlaceVo {
 
 	public void setAvg(double avg) {
 		this.avg = avg;
+	}
+
+	public String getSharing_url() {
+		return sharing_url;
+	}
+
+	public void setSharing_url(String sharing_url) {
+		this.sharing_url = sharing_url;
+	}
+
+	public String getImgURL() {
+		return imgURL;
+	}
+
+	public void setImgURL(String imgURL) {
+		this.imgURL = imgURL;
 	}
 
 	public String toString() {
