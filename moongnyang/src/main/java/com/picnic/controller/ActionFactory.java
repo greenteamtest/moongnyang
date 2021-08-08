@@ -5,7 +5,6 @@ import com.picnic.controller.action.Board_View_Action;
 import com.picnic.controller.action.Kakao_Search_Action;
 import com.picnic.controller.action.Modify_Action;
 import com.picnic.controller.action.Modify_Write_Action;
-import com.picnic.controller.action.Picnic_Action;
 import com.picnic.controller.action.Review_Delete_Action;
 import com.picnic.controller.action.Review_Write_Action;
 import com.picnic.controller.action.Abandonment_Action;
@@ -28,13 +27,11 @@ public class ActionFactory {
 		Action action = null;
 		System.out.println("ActionFactory :" + command);
 		if(command.equals("picnic")) {
-			action = new Picnic_Action();
+			action = new Kakao_Search_Action();
 		} else if(command.equals("abandonment")) {
 			action = new Abandonment_Action();
 		} else if(command.equals("abandonment_search")) {
 			action = new Abandonment_Search_Action();
-		} else if(command.equals("search_kakao")) {
-			action = new Kakao_Search_Action();
 		} else if(command.equals("board_view_action")) {
 			action = new Board_View_Action();
 		} else if(command.equals("write")) {
