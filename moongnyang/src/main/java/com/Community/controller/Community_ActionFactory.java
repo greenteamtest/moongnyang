@@ -5,6 +5,7 @@ import com.Community.controller.action.Community_BoardDelete_Action;
 import com.Community.controller.action.Community_BoardList_Action;
 import com.Community.controller.action.Community_BoardUpdateDeleteForm_Action;
 import com.Community.controller.action.Community_BoardUpdateForm_Action;
+import com.Community.controller.action.Community_BoardUpdateLike_Action;
 import com.Community.controller.action.Community_BoardView_Action;
 import com.Community.controller.action.Community_BoardWriteForm_Action;
 import com.Community.controller.action.Community_BoardWrite_Action;
@@ -48,6 +49,9 @@ public class Community_ActionFactory {
 		}
 		if (command.equals("board_delete")) {
 			action = new Community_BoardDelete_Action();
+		}
+		if (command.equals("board_like")) {
+			action = new Community_BoardUpdateLike_Action();
 		}
 		
 		//댓글 관련 command

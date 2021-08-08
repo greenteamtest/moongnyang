@@ -132,7 +132,7 @@
 						<div class="mb-1 text-muted">${board.write_date}</div>
 						<p class="card-text mb-auto">${board.contents}</p>
 						<div class="info">
-							<button type="button" class="btn btn-sm btn-outline-secondary">
+							<button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='Community_BoardServlet?command=board_like&board_idx=${board.board_idx}'">
 								좋아요 🧡 ${board.like_count}</button>
 							<button type="button" class="btn btn-sm btn-outline-secondary">
 								조회수 ${board.read_count}</button>

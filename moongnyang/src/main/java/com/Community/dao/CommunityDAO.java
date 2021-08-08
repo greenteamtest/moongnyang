@@ -103,7 +103,7 @@ public class CommunityDAO {
 		}
 	} // insertBoard() 메쏘드 끝
 
-	/* c r Update d -게시글 조회수 up! */
+	/*  게시글 조회수 +1 ! */
 	public void updateReadCount(String num) {
 		String sql = "update community_board set READ_COUNT=READ_COUNT+1 where BOARD_IDX=?";
 
@@ -122,6 +122,25 @@ public class CommunityDAO {
 		}
 	} // updateReadCount() 메쏘드 끝
 
+	/* 게시글 좋아요 수 +1 ! */
+	public void updateLikeCount(String num) {
+		String sql = "update community_board set LIKE_COUNT=LIKE_COUNT+1 where BOARD_IDX=?";
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, num);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+	}
+	
 	/* 게시판 글 상세보기 : 글번호 board_idx로 찾아온다. 실패-> null */
 	public CommunityVO selectOneBoardByNum(String num) {
 		String sql = "select * from community_board where BOARD_IDX=?";
