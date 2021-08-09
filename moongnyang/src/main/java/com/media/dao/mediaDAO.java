@@ -17,6 +17,10 @@ public class mediaDAO {
 //	public List<mediaVO> load_comment(SqlSession session) {
 //		return session.selectList("load_comment");
 //	}
+	public mediaVO select_media(SqlSession session, int num) {
+		return session.selectOne("select_media", num);
+	}
+
 	public List<mediaVO> search_media(SqlSession session, String s) {
 		return session.selectList("search_media", s);
 	}

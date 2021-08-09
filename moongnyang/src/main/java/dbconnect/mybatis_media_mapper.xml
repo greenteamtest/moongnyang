@@ -14,6 +14,11 @@
 	<!-- media_upload.user_email_media = user_info.user_email order by -->
 	<!-- num_media desc -->
 	<!-- </select> -->
+	<!-- 상세보기눌렀을때 -->
+	<select id="select_media" parameterType="int"
+		resultType="com.media.dto.mediaVO">
+		SELECT * FROM media_upload WHERE num_media =#{value}
+	</select>
 	<select id="search_media" parameterType="String"
 		resultType="com.media.dto.mediaVO">
 		SELECT * FROM media_upload WHERE hashtag_media LIKE
