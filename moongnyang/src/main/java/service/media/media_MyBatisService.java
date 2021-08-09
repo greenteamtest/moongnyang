@@ -82,6 +82,22 @@ public class media_MyBatisService {
 		return list;
 	}
 
+	public int count_media_comment(String email) {
+		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
+		int rs = 0;
+		try {
+			rs = dao.count_media_comment(session, email); // dao에 SqlSession 전송
+			if (rs > 0) {
+				session.commit();
+			} else {
+				session.rollback();
+			}
+		} finally {
+			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
+		}
+		return rs;
+	}
+
 	public int check_comment(mediaVO vo) {
 		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
 		int rs = 0;
