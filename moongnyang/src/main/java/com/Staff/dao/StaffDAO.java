@@ -71,6 +71,9 @@ public class StaffDAO {
 		return session.selectList("load_total_timeover");
 	}
 
+	public StaffVO select_vacation(SqlSession session, int num) {
+		return session.selectOne("select_vacation", num);
+	}
 	public StaffVO select_timeover(SqlSession session, int num) {
 		return session.selectOne("select_timeover", num);
 	}

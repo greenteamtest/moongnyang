@@ -12,6 +12,7 @@ import com.Staff.controller.action.search_timeover_Action;
 import com.Staff.controller.action.search_vacation_Action;
 import com.Staff.controller.action.startTimeover_Action;
 import com.Staff.controller.action.view_timeover_Action;
+import com.Staff.controller.action.view_vacation_Action;
 
 public class ActionFactory {
 	private static ActionFactory instance = new ActionFactory();
@@ -56,6 +57,9 @@ public class ActionFactory {
 		}
 		if (command.equals("view_timeover")) {
 			action = new view_timeover_Action();
+		}
+		if (command.equals("view_vacation")) {
+			action = new view_vacation_Action();
 		}
 		if (command.equals("resultTimeover")) {
 			action = new result_timeover_Action();

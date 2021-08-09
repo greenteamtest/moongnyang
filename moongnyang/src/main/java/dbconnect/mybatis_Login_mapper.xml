@@ -4,6 +4,12 @@
 <mapper namespace="com.Staff.dao.StaffDAO">
 
 
+	<!-- 휴가 처리하기창 -->
+	<select id="select_vacation" parameterType="int"
+		resultType="com.Staff.dto.StaffVO">
+		select * from request_vacation where num_vacation =
+		#{num_vacation}
+	</select>
 	<!-- 초과근무 처리하기창 -->
 	<select id="select_timeover" parameterType="int"
 		resultType="com.Staff.dto.StaffVO">

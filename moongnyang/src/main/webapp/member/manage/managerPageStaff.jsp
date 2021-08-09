@@ -318,7 +318,11 @@
 												<td>${total_vacation.user_nick_vacation}</td>
 												<td>${total_vacation.start_vacation}~${total_vacation.end_vacation}</td>
 												<td>${total_vacation.val_vacation}</td>
-												<td><button type="button" class="btn-primary">버튼</button></td>
+												<td>
+													<button type="button"
+														onclick="location.href='staffServlet?command=view_vacation&num=${total_vacation.num_vacation}'"
+														class="btn-primary">버튼</button>
+												</td>
 											</tr>
 
 										</c:forEach>

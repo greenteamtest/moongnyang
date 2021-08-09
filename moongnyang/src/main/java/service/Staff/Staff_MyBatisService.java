@@ -239,6 +239,19 @@ public class Staff_MyBatisService {
 		return list;
 	}
 
+	public StaffVO select_vacation(int num) {
+		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
+		StaffVO list = null;
+		try {
+			list = dao.select_vacation(session, num); // dao에 SqlSession 전송
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
+		}
+		return list;
+	}
+
 	public StaffVO select_timeover(int num) {
 		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
 		StaffVO list = null;
