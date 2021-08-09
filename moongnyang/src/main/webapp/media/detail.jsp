@@ -109,7 +109,7 @@
 									</div>
 									<div class="card md-center">
 										<!--  한싸이클 시작 -->
-										<form>
+										<form method="post" action="mediaServlet">
 											<input type="hidden" name="command" value="add_comment"
 												id="command"> <input type="hidden" name="email"
 												value="${loginUser.email}" id="email"> <input

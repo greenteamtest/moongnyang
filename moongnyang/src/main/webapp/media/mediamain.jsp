@@ -121,7 +121,7 @@
 										</div>
 										<div class="card md-center">
 											<!--  한싸이클 시작 -->
-											<form>
+											<form method="post" action="mediaServlet">
 												<input type="hidden" name="command" value="add_comment"
 													id="command"> <input type="hidden" name="email"
 													value="${loginUser.email}" id="email"> <input
@@ -129,6 +129,9 @@
 													id="num">
 												<div class="col p-4 d-flex flex-column ">
 													<div class="card-header">
+														<div>
+															<h6>빠르게 댓글달기</h6>
+														</div>
 														<div class="input-group mb-3">
 															<input type="text" class="form-control"
 																name="comment_content" placeholder="댓글을 통해 마음을 전하세요!"
@@ -136,15 +139,6 @@
 																aria-describedby="button-addon2" name="comment">
 															<button class="btn btn-outline-secondary" type="submit"
 																id="button-addon2">입력</button>
-														</div>
-													</div>
-													<div class="card-body">
-														<div style="overflow: auto; height: 300px; width: 100%;">
-															<%-- 														<c:forEach var="medialist" items="${medialist}"> --%>
-															<div></div>
-															<div></div>
-															<%-- 														</c:forEach> --%>
-
 														</div>
 													</div>
 												</div>
