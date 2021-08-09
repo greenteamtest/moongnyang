@@ -115,6 +115,47 @@ public class MemberDAO {
 
 	}
 
+	public MemberVO kakao_getMeber(String useremail) {
+		MemberVO mVo = null;
+		String sql = "select * from kakao_info where kakao_email=?";
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, useremail);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				mVo = new MemberVO();
+				mVo.setNickname(rs.getString("kakao_nick"));
+				mVo.setEmail(rs.getString("kakao_email"));
+				mVo.setAuth(rs.getInt("user_auth"));
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return mVo;
+
+	}
+
 	public int confirmEmail(String email) {
 		int result = -1;
 		String sql = "select user_email from user_info where user_email=?";
@@ -247,6 +288,40 @@ public class MemberDAO {
 			pstmt.setString(2, vo.getNickname());
 			pstmt.setString(3, vo.getPwd());
 			pstmt.setInt(4, 0);
+
+			result = pstmt.executeUpdate();
+			System.out.println(vo.getNickname() + " " + vo.getPwd() + " " + vo.getEmail() + " " + "0");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		return result;
+	}
+
+	public int kakao_Member(MemberVO vo) {
+		int result = -1;
+		String sql = "MERGE INTO kakao_info USING DUAL ON (kakao_email = " + "?) WHEN NOT MATCHED THEN INSERT "
+				+ "(kakao_email, kakao_nick, user_auth)" + "        VALUES (?, ?,1)";
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getEmail());
+			pstmt.setString(2, vo.getEmail());
+			pstmt.setString(3, vo.getNickname());
 
 			result = pstmt.executeUpdate();
 			System.out.println(vo.getNickname() + " " + vo.getPwd() + " " + vo.getEmail() + " " + "0");

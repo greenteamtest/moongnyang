@@ -132,38 +132,44 @@
 				<c:forEach var="media_list" items="${media_list}">
 					<div class="alert alert-primary d-flex align-items-center"
 						role="alert">
-						<strong>${media_list.user_email_media}</strong>님이 댓글을 남겼어요!!
-						<button class="btn btn-warning">확인</button>
+						<strong>${media_list.user_email_media}</strong>님이 <strong>
+							${media_list.num_media}</strong> 에 댓글을 남겼어요!!
+						<!-- 						<button class="btn btn-warning">확인</button> -->
 					</div>
 				</c:forEach>
 			</div>
 			<hr>
-			<div style="overflow: auto; height: 150px; width: 100%;">
-				<h5>커뮤니티 댓글소식</h5>
-				<div class="container">
-					<div class="row">
-						<div class="alert alert-primary d-flex align-items-center"
-							role="alert">
-							<strong>####</strong>님이 당신의 글에 댓글을 남겼어요!!
-							<button class="btn btn-warning">확인</button>
-						</div>
 
+
+			<h5>커뮤니티 댓글소식</h5>
+			<div style="overflow: auto; height: 150px; width: 100%;">
+				<c:forEach var="board_list" items="${board_list}">
+					<div class="container">
+						<div class="row">
+							<div class="alert alert-primary d-flex align-items-center"
+								role="alert">
+								<strong>${board_list.manageremail}</strong>님이 답변을 남겼어요!!
+								<!-- 							<button class="btn btn-warning">확인</button> -->
+							</div>
+						</div>
 					</div>
-				</div>
+				</c:forEach>
 			</div>
 			<hr>
+			<h5>문의내용 답변</h5>
 			<div style="overflow: auto; height: 150px; width: 100%;">
-				<h5>문의내용 답변</h5>
-				<div class="container">
-					<div class="row">
-						<div class="alert alert-primary d-flex align-items-center"
-							role="alert">
-							<strong>####</strong>님이 당신의 글에 댓글을 남겼어요!!
-							<button class="btn btn-warning">확인</button>
-						</div>
+				<c:forEach var="board_list" items="${board_list}">
+					<div class="container">
+						<div class="row">
+							<div class="alert alert-primary d-flex align-items-center"
+								role="alert">
+								<strong>${board_list.manageremail}</strong>님이 문의내용에 답변을 했어요!
+								<!-- 								<button class="btn btn-warning">확인</button> -->
+							</div>
 
+						</div>
 					</div>
-				</div>
+				</c:forEach>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary"

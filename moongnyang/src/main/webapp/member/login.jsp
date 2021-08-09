@@ -81,7 +81,16 @@ response.setContentType("text/html");
 				url:'/v2/user/me',
 				success : res => {
 					const kakao_account = res.kakao_account;
-					console.log(kakao_account); } }); } }); }
+					console.log(kakao_account); 
+					console.log(kakao_account.email);
+					const email = kakao_account.email;
+					const nickname = kakao_account.nickname;
+					location.href="mypageServlet?command=kakao_login&email="+email +"&nickname="+nickname;
+					} 
+				}); 
+			} 
+		}); 
+		}
 	</script>
 
 	<main class="form-signin">
@@ -108,11 +117,11 @@ response.setContentType("text/html");
 					data-bs-toggle="modal" data-bs-target="#join">함께하겠소!</button>
 			</div>
 			</div>
-			<!-- 		<div>	<a id="custom-login-btn" type="button"> <img -->
-			<!-- 				src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg" -->
-			<!-- 				width="250" onclick="return kakaoLogin();" /> -->
-			<%-- 			</a> <a href="<%=apiURL%>"><img height="50" src="img/naverlogin.png" /></a> --%>
-			<!-- 			<p class="mt-5 mb-3 text-muted">&copy;2021</p>  </div>-->
+			<div>
+				<a id="custom-login-btn" type="button"> <img
+					src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg"
+					width="250" onclick="return kakaoLogin();" /> <%-- 			</a> <a href="<%=apiURL%>"><img height="50" src="img/naverlogin.png" /></a> --%>
+					<!-- 			<p class="mt-5 mb-3 text-muted">&copy;2021</p>  </div>-->
 		</form>
 	</main>
 </body>
