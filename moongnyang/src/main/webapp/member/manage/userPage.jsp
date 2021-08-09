@@ -97,7 +97,6 @@
 													: ${media.num_media}</strong>
 												<p class="card-text mb-auto">${media.user_email_media}님이
 													댓글을 남겼어요!</p>
-
 												<!-- 												<button type="button" class="btn btn-outline" -->
 												<%-- 													onclick="location.href='mediaServlet?command=check_and_go --%>
 												<%-- 												&email=${loginUser.email}&num=${media.num_media}'">이동하기</button> --%>

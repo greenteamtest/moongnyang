@@ -40,10 +40,13 @@
 						data-bs-toggle="modal" data-bs-target="#check_notification"
 						data-bs-toggle="tooltip" data-bs-placement="top"
 						title="읽지않은 알람을 확인하세요">
-						알림 <span
-							class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-							${unchecked}<span class="visually-hidden">unread messages</span>
-						</span>
+						알림
+						<c:if test="${unchecked!=0}">
+							<span
+								class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+								${unchecked}<span class="visually-hidden">unread messages</span>
+							</span>
+						</c:if>
 					</button>
 				</c:if>
 				<div>&nbsp;&nbsp;&nbsp;&nbsp;</div>

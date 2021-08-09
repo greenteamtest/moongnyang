@@ -79,30 +79,39 @@
 				</div>
 				<h2>사업자신청관리</h2>
 				<div class="table-responsive">
-					<table class="table table-striped table-sm">
-						<thead>
-							<tr class="recode">
-								<th scope="col">번호</th>
-								<th scope="col">이메일</th>
-								<th scope="col">내용</th>
-								<th scope="col">시간</th>
-								<th scope="col">읽음확인</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach var="board" items="${boardList}">
-								<tr>
-									<td>${board.num}</td>
-									<td><a
-										href="mypageServlet?command=businessReadBoard&email=${board.email}">${board.email }</a></td>
-									<td>${board.content }</td>
-									<td><fmt:formatDate value="${board.writedate}" /></td>
-									<td><c:if test="${board.readval==0}">읽음</c:if> <c:if
-											test="${board.readval==1}">읽지않음</c:if></td>
+					<div style="overflow: scroll; height: 200px;">
+						<table class="table table-striped table-sm">
+							<thead>
+								<tr class="recode">
+									<th scope="col">번호</th>
+									<th scope="col">이메일</th>
+									<th scope="col">내용</th>
+									<th scope="col">시간</th>
+									<th scope="col">읽음확인</th>
 								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
+							</thead>
+							<tbody>
+								<c:forEach var="board" items="${boardList}">
+									<tr>
+										<td>${board.num}</td>
+										<td><a
+											href="mypageServlet?command=businessReadBoard&email=${board.email}">${board.email }</a></td>
+										<td>${board.content }</td>
+										<td><fmt:formatDate value="${board.writedate}" /></td>
+										<td><c:if test="${board.readval==0}">읽음</c:if> <c:if
+												test="${board.readval==1}">읽지않음</c:if></td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<hr>
+				<div>
+					<h2>승준씨, 여기아래에다 쓰면될것같아요</h2>
+
+
+
 				</div>
 			</main>
 		</div>
