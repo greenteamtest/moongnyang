@@ -22,21 +22,21 @@
 
 	<select id="picnic_Select2" parameterType="String"
 		resultType="com.picnic.dto.PicnicVO">
-		SELECT * FROM PICNIC_COMENT WHERE KEY=#{key} order by num
+		SELECT * FROM PICNIC_comment WHERE KEY=#{key} order by num
 		desc
 	</select>
 
 	<insert id="picnic_Write" parameterType="picnic">
 		INSERT INTO
-		PICNIC_COMENT (key, num, user_email, coment_content, coment_date)
-		VALUES(#{key}, PICNIC_COMENT_SEQ.nextval,
+		PICNIC_comment (key, num, user_email, comment_content, comment_date)
+		VALUES(#{key}, PICNIC_comment_SEQ.nextval,
 		#{user_email},
-		#{coment_content}, TO_CHAR(sysdate, 'YY/MM/DD'))
+		#{comment_content}, TO_CHAR(sysdate, 'YY/MM/DD'))
 	</insert>
 
 	<delete id="picnic_Delete" parameterType="int">
 		DELETE FROM
-		PICNIC_COMENT WHERE NUM=#{NUM}
+		PICNIC_comment WHERE NUM=#{NUM}
 	</delete>
 
 	<select id="image_Select" parameterType="String"
@@ -61,5 +61,7 @@
 		FILE_NAME4) VALUES(#{key}, #{file_name1}, #{file_name2},
 		#{file_name3}, #{file_name4})
 	</update>
-
+	<select id="count_picnic_comment" parameterType="String" resultType="int">
+		select count(*) from picnic_comment
+	</select>
 </mapper>

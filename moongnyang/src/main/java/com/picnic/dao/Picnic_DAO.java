@@ -31,4 +31,7 @@ public class Picnic_DAO {
 	public int board_Update_Image(SqlSession session, PicnicVO vo) {
 		return session.update("board_Update_Image", vo);
 	}
+	public int count_picnic_comment(SqlSession session, String email) {
+		return session.selectOne("board_Update_Image", email);
+	}
 }

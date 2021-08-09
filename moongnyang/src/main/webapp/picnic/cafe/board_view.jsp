@@ -35,7 +35,7 @@ textarea {
 	<iframe style="width: 100%; height: 75px"> </iframe>
 </p>
 <div align="center">
-	<iframe src="picnic/cafe/image_view.jsp" style="width: 80%; height: 500px;"> </iframe>
+	<iframe src="picnic/cafe/board_image.jsp" style="width: 80%; height: 500px;"> </iframe>
 	<br>
 	<form id="f2" method="POST" action="BoardServlet_picnic">
 		<input type="hidden" id="key" name="key" value="${vo.key }"> 
@@ -55,7 +55,7 @@ textarea {
 </div>
 
 <div align="center">
-	<iframe src="picnic/cafe/map_kakao.jsp" style="width: 81%; height: 400px"> </iframe>
+	<iframe src="picnic/cafe/board_map_kakao.jsp" style="width: 81%; height: 400px"> </iframe>
 </div>
 <body>
 
@@ -82,8 +82,8 @@ textarea {
 			<c:set var="email2" value="${list.user_email}" />
 			<div class="input-group mb-3" style="width: 80%; float: none; margin: 0 auto">
 				<span class="input-group-text">${list.user_email }</span> 
-				<input type="text" class="form-control" value="${list.coment_content }" readonly> 
-				<span class="input-group-text">${list.coment_date }</span>
+				<input type="text" class="form-control" value="${list.comment_content }" readonly> 
+				<span class="input-group-text">${list.comment_date }</span>
 				<c:choose>
 					<c:when test="${email1 eq email2}">
 						<input type="hidden" id="num" name="num" value="${list.num }">
