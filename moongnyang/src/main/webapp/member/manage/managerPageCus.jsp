@@ -68,10 +68,6 @@
 								href="mypageServlet?command=managerPageStaff&email=${loginUser.email}">
 									<span data-feather="users"></span>근태관리 #휴가
 							</a></li>
-							<li class="nav-item"><a class="nav-link"
-								href="mypageServlet?command=managerPageStaff&email=${loginUser.email}">
-									<span data-feather="layers"></span>업무연동
-							</a></li>
 						</ul>
 					</div>
 				</nav>
@@ -82,99 +78,92 @@
 				</div>
 				<h6>#사용자들의 #소중한 #의견들 #소통</h6>
 				<h1>고객소리함</h1>
-				<div class="table-responsive">
-					<table class="table table-striped table-sm">
-						<thead>
-							<tr>
-								<th scope="col">순번</th>
-								<th scope="col">이메일</th>
-								<th scope="col">키워드</th>
-								<th scope="col">내용</th>
-								<th scope="col">작성날짜</th>
-								<th scope="col">읽음유무</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach var="board" items="${boardList}">
+				<div style="overflow: scroll; height: 400px;">
+					<div class="table-responsive">
+						<table class="table table-striped table-sm">
+							<thead>
 								<tr>
-									<td>${board.num}</td>
-									<td><a
-										href="mypageServlet?command=customerreadBoard&num=${board.num}">${board.email }</a></td>
-									<td>${board.keyword }</td>
-									<td>${board.content }</td>
-									<td><fmt:formatDate value="${board.writedate}" /></td>
-									<td><c:if test="${board.readval==0}">읽음</c:if> <c:if
-											test="${board.readval==1}">읽지않음</c:if></td>
+									<th scope="col">순번</th>
+									<th scope="col">이메일</th>
+									<th scope="col">키워드</th>
+									<th scope="col">내용</th>
+									<th scope="col">작성날짜</th>
+									<th scope="col">읽음유무</th>
 								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
+							</thead>
+							<tbody>
+
+								<c:forEach var="board" items="${boardList}">
+									<tr>
+										<td>${board.num}</td>
+										<td><a
+											href="mypageServlet?command=customerreadBoard&num=${board.num}">${board.email }</a></td>
+										<td>${board.keyword }</td>
+										<td>${board.content }</td>
+										<td><fmt:formatDate value="${board.writedate}" /></td>
+										<td><c:if test="${board.readval==0}">읽음</c:if> <c:if
+												test="${board.readval==1}">읽지않음</c:if></td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</div>
 				</div>
 				<div
 					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 					<div class="btn-toolbar mb-2 mb-md-0"></div>
 				</div>
 				<div class="row">
-					<div class="col">
-						<table class="table table-dark table-hover">
-							<tr>
-								<h2>#사용자List #고마우신분들</h2>
-							</tr>
-							<tread>
-							<tr>
-								<th scope="col">별명</th>
-								<th scopr="col">이메일</th>
-							</tr>
-							</tread>
-							<tbody>
-								<c:forEach var="user" items="${userList}">
-									<tr>
-										<td>${user.user_nick}</td>
-										<td>${user.email}</td>
-									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
-					</div>
-					<div class="col">
-						<table class="table table-success table-striped">
-							<tr>
-								<h2>#사업자List #고마우신분들</h2>
-							</tr>
-							<tread>
-							<tr>
-								<th scope="col">별명</th>
-								<th scopr="col">이메일</th>
-							</tr>
-							</tread>
-							<tbody>
-								<c:forEach var="user" items="${busiList}">
-									<tr>
-										<td>${user.user_nick}</td>
-										<td>${user.email}</td>
-									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
-					</div>
-					<div class="col">
-						<table class="table table-dark table-hover">
-							<tr>
-								<h2>#신고내역</h2>
-							</tr>
-							<tread>
-							<tr>
-								<th scope="col">글번호</th>
-								<th scope="col">별명</th>
-								<th scope="col">시간/일정</th>
-								<th scope="col">사유</th>
-								<th scope="col">확인</th>
-							</tr>
-							</tread>
-							<tbody>
 
-							</tbody>
-						</table>
+					<div class="col">
+						<div>
+							<h2>#사용자List #고마우신분들</h2>
+						</div>
+						<div style="overflow: scroll; height: 300px;">
+							<table class="table table-dark table-hover">
+								<tread>
+								<tr>
+									<th scope="col">별명</th>
+									<th scopr="col">이메일</th>
+								</tr>
+								</tread>
+								<tbody>
+									<c:forEach var="user" items="${userList}">
+										<tr>
+											<td>${user.user_nick}</td>
+											<td>${user.email}</td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+						</div>
+
+					</div>
+
+					<div class="col">
+						<div>
+							<h2>#사업자List #고마우신분들</h2>
+						</div>
+						<div style="overflow: scroll; height: 300px;">
+							<table class="table table-success table-striped">
+
+								<tread>
+								<tr>
+									<th scope="col">별명</th>
+									<th scopr="col">이메일</th>
+								</tr>
+								</tread>
+								<tbody>
+									<c:forEach var="user" items="${busiList}">
+										<tr>
+											<td>${user.user_nick}</td>
+											<td>${user.email}</td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+						</div>
+
 					</div>
 				</div>
 			</main>

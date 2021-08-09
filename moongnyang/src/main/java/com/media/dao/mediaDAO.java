@@ -14,9 +14,18 @@ public class mediaDAO {
 
 	}
 
-//	public List<mediaVO> load_comment(SqlSession session) {
-//		return session.selectList("load_comment");
-//	}
+	public List<mediaVO> load_mypost_media(SqlSession session, String email) {
+		return session.selectList("load_mypost_media", email);
+	}
+
+	public List<mediaVO> load_comment(SqlSession session, int num) {
+		return session.selectList("load_comment", num);
+	}
+
+	public mediaVO select_media(SqlSession session, int num) {
+		return session.selectOne("select_media", num);
+	}
+
 	public List<mediaVO> search_media(SqlSession session, String s) {
 		return session.selectList("search_media", s);
 	}
@@ -25,9 +34,13 @@ public class mediaDAO {
 		return session.selectList("load_medialist");
 	}
 
-//	public int add_comment(SqlSession session, mediaVO vo) {
-//		return session.insert("add_comment", vo);
-//	}
+	public int check_comment(SqlSession session, mediaVO vo) {
+		return session.update("check_comment", vo);
+	}
+
+	public int add_comment(SqlSession session, mediaVO vo) {
+		return session.insert("add_comment", vo);
+	}
 
 	public int update_like(SqlSession session, mediaVO vo) {
 		return session.update("update_like", vo);

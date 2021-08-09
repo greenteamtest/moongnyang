@@ -11,7 +11,43 @@ public class mediaVO {
 	private int like_media;
 	private int readcnt_media;
 	private String comment_content;
+	private String comment_user_email;
+	private String comment_email_media;
 	private String num_comment;
+	private String comment_email;
+	private int read_check;
+
+	public String getComment_email_media() {
+		return comment_email_media;
+	}
+
+	public void setComment_email_media(String comment_email_media) {
+		this.comment_email_media = comment_email_media;
+	}
+
+	public String getComment_user_email() {
+		return comment_user_email;
+	}
+
+	public void setComment_user_email(String comment_user_email) {
+		this.comment_user_email = comment_user_email;
+	}
+
+	public String getComment_email() {
+		return comment_email;
+	}
+
+	public void setComment_email(String comment_email) {
+		this.comment_email = comment_email;
+	}
+
+	public int getRead_check() {
+		return read_check;
+	}
+
+	public void setRead_check(int read_check) {
+		this.read_check = read_check;
+	}
 
 	public String getComment_content() {
 		return comment_content;

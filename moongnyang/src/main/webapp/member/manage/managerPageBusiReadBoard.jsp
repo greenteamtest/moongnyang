@@ -63,14 +63,9 @@
 								href="mypageServlet?command=managerPageStaff&email=${loginUser.email}">
 									<span data-feather="users"></span>근태관리 #휴가
 							</a></li>
-							<li class="nav-item"><a class="nav-link"
-								href="mypageServlet?command=managerPageStaff&email=${loginUser.email}">
-									<span data-feather="layers"></span>업무연동
-							</a></li>
 						</ul>
 					</div>
 				</nav>
-
 				<h1>게시글 상세보기</h1>
 				<h4>보낸이 : ${board.email}</h4>
 				<p class="fs-5 col-md-8">${board.content}</p>
@@ -84,45 +79,9 @@
 						href="mypageServlet?command=managerPageBusi"
 						class="btn btn-primary btn-lg px-4">목록으로 돌아가기</a>
 				</div>
-
 				<hr class="col-3 col-md-2 mb-5">
-
-				<div class="row g-5">
-					<div class="col-md-6">
-						<h2>Starter projects</h2>
-						<p>Ready to beyond the starter template? Check out these open
-							source projects that you can quickly duplicate to a new GitHub
-							repository.</p>
-						<ul class="icon-list">
-							<li><a href="https://github.com/twbs/bootstrap-npm-starter"
-								rel="noopener" target="_blank">Bootstrap npm starter</a></li>
-							<li class="text-muted">Bootstrap Parcel starter (coming
-								soon!)</li>
-						</ul>
-					</div>
-
-					<div class="col-md-6">
-						<h2>Guides</h2>
-						<p>Read more detailed instructions and documentation on using
-							or contributing to Bootstrap.</p>
-						<ul class="icon-list">
-							<li><a href="../getting-started/introduction/">Bootstrap
-									quick start guide</a></li>
-							<li><a href="../getting-started/webpack/">Bootstrap
-									Webpack guide</a></li>
-							<li><a href="../getting-started/parcel/">Bootstrap
-									Parcel guide</a></li>
-							<li><a href="../getting-started/build-tools/">Contributing
-									to Bootstrap</a></li>
-						</ul>
-					</div>
-				</div>
 			</main>
-			<footer class="pt-5 my-5 text-muted border-top"> Created by
-				the Bootstrap team &middot; &copy; 2021 </footer>
 		</div>
-
-
 		<script src="assets/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

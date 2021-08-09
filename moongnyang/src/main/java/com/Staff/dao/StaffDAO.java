@@ -10,6 +10,14 @@ public class StaffDAO {
 	public StaffDAO() {
 
 	}
+	
+	public int result_vacation(SqlSession session, StaffVO vo) {
+		return session.update("result_vacation", vo);
+	}
+	
+	public int result_timeover(SqlSession session, StaffVO vo) {
+		return session.update("result_timeover", vo);
+	}
 
 	public int change_staff_val(SqlSession session, StaffVO vo) {
 		return session.update("change_staff_val", vo);
@@ -38,6 +46,7 @@ public class StaffDAO {
 	public List<StaffVO> search_vacation(SqlSession session, String s) {
 		return session.selectList("search_vacation", s);
 	}
+
 	public List<StaffVO> search_timeover(SqlSession session, String s) {
 		return session.selectList("search_timeover", s);
 	}
@@ -64,6 +73,13 @@ public class StaffDAO {
 
 	public List<StaffVO> load_total_timeover(SqlSession session) {
 		return session.selectList("load_total_timeover");
+	}
+
+	public StaffVO select_vacation(SqlSession session, int num) {
+		return session.selectOne("select_vacation", num);
+	}
+	public StaffVO select_timeover(SqlSession session, int num) {
+		return session.selectOne("select_timeover", num);
 	}
 
 }

@@ -16,6 +16,38 @@ public class Staff_MyBatisService {
 	public Staff_MyBatisService() {
 		dao = new StaffDAO();
 	}
+	
+	public int result_vacation(StaffVO vo) {
+		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
+		int rs = 0;
+		try {
+			rs = dao.result_vacation(session, vo); // dao에 SqlSession 전송
+			if (rs > 0) {
+				session.commit();
+			} else {
+				session.rollback();
+			}
+		} finally {
+			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
+		}
+		return rs;
+	}
+
+	public int result_timeover(StaffVO vo) {
+		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
+		int rs = 0;
+		try {
+			rs = dao.result_timeover(session, vo); // dao에 SqlSession 전송
+			if (rs > 0) {
+				session.commit();
+			} else {
+				session.rollback();
+			}
+		} finally {
+			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
+		}
+		return rs;
+	}
 
 	public int insert_staff(StaffVO vo) {
 		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
@@ -215,6 +247,32 @@ public class Staff_MyBatisService {
 		List<StaffVO> list = null;
 		try {
 			list = dao.search_vacation(session, s); // dao에 SqlSession 전송
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
+		}
+		return list;
+	}
+
+	public StaffVO select_vacation(int num) {
+		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
+		StaffVO list = null;
+		try {
+			list = dao.select_vacation(session, num); // dao에 SqlSession 전송
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
+		}
+		return list;
+	}
+
+	public StaffVO select_timeover(int num) {
+		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
+		StaffVO list = null;
+		try {
+			list = dao.select_timeover(session, num); // dao에 SqlSession 전송
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

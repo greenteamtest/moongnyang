@@ -68,10 +68,6 @@
 								href="mypageServlet?command=managerPageStaff"> <span
 									data-feather="users"></span>근태관리 #휴가
 							</a></li>
-							<li class="nav-item"><a class="nav-link"
-								href="mypageServlet?command=managerPageStaff"> <span
-									data-feather="layers"></span>업무연동
-							</a></li>
 
 						</ul>
 					</div>
@@ -83,7 +79,7 @@
 					</div>
 					<div class="row">
 						<div class="col">
-							<h2>#인사담당직원화면</h2>
+							<h5>#인사담당직원화면</h5>
 						</div>
 						<div class="col"></div>
 					</div>
@@ -169,7 +165,9 @@
 							</div>
 						</div>
 					</form>
-					<div class="table-responsive">
+					<div class="table-responsive"
+						style="overflow: scroll; height: 200px;">
+						
 						<table class="table table-striped table-sm">
 							<thead>
 								<tr>
@@ -257,29 +255,32 @@
 										<button type="submit" class="btn btn-primary mb-3">검색</button>
 									</div>
 								</div>
-								<table class="table table-dark table-hover">
+								<div style="overflow: scroll; height: 400px;">
+									<table class="table table-dark table-hover">
+										<tr>
+											<th scope="col">글번호</th>
+											<th scope="col">별명</th>
+											<th scope="col">시간/일정</th>
+											<th scope="col">확인</th>
+										</tr>
+										<tbody style='height: 300px; overflow: scroll;'>
+											<c:forEach var="total_timeover" items="${total_timeover}">
 
-									<tr>
-										<th scope="col">글번호</th>
-										<th scope="col">별명</th>
-										<th scope="col">시간/일정</th>
-										<th scope="col">확인</th>
-									</tr>
-									<tbody style='height: 400px; overflow: scroll;'>
-										<c:forEach var="total_timeover" items="${total_timeover}">
+												<input type="hidden" value="search_timeover" id="command"
+													name="command">
+												<tr>
+													<td>${total_timeover.num_timeover}</td>
+													<td>${total_timeover.user_nick_timeover}</td>
+													<td>${total_timeover.date_timeover}</td>
+													<td><button type="button"
+															onclick="location.href='staffServlet?command=view_timeover&num=${total_timeover.num_timeover}'"
+															class="btn-primary">버튼</button></td>
+												</tr>
 
-											<input type="hidden" value="search_timeover" id="command"
-												name="command">
-											<tr>
-												<td>${total_timeover.num_timeover}</td>
-												<td>${total_timeover.user_nick_timeover}</td>
-												<td>${total_timeover.date_timeover}</td>
-												<td><button type="submit" class="btn-primary">버튼</button></td>
-											</tr>
-
-										</c:forEach>
-									</tbody>
-								</table>
+											</c:forEach>
+										</tbody>
+									</table>
+								</div>
 							</form>
 						</div>
 						<div class="col">
@@ -301,31 +302,36 @@
 										</div>
 									</div>
 								</div>
+								<div style="overflow: scroll; height: 300px;">
+									<table class="table table-success table-striped">
 
-								<table class="table table-success table-striped ">
-
-									<tr>
-										<th scope="col">글번호</th>
-										<th scope="col">별명</th>
-										<th scope="col">기간</th>
-										<th scope="col">종류</th>
-										<th scope="col">확인</th>
-									</tr>
-									<tbody>
-										<c:forEach var="total_vacation" items="${total_vacation}">
+										<tr>
+											<th scope="col">글번호</th>
+											<th scope="col">별명</th>
+											<th scope="col">기간</th>
+											<th scope="col">종류</th>
+											<th scope="col">확인</th>
+										</tr>
+										<tbody>
+											<c:forEach var="total_vacation" items="${total_vacation}">
 
 
-											<tr>
-												<td>${total_vacation.num_vacation}</td>
-												<td>${total_vacation.user_nick_vacation}</td>
-												<td>${total_vacation.start_vacation}~${total_vacation.end_vacation}</td>
-												<td>${total_vacation.val_vacation}</td>
-												<td><button type="button" class="btn-primary">버튼</button></td>
-											</tr>
+												<tr>
+													<td>${total_vacation.num_vacation}</td>
+													<td>${total_vacation.user_nick_vacation}</td>
+													<td>${total_vacation.start_vacation}~${total_vacation.end_vacation}</td>
+													<td>${total_vacation.val_vacation}</td>
+													<td>
+														<button type="button"
+															onclick="location.href='staffServlet?command=view_vacation&num=${total_vacation.num_vacation}'"
+															class="btn-primary">버튼</button>
+													</td>
+												</tr>
 
-										</c:forEach>
-									</tbody>
-								</table>
+											</c:forEach>
+										</tbody>
+									</table>
+								</div>
 							</form>
 						</div>
 					</div>

@@ -60,100 +60,96 @@
 		<br> <br> <br> <br> <br>
 	</div>
 	<main class="container">
-		<div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
-			<div class="col-md-6 px-0">
-				<h1 class="display-4 fst-italic">파일업로드는 됩니다.</h1>
-				<p class="lead my-3">기능구현을 위해서는 DB가 필요합니다. 좋아요 기능도 구현됩니다. 그런데
-					댓글은 아직안됩니다. ajax가 필요한건지..</p>
-				<p class="lead mb-0">
-					<a href="#" class="text-white fw-bold"></a>
-				</p>
-			</div>
-		</div>
 		<div class="row g-5">
-			<div class="col-md-9">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
 				<article class="blog-post">
 					<hr>
 					<!--  여기 밑에서 부터 옆 네이버게이션 따라다님 -->
-					<c:forEach var="medialist" items="${medialist}">
-						<div
-							class="row g-0 border rounded overflow-hidden flex-md-row mb-4 
+					<div
+						class="row g-0 border rounded overflow-hidden flex-md-row mb-4 
 							shadow-sm h-md-250 position-relative">
-							<div class="container">
-								<div class="row">
-									<div class="col-md-5">
-										<div>
-											<video src="media/upload/${medialist.mediaurl}" width='400'
-												controls loop></video>
-										</div>
-									</div>
-									<div class="col-md-7">
-										<div class="card md-center">
-											<!--  한싸이클 시작 -->
-											<div class="col p-4 d-flex flex-column ">
-												<div class="card-header">
-													<strong class="d-inline-block mb-3 text-success">
-														${medialist.hashtag_media}</strong>
+						<div class="container">
+							<div class="row">
+								<div>
+									<video src="media/upload/${media.mediaurl}" width='500'
+										controls loop></video>
+								</div>
+								<div class="col-md-12">
+									<div class="card md-center">
+										<!--  한싸이클 시작 -->
+										<div class="col p-4 d-flex flex-column ">
+											<div class="card-header">
+												<strong class="d-inline-block mb-3 text-success">
+													${media.hashtag_media}</strong>
+											</div>
+											<div class="card-body">
+												<h5 class="card-title">${media.user_nick}</h5>
+												<div style="overflow: auto; height: 60px; width: 100%;">
+													<p class="card-text">${media.content_media}</p>
 												</div>
-												<div class="card-body">
-													<h5 class="card-title">${medialist.user_nick}</h5>
-													<div style="overflow: auto; height: 60px; width: 100%;">
-														<p class="card-text">${medialist.content_media}</p>
-													</div>
-													<hr>
-													<div>
-														<form action="mediaServlet" method="post">
-															<input type="hidden" name="command" value="clicklike"
-																id="command"> <input type="hidden" name="email"
-																value="${loginUser.email}" id="email"> <input
-																type="hidden" name="num" value="${medialist.num_media}"
-																id="num">
-															<button type="submit"
-																class="btn btn-sm btn-outline-secondary">좋아요🧡
-																${medialist.like_media}</button>
-															<button type="button"
-																class="btn btn-sm btn-outline-secondary"
-																onclick="location.href='mediaServlet?command=view_media&num=${medialist.num_media}'">상세보기</button>
-														</form>
-													</div>
+												<hr>
+												<div>
+													<form action="mediaServlet" method="post">
+														<input type="hidden" name="command" value="clicklike"
+															id="command"> <input type="hidden" name="email"
+															value="${loginUser.email}" id="email"> <input
+															type="hidden" name="num" value="${media.num_media}"
+															id="num">
+														<button type="submit"
+															class="btn btn-sm btn-outline-secondary">좋아요🧡
+															${media.like_media}</button>
+														<button type="button"
+															class="btn btn-sm btn-outline-secondary"
+															onclick="location.href='mediaServlet?command=mediamain'">돌아가기</button>
+													</form>
 												</div>
 											</div>
 										</div>
-										<div class="card md-center">
-											<!--  한싸이클 시작 -->
-											<form method="post" action="mediaServlet">
-												<input type="hidden" name="command" value="add_comment"
-													id="command"> <input type="hidden" name="email"
-													value="${loginUser.email}" id="email"> <input
-													type="hidden" name="num" value="${medialist.num_media}"
-													id="num"> <input type="hidden"
-													name="comment_user_email" value="${medialist.user_email_media}"
-													id="comment_user_email">
-												<c:if test="${!empty loginUser}">
-													<div class="col p-4 d-flex flex-column ">
-														<div class="card-header">
-															<div>
-																<h6>빠르게 댓글달기</h6>
-															</div>
-															<div class="input-group mb-3">
-																<input type="text" class="form-control"
-																	name="comment_content" placeholder="댓글을 통해 마음을 전하세요!"
-																	aria-label="댓글을 통해 마음을 전하세요!"
-																	aria-describedby="button-addon2" name="comment">
-																<button class="btn btn-outline-secondary" type="submit"
-																	id="button-addon2">입력</button>
-															</div>
-														</div>
+									</div>
+									<div class="card md-center">
+										<!--  한싸이클 시작 -->
+										<form method="post" action="mediaServlet">
+											<input type="hidden" name="command" value="add_comment"
+												id="command"> <input type="hidden" name="email"
+												value="${loginUser.email}" id="email"> <input
+												type="hidden" name="num" value="${media.num_media}" id="num">
+											<div class="col p-4 d-flex flex-column ">
+												<div class="card-header">
+													<div class="input-group mb-3">
+														<input type="text" class="form-control"
+															name="comment_content" placeholder="댓글을 통해 마음을 전하세요!"
+															aria-label="댓글을 통해 마음을 전하세요!"
+															aria-describedby="button-addon2" name="comment">
+														<input type="hidden" name="comment_user_email"
+															value="${media.user_email_media}" id="comment_user_email">
+														<button class="btn btn-outline-secondary" type="submit"
+															id="button-addon2">입력</button>
 													</div>
-												</c:if>
-											</form>
-										</div>
+												</div>
+												<div class="card-body">
+													<div style="overflow: auto; height: 300px; width: 100%;">
+														<c:forEach var="comment" items="${comment}">
+															<div class="container">
+																<div class="row">
+																	<div class="col-md-3">
+																		<div class="alert alert-primary" role="alert">${comment.user_nick}</div>
+																	</div>
+																	<div class="col-md-9">
+																		<div class="alert alert-primary" role="alert">${comment.comment_content }</div>
+																	</div>
+																</div>
+															</div>
+														</c:forEach>
+													</div>
+												</div>
+											</div>
+										</form>
 									</div>
 								</div>
 							</div>
 						</div>
-					</c:forEach>
-					<!-- 					 c: each 로 돌리면서 게시글 만들기 -->
+					</div>
 				</article>
 
 			</div>
@@ -202,6 +198,7 @@
 					</div>
 
 					<div class="p-4">
+						<h4 class="fst-italic">Elsewhere</h4>
 						<ol class="list-unstyled">
 							<li><a
 								href="https://github.com/greenteamtest/moongnyang/tree/master/moongnyang">GitHub</a></li>
