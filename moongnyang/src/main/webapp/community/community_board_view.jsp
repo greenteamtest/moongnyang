@@ -167,58 +167,59 @@ str1.innerHTML = Change_board_tag(${board.board_tag});
 				<button type="button" class="btn btn-sm btn-outline-secondary">
 					댓글</button>
 			</div>
-			<!-- 댓글 리스트 부분 -->
-			<div class="comment_list container">
-				<c:forEach var="comment" items="${commentList}">
-					<div
-						class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-						<div class="col p-4 d-flex flex-column position-static">
-							<strong class="d-inline-block mb-2 text-primary">
-								${comment.user_email}</strong>
-							<p class="card-text mb-auto">${comment.comment_content}</p>
-							<div class="mb-1 text-muted">${comment.write_date}</div>
-						</div>
-					</div>
-				</c:forEach>
-			</div>
 
-			<!-- 댓글 쓰기 부분 -->
-			<div class="row">
-				<c:if test="${!empty loginUser}">
-					<!-- 로그인 되어 있을 때  -->
-					<form name="frm" method="post" action="Community_BoardServlet">
-						<input type="hidden" name="command" value="comment_write">
-						<input type="hidden" name="board_idx" value="${board.board_idx}">
-						<input type="hidden" name="user_email" value="${loginUser.email}">
-						<b>${loginUser.email}</b>
-						<div class="row g-0">
-							<div class="col-sm-6 col-md-8">
-								<!-- Text Area -->
-								<textarea class="form-control" id="exampleFormControlTextarea1"
-									rows="3" placeholder="댓글을 적어주세요" name="comment_content"></textarea>
-							</div>
-							<div class="col -auto">
-								<!-- 등록버튼 -->
-								<input class="w-100 btn btn-primary btn-lg" type="submit"
-									value="등록" onclick="return commentCheck()">
-								<!-- 여기 js 함수 수정해야할듯.... -->
+			<!-- ////////////////////////////////////////////////////////////////////////////////////////////////// -->
+			<section class="comment container">
+				<!-- 댓글 리스트 부분 -->
+				<div class="comment_list container">
+					<c:forEach var="comment" items="${commentList}">
+						<div
+							class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+							<div class="col p-4 d-flex flex-column position-static">
+								<strong class="d-inline-block mb-2 text-primary">
+									${comment.user_email}</strong>
+								<p class="card-text mb-auto">${comment.comment_content}</p>
+								<div class="mb-1 text-muted">${comment.write_date}</div>
 							</div>
 						</div>
-					</form>
-				</c:if>
-				<c:if test="${empty loginUser}">
-					<!-- 로그인 안 되어 있을 때  -->
-					<div class="comment_list container">
-						<a href="login.do"> 로그인</a> 후 댓글을 작성할 수 있어요
-					</div>
-				</c:if>
-			</div>
-			<br> <br> <br> <br>
+					</c:forEach>
+				</div>
+
+				<!-- 댓글 쓰기 부분 -->
+				<div class="row">
+					<c:if test="${!empty loginUser}">
+						<!-- 로그인 되어 있을 때  -->
+						<form name="frm" method="post" action="Community_BoardServlet">
+							<input type="hidden" name="command" value="comment_write">
+							<input type="hidden" name="board_idx" value="${board.board_idx}">
+							<input type="hidden" name="user_email" value="${loginUser.email}">
+							<b>${loginUser.email}</b>
+							<div class="row g-0">
+								<div class="col-sm-6 col-md-8">
+									<!-- Text Area -->
+									<textarea class="form-control" id="exampleFormControlTextarea1"
+										rows="3" placeholder="댓글을 적어주세요" name="comment_content"></textarea>
+								</div>
+								<div class="col -auto">
+									<!-- 등록버튼 -->
+									<input class="w-100 btn btn-primary btn-lg" type="submit"
+										value="등록" onclick="return commentCheck()">
+									<!-- 여기 js 함수 수정해야할듯.... -->
+								</div>
+							</div>
+						</form>
+					</c:if>
+					<c:if test="${empty loginUser}">
+						<!-- 로그인 안 되어 있을 때  -->
+						<div class="comment_list container">
+							<a href="login.do"> 로그인</a> 후 댓글을 작성할 수 있어요
+						</div>
+					</c:if>
+				</div>
+			</section>
 			<button type="button" class="btn btn-warning"
 				onclick="location.href='Community_BoardServlet?command=board_list'">목록으로
 				돌아가기</button>
-
-
 		</main>
 
 		<footer class="my-5 pt-5 text-muted text-center text-small">

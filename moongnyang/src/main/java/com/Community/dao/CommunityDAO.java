@@ -103,7 +103,7 @@ public class CommunityDAO {
 		}
 	} // insertBoard() 메쏘드 끝
 
-	/* c r Update d -게시글 조회수 up! */
+	/*  게시글 조회수 +1 ! */
 	public void updateReadCount(String num) {
 		String sql = "update community_board set READ_COUNT=READ_COUNT+1 where BOARD_IDX=?";
 
@@ -122,7 +122,26 @@ public class CommunityDAO {
 		}
 	} // updateReadCount() 메쏘드 끝
 
-	/* c Read u d -게시판 글 상세보기 : 글번호 board_idx로 찾아온다. 실패-> null */
+	/* 게시글 좋아요 수 +1 ! */
+	public void updateLikeCount(String num) {
+		String sql = "update community_board set LIKE_COUNT=LIKE_COUNT+1 where BOARD_IDX=?";
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, num);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+	}
+	
+	/* 게시판 글 상세보기 : 글번호 board_idx로 찾아온다. 실패-> null */
 	public CommunityVO selectOneBoardByNum(String num) {
 		String sql = "select * from community_board where BOARD_IDX=?";
 
@@ -167,38 +186,9 @@ public class CommunityDAO {
 		return cVO;
 	}// selectOneBoardByNum() 끝
 
-	/* 게시물 등록시 썼던 mybatis 코드 ,,, 모델 1으로 변경하면서 쓸일이 없어짐,, ㅠ */
-//	public int insert_board(SqlSession session, CommunityVO vo) {
-//		return session.insert("insert_board", vo);
-//	}
-
-//	/*은호씨 코드*/
-//	public void write_board(mediaVO vo) {
-//		String sql = "insert into media_upload values(media_upload_seq.nextval, ?, ?, ?, ?,?,?,0,0)";
-//		Connection conn = null;
-//		PreparedStatement pstmt = null;
-//		try {
-//			conn = DBManager.getConnection();
-//			pstmt = conn.prepareStatement(sql);
-//			pstmt.setString(1, vo.getTitle_media());
-//			pstmt.setString(2, vo.getHashtag_media());
-//			pstmt.setString(3, vo.getUser_email_media());
-//			pstmt.setString(4, vo.getUser_nick());
-//			pstmt.setString(5, vo.getMediaurl());
-//			pstmt.setString(6, vo.getContent_media());
-//			pstmt.executeUpdate(); // 실행
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		} finally {
-//			DBManager.close(conn, pstmt);
-//		}
-//	}
-
-//	public int delete(SqlSession session, int num) {
-//		return session.insert("insert_board", num);
-//	}
 //////////////////[ 댓글 관련 method ]/////////////////////////////////	
-	/* c Read u d -게시판 상세보기 화면속 댓글 리스트 출력 */
+
+	/* 게시글 상세보기 속 댓글들 */
 	public List<Community_CommentVO> selectAllComments(String num) {
 
 		String sql = "select * from community_board_comment where BOARD_IDX=" + num;
@@ -217,13 +207,6 @@ public class CommunityDAO {
 			while (rs.next()) { // 이동은 행(로우) 단위로
 				Community_CommentVO ccVO = new Community_CommentVO();
 
-				// DB Community_board_comment 속 칼럼명
-//				COMMENT_IDX
-//				USER_EMAIL
-//				COMMENT_CONTENT
-//				BOARD_IDX
-//				WRITE_DATE
-
 				ccVO.setComment_idx(rs.getInt("COMMENT_IDX"));
 				ccVO.setUser_email(rs.getString("USER_EMAIL"));
 				ccVO.setComment_content(rs.getString("COMMENT_CONTENT"));
@@ -238,15 +221,91 @@ public class CommunityDAO {
 			DBManager.close(conn, stmt, rs);
 		}
 		return list;
-	}// selectAllComments() 끝
-
-	/* 댓글 생성 - Create */
-	public int insert_comment(SqlSession session, Community_CommentVO ccVO) {
-		System.out.println("다오까지와쪙");
-		return session.insert("insert_comment", ccVO);
 	}
 
-	/* 이메일 값으로 유저가 쓴 글 찾아오기 - 글 수정,삭제 */
+	/* 댓글등록 */
+	public void insertComment(Community_CommentVO ccVO) {
+
+		String sql = "INSERT INTO community_board_comment"
+				+ "	(COMMENT_IDX,USER_EMAIL,COMMENT_CONTENT,BOARD_IDX,WRITE_DATE)" + "	VALUES"
+				+ "	(SEQ_COMMUNITY_BOARD_COMMENT.nextval,?,?,?,default)";
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, ccVO.getUser_email());
+			pstmt.setString(2, ccVO.getComment_content());
+			pstmt.setInt(3, ccVO.getBoard_idx());
+
+			pstmt.executeUpdate(); // 실행
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+	} // insertComment() 메쏘드 끝
+
+	/* 내가 지금까지 쓴 댓글 모두 출력하기 */
+	public List<Community_CommentVO> selectAllComment(String email) {
+
+		String sql = "select * from community_board_comment where USER_EMAIL='" + email + "' order by COMMENT_IDX desc";
+
+		List<Community_CommentVO> list = new ArrayList<Community_CommentVO>();
+
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = DBManager.getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+
+			while (rs.next()) { // 이동은 행(로우) 단위로
+				Community_CommentVO ccVO = new Community_CommentVO();
+
+				ccVO.setComment_idx(rs.getInt("COMMENT_IDX"));
+				ccVO.setUser_email(rs.getString("USER_EMAIL"));
+				ccVO.setComment_content(rs.getString("COMMENT_CONTENT"));
+				ccVO.setBoard_idx(rs.getInt("BOARD_IDX"));
+				ccVO.setWrite_date(rs.getString("WRITE_DATE"));
+				// CHECK_COMMENT 컬럼도 들어가야 함 (알림기능에 쓰일 것)
+
+				list.add(ccVO);
+			} // while문 끝
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, stmt, rs);
+		}
+		return list;
+	}
+
+	/* 댓글 삭제 */
+	public void deleteComment(String num) {
+		String sql = "delete community_board_comment where comment_idx=?";
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, num);
+
+			pstmt.executeUpdate(); // 실행
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+//////////////[게시글 수정 /삭제]///////////////////////////	
+
+	/* 글 수정/삭제 페이지로 이동 : 이메일 값으로 유저가 쓴 글 찾아오기 - 글 수정,삭제 */
 	public List<CommunityVO> selectAllbyUserEmail(String email) {
 		String sql = "select * from community_board where USER_EMAIL='" + email + "' order by board_idx desc";
 
@@ -314,4 +373,39 @@ public class CommunityDAO {
 		}
 	} // updateBoard()끝
 
+	/* 게시물 삭제 */
+	public void deleteBoard(String num) {
+		String sql = "delete community_board where board_idx=?";
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, num);
+
+			pstmt.executeUpdate(); // 실행
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}// deleteBoard() 끝
+
+	/* 게시물 삭제 할때 게시물에 달린 댓글도 삭제하기 */
+	public void deleteCommentByBoard(String num) {
+		String sql = "delete community_board_comment where board_idx=?";
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, num);
+
+			pstmt.executeUpdate(); // 실행
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }// CommunityDAO{

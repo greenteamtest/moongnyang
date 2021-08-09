@@ -61,85 +61,38 @@
 		<!-- Carousel 로 3개씩 묶어서 한 9개정도 보여주고 싶,,,,, -->
 		<div class="row">
 			<div class="col">
-				<section class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
-					<div class="container">
-						<div class="row">
-							<div class="col">
-								<div class="card shadow-sm">
-									<svg class="bd-placeholder-img card-img-top" width="100%"
-										height="225" xmlns="http://www.w3.org/2000/svg" role="img"
-										aria-label="Placeholder: Thumbnail"
-										preserveAspectRatio="xMidYMid slice" focusable="false">
-								<title>Placeholder</title><rect width="100%" height="100%"
-											fill="#55595c" />
-								<text x="50%" y="50%" fill="#eceeef" dy=".3em">인기게시물 1</text></svg>
+				<!-- 		<!-- 필터 고르는 부분 -->
+				<div class="filter container">
 
-									<div class="card-body">
-										<p class="card-text">눈누난나</p>
-										<div class="d-flex justify-content-between align-items-center">
-											<div class="btn-group">
-												<button type="button"
-													class="btn btn-sm btn-outline-secondary">View</button>
-												<button type="button"
-													class="btn btn-sm btn-outline-secondary">Edit</button>
-											</div>
-											<small class="text-muted">9 mins</small>
-										</div>
-									</div>
+					<div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+						<div class="container">
+							<div class="row">동물 필터</div>
+							<div class="row">
+								<div class="col">
+									<button type="button" class="btn btn-outline-primary"
+										onclick="colorChange()">강아지</button>
+									<button type="button" class="btn btn-outline-secondary">고양이</button>
+									<button type="button" class="btn btn-outline-success">기타</button>
 								</div>
 							</div>
-							<div class="col">
-								<div class="card shadow-sm">
-									<svg class="bd-placeholder-img card-img-top" width="100%"
-										height="225" xmlns="http://www.w3.org/2000/svg" role="img"
-										aria-label="Placeholder: Thumbnail"
-										preserveAspectRatio="xMidYMid slice" focusable="false">
-								<title>Placeholder</title><rect width="100%" height="100%"
-											fill="#55595c" />
-								<text x="50%" y="50%" fill="#eceeef" dy=".3em">인기게시물 2</text></svg>
+							<div class="row">게시판 필터</div>
+							<div class="row">
+								<br>
+								<div class="col">
+									<button type="button" class="btn btn-outline-primary">일상공유</button>
+									<button type="button" class="btn btn-outline-secondary">제품추천</button>
+									<button type="button" class="btn btn-outline-success">벼룩시장</button>
+									<button type="button" class="btn btn-outline-danger">궁금해요</button>
+									<button type="button" class="btn btn-outline-warning">기타</button>
 
-									<div class="card-body">
-										<p class="card-text">눈누난나</p>
-										<div class="d-flex justify-content-between align-items-center">
-											<div class="btn-group">
-												<button type="button"
-													class="btn btn-sm btn-outline-secondary">View</button>
-												<button type="button"
-													class="btn btn-sm btn-outline-secondary">Edit</button>
-											</div>
-											<small class="text-muted">9 mins</small>
-										</div>
-									</div>
 								</div>
 							</div>
-							<div class="col">
-								<div class="card shadow-sm">
-									<svg class="bd-placeholder-img card-img-top" width="100%"
-										height="225" xmlns="http://www.w3.org/2000/svg" role="img"
-										aria-label="Placeholder: Thumbnail"
-										preserveAspectRatio="xMidYMid slice" focusable="false">
-								<title>Placeholder</title><rect width="100%" height="100%"
-											fill="#55595c" />
-								<text x="50%" y="50%" fill="#eceeef" dy=".3em">인기게시물 3</text></svg>
-
-									<div class="card-body">
-										<p class="card-text">눈누난나</p>
-										<div class="d-flex justify-content-between align-items-center">
-											<div class="btn-group">
-												<button type="button"
-													class="btn btn-sm btn-outline-secondary">View</button>
-												<button type="button"
-													class="btn btn-sm btn-outline-secondary">Edit</button>
-											</div>
-											<small class="text-muted">9 mins</small>
-										</div>
-									</div>
-								</div>
+							<div class="row">
+								<button type="button" class="btn btn-primary">적용</button>
 							</div>
 						</div>
 					</div>
-				</section>
-
+				</div>
 
 			</div>
 			<div class="col-md-auto">
@@ -148,52 +101,21 @@
 						<button type="button" class="btn btn-warning"
 							onclick="location.href='Community_BoardServlet?command=board_write_form'">게시글
 							쓰러가기</button>
+
 						<button type="button" class="btn btn-dark"
 							onclick="location.href='Community_BoardServlet?command=board_update_delete_form&user_email=${loginUser.email}'">내가
 							쓴 글 확인하기</button>
 					</c:if>
 					<c:if test="${empty loginUser}">
+
 						<button type="button" class="btn btn-warning"
 							onclick="location.href='login.do' ">게시글 쓰러가기</button>
 					</c:if>
-					<!-- 					<a href="Community_BoardServlet?command=board_write_form">게시글 -->
-					<!-- 						등록</a>  -->
-					<a href="Community_BoardServlet?command=board_list">Community</a>
+
 				</div>
 			</div>
 		</div>
-		<!-- 		<!-- 필터 고르는 부분 -->
-		<div class="filter container">
 
-			<div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
-				<div class="container">
-					<div class="row">동물 필터</div>
-					<div class="row">
-						<div class="col">
-							<button type="button" class="btn btn-outline-primary"
-								onclick="colorChange()">강아지</button>
-							<button type="button" class="btn btn-outline-secondary">고양이</button>
-							<button type="button" class="btn btn-outline-success">기타</button>
-						</div>
-					</div>
-					<div class="row">게시판 필터</div>
-					<div class="row">
-						<br>
-						<div class="col">
-							<button type="button" class="btn btn-outline-primary">일상공유</button>
-							<button type="button" class="btn btn-outline-secondary">제품추천</button>
-							<button type="button" class="btn btn-outline-success">벼룩시장</button>
-							<button type="button" class="btn btn-outline-danger">궁금해요</button>
-							<button type="button" class="btn btn-outline-warning">기타</button>
-
-						</div>
-					</div>
-					<div class="row">
-						<button type="button" class="btn btn-primary">적용</button>
-					</div>
-				</div>
-			</div>
-		</div>
 		<!-- 		<!-- 개별 게시글 나오는 구간 ! -->
 		<div class="item_list container">
 			<c:forEach var="board" items="${boardList}">
@@ -210,7 +132,7 @@
 						<div class="mb-1 text-muted">${board.write_date}</div>
 						<p class="card-text mb-auto">${board.contents}</p>
 						<div class="info">
-							<button type="button" class="btn btn-sm btn-outline-secondary">
+							<button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='Community_BoardServlet?command=board_like&board_idx=${board.board_idx}'">
 								좋아요 🧡 ${board.like_count}</button>
 							<button type="button" class="btn btn-sm btn-outline-secondary">
 								조회수 ${board.read_count}</button>
