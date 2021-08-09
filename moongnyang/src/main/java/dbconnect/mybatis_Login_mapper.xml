@@ -4,7 +4,13 @@
 <mapper namespace="com.Staff.dao.StaffDAO">
 
 
-	<!-- 초과근무 신청내역불러오기 (이건 신청날짜 정렬) -->
+	<!-- 초과근무 처리하기창 -->
+	<select id="select_timeover" parameterType="int"
+		resultType="com.Staff.dto.StaffVO">
+		select * from request_timeover where num_timeover =
+		#{num_timeover}
+	</select>
+	<!-- 휴가 신청내역불러오기 (이건 신청날짜 정렬) -->
 	<select id="search_vacation" parameterType="String"
 		resultType="com.Staff.dto.StaffVO">
 		select * from request_vacation where user_nick_vacation
@@ -67,6 +73,10 @@
 		=to_char(sysdate,'hh24:mi') where
 		user_email_timeover=#{user_email_timeover} and
 		check_timeover='진행중'
+	</update>
+	<update id="result_timeover" parameterType="staff">
+		update request_timeover set
+		check_timeover = #{check_timeover} where num_timeover=#{num_timeover}
 	</update>
 	<update id="change_staff_val" parameterType="staff">
 		update user_info set

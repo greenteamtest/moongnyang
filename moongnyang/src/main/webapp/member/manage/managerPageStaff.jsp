@@ -270,7 +270,9 @@
 												<td>${total_timeover.num_timeover}</td>
 												<td>${total_timeover.user_nick_timeover}</td>
 												<td>${total_timeover.date_timeover}</td>
-												<td><button type="submit" class="btn-primary">버튼</button></td>
+												<td><button type="button"
+														onclick="location.href='staffServlet?command=view_timeover&num=${total_timeover.num_timeover}'"
+														class="btn-primary">버튼</button></td>
 											</tr>
 
 										</c:forEach>
