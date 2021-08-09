@@ -73,8 +73,34 @@
 			<div>
 				<br> <br>
 			</div>
-			<div class="p-5 mb-4 bg-light rounded-3" data-bs-spy="scroll"></div>
-
+			<div class="container">
+				<div class="row">
+					<div class="col">최신글</div>
+					<div class="col">인기글</div>
+					<div class="col">
+						<h2>내글 소식</h2>
+						<div style="overflow: scroll;  height: 400px;">Swap
+							the background-color utility and add a `.text-*` color utility to
+							mix up the jumbotron look. Then, mix and matcSwap the
+							background-color utility and add a `.text-*` color utility to mix
+							up the jumbotron look. Then, mix and matcSwap the
+							background-color utility and add a `.text-*` color utility to mix
+							up the jumbotron look. Then, mix and matcSwap the
+							background-color utility and add a `.text-*` color utility to mix
+							up the jumbotron look. Then, mix and matcSwap the
+							background-color utility and add a `.text-*` color utility to mix
+							up the jumbotron look. Then, mix and matcSwap the
+							background-color utility and add a `.text-*` color utility to mix
+							up the jumbotron look. Then, mix and matcSwap the
+							background-color utility and add a `.text-*` color utility to mix
+							up the jumbotron look. Then, mix and matcSwap the
+							background-color utility and add a `.text-*` color utility to mix
+							up the jumbotron look. Then, mix and matcSwap the
+							background-color utility and add a `.text-*` color utility to mix
+							up the jumbotron look. Then, mix and matc</div>
+					</div>
+				</div>
+			</div>
 			<div class="row align-items-md-stretch">
 				<div class="col-md-6">
 					<div class="h-100 p-5 text-white bg-dark rounded-3">
