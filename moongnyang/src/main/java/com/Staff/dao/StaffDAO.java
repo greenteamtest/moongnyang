@@ -11,6 +11,10 @@ public class StaffDAO {
 
 	}
 	
+	public int result_vacation(SqlSession session, StaffVO vo) {
+		return session.update("result_vacation", vo);
+	}
+	
 	public int result_timeover(SqlSession session, StaffVO vo) {
 		return session.update("result_timeover", vo);
 	}

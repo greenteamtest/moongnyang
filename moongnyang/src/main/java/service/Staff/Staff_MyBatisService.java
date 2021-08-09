@@ -16,6 +16,22 @@ public class Staff_MyBatisService {
 	public Staff_MyBatisService() {
 		dao = new StaffDAO();
 	}
+	
+	public int result_vacation(StaffVO vo) {
+		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
+		int rs = 0;
+		try {
+			rs = dao.result_vacation(session, vo); // dao에 SqlSession 전송
+			if (rs > 0) {
+				session.commit();
+			} else {
+				session.rollback();
+			}
+		} finally {
+			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
+		}
+		return rs;
+	}
 
 	public int result_timeover(StaffVO vo) {
 		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료

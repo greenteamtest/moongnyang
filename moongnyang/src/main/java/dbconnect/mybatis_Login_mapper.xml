@@ -80,9 +80,17 @@
 		user_email_timeover=#{user_email_timeover} and
 		check_timeover='진행중'
 	</update>
+	<update id="result_vacation" parameterType="staff">
+		update
+		request_vacation set
+		check_vacation = #{check_vacation} where
+		num_vacation=#{num_vacation}
+	</update>
 	<update id="result_timeover" parameterType="staff">
-		update request_timeover set
-		check_timeover = #{check_timeover} where num_timeover=#{num_timeover}
+		update
+		request_timeover set
+		check_timeover = #{check_timeover} where
+		num_timeover=#{num_timeover}
 	</update>
 	<update id="change_staff_val" parameterType="staff">
 		update user_info set
