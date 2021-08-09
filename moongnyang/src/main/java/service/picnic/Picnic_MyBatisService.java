@@ -119,7 +119,6 @@ public class Picnic_MyBatisService {
 
 		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
 		try {
-			System.out.println("1111");
 			dao.board_Update_Image(session, vo); // dao에 SqlSession 전송
 		
 		} catch (Exception e) {
@@ -128,5 +127,22 @@ public class Picnic_MyBatisService {
 			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
 		}
 		return;
+	}
+	public int count_picnic_comment(String email) {
+		SqlSession session = MybatisSessionFactory.getSqlSession();
+		int rs=0;
+		try {
+			rs = dao.count_picnic_comment(session, email); // dao에 SqlSession 전송
+			if(rs > 0) {
+				session.commit();
+			} else {
+				session.rollback();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
+		}
+		return rs;
 	}
 }

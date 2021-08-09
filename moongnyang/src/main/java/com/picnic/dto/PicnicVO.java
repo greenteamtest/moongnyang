@@ -13,8 +13,8 @@ public class PicnicVO {
 	private String category;
 	private String num;
 	private String user_email;
-	private String coment_content;
-	private String coment_date;
+	private String comment_content;
+	private String comment_date;
 	private String file_name1, file_name2, file_name3, file_name4;
 	
 	public String getName() {
@@ -89,17 +89,17 @@ public class PicnicVO {
 	public void setUser_email(String user_email) {
 		this.user_email = user_email;
 	}
-	public String getComent_content() {
-		return coment_content;
+	public String getComment_content() {
+		return comment_content;
 	}
-	public void setComent_content(String coment_content) {
-		this.coment_content = coment_content;
+	public void setComment_content(String comment_content) {
+		this.comment_content = comment_content;
 	}
-	public String getComent_date() {
-		return coment_date;
+	public String getComment_date() {
+		return comment_date;
 	}
-	public void setComent_date(String coment_date) {
-		this.coment_date = coment_date;
+	public void setComment_date(String comment_date) {
+		this.comment_date = comment_date;
 	}
 	public String getFile_name1() {
 		return file_name1;
