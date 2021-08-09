@@ -53,22 +53,16 @@ response.setContentType("text/html");
 </style>
 
 <script type="text/javascript" src="js/login/member.js"></script>
-<script type="text/javascript" src="js/login/member.js"></script>
+<script type="text/javascript"
+	src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
+	charset="utf-8"></script>
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <!-- Custom styles for this template -->
 <link href="css/signin.css" rel="stylesheet">
 </head>
 <body class="text-center">
-	<%
-	String clientId = "AO6MJLUwfRyG_NAC17cF";//애플리케이션 클라이언트 아이디값";
-	String redirectURI = URLEncoder.encode("http://localhost:8092/Hompage/member/sociallogin/naver_callback.jsp", "UTF-8");
-	SecureRandom random = new SecureRandom();
-	String state = new BigInteger(130, random).toString();
-	String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
-	apiURL += "&client_id=" + clientId;
-	apiURL += "&redirect_uri=" + redirectURI;
-	apiURL += "&state=" + state;
-	session.setAttribute("state", state);
-	%>
+
 	<script src="http://developers.kakao.com/sdk/js/kakao.js"></script>
 	<script>
 	window.Kakao.init("61eaf0ccb670c71fede5ee3ff459092e"); 
@@ -84,7 +78,7 @@ response.setContentType("text/html");
 					console.log(kakao_account); 
 					console.log(kakao_account.email);
 					const email = kakao_account.email;
-					const nickname = kakao_account.nickname;
+					const nickname = kakao_account.profile.nickname;
 					location.href="mypageServlet?command=kakao_login&email="+email +"&nickname="+nickname;
 					} 
 				}); 
@@ -115,13 +109,12 @@ response.setContentType("text/html");
 					onclick="return loginCheck()">입장하겠소!</button>
 				<button class="w-100 btn btn-warning" type="button"
 					data-bs-toggle="modal" data-bs-target="#join">함께하겠소!</button>
-			</div>
-			</div>
-			<div>
 				<a id="custom-login-btn" type="button"> <img
 					src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg"
-					width="250" onclick="return kakaoLogin();" /> <%-- 			</a> <a href="<%=apiURL%>"><img height="50" src="img/naverlogin.png" /></a> --%>
-					<!-- 			<p class="mt-5 mb-3 text-muted">&copy;2021</p>  </div>-->
+					width="300" height="60" onclick="return kakaoLogin();" />
+				</a>
+			</div>
+			<div></div>
 		</form>
 	</main>
 </body>

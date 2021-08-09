@@ -25,6 +25,9 @@ public class ActionFactory {
 		if (command.equals("kakao_login")) {
 			action = new kakao_login_Action();
 		}
+		if (command.equals("naver_login")) {
+			action = new naver_login_Action();
+		}
 		if (command.equals("userPage")) {
 			action = new userPageAction();
 		}

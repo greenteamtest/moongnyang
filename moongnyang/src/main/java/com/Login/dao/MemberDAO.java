@@ -117,7 +117,7 @@ public class MemberDAO {
 
 	public MemberVO kakao_getMeber(String useremail) {
 		MemberVO mVo = null;
-		String sql = "select * from kakao_info where kakao_email=?";
+		String sql = "select * from kakao_info where user_email=?";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -130,8 +130,8 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				mVo = new MemberVO();
-				mVo.setNickname(rs.getString("kakao_nick"));
-				mVo.setEmail(rs.getString("kakao_email"));
+				mVo.setNickname(rs.getString("user_nick"));
+				mVo.setEmail(rs.getString("user_email"));
 				mVo.setAuth(rs.getInt("user_auth"));
 
 			}
@@ -311,8 +311,8 @@ public class MemberDAO {
 
 	public int kakao_Member(MemberVO vo) {
 		int result = -1;
-		String sql = "MERGE INTO kakao_info USING DUAL ON (kakao_email = " + "?) WHEN NOT MATCHED THEN INSERT "
-				+ "(kakao_email, kakao_nick, user_auth)" + "        VALUES (?, ?,1)";
+		String sql = "MERGE INTO kakao_info USING DUAL ON (user_email = " + "?) WHEN NOT MATCHED THEN INSERT "
+				+ "VALUES (?, ?,0)";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;

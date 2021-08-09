@@ -16,7 +16,7 @@ import com.Login.dto.MemberVO;
 import com.Login.dto.boardVO;
 import com.media.dto.mediaVO;
 
-public class kakao_login_Action implements Action {
+public class naver_login_Action implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
