@@ -127,11 +127,18 @@
 												</div>
 												<div class="card-body">
 													<div style="overflow: auto; height: 300px; width: 100%;">
-														<%-- 														<c:forEach var="medialist" items="${medialist}"> --%>
-														<div></div>
-														<div></div>
-														<%-- 														</c:forEach> --%>
-
+														<c:forEach var="comment" items="${comment}">
+															<div class="container">
+																<div class="row">
+																	<div class="col-md-3">
+																		<div class="alert alert-primary" role="alert">${comment.user_nick}</div>
+																	</div>
+																	<div class="col-md-9">
+																		<div class="alert alert-primary" role="alert">${comment.comment_content }</div>
+																	</div>
+																</div>
+															</div>
+														</c:forEach>
 													</div>
 												</div>
 											</div>

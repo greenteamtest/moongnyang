@@ -1,6 +1,7 @@
 package com.media.controller;
 
 import com.media.controller.action.Action;
+import com.media.controller.action.add_comment_Action;
 import com.media.controller.action.clicklike_Action;
 import com.media.controller.action.mediamain_Action;
 import com.media.controller.action.search_media_Action;
@@ -33,9 +34,9 @@ public class ActionFactory {
 		if (command.equals("view_media")) {
 			action = new view_media_Action();
 		}
-//		if (command.equals("add_comment")) {
-//			action = new add_comment_Action();
-//		}
+		if (command.equals("add_comment")) {
+			action = new add_comment_Action();
+		}
 		if (command.equals("clicklike")) {
 			action = new clicklike_Action();
 		} else {

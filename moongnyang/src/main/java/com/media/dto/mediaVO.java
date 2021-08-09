@@ -12,6 +12,24 @@ public class mediaVO {
 	private int readcnt_media;
 	private String comment_content;
 	private String num_comment;
+	private String comment_email;
+	private int read_check;
+
+	public String getComment_email() {
+		return comment_email;
+	}
+
+	public void setComment_email(String comment_email) {
+		this.comment_email = comment_email;
+	}
+
+	public int getRead_check() {
+		return read_check;
+	}
+
+	public void setRead_check(int read_check) {
+		this.read_check = read_check;
+	}
 
 	public String getComment_content() {
 		return comment_content;
