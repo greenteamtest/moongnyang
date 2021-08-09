@@ -3,41 +3,23 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:include page="../../top&down/header.jsp" flush="ture" />
-<jsp:include page="../../bootstrap/boot.jsp" flush="ture" />
 <html>
 <br><br><br><br>
 <head>
 <meta charset="UTF-8">
 <title>유기 동물</title>
 <style type="text/css">
-table {
-	width: 80%;
-	height: 0px;
-	margin: auto;
-}
-span{
-	width: 120px;
-	text-align:center;
-}
-.mb-3{
-	 margin-top: 0 !important;
-	 margin-bottom: 0 !important;
-	 margin-left: -25 !important;
-	 margin-right: 50 !important;
-	 height: 34px;
-}
+
 </style>
 <script type="text/javascript" src="picnic/select.js"></script>
+<link rel="stylesheet" href="picnic\abandonment\css\abandonment.css" />
 </head>
 <body>
-	
-	
 	<h1 align="center">유기 동물</h1>
 	<form action="BoardServlet_picnic">
 		<input type="hidden" name="command" value="abandonment">
 		<div>
-			<select class="form-select" name="upr_cd" id="upr_cd"
-				onchange="category_org()" style="width: 80%; float:none; margin:0 auto">
+			<select class="form-select" name="upr_cd" id="upr_cd" onchange="category_org()" >
 				<option value="">시/도</option>
 				<option value="6110000">서울특별시</option>
 				<option value="6260000">부산광역시</option>
@@ -59,14 +41,13 @@ span{
 			</select>
 		</div>
 		<div>
-			<select class="form-select" name="org_cd" id="org_cd" style="width: 80%; float:none; margin:0 auto">
+			<select class="form-select" name="org_cd" id="org_cd">
 				<option value="">시/군/구</option>
 			</select>
 		</div>
 		<br>
 		<div>
-			<select class="form-select" name="upkind" id="upkind"
-				onchange="category_kind()" style="width: 80%; float:none; margin:0 auto">
+			<select class="form-select" name="upkind" id="upkind" onchange="category_kind()">
 				<option value="">축종</option>
 				<option value="417000">개</option>
 				<option value="422400">고양이</option>
@@ -74,7 +55,7 @@ span{
 			</select>
 		</div>
 		<div>
-			<select class="form-select" name="kind" id="kind" style="width: 80%; float:none; margin:0 auto">
+			<select class="form-select" name="kind" id="kind">
 				<option value="">품종</option>
 			</select>
 
@@ -96,7 +77,7 @@ span{
 				<tr>
 			</c:if>
 			<td width="450" height="450">
-				<a href="${list.popfile }"><img src="${list.popfile }" width="450" height="450"></a><p></p>
+				<a href="javascript:void(window.open('${list.popfile }', '팝업창 이름','width=500, height=500'))"><img src="${list.popfile }" width="450" height="450"></a><p></p>
 			</td>
 			<td width="450" height="450">			
 				<div class="input-group mb-3">

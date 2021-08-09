@@ -34,23 +34,28 @@ public class Board_View_Action implements Action {
 			if (voF.getFile_name1() != null) {
 				vo.setFile_name1(voF.getFile_name1());
 			} else {
-				vo.setFile_name1("images/test1.jpg");
+				vo.setFile_name1("test.jpg");
 			}
 			if (voF.getFile_name2() != null) {
 				vo.setFile_name2(voF.getFile_name2());
 			} else {
-				vo.setFile_name2("images/test1.jpg");
+				vo.setFile_name2("test1.jpg");
 			}
 			if (voF.getFile_name3() != null) {
 				vo.setFile_name3(voF.getFile_name3());
 			} else {
-				vo.setFile_name3("images/test1.jpg");
+				vo.setFile_name3("test2.jpg");
 			}
 			if (voF.getFile_name4() != null) {
 				vo.setFile_name4(voF.getFile_name4());
 			} else {
-				vo.setFile_name4("images/test1.jpg");
+				vo.setFile_name4("test3.jpg");
 			}
+		}else {
+			vo.setFile_name1("test.jpg");
+			vo.setFile_name2("test1.jpg");
+			vo.setFile_name3("test2.jpg");
+			vo.setFile_name4("test3.jpg");
 		}
 		List<PicnicVO> list = service.picnic_Select2(key);
 

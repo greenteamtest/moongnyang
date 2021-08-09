@@ -1,0 +1,22 @@
+table {
+	width: 80%;
+	height: 0px;
+	margin: auto;
+}
+span{
+	width: 120px;
+	text-align:center;
+}
+.mb-3{
+	 margin-top: 0 !important;
+	 margin-bottom: 0 !important;
+	 margin-left: -25 !important;
+	 margin-right: 50 !important;
+	 height: 34px;
+}
+
+.form-select{
+	width: 80%; 
+	float:none; 
+	margin:0 auto;
+}

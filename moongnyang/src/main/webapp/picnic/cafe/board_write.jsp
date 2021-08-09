@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <jsp:include page="../../top&down/header.jsp" flush="ture" />
-<jsp:include page="../../bootstrap/boot.jsp" flush="ture" />
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!doctype html>
@@ -15,7 +14,7 @@
 			<div class="py-5 text-center">
 				<h2>게시글 수정하기</h2>
 			</div>
-			<form name="frm" method="post" action="BoardServlet_picnic?command=modify_write"	enctype="multipart/form-data">
+			<form name="frm" method="post" action="BoardServlet_picnic?command=modify_write" enctype="multipart/form-data">
 				<input type="hidden" name="command" value="modify_write">
 				<input	type="hidden" name="user_email" value="${loginUser.email}">
 				<input	type="hidden" name="key" value="${vo.key}">
@@ -75,7 +74,6 @@
 								<input class="w-100 btn btn-primary btn-lg" type="submit" value="등록하기">
 							</li>
 						</ul>
-
 					</div>
 			</form>		
 	</div>

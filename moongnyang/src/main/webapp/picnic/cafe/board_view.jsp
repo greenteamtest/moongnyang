@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <jsp:include page="../../top&down/header.jsp" flush="ture" />
-<jsp:include page="../../bootstrap/boot.jsp" flush="ture" />
 <html>
 
 <input type="hidden" id="name" name="name" value="${vo.name }">
@@ -36,71 +35,68 @@ textarea {
 	<iframe style="width: 100%; height: 75px"> </iframe>
 </p>
 <div align="center">
-	<iframe src="picnic/cafe/image_view.jsp"
-		style="width: 80%; height: 500px;">
-	</iframe><br>
-	<form id="f2"method="POST" action="BoardServlet_picnic">
-	<input type="hidden" id="key" name="key" value="${vo.key }">
-	<input type="hidden" name="command" value="modify">
-	
-	<c:set var="email_board" value="${vo.email}" />
-	<c:set var="email_user" value="${loginUser.email}" />
-	<c:if test = "${null != email_board}">
-	<c:choose>				
-					<c:when test = "${email_board eq email_user}">										
-					<input type="submit" value="정보 수정" style="width: 10%; float:none; margin:0 auto">					
+	<iframe src="picnic/cafe/image_view.jsp" style="width: 80%; height: 500px;"> </iframe>
+	<br>
+	<form id="f2" method="POST" action="BoardServlet_picnic">
+		<input type="hidden" id="key" name="key" value="${vo.key }"> 
+		<input type="hidden" name="command" value="modify">
+
+		<c:set var="email_board" value="${vo.email}" />
+		<c:set var="email_user" value="${loginUser.email}" />
+		<c:if test="${null != email_board}">
+			<c:choose>
+				<c:when test="${email_board eq email_user}">
+					<input type="submit" value="정보 수정"
+						style="width: 10%; float: none; margin: 0 auto">
 				</c:when>
-				
-	</c:choose>
-	</c:if>
+			</c:choose>
+		</c:if>
 	</form>
 </div>
 
 <div align="center">
-	<iframe src="picnic/cafe/map_kakao.jsp"
-		style="width: 81%; height: 400px"> </iframe>
+	<iframe src="picnic/cafe/map_kakao.jsp" style="width: 81%; height: 400px"> </iframe>
 </div>
 <body>
-	
+
 	<form method="POST" action="BoardServlet_picnic">
-	<input type="hidden" id="key" name="key" value="${vo.key }">
-	<input type="hidden" id="email" name="email" value="${loginUser.email}">
-	<input type="hidden" name="command" value="write">
-	<div  class="input-group mb-3" style="width: 80%; float:none; margin:0 auto">
-	
-		<input type="text" class="form-control" id="content_re" name="content_re" placeholder="내용을 입력."> 
-		<button class="btn btn-outline-secondary" type="submit" onclick="return contents()">등록</button>
-		
-	</div>
+		<input type="hidden" id="key" name="key" value="${vo.key }"> 
+		<input type="hidden" id="email" name="email" value="${loginUser.email}">
+		<input type="hidden" name="command" value="write">
+		<div class="input-group mb-3" style="width: 80%; float: none; margin: 0 auto">
+			<input type="text" class="form-control" id="content_re" name="content_re" placeholder="내용을 입력.">
+			<button class="btn btn-outline-secondary" type="submit" onclick="return contents()">등록</button>
+
+		</div>
 	</form>
-	
+
 	<c:set var="email1" value="${loginUser.email}" />
 	<c:if test="${empty list}">
-		<div class="input-group mb-3" style="width: 80%; float:none; margin:0 auto" >
-		<input type="text" class="form-control" style="text-align:center" value="게시글이 없습니다" readonly>
+		<div class="input-group mb-3" style="width: 80%; float: none; margin: 0 auto">
+			<input type="text" class="form-control" style="text-align: center" value="게시글이 없습니다" readonly>
 		</div>
 	</c:if>
 	<form method="POST" action="BoardServlet_picnic">
-	<input type="hidden" id="key" name="key" value="${vo.key }">
-	<c:forEach var="list" items="${list }">
-	<c:set var="email2" value="${list.user_email}" />
-		<div class="input-group mb-3" style="width: 80%; float:none; margin:0 auto">
-			<span class="input-group-text">${list.user_email }</span>
-			<input type="text" class="form-control" value="${list.coment_content }" readonly>
-			<span class="input-group-text">${list.coment_date }</span>			
-			<c:choose>
-				<c:when test = "${email1 eq email2}">
-				<input type="hidden" id="num" name="num" value="${list.num }">
-				<input type="hidden" name="command" value="delete">
-				<button class="btn btn-outline-secondary" type="submit" id="delete">삭제</button>
-				</c:when>
-			</c:choose>
-		</div>
-	</c:forEach>
-	</form>	
+		<input type="hidden" id="key" name="key" value="${vo.key }">
+		<c:forEach var="list" items="${list }">
+			<c:set var="email2" value="${list.user_email}" />
+			<div class="input-group mb-3" style="width: 80%; float: none; margin: 0 auto">
+				<span class="input-group-text">${list.user_email }</span> 
+				<input type="text" class="form-control" value="${list.coment_content }" readonly> 
+				<span class="input-group-text">${list.coment_date }</span>
+				<c:choose>
+					<c:when test="${email1 eq email2}">
+						<input type="hidden" id="num" name="num" value="${list.num }">
+						<input type="hidden" name="command" value="delete">
+						<button class="btn btn-outline-secondary" type="submit" id="delete">삭제</button>
+					</c:when>
+				</c:choose>
+			</div>
+		</c:forEach>
+	</form>
 	<%-- ${loginUser.email} --%>
-<p align="center">
-	<iframe style="width: 81%; height: 400px"> </iframe>
-</p>
+	<p align="center">
+		<iframe style="width: 81%; height: 400px"> </iframe>
+	</p>
 </body>
 </html>

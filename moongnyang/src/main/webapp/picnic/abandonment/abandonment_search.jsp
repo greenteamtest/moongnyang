@@ -9,13 +9,7 @@
 <title>뭉냥뭉냥</title>
 <meta charset="utf-8" />
 <script type="text/javascript" src="picnic/abandonment/select.js"></script>
-<style type="text/css">
-.form-select{
-	width: 80%; 
-	float:none; 
-	margin:0 auto;
-}
-</style>
+<link rel="stylesheet" href="picnic\abandonment\css\abandonment_search.css" />
 </head>
 <p align="center">
 	<iframe style="width: 100%; height: 100px"> </iframe>
@@ -74,17 +68,22 @@
 				</div>
 				<div style="text-align: center">
 					<br> <input type="hidden" name="pageNo" value="1">
-					<button type="submit" style="background: white"
-						class="wobble-hor-bottom">
+					<button type="submit" style="background: white" class="wobble-hor-bottom">
 						<img src="picnic/images/loupe.png" width="100px" height="100px">
 					</button>
 				</div>
 
 				<div style="text-align: center">
-					<br> <img src="picnic/images/nongrym.jpg">
+					<br> 
 				</div>
 			</form>
 		</div>
 	</div>
+	<div class='box'>
+  <div class='wave -one'></div>
+  <div class='wave -two'></div>
+  <div class='wave -three'></div>
+  <div class='title'><img src="picnic/images/nongrym.jpg"></div>
+</div>
 </body>
 </html>
