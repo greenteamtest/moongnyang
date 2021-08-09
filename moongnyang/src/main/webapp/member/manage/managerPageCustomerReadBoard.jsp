@@ -63,10 +63,6 @@
 								href="mypageServlet?command=managerPageStaff&email=${loginUser.email}">
 									<span data-feather="users"></span>근태관리 #휴가
 							</a></li>
-							<li class="nav-item"><a class="nav-link"
-								href="mypageServlet?command=managerPageStaff&email=${loginUser.email}">
-									<span data-feather="layers"></span>업무연동
-							</a></li>
 						</ul>
 					</div>
 				</nav>
