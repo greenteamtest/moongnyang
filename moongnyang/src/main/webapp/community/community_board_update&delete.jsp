@@ -57,10 +57,10 @@
 				<section class="col">
 					<div
 						class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm">
-						<img class="me-3" src="assets/brand/bootstrap-logo-white.svg"
-							alt="" width="48" height="38">
+						<img class="me-3" src="img/logo.png"
+							alt="" width="60" height="40">
 						<div class="lh-1">
-							<h1 class="h6 mb-0 text-white lh-1">내가 올린 글</h1>
+							<h1 class="h6 mb-0 text-white lh-1">내가 쓴 게시글</h1>
 							<!--<small>수정 & 삭제</small> -->
 						</div>
 					</div>
@@ -115,9 +115,9 @@
 				<!-- 내가 단 댓글 리스트 시작 -->
 				<section class="col">
 					<div
-						class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm">
-						<img class="me-3" src="../assets/brand/bootstrap-logo-white.svg"
-							alt="" width="48" height="38">
+						class="d-flex align-items-center p-3 my-3 text-black bg-purple rounded shadow-sm">
+						<img class="me-3" src="img/logo.png"
+							alt="" width="60" height="40">
 						<div class="lh-1">
 							<h1 class="h6 mb-0 text-white lh-1">내가 단 댓글</h1>
 						</div>
@@ -139,9 +139,9 @@
 								</div>
 								<div class="col-sm-auto">
 									<!-- 삭제 버튼 (Button trigger modal) -->
-							<button type="button" class="btn btn-outline-secondary"
+									<button type="button" class="btn btn-outline-secondary"
 										onclick="location.href='Community_BoardServlet?command=comment_delete&comment_idx=${comment.comment_idx}&user_email=${comment.user_email}'">삭제</button>
-									
+
 								</div>
 							</div>
 
