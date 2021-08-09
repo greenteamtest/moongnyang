@@ -6,6 +6,12 @@
 	<!-- resultType="com.media.dto.mediaVO"> -->
 	<!-- select * from media_upload order by num_media desc -->
 	<!-- </select> -->
+	<select id="load_mypost_media" parameterType="String"
+		resultType="com.media.dto.mediaVO">
+		select * from media_comment where comment_email_media =
+		#{value}
+		and read_check =1 order by num_media desc
+	</select>
 	<select id="load_comment" parameterType="int"
 		resultType="com.media.dto.mediaVO">
 		SELECT num_media, num_comment, user_email_media,
@@ -46,7 +52,7 @@
 	<insert id="add_comment" parameterType="media">
 		insert into media_comment
 		values(#{num_media},media_comment_seq.nextval,
-		#{user_email_media},#{comment_content},1)
+		#{user_email_media},#{comment_user_email},#{comment_content},1)
 	</insert>
 	<insert id="click_like" parameterType="media">
 		merge into likecnt_media
@@ -63,5 +69,11 @@
 		update MEDIA_UPLOAD set
 		like_media = like_media + 1
 		where num_media=#{num_media}
+	</update>
+	<update id="check_comment" parameterType="media">
+		update media_comment
+		set read_check =0 where num_media =#{num_media} and
+		comment_email_media
+		=#{comment_email_media}
 	</update>
 </mapper>

@@ -14,6 +14,10 @@ public class mediaDAO {
 
 	}
 
+	public List<mediaVO> load_mypost_media(SqlSession session, String email) {
+		return session.selectList("load_mypost_media", email);
+	}
+
 	public List<mediaVO> load_comment(SqlSession session, int num) {
 		return session.selectList("load_comment", num);
 	}
@@ -28,6 +32,10 @@ public class mediaDAO {
 
 	public List<mediaVO> load_medialist(SqlSession session) {
 		return session.selectList("load_medialist");
+	}
+
+	public int check_comment(SqlSession session, mediaVO vo) {
+		return session.update("check_comment", vo);
 	}
 
 	public int add_comment(SqlSession session, mediaVO vo) {

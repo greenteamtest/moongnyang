@@ -24,7 +24,5 @@ public class mediamain_Action implements Action {
 		session.setAttribute("medialist", vo);
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
-//		List<mediaVO> vo = service.load_comment();
-//		session.setAttribute("medialist", vo);
 	}
 }

@@ -17,6 +17,19 @@ public class media_MyBatisService {
 		dao = new mediaDAO();
 	}
 
+	public List<mediaVO> load_mypost_media(String email) {
+		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
+		List<mediaVO> list = null;
+		try {
+			list = dao.load_mypost_media(session, email); // dao에 SqlSession 전송
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
+		}
+		return list;
+	}
+
 	public List<mediaVO> load_comment(int num) {
 		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
 		List<mediaVO> list = null;
@@ -67,6 +80,22 @@ public class media_MyBatisService {
 			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
 		}
 		return list;
+	}
+
+	public int check_comment(mediaVO vo) {
+		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
+		int rs = 0;
+		try {
+			rs = dao.check_comment(session, vo); // dao에 SqlSession 전송
+			if (rs > 0) {
+				session.commit();
+			} else {
+				session.rollback();
+			}
+		} finally {
+			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
+		}
+		return rs;
 	}
 
 	public int upload_media(mediaVO vo) {

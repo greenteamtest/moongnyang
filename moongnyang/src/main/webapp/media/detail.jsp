@@ -121,6 +121,8 @@
 															name="comment_content" placeholder="댓글을 통해 마음을 전하세요!"
 															aria-label="댓글을 통해 마음을 전하세요!"
 															aria-describedby="button-addon2" name="comment">
+														<input type="hidden" name="comment_user_email"
+															value="${media.user_email_media}" id="comment_user_email">
 														<button class="btn btn-outline-secondary" type="submit"
 															id="button-addon2">입력</button>
 													</div>

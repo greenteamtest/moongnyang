@@ -79,25 +79,35 @@
 					<div class="col">인기글</div>
 					<div class="col">
 						<h2>내글 소식</h2>
-						<div style="overflow: scroll;  height: 400px;">Swap
-							the background-color utility and add a `.text-*` color utility to
-							mix up the jumbotron look. Then, mix and matcSwap the
-							background-color utility and add a `.text-*` color utility to mix
-							up the jumbotron look. Then, mix and matcSwap the
-							background-color utility and add a `.text-*` color utility to mix
-							up the jumbotron look. Then, mix and matcSwap the
-							background-color utility and add a `.text-*` color utility to mix
-							up the jumbotron look. Then, mix and matcSwap the
-							background-color utility and add a `.text-*` color utility to mix
-							up the jumbotron look. Then, mix and matcSwap the
-							background-color utility and add a `.text-*` color utility to mix
-							up the jumbotron look. Then, mix and matcSwap the
-							background-color utility and add a `.text-*` color utility to mix
-							up the jumbotron look. Then, mix and matcSwap the
-							background-color utility and add a `.text-*` color utility to mix
-							up the jumbotron look. Then, mix and matcSwap the
-							background-color utility and add a `.text-*` color utility to mix
-							up the jumbotron look. Then, mix and matc</div>
+						<div style="overflow: scroll; height: 400px;">
+							<!-- 댓글 리스트 부분 -->
+							<!--  뽀이치문 -->
+							<c:forEach var="media" items="${media}">
+								<div>
+									<form method="post" action="mediaServlet">
+										<input type="hidden" name="command" value="check_and_go"
+											id="command"> <input type="hidden" name="email"
+											value="${loginUser.email}" id="email"> <input
+											type="hidden" name="num" value="${media.num_media}" id="num">
+										<div
+											class="row g-0 border rounded overflow-hidden flex-md-row mb-4 
+									shadow-sm h-md-250 position-relative">
+											<div class="col p-4 d-flex flex-column position-static">
+												<strong class="d-inline-block mb-2 text-primary">글번호
+													: ${media.num_media}</strong>
+												<p class="card-text mb-auto">${media.user_email_media}님이
+													댓글을 남겼어요!</p>
+
+												<!-- 												<button type="button" class="btn btn-outline" -->
+												<%-- 													onclick="location.href='mediaServlet?command=check_and_go --%>
+												<%-- 												&email=${loginUser.email}&num=${media.num_media}'">이동하기</button> --%>
+												<button type="submit" class="btn btn-outline">이동하기</button>
+											</div>
+										</div>
+									</form>
+								</div>
+							</c:forEach>
+						</div>
 					</div>
 				</div>
 			</div>

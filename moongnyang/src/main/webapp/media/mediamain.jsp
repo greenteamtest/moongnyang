@@ -126,22 +126,26 @@
 													id="command"> <input type="hidden" name="email"
 													value="${loginUser.email}" id="email"> <input
 													type="hidden" name="num" value="${medialist.num_media}"
-													id="num">
-												<div class="col p-4 d-flex flex-column ">
-													<div class="card-header">
-														<div>
-															<h6>빠르게 댓글달기</h6>
-														</div>
-														<div class="input-group mb-3">
-															<input type="text" class="form-control"
-																name="comment_content" placeholder="댓글을 통해 마음을 전하세요!"
-																aria-label="댓글을 통해 마음을 전하세요!"
-																aria-describedby="button-addon2" name="comment">
-															<button class="btn btn-outline-secondary" type="submit"
-																id="button-addon2">입력</button>
+													id="num"> <input type="hidden"
+													name="comment_user_email" value="${medialist.user_email_media}"
+													id="comment_user_email">
+												<c:if test="${!empty loginUser}">
+													<div class="col p-4 d-flex flex-column ">
+														<div class="card-header">
+															<div>
+																<h6>빠르게 댓글달기</h6>
+															</div>
+															<div class="input-group mb-3">
+																<input type="text" class="form-control"
+																	name="comment_content" placeholder="댓글을 통해 마음을 전하세요!"
+																	aria-label="댓글을 통해 마음을 전하세요!"
+																	aria-describedby="button-addon2" name="comment">
+																<button class="btn btn-outline-secondary" type="submit"
+																	id="button-addon2">입력</button>
+															</div>
 														</div>
 													</div>
-												</div>
+												</c:if>
 											</form>
 										</div>
 									</div>
