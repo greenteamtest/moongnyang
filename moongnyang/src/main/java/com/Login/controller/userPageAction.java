@@ -12,6 +12,7 @@ import com.Login.controller.action.Action;
 import com.Login.dao.BoardDAO;
 import com.Login.dto.boardVO;
 import com.media.dto.mediaVO;
+import com.picnic.dto.PicnicVO;
 
 public class userPageAction implements Action {
 
@@ -23,6 +24,8 @@ public class userPageAction implements Action {
 		BoardDAO dao = BoardDAO.getInstance();
 		List<mediaVO> media = media_service.load_mypost_media(email);
 		List<boardVO> boardList = dao.selectUserAnswerBoards(email);
+		List<PicnicVO> picnicList = dao.selectPicnic();
+		request.setAttribute("picnicList", picnicList);
 		request.setAttribute("boardList", boardList);
 		request.setAttribute("media", media);
 

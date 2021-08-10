@@ -97,6 +97,7 @@
 													: ${media.num_media}</strong>
 												<p class="card-text mb-auto">${media.user_email_media}님이
 													댓글을 남겼어요!</p>
+
 												<!-- 												<button type="button" class="btn btn-outline" -->
 												<%-- 													onclick="location.href='mediaServlet?command=check_and_go --%>
 												<%-- 												&email=${loginUser.email}&num=${media.num_media}'">이동하기</button> --%>
@@ -242,6 +243,14 @@
 					<input type="hidden" name="email" value="${loginUser.email}"
 						id="email">
 					<form>
+					<div>
+						<select class="form-select" aria-label="Default select example" name="select_picnicList">
+							<option value="">해당없음</option>
+						<c:forEach var="picnicList" items="${picnicList }" >
+							<option value="${picnicList.key },${picnicList.name }">${picnicList.name }</option>
+						</c:forEach>
+						</select>
+					</div>
 						<div class="mb-3">
 							<label for="recipient-name" class="col-form-label">회원님의
 								사업장에 대해 설명부탁드려요</label>
