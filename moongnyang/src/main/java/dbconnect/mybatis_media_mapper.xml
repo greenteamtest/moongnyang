@@ -6,11 +6,17 @@
 	<!-- resultType="com.media.dto.mediaVO"> -->
 	<!-- select * from media_upload order by num_media desc -->
 	<!-- </select> -->
-	
-	
-	
-	
-	
+
+	<select id="most_recent_media"
+		resultType="com.media.dto.mediaVO">
+		SELECT * FROM (SELECT * FROM
+		media_upload ORDER BY num_media
+		desc)
+		WHERE rownum = 1
+	</select>
+
+
+
 	<select id="load_mypost_community" parameterType="String"
 		resultType="com.media.dto.mediaVO">
 		select * from media_comment where comment_email_media =

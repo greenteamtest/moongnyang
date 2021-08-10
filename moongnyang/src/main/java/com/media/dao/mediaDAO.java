@@ -22,6 +22,10 @@ public class mediaDAO {
 		return session.selectList("load_comment", num);
 	}
 
+	public mediaVO most_recent_media(SqlSession session) {
+		return session.selectOne("most_recent_media");
+	}
+
 	public mediaVO select_media(SqlSession session, int num) {
 		return session.selectOne("select_media", num);
 	}

@@ -8,6 +8,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.Community.dao.CommunityDAO;
+import com.Community.dto.CommunityVO;
 import com.Login.controller.action.Action;
 import com.Login.dao.BoardDAO;
 import com.Login.dto.boardVO;
@@ -23,9 +25,15 @@ public class userPageAction implements Action {
 		String email = request.getParameter("email");
 		BoardDAO dao = BoardDAO.getInstance();
 		List<mediaVO> media = media_service.load_mypost_media(email);
+		mediaVO recent_media = media_service.most_recent_media();
+		CommunityDAO cdao = new CommunityDAO();
+		CommunityVO recent_community = cdao.most_recent_community();
 		List<boardVO> boardList = dao.selectUserAnswerBoards(email);
 		List<PicnicVO> picnicList = dao.selectPicnic();
+
 		request.setAttribute("picnicList", picnicList);
+		request.setAttribute("recent_media", recent_media);
+		request.setAttribute("recent_community", recent_community);
 		request.setAttribute("boardList", boardList);
 		request.setAttribute("media", media);
 

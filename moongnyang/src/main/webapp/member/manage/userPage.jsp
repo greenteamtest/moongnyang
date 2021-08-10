@@ -75,8 +75,35 @@
 			</div>
 			<div class="container">
 				<div class="row">
-					<div class="col">최신글</div>
-					<div class="col">인기글</div>
+					<div class="col">
+						<h2>최신글&nbsp;&nbsp;&nbsp;&nbsp; #미디어</h2>
+						<div style="overflow: scroll; height: 400px;">
+							<div class="h-500 p-5 text-white bg-dark border rounded-3">
+								<div>
+									<video src="media/upload/${recent_media.mediaurl}" width='100%'
+										controls loop></video>
+								</div>
+								<strong class="d-inline-block mb-3 text-success">
+									${recent_media.hashtag_media}</strong>
+								<p>${recent_media.content_media}</p>
+								<button class="btn btn-outline-secondary" type="button">구경하기</button>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<h2>#커뮤니티</h2>
+						<div style="overflow: scroll; height: 400px;">
+							<div class="h-500 p-5 text-white bg-dark border rounded-3">
+								<img src="community/upload/${recent_community.pic_url_1}"
+									class="img-thumbnail" width="200" height="250" alt="...">
+								<strong class="d-inline-block mb-3 text-success">
+									${recent_community.title}</strong>
+								<p>${recent_community.animal_tag}</p>
+								<p>${recent_community.board_tag}</p>
+								<button class="btn btn-outline-secondary" type="button">구경하기</button>
+							</div>
+						</div>
+					</div>
 					<div class="col">
 						<h2>내글 소식</h2>
 						<div style="overflow: scroll; height: 400px;">
@@ -111,28 +138,10 @@
 					</div>
 				</div>
 			</div>
+			<hr>
 			<div class="row align-items-md-stretch">
-				<div class="col-md-6">
-					<div class="h-100 p-5 text-white bg-dark rounded-3">
-						<h2>Change the background</h2>
-						<p>Swap the background-color utility and add a `.text-*` color
-							utility to mix up the jumbotron look. Then, mix and match with
-							additional component themes and more.</p>
-						<button class="btn btn-outline-light" type="button">Example
-							button</button>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="h-100 p-5 bg-light border rounded-3">
-						<h2>Add borders</h2>
-						<p>Or, keep it light and add a border for some added
-							definition to the boundaries of your content. Be sure to look
-							under the hood at the source HTML here as we've adjusted the
-							alignment and sizing of both column's content for equal-height.</p>
-						<button class="btn btn-outline-secondary" type="button">Example
-							button</button>
-					</div>
-				</div>
+				<div class="col-md-6"></div>
+				<div class="col-md-6"></div>
 			</div>
 			<div>
 				<br> <br>
@@ -243,14 +252,15 @@
 					<input type="hidden" name="email" value="${loginUser.email}"
 						id="email">
 					<form>
-					<div>
-						<select class="form-select" aria-label="Default select example" name="select_picnicList">
-							<option value="">해당없음</option>
-						<c:forEach var="picnicList" items="${picnicList }" >
-							<option value="${picnicList.key },${picnicList.name }">${picnicList.name }</option>
-						</c:forEach>
-						</select>
-					</div>
+						<div>
+							<select class="form-select" aria-label="Default select example"
+								name="select_picnicList">
+								<option value="">해당없음</option>
+								<c:forEach var="picnicList" items="${picnicList }">
+									<option value="${picnicList.key },${picnicList.name }">${picnicList.name }</option>
+								</c:forEach>
+							</select>
+						</div>
 						<div class="mb-3">
 							<label for="recipient-name" class="col-form-label">회원님의
 								사업장에 대해 설명부탁드려요</label>
