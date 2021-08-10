@@ -153,10 +153,10 @@ nav[class="navbar navbar-light"] {
 											<img src="health&edu/img/ratings.png" class="rating-icons" alt="rating_icon"> &ensp;&ensp;
 											<c:choose>
 												<c:when test="${place.getAvg() == 0}">
-													<span class="avg_rating">0</span>
+													<span class="avg_rating">0 / 5.0</span>
 												</c:when>
 												<c:otherwise>
-													<span class="avg_rating">${place.getAvg()}</span>
+													<span class="avg_rating">${place.getAvg()} / 5.0</span>
 												</c:otherwise>
 											</c:choose>
 										</li>
@@ -556,7 +556,7 @@ nav[class="navbar navbar-light"] {
 					<input type="hidden" value="https://twitter.com/intent/tweet?text=" />
 
 					<button class="ui linkedin button" id="create-kakao-link-btn">
-						<img alt="..." src="health&edu/place/logo_img/kakao.png" style="width : 1.5rem; height : 1.5rem;"> 
+						<img alt="..." src="health&edu/place/logo_img/kakao.png" style="width: 1.5rem; height: 1.5rem;">
 						<span>kakao talk</span>
 					</button>
 				</div>
@@ -565,7 +565,13 @@ nav[class="navbar navbar-light"] {
 		</div>
 	</div>
 
-	<%@ include file="../footer.jsp"%>
+
+	<footer>
+		<%@ include file="../footer.jsp"%>
+	</footer>
+	<div id="sidebar">
+		<%@ include file="../sidebar.jsp"%>
+	</div>
 
 </body>
 </html>

@@ -135,12 +135,24 @@ str1.innerHTML = Change_board_tag(${board.board_tag});
 					<!-- 글쓴 내용 전부 다 -->
 					<div class="row">
 						<div class="col">
-							<img src="community/upload/${board.pic_url_1}"
-								class="img-thumbnail" alt="...">
+							<c:choose>
+								<c:when test="${empty board.pic_url_1}
+								">
+									<img src="community/upload/noImage.jpg">
+								</c:when>
+								<c:otherwise>
+									<img src="community/upload/${board.pic_url_1}"
+										class="img-thumbnail" alt="...">
+								</c:otherwise>
+							</c:choose>
+
 						</div>
+
+
+
 						<div class="col">
 							<img src="community/upload/${board.pic_url_2}"
-								class="img-thumbnail" alt="...">
+								class="img-thumbnail" alt="noImage.jpg">
 						</div>
 						<div class="col">
 							<img src="community/upload/${board.pic_url_3}"

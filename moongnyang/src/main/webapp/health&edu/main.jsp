@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 
+<%@ include file="/jQuery/jquery.jsp"%>
 <%@ include file="/health&edu/bootstrap/getboot.jsp"%>
 <%@ include file="/health&edu/bootstrap/boot.jsp"%>
 <%@ include file="/semanticUI/semanticUI.jsp"%>
-<%@ include file="/jQuery/jquery.jsp"%>
 <%@ include file="/setting/setting.jsp"%>
+
 
 
 
@@ -208,6 +209,13 @@ div[class="col-lg-6 col-xxl-4 mb-5"] {
 			</div>
 		</main>
 	</div>
+	<footer>
 	<%@ include file="/health&edu/footer.jsp"%>
+	</footer>
+	
+	<div id="sidebar">
+		<%@ include file="sidebar.jsp"%>
+	</div>
+	
 </body>
 </html>

@@ -28,10 +28,6 @@ public class Health_placeDips_Action implements Action {
 				map.put("idx", Integer.parseInt(jo.get("idx").toString()));
 				map.put("state", jo.get("state").toString());
 
-				System.out.println(jo.get("email").toString());
-				System.out.println(Integer.parseInt(jo.get("idx").toString()));
-				System.out.println(jo.get("state").toString());
-
 				int placedips = service.updatePlaceDips(map); // 장소에 찜 cnt
 				int userdips = service.controlUserDips(map); // 유저별 장소 찜 추가
 

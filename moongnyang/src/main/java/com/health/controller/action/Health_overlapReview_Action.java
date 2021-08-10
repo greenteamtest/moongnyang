@@ -30,12 +30,9 @@ public class Health_overlapReview_Action implements Action {
 				vo.setUser_email(jo.get("email").toString());
 
 				review = service.checkOverlapReview(vo);
-				System.out.println(jo.get("idx").toString());
-				System.out.println("review.size ? :" + review.size());
 
 				if (review.size() > 0) {
 					response.getWriter().write(String.valueOf(-1));
-					System.out.println("딸기");
 				} else {
 					response.getWriter().write(String.valueOf(0));
 				}

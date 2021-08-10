@@ -208,11 +208,12 @@
 			<div class="modal-content">
 				<!-- 내용채워넣는곳  -->
 				<div class="modal-header">
-					<h5 class="modal-title" id="staticBackdropLabel">내가박지수다</h5>
+					<h5 class="modal-title" id="staticBackdropLabel">소개</h5>
 					<button type="button" class="btn-close" data-bs-dismiss="modal"
 						aria-label="Close"></button>
 				</div>
-				<div class="modal-body">박지수)안녕핟세요</div>
+				<div class="modal-body">늘 Next Level을 꿈꾸는, 광야의 뉴비 개발자 박지수 입니다 <br>
+				(주특기: ... )</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-bs-dismiss="modal">Close</button>
