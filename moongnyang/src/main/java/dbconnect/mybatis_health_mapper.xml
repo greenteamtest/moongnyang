@@ -165,8 +165,8 @@
 
 	
 		<!-- select count total review -->
-	<select id="slcCntTotReview"  resultType="int">
-		select count(*) from user_review
+	<select id="slcCntTotReview" resultType="int">
+	select count(*) from user_review
 	</select>
 	
 

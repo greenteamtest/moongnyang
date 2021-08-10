@@ -69,45 +69,35 @@
 						</ul>
 					</div>
 				</nav>
-
-				<div
-					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-					<h1 class="h2">총 게시글 조회수</h1>
-					<div class="btn-toolbar mb-2 mb-md-0">
-						<div class="alert alert-secondary" role="alert">${nowdate}</div>
-						<button type="button"
-							class="btn btn-sm btn-outline-secondary dropdown-toggle">
-							<span data-feather="calendar"></span> This week
-						</button>
-					</div>
-				</div>
-
-				<canvas class="my-4 w-100" id="myChart" width="900" height="190"></canvas>
-
-				<div
-					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-					<h1 class="h2">총 게시글 등록수</h1>
-					<div class="btn-toolbar mb-2 mb-md-0"></div>
-				</div>
-				<div class="graphBox">
-					<canvas id="totalView" width="900" height="190"></canvas>
-				</div>
-				<h2>Section title</h2>
+				<hr>
+				<h2>사이트 현황</h2>
+				<div class="alert alert-secondary" role="alert">현재시간
+					${nowdate}</div>
 				<div class="table-responsive">
-					<table class="table table-striped table-sm">
+					<table class="table table-striped table-sm" align="center">
 						<thead>
 							<tr>
 								<th scope="col">총 사용자수</th>
 								<th scope="col">일반회원</th>
 								<th scope="col">사업자회원</th>
 								<th scope="col">총 게시글수</th>
+								<th scope="col">미디어</th>
 								<th scope="col">커뮤니티</th>
-								<th scope="col">PICNIC</th>
 								<th scope="col">Health & Edu</th>
+								<th scope="col">PICNIC</th>
 							</tr>
 						</thead>
 						<tbody>
-
+							<tr>
+								<th scope="col">${totaluser}</th>
+								<th scope="col">${enduser}</th>
+								<th scope="col">${busiuser}</th>
+								<th scope="col">${totalpost}</th>
+								<th scope="col">${media}</th>
+								<th scope="col">${community}</th>
+								<th scope="col">${health}</th>
+								<th scope="col">${picnic}</th>
+							<tr>
 						</tbody>
 					</table>
 				</div>
@@ -129,3 +119,27 @@
 	<script src="member/manage/dashboard.js"></script>
 </body>
 </html>
+
+<!--  차트 지하실에 처박기 -->
+<!-- <div -->
+<!-- 	class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"> -->
+<!-- 	<h1 class="h2">총 게시글 조회수</h1> -->
+<!-- 	<div class="btn-toolbar mb-2 mb-md-0"> -->
+
+<!-- 		<button type="button" -->
+<!-- 			class="btn btn-sm btn-outline-secondary dropdown-toggle"> -->
+<!-- 			<span data-feather="calendar"></span> This week -->
+<!-- 		</button> -->
+<!-- 	</div> -->
+<!-- </div> -->
+
+<!-- <canvas class="my-4 w-100" id="myChart" width="900" height="190"></canvas> -->
+
+<!-- <div -->
+<!-- 	class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"> -->
+<!-- 	<h1 class="h2">총 게시글 등록수</h1> -->
+<!-- 	<div class="btn-toolbar mb-2 mb-md-0"></div> -->
+<!-- </div> -->
+<!-- <div class="graphBox"> -->
+<!-- 	<canvas id="totalView" width="900" height="190"></canvas> -->
+<!-- </div> -->

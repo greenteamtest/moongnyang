@@ -118,5 +118,33 @@
 		values(#{user_email},#{user_nick},#{user_pwd},#{user_auth})
 	</insert>
 
+	<!-- 숫자세는 현장 -->
+	<select id="count_total_user" resultType="int">
+		select count(*) from
+		(select user_email from user_info union all select
+		user_email from
+		kakao_info)
+	</select>
+	<select id="count_end_user" resultType="int">
+		select count(*) from
+		user_info where user_auth=1
+	</select>
+	<select id="count_busi_user" resultType="int">
+		select count(*) from
+		user_info where user_auth=2
+	</select>
+	<select id="count_total_post" resultType="int">
+		select count(*) from
+		(select num_media from media_upload union all select board_idx from
+		community_board union all select PLACE_LIST_IDX from place_list)
+	</select>
+	<select id="count_total_media" resultType="int">
+		select count(*) from
+		media_upload
+	</select>
+	<select id="count_total_community" resultType="int">
+		select count(*)
+		from community_board
+	</select>
 
 </mapper>

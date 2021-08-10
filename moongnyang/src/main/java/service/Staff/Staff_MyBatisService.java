@@ -16,7 +16,7 @@ public class Staff_MyBatisService {
 	public Staff_MyBatisService() {
 		dao = new StaffDAO();
 	}
-	
+
 	public int result_vacation(StaffVO vo) {
 		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
 		int rs = 0;
@@ -279,6 +279,102 @@ public class Staff_MyBatisService {
 			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
 		}
 		return list;
+	}
+
+	public int count_total_user() {
+		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
+		int rs = 0;
+		try {
+			rs = dao.count_total_user(session); // dao에 SqlSession 전송
+			if (rs > 0) {
+				session.commit();
+			} else {
+				session.rollback();
+			}
+		} finally {
+			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
+		}
+		return rs;
+	}
+
+	public int count_end_user() {
+		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
+		int rs = 0;
+		try {
+			rs = dao.count_end_user(session); // dao에 SqlSession 전송
+			if (rs > 0) {
+				session.commit();
+			} else {
+				session.rollback();
+			}
+		} finally {
+			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
+		}
+		return rs;
+	}
+
+	public int count_busi_user() {
+		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
+		int rs = 0;
+		try {
+			rs = dao.count_busi_user(session); // dao에 SqlSession 전송
+			if (rs > 0) {
+				session.commit();
+			} else {
+				session.rollback();
+			}
+		} finally {
+			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
+		}
+		return rs;
+	}
+
+	public int count_total_post() {
+		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
+		int rs = 0;
+		try {
+			rs = dao.count_total_post(session); // dao에 SqlSession 전송
+			if (rs > 0) {
+				session.commit();
+			} else {
+				session.rollback();
+			}
+		} finally {
+			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
+		}
+		return rs;
+	}
+
+	public int count_total_media() {
+		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
+		int rs = 0;
+		try {
+			rs = dao.count_total_media(session); // dao에 SqlSession 전송
+			if (rs > 0) {
+				session.commit();
+			} else {
+				session.rollback();
+			}
+		} finally {
+			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
+		}
+		return rs;
+	}
+
+	public int count_total_community() {
+		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
+		int rs = 0;
+		try {
+			rs = dao.count_total_community(session); // dao에 SqlSession 전송
+			if (rs > 0) {
+				session.commit();
+			} else {
+				session.rollback();
+			}
+		} finally {
+			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
+		}
+		return rs;
 	}
 
 }
