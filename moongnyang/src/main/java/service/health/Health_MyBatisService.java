@@ -252,4 +252,57 @@ public class Health_MyBatisService {
 		}
 		return cnt;
 	}
+
+	// insert place_list - #사업장신청
+	public int insert_place_list(HealthPlaceVo vo) {
+		SqlSession session = MybatisSessionFactory.getSqlSession();
+		int rs = 0;
+		try {
+			rs = dao.insert_place_list(session, vo);
+			if (rs > 0) {
+				session.commit();
+				System.out.println("insert place_info success");
+			} else {
+				session.rollback();
+				System.out.println("insert place_info fail");
+			}
+		} finally {
+			session.close();
+		}
+		return rs;
+	}
+
+	// insert place_info #사업장 신청
+	public int insert_place_info(HealthPlaceVo vo) {
+		SqlSession session = MybatisSessionFactory.getSqlSession();
+		int rs = 0;
+
+		try {
+			rs = dao.insert_place_info(session, vo);
+
+			if (rs > 0) {
+				session.commit();
+				System.out.println("insert place_info success");
+			} else {
+				session.rollback();
+				System.out.println("insert place_info fail");
+			}
+		} finally {
+			session.close();
+		}
+		return rs;
+	}
+
+	// 사업자 신청 현황 조회 ( #관리자 )
+	public List<HealthPlaceVo> selectBuisnessRegStatus() {
+		SqlSession session = MybatisSessionFactory.getSqlSession();
+		List<HealthPlaceVo> list = null;
+
+		try {
+			list = dao.selectBuisnessRegStatus(session);
+		} finally {
+			session.close();
+		}
+		return list;
+	}
 }

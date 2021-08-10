@@ -28,7 +28,7 @@
 	<!-- 업체당 user review -->
 	<select id="slcUser_Review" parameterType="int" resultType="com.health.dto.HealthReviewVo">
 		select place_list_id, user_email, contents, write_date, write_time,like_count,
-		 manager_comment, my_rating
+		manager_comment, my_rating
 		from user_review
 		where place_list_id = #{value}
 		order by 1 , 4 desc, 5 desc
@@ -90,12 +90,16 @@
 			</otherwise>
 		</choose>
 		where place_list_id = #{idx}
+		and approve_state = 1;
 	</update>
 
 
 	<!-- get placedips -->
 	<select id="getPlaceDips" parameterType="Hashmap" resultType="int">
-		select dips_cont from place_info where place_list_id = #{idx}
+		select dips_cont
+		from place_info
+		where place_list_id = #{idx}
+		and approve_state = 1;
 	</select>
 
 
@@ -163,13 +167,45 @@
 		like '%'||#{keyword}||'%'
 	</select>
 
-	
-		<!-- select count total review -->
-	<select id="slcCntTotReview" resultType="int">
-	select count(*) from user_review
-	</select>
-	
 
+	<!-- select count total review -->
+	<select id="slcCntTotReview" resultType="int">
+		select count(*) from user_review
+	</select>
+
+
+	<!-- insert PlaceList for approve -->
+
+	<insert id="istPlaceList" parameterType="place">
+		insert into place_list (place_list_idx, category_id, place)
+		values (SEQ_PLACE_LIST.nextval, #{category_id} , #{place})
+		<selectKey keyProperty="place_list_idx" resultType="int" order="AFTER">
+			select SEQ_PLACE_LIST.currVal from dual
+		</selectKey>
+	</insert>
+
+
+	<!-- select place_list_idx from place_list -->
+	<select id="slcPlaceListIdx" resultType="int">
+		select SEQ_PLACE_LIST.nextval from dual
+	</select>
+
+
+
+	<!-- insert PlaceInfo for approve -->
+	<insert id="istPlaceInfo" parameterType="com.health.dto.HealthPlaceVo">
+		insert into place_info
+		(place_info_idx,place_list_id,phone_num,address,open_time,introduce,pet_kind,sharing_url)
+		values
+		(SEQ_PLACE_INFO.nextval,#{place_list_idx},#{phone_num},#{address},#{open_time},#{introduce},#{pet_kind},#{sharing_url})
+	</insert>
+
+
+	<!-- select business registration status table -->
+	<select id="slcBuisnessRegStatus" resultType="com.health.dto.HealthPlaceVo">
+		select idx, field, place, phone_num, address, open_time, introduce, pet_kind, sharing_url
+		from view_business_reg_status
+	</select>
 
 </mapper>
 

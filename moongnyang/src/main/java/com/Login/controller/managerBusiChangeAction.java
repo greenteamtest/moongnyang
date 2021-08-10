@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.Login.controller.action.Action;
 import com.Login.dao.BoardDAO;
 import com.Login.dto.boardVO;
+import com.health.dto.HealthPlaceVo;
 
 public class managerBusiChangeAction implements Action {
 
@@ -25,6 +26,12 @@ public class managerBusiChangeAction implements Action {
 
 		request.setAttribute("boardList", boardList);
 		System.out.println("요청된건가??");
+
+		// 사업장 신청 현황 가져오기
+		List<HealthPlaceVo> li = null;
+		li = health_service.selectBuisnessRegStatus();
+		request.setAttribute("reg_status", li);
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 	}

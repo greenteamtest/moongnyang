@@ -67,4 +67,16 @@ public class HealthDAO {
 		return session.selectOne("slcCntTotReview");
 	}
 
+	public int insert_place_list(SqlSession session, HealthPlaceVo vo) { // insert place_list #사업장
+		return session.insert("istPlaceList", vo);
+	}
+
+	public int insert_place_info(SqlSession session, HealthPlaceVo vo) { // insert place_list #사업장
+		return session.insert("istPlaceInfo", vo);
+	}
+
+	public List<HealthPlaceVo> selectBuisnessRegStatus(SqlSession session) { // insert place_list #사업장
+		return session.selectList("slcBuisnessRegStatus");
+	}
+
 }
