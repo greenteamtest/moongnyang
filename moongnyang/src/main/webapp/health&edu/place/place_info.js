@@ -4,6 +4,7 @@
 
 let userEmail = $('#write_container').find('input[type="hidden"]').val();
 let clickTarget;
+let placeName ;
 
 const showPlaceInfoAJAX = (param) => {
 	$.ajax({
@@ -25,6 +26,7 @@ const showPlaceInfoAJAX = (param) => {
 					imgs[index].src = `health&edu/place/place_img/${rs[0].place}_${rs[0].idx}_${index}.png`;
 				}
 			}
+			placeName = rs[0].place;
 			$(".place").html(rs[0].place);
 			$("#header_comment").html(rs[0].place);
 			$(".address").html(rs[0].address);
@@ -167,6 +169,7 @@ $(document).on('click', '.card-img-top', (e) => {
 	clickTarget = param.idx;
 	showPlaceInfoAJAX(param);
 	showReviewsAJAX(param);
+	$('.title').next().hide();
 
 })
 
@@ -185,9 +188,6 @@ $('.title').click((e) => {
 })
 
 
-$('.card-img-top').click(() => {
-	$('.title').next().hide();
-})
 
 
 
@@ -227,8 +227,8 @@ $('.ui.button').click(() => { // static modal hide
 
 
 $('#searchmapBtn').click(() => {
-	var t = `https://map.kakao.com/link/map/${placeY},${placeX}`;
-	window.open('about:blank').location.href = t;
+	var link = `https://map.kakao.com/link/to/${placeName},${placeY},${placeX}`;
+	window.open('about:blank').location.href = link;
 })
 
 
