@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.Community.dao.CommunityDAO;
 import com.Login.controller.action.Action;
 import com.Login.dao.BoardDAO;
 import com.Login.dao.MemberDAO;
@@ -33,10 +34,11 @@ public class login_Action implements Action {
 			String pwd = request.getParameter("pwd");
 			MemberDAO dao = MemberDAO.getInstance();
 			BoardDAO bdao = BoardDAO.getInstance();
+			CommunityDAO cdao = new CommunityDAO();
 			StaffDAO_org sdao = StaffDAO_org.getInstance();
 			StaffVO_org svo = new StaffVO_org();
 			int answerboard_check = dao.count_answer(email);
-//			int answerboard_check = dao.count_answer(userid);
+//			int community_check = cdao.count_community_comment(email);
 			int media_check = media_service.count_media_comment(email);
 			int unread = answerboard_check + media_check;
 			System.out.println("댓글중 확인안된것  : " + media_check + "개");

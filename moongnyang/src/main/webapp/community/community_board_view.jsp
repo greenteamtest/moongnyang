@@ -203,6 +203,7 @@ str1.innerHTML = Change_board_tag(${board.board_tag});
 						<!-- 로그인 되어 있을 때  -->
 						<form name="frm" method="post" action="Community_BoardServlet">
 							<input type="hidden" name="command" value="comment_write">
+							 <input type="hidden" name="board_user_email" value="${board.user_email}">
 							<input type="hidden" name="board_idx" value="${board.board_idx}">
 							<input type="hidden" name="user_email" value="${loginUser.email}">
 							<b>${loginUser.email}</b>
