@@ -205,6 +205,7 @@ str1.innerHTML = Change_board_tag(${board.board_tag});
 							<input type="hidden" name="command" value="comment_write">
 							<input type="hidden" name="board_idx" value="${board.board_idx}">
 							<input type="hidden" name="user_email" value="${loginUser.email}">
+							   <input type="hidden" name="board_user_email" value="${board.user_email}">
 							<b>${loginUser.email}</b>
 							<div class="row g-0">
 								<div class="col-sm-6 col-md-8">

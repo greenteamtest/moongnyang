@@ -8,8 +8,15 @@ public class Community_CommentVO {
 	private String comment_content;
 	private Integer board_idx;
 	private String write_date;
+	private String board_user_email;
 	
 	
+	public String getBoard_user_email() {
+		return board_user_email;
+	}
+	public void setBoard_user_email(String board_user_email) {
+		this.board_user_email = board_user_email;
+	}
 	public Integer getComment_idx() {
 		return comment_idx;
 	}
