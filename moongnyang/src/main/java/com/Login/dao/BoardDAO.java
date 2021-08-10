@@ -411,7 +411,8 @@ public class BoardDAO {
 	}
 	//피크닉 게시판에 이메일값(키값) 넣기
 	public void updatePicnicAuth(String email, String key) {
-		String sql = "update picnic set email=? where key=?";
+		String sql = "update picnic_list set email=? where key=?";
+		System.out.println(sql);
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -419,6 +420,8 @@ public class BoardDAO {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, email);
 			pstmt.setString(2, key);
+			System.out.println(email);
+			System.out.println(key);
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

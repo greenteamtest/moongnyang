@@ -108,11 +108,12 @@
 						</div>
 						<div class="mb-3">
 							<label for="recipient-name" class="col-form-label">업체명</label>
-							<div class="alert alert-dark" role="alert" id="name">${board.place_name}</div>
+							<div class="alert alert-dark" role="alert">${board.place_name}</div>
 						</div>
 						<div class="mb-3">
 							<label for="recipient-name" class="col-form-label">Key</label>
-							<div class="alert alert-dark" role="alert" id="key">${board.place_key}</div>
+							<div class="alert alert-dark" role="alert">${board.place_key}</div>
+							<input type="hidden" name="key" id="key" value="${board.place_key}">
 						</div>
 						<div class="mb-3">
 							<label for="message-text" class="col-form-label">비밀번호확인</label> 

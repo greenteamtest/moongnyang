@@ -45,15 +45,15 @@
 								<div class="gallery">
 									<a href="" class="image filtered span-2-5" data-position="top"><img id="img2" src="" alt="" /></a>							
 									<script>
-										const img2 = window.parent.document.getElementById("fileNm1").value;
-										document.getElementById('img2').src="/upload/"+img2;
+										const img2 = window.parent.document.getElementById("fileNm2").value;
+										document.getElementById('img2').src="../upload/"+img2;
 									</script>
 								</div>
 								<div class="gallery">
 									<a href="" class="image filtered span-2-5" data-position="top"><img id="img3" src="" alt="" /></a>
 									<script>
-										const img3 = window.parent.document.getElementById("fileNm1").value;
-										document.getElementById('img3').src="upload/"+img3;
+										const img3 = window.parent.document.getElementById("fileNm3").value;
+										document.getElementById('img3').src="../upload/"+img3;
 									</script>
 								</div>
 								<div class="gallery">

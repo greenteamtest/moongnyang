@@ -17,6 +17,7 @@ public class managerPageBusiUpdateBoardAction implements Action {
 
 		String email = request.getParameter("email");
 		String key = request.getParameter("key");
+		System.out.println("1" +key);
 		BoardDAO dao = BoardDAO.getInstance();
 		dao.updateUserAuthbusiness(email);
 		dao.deleteUpdateListbusiness(email);
