@@ -224,8 +224,8 @@ public class CommunityDAO {
 	public void insertComment(Community_CommentVO ccVO) {
 
 		String sql = "INSERT INTO community_board_comment"
-				+ "	(COMMENT_IDX,USER_EMAIL,COMMENT_CONTENT,BOARD_IDX,WRITE_DATE,board_user_email)" + "	VALUES"
-				+ "	(SEQ_COMMUNITY_BOARD_COMMENT.nextval,?,?,?,default,?)";
+				+ "	(COMMENT_IDX,USER_EMAIL,COMMENT_CONTENT,BOARD_IDX,WRITE_DATE)" + "	VALUES"
+				+ "	(SEQ_COMMUNITY_BOARD_COMMENT.nextval,?,?,?,default)";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -237,7 +237,6 @@ public class CommunityDAO {
 			pstmt.setString(1, ccVO.getUser_email());
 			pstmt.setString(2, ccVO.getComment_content());
 			pstmt.setInt(3, ccVO.getBoard_idx());
-			pstmt.setString(4, ccVO.getBoard_user_email());
 
 			pstmt.executeUpdate(); // 실행
 		} catch (Exception e) {
@@ -454,5 +453,107 @@ public class CommunityDAO {
 			DBManager.close(conn, stmt, rs);
 		}
 		return list;
+	}
+
+	public int count_community(String email) {
+		String sql = "select count(*) from community_board_comment where USER_EMAIL='" + email
+				+ "' and check_comment=1";
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		try {
+			conn = DBManager.getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+
+			while (rs.next()) { // 이동은 행(로우) 단위로
+				// 모든 컬럼 다 가져올 필요는 없어서 화면에 표시되는것+값넘길때 필요한 값만 VO에 넣어줌
+				result = rs.getInt("count(*)");
+				System.out.println("결과 : " + result);
+			} // while문 끝
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, stmt, rs);
+		}
+		return result;
+	}// 끝
+
+	public List<Community_CommentVO> load_mypost_community(String email) {
+		String sql = "select * from community_board_comment where USER_EMAIL = '" + email
+				+ "' and check_comment =1 order by comment_idx desc";
+
+		List<Community_CommentVO> list = new ArrayList<Community_CommentVO>();
+
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = DBManager.getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+
+			while (rs.next()) { // 이동은 행(로우) 단위로
+				Community_CommentVO cVO = new Community_CommentVO();
+				// 모든 컬럼 다 가져올 필요는 없어서 화면에 표시되는것+값넘길때 필요한 값만 VO에 넣어줌
+				cVO.setComment_idx(rs.getInt("COMMENT_IDX"));
+				cVO.setUser_email(rs.getString("USER_EMAIL"));
+				cVO.setComment_content(rs.getString("COMMENT_CONTENT"));
+				cVO.setBoard_idx(rs.getInt("BOARD_IDX"));
+				cVO.setBoard_user_email(rs.getString("BOARD_USER_EMAIL"));
+
+				list.add(cVO);
+			} // while문 끝
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, stmt, rs);
+		}
+		return list;
+	}
+
+	public CommunityVO most_recent_community() {
+		String sql = "SELECT * FROM (SELECT * FROM community_board ORDER BY BOARD_IDX desc) WHERE rownum = 1";
+
+		CommunityVO cVO = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				cVO = new CommunityVO();
+
+				cVO.setBoard_idx(rs.getInt("BOARD_IDX"));
+				cVO.setUser_email(rs.getString("USER_EMAIL"));
+				cVO.setTitle(rs.getString("TITLE"));
+				cVO.setContents(rs.getString("CONTENTS"));
+				cVO.setAnimal_tag(rs.getInt("ANIMAL_TAG"));
+				cVO.setBoard_tag(rs.getInt("BOARD_TAG"));
+				cVO.setRead_count(rs.getInt("READ_COUNT"));
+				cVO.setLike_count(rs.getInt("LIKE_COUNT"));
+				cVO.setWrite_date(rs.getString("WRITE_DATE"));
+				// 사진 경로
+				cVO.setPic_url_1(rs.getString("PIC_URL_1"));
+				cVO.setPic_url_2(rs.getString("PIC_URL_2"));
+				cVO.setPic_url_3(rs.getString("PIC_URL_3"));
+				cVO.setPic_url_4(rs.getString("PIC_URL_4"));
+				cVO.setPic_url_5(rs.getString("PIC_URL_5"));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return cVO;
 	}
 }// CommunityDAO{
