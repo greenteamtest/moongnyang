@@ -76,7 +76,10 @@
 			<div class="container">
 				<div class="row">
 					<div class="col">
-						<h2>최신글&nbsp;&nbsp;&nbsp;&nbsp; #미디어</h2>
+						<h2>
+							최신글&nbsp;&nbsp;&nbsp;&nbsp; <a
+								href="mediaServlet?command=mediamain">#미디어</a>
+						</h2>
 						<div style="overflow: scroll; height: 400px;">
 							<div class="h-500 p-5 text-white bg-dark border rounded-3">
 								<div>
@@ -86,12 +89,15 @@
 								<strong class="d-inline-block mb-3 text-success">
 									${recent_media.hashtag_media}</strong>
 								<p>${recent_media.content_media}</p>
-								<button class="btn btn-outline-secondary" type="button">구경하기</button>
+								<button class="btn btn-outline-secondary" type="button"
+									onclick="location.href='mediaServlet?command=view_media&num=${recent_media.num_media}'">구경하기</button>
 							</div>
 						</div>
 					</div>
 					<div class="col">
-						<h2>#커뮤니티</h2>
+						<h2>
+							<a href="Community_BoardServlet?command=board_list">#커뮤니티</a>
+						</h2>
 						<div style="overflow: scroll; height: 400px;">
 							<div class="h-500 p-5 text-white bg-dark border rounded-3">
 								<img src="community/upload/${recent_community.pic_url_1}"
@@ -100,7 +106,8 @@
 									${recent_community.title}</strong>
 								<p>${recent_community.animal_tag}</p>
 								<p>${recent_community.board_tag}</p>
-								<button class="btn btn-outline-secondary" type="button">구경하기</button>
+								<button class="btn btn-outline-secondary" type="button"
+									onclick="location.href='Community_BoardServlet?command=board_view&board_idx=${recent_community.board_idx}'">구경하기</button>
 							</div>
 						</div>
 					</div>

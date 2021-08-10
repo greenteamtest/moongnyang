@@ -72,8 +72,16 @@
 						<div class="container">
 							<div class="row">
 								<div>
-									<video src="media/upload/${media.mediaurl}" width='500'
-										controls loop></video>
+									<div class="container">
+										<div class="row">
+											<div class="col-md-1"></div>
+											<div class="col-md-10">
+												<video src="media/upload/${media.mediaurl}" width='100%'
+													controls loop></video>
+												<div class="col-md-1"></div>
+											</div>
+										</div>
+									</div>
 								</div>
 								<div class="col-md-12">
 									<div class="card md-center">
@@ -175,7 +183,7 @@
 					<div class="p-4 mb-3 bg-light rounded">
 						<h4 class="fst-italic">미디어</h4>
 						<p class="mb-0">여러분의 사랑스러운 천사들과의 소중한 추억을 담아, 모두와 공유하고 주인공이
-							되어보세요!//지금 DB연결하고 하면 정상적으로 기능수행합니다ㅡ조금만 기다려주세요(ㅠㅅㅠ)</p>
+							되어보세요!</p>
 					</div>
 					<div class="p-4">
 						<div>
@@ -192,7 +200,6 @@
 										<button class="btn btn-primary" type="button"
 											data-bs-toggle="modal" data-bs-target="#uploadeMedia">글올리기</button>
 									</c:if>
-									<button class="btn btn-primary" type="button">새글보기</button>
 								</div></li>
 						</ol>
 					</div>
