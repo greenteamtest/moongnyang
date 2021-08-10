@@ -420,8 +420,6 @@ public class BoardDAO {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, email);
 			pstmt.setString(2, key);
-			System.out.println(email);
-			System.out.println(key);
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

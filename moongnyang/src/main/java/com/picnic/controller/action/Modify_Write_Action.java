@@ -45,8 +45,6 @@ public class Modify_Write_Action implements Action {
 	        String file2 = multi.getFilesystemName("file2");
 	        String file3 = multi.getFilesystemName("file3");
 	        String file4 = multi.getFilesystemName("file4");
-	        System.out.println(file1);
-	        System.out.println(savePath);
 		PicnicVO vo = new PicnicVO();
 		vo.setName(multi.getParameter("name"));
 		vo.setPlace(multi.getParameter("address"));

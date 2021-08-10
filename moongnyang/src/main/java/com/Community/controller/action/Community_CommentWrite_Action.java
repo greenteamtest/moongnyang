@@ -9,29 +9,27 @@ import javax.servlet.http.HttpServletResponse;
 import com.Community.dao.CommunityDAO;
 import com.Community.dto.Community_CommentVO;
 
-public class Community_CommentWrite_Action implements Community_Action {
+public class Community_CommentWrite_Action implements Community_Action{
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		request.setCharacterEncoding("UTF-8");
-
-		String board_idx = request.getParameter("board_idx");
+		
+		String board_idx=request.getParameter("board_idx");
 		String user_email = request.getParameter("user_email");
 		String comment_content = request.getParameter("comment_content");
-		String board_user_email = request.getParameter("board_user_email");
-
-		Community_CommentVO ccVO = new Community_CommentVO();
-
+		
+		Community_CommentVO ccVO=new Community_CommentVO();
+		
 		ccVO.setBoard_idx(Integer.parseInt(board_idx));
 		ccVO.setUser_email(user_email);
 		ccVO.setComment_content(comment_content);
-		ccVO.setBoard_user_email(board_user_email);
 		/* comment_idx, write_date 는 디폴트 값 넣을 것임 - (시퀀스값, 오늘 일시) */
-
-		/* Dao클래스 */
-		CommunityDAO cDAO = CommunityDAO.getInstance();
+		
+		/*Dao클래스 */
+		CommunityDAO cDAO=CommunityDAO.getInstance();
 		cDAO.insertComment(ccVO);
-
+		
 		new Community_BoardView_Action().execute(request, response);
 	}
 }

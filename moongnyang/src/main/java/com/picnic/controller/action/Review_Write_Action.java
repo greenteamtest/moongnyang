@@ -19,9 +19,6 @@ public class Review_Write_Action implements Action{
 		vo.setKey(request.getParameter("key"));
 		vo.setUser_email(request.getParameter("email"));
 		vo.setComment_content(request.getParameter("content_re"));
-		System.out.println(vo.getKey());
-		System.out.println(vo.getUser_email());
-		System.out.println(vo.getComment_content());
 		service.picnic_Write(vo);
 		
 		PicnicVO pVo = service.picnic_Select(request.getParameter("key"));
