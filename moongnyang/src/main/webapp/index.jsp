@@ -14,19 +14,46 @@
 
 <title>뭉냥뭉냥-반려동물과의 즐거운 하루 !</title>
 <!-- Favicon-->
+<!-- Custom styles for this template -->
+<link href="navbar.css" rel="stylesheet">
+<!-- Javascript -->
+<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
 </head>
 <body id="page-top">
+	<br>
+	<br>
+	<br>
+	<br>
 	<!-- Navigation-->
-	<!-- Masthead-->
-	<div>
-		<br> <br> <br> <br> <br>
-	</div>
+	<div class="container">
+			<header
+				class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 "><!-- mb-4 border-bottom -->
+				<div
+					class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+					<!--         <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg> -->
+				</div>
+
+				<ul
+					class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+					<li><a href="BoardServlet_picnic?command=picnic" class="nav-link px-2 link-dark">Picnic</a></li>
+					<li><a href="controller.do?command=main" class="nav-link px-2 link-dark">Health & Edu</a></li>
+					<li><a href="Community_BoardServlet?command=board_list" class="nav-link px-2 link-dark">Community</a></li>
+					<li><a href="mediaServlet?command=mediamain" class="nav-link px-2 link-dark">Media</a></li>
+					<li><a href="BoardServlet_picnic?command=abandonment_search" class="nav-link px-2 link-dark">Abandoned
+							Pets</a></li>
+				</ul>
+
+				<div class="col-md-3 text-end">
+					<!-- 간격 맞춰주기 위한 div -->
+				</div>
+			</header>
+		</div>
+		<!-- 네비게이션 -->
 	<header class="masthead">
 		<div class="container">
 			<div class="masthead-subheading">강아지 고양이 반려동물 커뮤니티</div>
 			<div class="masthead-heading text-uppercase">뭉냥뭉냥</div>
-
 		</div>
 	</header>
 
