@@ -24,8 +24,9 @@ public class Modify_Write_Action implements Action {
 	 
 	        // 파일이 업로드될 실제 tomcat 폴더의 경로 (WebContent 기준)
 	    
-	       // String savePath = request.getSession().getServletContext().getRealPath("/upload"); 
-	        String savePath = "C:/Users/hodori/git/moongnyang/moongnyang/src/main/webapp/picnic/upload";
+	       String savePath = request.getSession().getServletContext().getRealPath("/picnic/upload"); 
+	      
+	       //String savePath = "C:/Users/hodori/git/moongnyang/moongnyang/src/main/webapp/picnic/upload";
 	        // 
 	        try{
 	            multi=new MultipartRequest(
@@ -44,7 +45,8 @@ public class Modify_Write_Action implements Action {
 	        String file2 = multi.getFilesystemName("file2");
 	        String file3 = multi.getFilesystemName("file3");
 	        String file4 = multi.getFilesystemName("file4");
-		
+	        System.out.println(file1);
+	        System.out.println(savePath);
 		PicnicVO vo = new PicnicVO();
 		vo.setName(multi.getParameter("name"));
 		vo.setPlace(multi.getParameter("address"));

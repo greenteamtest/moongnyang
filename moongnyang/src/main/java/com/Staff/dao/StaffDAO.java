@@ -10,11 +10,11 @@ public class StaffDAO {
 	public StaffDAO() {
 
 	}
-	
+
 	public int result_vacation(SqlSession session, StaffVO vo) {
 		return session.update("result_vacation", vo);
 	}
-	
+
 	public int result_timeover(SqlSession session, StaffVO vo) {
 		return session.update("result_timeover", vo);
 	}
@@ -78,8 +78,28 @@ public class StaffDAO {
 	public StaffVO select_vacation(SqlSession session, int num) {
 		return session.selectOne("select_vacation", num);
 	}
+
 	public StaffVO select_timeover(SqlSession session, int num) {
 		return session.selectOne("select_timeover", num);
+	}
+
+	public int count_total_user(SqlSession session) {
+		return session.selectOne("count_total_user");
+	}
+	public int count_end_user(SqlSession session) {
+		return session.selectOne("count_end_user");
+	}
+	public int count_busi_user(SqlSession session) {
+		return session.selectOne("count_busi_user");
+	}
+	public int count_total_post(SqlSession session) {
+		return session.selectOne("count_total_post");
+	}
+	public int count_total_media(SqlSession session) {
+		return session.selectOne("count_total_media");
+	}
+	public int count_total_community(SqlSession session) {
+		return session.selectOne("count_total_community");
 	}
 
 }

@@ -246,7 +246,7 @@ public class Health_MyBatisService {
 		int cnt = 0;
 
 		try {
-			cnt = dao.selectIdxForSearchingKeyword(session, map);
+			cnt = dao.selectCntTotReview(session);
 		} finally {
 			session.close();
 		}

@@ -89,10 +89,11 @@ public class Picnic_MyBatisService {
 		}
 		return;
 	}
+
 	public PicnicVO image_Select(String str) {
 
 		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
-			PicnicVO vo = null;
+		PicnicVO vo = null;
 		try {
 			vo = dao.image_Select(session, str); // dao에 SqlSession 전송
 		} catch (Exception e) {
@@ -102,12 +103,13 @@ public class Picnic_MyBatisService {
 		}
 		return vo;
 	}
+
 	public void board_Update(PicnicVO vo) {
 
 		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
 		try {
 			dao.board_Update(session, vo); // dao에 SqlSession 전송
-		
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -115,12 +117,13 @@ public class Picnic_MyBatisService {
 		}
 		return;
 	}
+
 	public void board_Update_Image(PicnicVO vo) {
 
 		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
 		try {
 			dao.board_Update_Image(session, vo); // dao에 SqlSession 전송
-		
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -128,12 +131,13 @@ public class Picnic_MyBatisService {
 		}
 		return;
 	}
-	public int count_picnic_comment(String email) {
+
+	public int count_picnic_comment() {
 		SqlSession session = MybatisSessionFactory.getSqlSession();
-		int rs=0;
+		int rs = 0;
 		try {
-			rs = dao.count_picnic_comment(session, email); // dao에 SqlSession 전송
-			if(rs > 0) {
+			rs = dao.count_picnic_comment(session); // dao에 SqlSession 전송
+			if (rs > 0) {
 				session.commit();
 			} else {
 				session.rollback();

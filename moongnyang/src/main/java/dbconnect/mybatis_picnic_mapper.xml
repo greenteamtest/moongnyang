@@ -54,14 +54,14 @@
 	<update id="board_Update_Image" parameterType="picnic">
 		MERGE
 		INTO PICNIC_IMAGE USING DUAL ON (KEY = #{key})
-		WHEN MATCHED THEN UPDATE
+		WHEN MATCHED THEN UPDATE 
 		SET FILE_NAME1=#{file_name1}, FILE_NAME2=#{file_name2},
 		FILE_NAME3=#{file_name3}, FILE_NAME4=#{file_name4}
 		WHEN NOT MATCHED THEN INSERT(KEY, FILE_NAME1, FILE_NAME2, FILE_NAME3,
 		FILE_NAME4) VALUES(#{key}, #{file_name1}, #{file_name2},
 		#{file_name3}, #{file_name4})
 	</update>
-	<select id="count_picnic_comment" parameterType="String" resultType="int">
+	<select id="count_picnic_comment" resultType="int">
 		select count(*) from picnic_comment
 	</select>
 </mapper>

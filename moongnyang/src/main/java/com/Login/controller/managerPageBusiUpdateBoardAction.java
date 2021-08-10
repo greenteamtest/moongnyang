@@ -16,9 +16,11 @@ public class managerPageBusiUpdateBoardAction implements Action {
 		// TODO Auto-generated method stub
 
 		String email = request.getParameter("email");
+		String key = request.getParameter("key");
 		BoardDAO dao = BoardDAO.getInstance();
 		dao.updateUserAuthbusiness(email);
 		dao.deleteUpdateListbusiness(email);
+		dao.updatePicnicAuth(email, key);
 
 		new managerBusiChangeAction().execute(request, response);
 	}
