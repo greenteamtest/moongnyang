@@ -17,6 +17,9 @@
 		VALUES
 		(SEQ_COMMUNITY_BOARD_COMMENT.nextval,#{user_email},#{comment_content},#{board_idx},default)
 	</insert>
+<!-- 	<select> -->
+	
+<!-- 	</select> -->
 	<!-- <delete id="delete" parameterType="community"> -->
 	<!-- delete from COMMUNITY_BOARD -->
 	<!-- where num =#{num} -->

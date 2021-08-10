@@ -63,4 +63,8 @@ public class HealthDAO {
 		return session.selectList("slcIdxForSearchingKeyword", map);
 	}
 
+	public int selectCntTotReview(SqlSession session) { //
+		return session.selectOne("slcCntTotReview");
+	}
+
 }

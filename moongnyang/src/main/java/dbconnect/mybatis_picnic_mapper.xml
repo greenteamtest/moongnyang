@@ -61,7 +61,7 @@
 		FILE_NAME4) VALUES(#{key}, #{file_name1}, #{file_name2},
 		#{file_name3}, #{file_name4})
 	</update>
-	<select id="count_picnic_comment" parameterType="String" resultType="int">
+	<select id="count_picnic_comment" resultType="int">
 		select count(*) from picnic_comment
 	</select>
 </mapper>

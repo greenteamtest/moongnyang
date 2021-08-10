@@ -34,6 +34,10 @@ public class mediaDAO {
 		return session.selectList("load_medialist");
 	}
 
+	public int count_media_comment(SqlSession session, String email) {
+		return session.selectOne("count_media_comment", email);
+	}
+
 	public int check_comment(SqlSession session, mediaVO vo) {
 		return session.update("check_comment", vo);
 	}

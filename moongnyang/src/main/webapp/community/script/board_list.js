@@ -1,11 +1,23 @@
-function colorChange(x){
-	 var str = document.getElementById("button1");
-	
-	
-	if (str == 0) {
-		return "기타";
-	}
- var str = document.getElementById("text");
+ function alertDialogBox() {
 
-    str.innerHTML = "이 문장으로 바뀌었습니다!";
+        alert("확인을 누를 때까지 다른 작업을 할 수 없어요!");
+
+    }
+
+
+
+
+
+function filterCheck()  {
+
+	if (document.frm.animal_tag[0].checked== false) {
+		alert('동물 태그 중 하나이상을 선택하세요');
+		return false;
+	}
+	if (document.frm.board_tag.value == 0) {
+		alert('게시판 태그 중 하나이상을 선택하세요');
+		return false;
+	}
+
+	return true;
 }

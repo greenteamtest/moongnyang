@@ -6,6 +6,25 @@
 	<!-- resultType="com.media.dto.mediaVO"> -->
 	<!-- select * from media_upload order by num_media desc -->
 	<!-- </select> -->
+	
+	
+	
+	
+	
+	<select id="load_mypost_community" parameterType="String"
+		resultType="com.media.dto.mediaVO">
+		select * from media_comment where comment_email_media =
+		#{value}
+		and read_check =1 order by num_media desc
+	</select>
+	<select id="count_media_comment" parameterType="String"
+		resultType="int">
+		select count(*)
+		from
+		media_comment where comment_email_media
+		=#{value} and
+		read_check =1
+	</select>
 	<select id="load_mypost_media" parameterType="String"
 		resultType="com.media.dto.mediaVO">
 		select * from media_comment where comment_email_media =

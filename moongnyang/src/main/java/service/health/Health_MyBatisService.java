@@ -239,4 +239,17 @@ public class Health_MyBatisService {
 		}
 		return list;
 	}
+
+	// select count total review
+	public int selectCntTotReview() {
+		SqlSession session = MybatisSessionFactory.getSqlSession();
+		int cnt = 0;
+
+		try {
+			cnt = dao.selectCntTotReview(session);
+		} finally {
+			session.close();
+		}
+		return cnt;
+	}
 }

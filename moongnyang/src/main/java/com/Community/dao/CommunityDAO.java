@@ -8,12 +8,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.ibatis.session.SqlSession;
-
 import com.Community.dto.CommunityVO;
 import com.Community.dto.Community_CommentVO;
 import com.Community.dto.DBManager;
-import com.media.dto.mediaVO;
 
 public class CommunityDAO {
 
@@ -407,5 +404,56 @@ public class CommunityDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	/* 게시글 리스트에서 필터 적용하여 검색 */
+	//수정 중 .... !!! 
+	public List<CommunityVO> selectFilteredBoards(String x,String y) {
+		// x는 animal_tag=n 으로 이루어진 문자열, 
+		// y는 board_tag=n 으로 이루어진 문자열, 
+		
+		String sql = "select * from community_board "
+				+"where ("+x+")"
+				+ "and ("+y+")"
+				+ "order by board_idx desc";
+		
+		////////////////////////////////////////////////
+		List<CommunityVO> list = new ArrayList<CommunityVO>();
+
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = DBManager.getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+
+			while (rs.next()) { // 이동은 행(로우) 단위로
+				CommunityVO cVO = new CommunityVO();
+				cVO.setBoard_idx(rs.getInt("BOARD_IDX"));
+				cVO.setUser_email(rs.getString("USER_EMAIL"));
+				cVO.setTitle(rs.getString("TITLE"));
+				cVO.setContents(rs.getString("CONTENTS"));
+				cVO.setAnimal_tag(rs.getInt("ANIMAL_TAG"));
+				cVO.setBoard_tag(rs.getInt("BOARD_TAG"));
+				cVO.setRead_count(rs.getInt("READ_COUNT"));
+				cVO.setLike_count(rs.getInt("LIKE_COUNT"));
+				cVO.setWrite_date(rs.getString("WRITE_DATE"));
+				// 사진 경로
+				cVO.setPic_url_1(rs.getString("PIC_URL_1"));
+				cVO.setPic_url_2(rs.getString("PIC_URL_2"));
+				cVO.setPic_url_3(rs.getString("PIC_URL_3"));
+				cVO.setPic_url_4(rs.getString("PIC_URL_4"));
+				cVO.setPic_url_5(rs.getString("PIC_URL_5"));
+
+				list.add(cVO);
+			} // while문 끝
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, stmt, rs);
+		}
+		return list;
 	}
 }// CommunityDAO{

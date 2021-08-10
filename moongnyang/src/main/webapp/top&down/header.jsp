@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/bootstrap/boot.jsp"%>
-<%@ include file="/bootstrap/boot.jsp"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <script
@@ -40,10 +39,13 @@
 						data-bs-toggle="modal" data-bs-target="#check_notification"
 						data-bs-toggle="tooltip" data-bs-placement="top"
 						title="읽지않은 알람을 확인하세요">
-						알림 <span
-							class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-							${unchecked}<span class="visually-hidden">unread messages</span>
-						</span>
+						알림
+						<c:if test="${unchecked!=0}">
+							<span
+								class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+								${unchecked}<span class="visually-hidden">unread messages</span>
+							</span>
+						</c:if>
 					</button>
 				</c:if>
 				<div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
@@ -101,7 +103,9 @@
 							href="Community_BoardServlet?command=board_list">Community</a></li>
 						<li><a class="dropdown-item"
 							href="mediaServlet?command=mediamain">Media</a></li>
-						<li><a class="dropdown-item" href="BoardServlet_picnic?command=abandonment_search">Abandoned pets</a></li>
+						<li><a class="dropdown-item"
+							href="BoardServlet_picnic?command=abandonment_search">Abandoned
+								pets</a></li>
 						<li><hr class="dropdown-divider"></li>
 						<li><h6 class="dropdown-header">고객센터</h6></li>
 						<li><a class="dropdown-item"
@@ -124,22 +128,51 @@
 				<button type="button" class="btn-close" data-bs-dismiss="modal"
 					aria-label="Close"></button>
 			</div>
-			<div class="modal-body">
-				<div class="container">
-					<div class="row">
-						<div class="col-sm-8">
+			<br>
+			<h5>미디어 댓글소식</h5>
+			<div style="overflow: auto; height: 150px; width: 100%;">
+				<c:forEach var="media_list" items="${media_list}">
+					<div class="alert alert-primary d-flex align-items-center"
+						role="alert">
+						<strong>${media_list.user_email_media}</strong>님이 <strong>
+							${media_list.num_media}</strong> 에 댓글을 남겼어요!!
+						<!-- 						<button class="btn btn-warning">확인</button> -->
+					</div>
+				</c:forEach>
+			</div>
+			<hr>
+
+
+			<h5>커뮤니티 댓글소식</h5>
+			<div style="overflow: auto; height: 150px; width: 100%;">
+				<c:forEach var="board_list" items="${board_list}">
+					<div class="container">
+						<div class="row">
 							<div class="alert alert-primary d-flex align-items-center"
 								role="alert">
-								<strong>####</strong>님이 당신의 글에 댓글을 남겼어요!!
+								<strong>${board_list.manageremail}</strong>님이 답변을 남겼어요!!
+								<!-- 							<button class="btn btn-warning">확인</button> -->
 							</div>
 						</div>
-						<div class="col-sm-4">
-							<button class="btn btn-outline-success">확인버튼</button>
+					</div>
+				</c:forEach>
+			</div>
+			<hr>
+			<h5>문의내용 답변</h5>
+			<div style="overflow: auto; height: 150px; width: 100%;">
+				<c:forEach var="board_list" items="${board_list}">
+					<div class="container">
+						<div class="row">
+							<div class="alert alert-primary d-flex align-items-center"
+								role="alert">
+								<strong>${board_list.manageremail}</strong>님이 문의내용에 답변을 했어요!
+								<!-- 								<button class="btn btn-warning">확인</button> -->
+							</div>
+
 						</div>
 					</div>
-				</div>
+				</c:forEach>
 			</div>
-
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary"
 					data-bs-dismiss="modal">닫기</button>
