@@ -100,19 +100,23 @@
 				</div>
 				<div class="modal-body">
 					<form>
-						<input type="hidden" name="passwordcheck_user"
-							value="${loginUser.pwd}" id="passwordcheck_user"> <input
-							type="hidden" name="email" value="${board.email}" id="email">
+						<input type="hidden" name="passwordcheck_user" value="${loginUser.pwd}" id="passwordcheck_user"> 
+							<input type="hidden" name="email" value="${board.email}" id="email">
 						<div class="mb-3">
 							<label for="recipient-name" class="col-form-label">해당유저이메일</label>
-							<div class="alert alert-dark" role="alert" name="email_check"
-								id="email_check">${board.email}</div>
-
+							<div class="alert alert-dark" role="alert" name="email_check" id="email_check">${board.email}</div>
 						</div>
 						<div class="mb-3">
-							<label for="message-text" class="col-form-label">비밀번호확인</label> <input
-								type="password" class="form-control" id="passwordcheck"
-								name="passwordcheck">
+							<label for="recipient-name" class="col-form-label">업체명</label>
+							<div class="alert alert-dark" role="alert" id="name">${board.place_name}</div>
+						</div>
+						<div class="mb-3">
+							<label for="recipient-name" class="col-form-label">Key</label>
+							<div class="alert alert-dark" role="alert" id="key">${board.place_key}</div>
+						</div>
+						<div class="mb-3">
+							<label for="message-text" class="col-form-label">비밀번호확인</label> 
+							<input type="password" class="form-control" id="passwordcheck" name="passwordcheck">
 						</div>
 					</form>
 				</div>

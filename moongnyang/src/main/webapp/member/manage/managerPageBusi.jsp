@@ -85,6 +85,8 @@
 								<th scope="col">번호</th>
 								<th scope="col">이메일</th>
 								<th scope="col">내용</th>
+								<th scope="col">업체명</th>
+								<th scope="col">Key</th>
 								<th scope="col">시간</th>
 								<th scope="col">읽음확인</th>
 							</tr>
@@ -96,6 +98,8 @@
 									<td><a
 										href="mypageServlet?command=businessReadBoard&email=${board.email}">${board.email }</a></td>
 									<td>${board.content }</td>
+									<td>${board.place_name }</td>
+									<td>${board.place_key }</td>
 									<td><fmt:formatDate value="${board.writedate}" /></td>
 									<td><c:if test="${board.readval==0}">읽음</c:if> <c:if
 											test="${board.readval==1}">읽지않음</c:if></td>

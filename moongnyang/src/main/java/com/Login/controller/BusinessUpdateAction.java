@@ -18,6 +18,10 @@ public class BusinessUpdateAction implements Action {
 		boardVO vo = new boardVO();
 		vo.setEmail(request.getParameter("email"));
 		vo.setContent(request.getParameter("content"));
+		String str = request.getParameter("select_picnicList");
+		String[] result = str.split(",");
+		vo.setPlace_key(result[0]);		//업체키값
+		vo.setPlace_name(result[1]);	//업체명
 		BoardDAO dao = BoardDAO.getInstance();
 		dao.insertBusinessUpdateBoard(vo);
 		new userPageAction().execute(request, response);

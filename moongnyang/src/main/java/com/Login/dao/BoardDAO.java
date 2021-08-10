@@ -10,6 +10,7 @@ import java.util.List;
 
 import com.Login.dto.DBManager;
 import com.Login.dto.boardVO;
+import com.picnic.dto.PicnicVO;
 
 public class BoardDAO {
 	private BoardDAO() {
@@ -40,6 +41,8 @@ public class BoardDAO {
 				bVo.setContent(rs.getString("businesscontent"));
 				bVo.setReadval(rs.getInt("businessread"));
 				bVo.setWritedate(rs.getTimestamp("writedate"));
+				bVo.setPlace_name(rs.getString("place_name"));
+				bVo.setPlace_key(rs.getString("place_key"));
 				list.add(bVo);
 			}
 		} catch (SQLException e) {
@@ -109,8 +112,8 @@ public class BoardDAO {
 	}
 
 	public void insertBusinessUpdateBoard(boardVO bVo) {
-		String sql = "insert into businessboard(" + "businessnum, user_email, businesscontent) "
-				+ "values(board_seq.nextval, ?, ?)";
+		String sql = "insert into businessboard(" + "businessnum, user_email, businesscontent, place_name, place_key) "
+				+ "values(board_seq.nextval, ?, ?, ?, ?)";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -118,6 +121,8 @@ public class BoardDAO {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, bVo.getEmail());
 			pstmt.setString(2, bVo.getContent());
+			pstmt.setString(3, bVo.getPlace_name());
+			pstmt.setString(4, bVo.getPlace_key());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -188,6 +193,8 @@ public class BoardDAO {
 				bVo.setContent(rs.getString("businesscontent"));
 				bVo.setWritedate(rs.getTimestamp("writedate"));
 				bVo.setReadval(rs.getInt("businessread"));
+				bVo.setPlace_name(rs.getString("place_name"));
+				bVo.setPlace_key(rs.getString("place_key"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -375,6 +382,49 @@ public class BoardDAO {
 			DBManager.close(conn, stmt, rs);
 		}
 		return list;
+	}
+	//피크닉 게시판 리스트 가져오기
+	
+	public List<PicnicVO> selectPicnic() {
+		String sql = "select name, key from picnic_list";
+		List<PicnicVO> list = new ArrayList<PicnicVO>();
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		try {
+			conn = DBManager.getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				PicnicVO pVo = new PicnicVO();
+				pVo.setName(rs.getString("name"));
+				pVo.setKey(rs.getString("key"));
+				
+				list.add(pVo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, stmt, rs);
+		}
+		return list;
+	}
+	//피크닉 게시판에 이메일값(키값) 넣기
+	public void updatePicnicAuth(String email, String key) {
+		String sql = "update picnic set email=? where key=?";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, email);
+			pstmt.setString(2, key);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
 	}
 
 }
