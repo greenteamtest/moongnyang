@@ -100,7 +100,7 @@ public class CommunityDAO {
 		}
 	} // insertBoard() 메쏘드 끝
 
-	/* 게시글 조회수 +1 ! */
+	/*  게시글 조회수 +1 ! */
 	public void updateReadCount(String num) {
 		String sql = "update community_board set READ_COUNT=READ_COUNT+1 where BOARD_IDX=?";
 
@@ -137,7 +137,7 @@ public class CommunityDAO {
 			DBManager.close(conn, pstmt);
 		}
 	}
-
+	
 	/* 게시판 글 상세보기 : 글번호 board_idx로 찾아온다. 실패-> null */
 	public CommunityVO selectOneBoardByNum(String num) {
 		String sql = "select * from community_board where BOARD_IDX=?";
@@ -224,8 +224,8 @@ public class CommunityDAO {
 	public void insertComment(Community_CommentVO ccVO) {
 
 		String sql = "INSERT INTO community_board_comment"
-				+ "	(COMMENT_IDX,USER_EMAIL,COMMENT_CONTENT,BOARD_IDX,WRITE_DATE,board_user_email)" + "	VALUES"
-				+ "	(SEQ_COMMUNITY_BOARD_COMMENT.nextval,?,?,?,default,?)";
+				+ "	(COMMENT_IDX,USER_EMAIL,COMMENT_CONTENT,BOARD_IDX,WRITE_DATE)" + "	VALUES"
+				+ "	(SEQ_COMMUNITY_BOARD_COMMENT.nextval,?,?,?,default)";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -237,7 +237,6 @@ public class CommunityDAO {
 			pstmt.setString(1, ccVO.getUser_email());
 			pstmt.setString(2, ccVO.getComment_content());
 			pstmt.setInt(3, ccVO.getBoard_idx());
-			pstmt.setString(4, ccVO.getBoard_user_email());
 
 			pstmt.executeUpdate(); // 실행
 		} catch (Exception e) {
@@ -406,16 +405,18 @@ public class CommunityDAO {
 			e.printStackTrace();
 		}
 	}
-
+	
 	/* 게시글 리스트에서 필터 적용하여 검색 */
-	// 수정 중 .... !!!
-	public List<CommunityVO> selectFilteredBoards(String x, String y) {
-		// x는 animal_tag=n 으로 이루어진 문자열,
-		// y는 board_tag=n 으로 이루어진 문자열,
-
-		String sql = "select * from community_board " + "where (" + x + ")" + "and (" + y + ")"
+	//수정 중 .... !!! 
+	public List<CommunityVO> selectFilteredBoards(String x,String y) {
+		// x는 animal_tag=n 으로 이루어진 문자열, 
+		// y는 board_tag=n 으로 이루어진 문자열, 
+		
+		String sql = "select * from community_board "
+				+"where ("+x+")"
+				+ "and ("+y+")"
 				+ "order by board_idx desc";
-
+		
 		////////////////////////////////////////////////
 		List<CommunityVO> list = new ArrayList<CommunityVO>();
 
