@@ -8,12 +8,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.ibatis.session.SqlSession;
-
 import com.Community.dto.CommunityVO;
 import com.Community.dto.Community_CommentVO;
 import com.Community.dto.DBManager;
-import com.media.dto.mediaVO;
 
 public class CommunityDAO {
 

@@ -40,6 +40,6 @@ public class Picnic_DAO {
 	}
 
 	public int count_picnic_comment(SqlSession session) {
-		return session.selectOne("board_Update_Image");
+		return session.selectOne("count_picnic_comment");
 	}
 }
