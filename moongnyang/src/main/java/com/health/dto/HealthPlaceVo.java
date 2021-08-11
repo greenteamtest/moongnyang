@@ -3,6 +3,7 @@ package com.health.dto;
 public class HealthPlaceVo {
 
 	private int idx;
+	private String user_email;
 	private String field;
 	private int place_list_idx;
 	private String category_id;
@@ -179,6 +180,14 @@ public class HealthPlaceVo {
 
 	public void setApprove_state(int approve_state) {
 		this.approve_state = approve_state;
+	}
+
+	public String getUser_email() {
+		return user_email;
+	}
+
+	public void setUser_email(String user_email) {
+		this.user_email = user_email;
 	}
 
 	public String toString() {

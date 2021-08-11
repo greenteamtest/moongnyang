@@ -28,22 +28,25 @@ section {
 }
 
 .main-btn button {
-	width: 25rem;
+	width: 28rem;
 	height: 8rem;
-	margin-left : 5rem;
-	margin-right : 5rem;
 }
 
 .main-btn {
 	display: inline-block;
 }
-#maincontainer > main{
-	border : 2px solid red;
-	height : 100vh;
-	display : flex;
-	flex-direction: column;
+
+#maincontainer>main {
+	border: 2px solid red;
+	height: 100vh;
+	display: flex;
+	flex-direction: row;
 	align-items: center;
 	justify-content: center;
+}
+
+.ui.primary.button {
+	font-size: 2rem;
 }
 </style>
 </head>
@@ -59,14 +62,21 @@ section {
 
 		<main>
 			<section>
-				<h1> 사업자 등록 신청이 완료되었습니다 </h1> 
+				<h1 style="display: inline-block;">사업자 등록 신청이 완료되었습니다</h1>
+				&ensp; <img alt="..." src="health&edu/img/certificate.png" style="width: 6rem; height: 6rem; display: inline-block;">
 				<hr>
 				<br>
 				<br>
+				<br>
 				<div class="main-btn">
-					<button class="ui primary button">홈으로</button>
-					<button class="ui primary button">나의 사업장 신청 내역</button>
-					<button class="ui primary button">헬스 & 에듀 바로가기</button>
+					<button class="ui primary button" onclick="location.href='${pageContext.request.contextPath}/index.jsp'">홈으로</button>
+					<form name="frm" >
+						<input type="button" class="ui primary button reg">나의  사업장 신청 내역 />
+						<input type="hidden" name="email" value="${loginUser.getEmail()}" />
+						<input type="hidden" name="auth" value="${loginUser.getAuth()}" />
+						<input type="hidden" name="command" value="businessRegStatus" />
+					</form>
+					<button class="ui primary button" onclick="location.href='controller.do?command=main'">헬스 & 에듀 바로가기</button>
 				</div>
 			</section>
 		</main>
@@ -78,6 +88,23 @@ section {
 			<%@ include file="../sidebar.jsp"%>
 		</div>
 	</div>
+	<script>
+        $('.reg').click(()=>{
+            const frm = document.frm ;
+            if(frm.email.value == null || frm.email.value=""){
+                alert('사업자 계정 로그인이 필요합니다');
+                return;
+            }
 
+            if (Number(frm.auth.value) <2 ) {
+                alert('사업자 계정 로그인이 필요합니다');
+                return;
+            }
+            
+            frm.method='post';
+            frm.action='controller.do';
+            frm.submit();
+        })
+    </script>
 </body>
 </html>

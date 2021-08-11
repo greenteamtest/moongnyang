@@ -207,6 +207,38 @@
 		from view_business_reg_status
 	</select>
 
+
+	<!-- select my reg status table -->
+	<select id="slcMyRegStatus" parameterType="String" resultType="com.health.dto.HealthPlaceVo">
+		select field, place, phone_num, address, open_time, introduce, pet_kind, sharing_url, approve_state
+		from view_my_appr_status
+		where user_email = #{value}
+	</select>
+
+
+
+	<!-- reject reg application -->
+	<update id="udApproveReject" parameterType="">
+		update place_info
+		set approve_state = 2
+		where place_list_id in
+		<foreach collection="array" item="item" separator="," open="(" close=")">
+			#{item}
+		</foreach>
+	</update>
+
+
+	<!-- approv reg application -->
+	<update id="udApproveSuc" parameterType="">
+		update place_info
+		set approve_state = 1
+		where place_list_id in
+		<foreach collection="array" item="item" separator="," open="(" close=")">
+			#{item}
+		</foreach>
+	</update>
+
+
 </mapper>
 
 

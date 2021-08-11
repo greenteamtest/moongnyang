@@ -1,6 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>moongnyang</groupId>
 	<artifactId>moongnyang</artifactId>
@@ -29,7 +27,7 @@
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
-			<version>3.4.5</version>
+			<version>3.5.6</version>
 		</dependency>
 
 		<!-- commons-dbcp -->
@@ -91,25 +89,32 @@
 			<artifactId>cos</artifactId>
 			<version>05Nov2002</version>
 		</dependency>
-<!-- Servlet -->
-<!--  	<dependency>
-	<groupId>javax.servlet</groupId>
-	<artifactId>javax.servlet-api</artifactId>
-	<version>3.0.1</version>
-	<scope>provided</scope>
-	</dependency>
-	<dependency>
-	<groupId>javax.servlet.jsp</groupId>
-	<artifactId>jsp-api</artifactId>
-	<version>2.2</version>
-	<scope>provided</scope>
-	</dependency>
-  -->
+		
+		<!-- Servlet -->
+		<!-- 
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version> 
+			<scope>provided</scope>
+		</dependency>
+		 -->
+		 
+		
+		<!-- 
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.2</version>
+			<scope>provided</scope>
+		</dependency>
+		 -->
+
 	</dependencies>
 
 	<repositories>
 		<repository>
-			<id>oracle</id>
+			<id>oracle</id> 
 			<name>ORACLE JDBC Repository</name>
 			<url>http://maven.jahia.org/maven2</url>
 		</repository>
