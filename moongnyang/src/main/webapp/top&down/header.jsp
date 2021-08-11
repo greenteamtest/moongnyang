@@ -102,7 +102,7 @@
 						<li><a class="dropdown-item"
 							href="Community_BoardServlet?command=board_list">Community</a></li>
 						<li><a class="dropdown-item"
-							href="mediaServlet?command=mediamain">Media</a></li>
+							href="mediaServlet?command=mediamain&email=${loginUser.email}">Media</a></li>
 						<li><a class="dropdown-item"
 							href="BoardServlet_picnic?command=abandonment_search">Abandoned
 								pets</a></li>
@@ -111,10 +111,10 @@
 						<li><a class="dropdown-item"
 							href="mypageServlet?command=memberLounge">FAQ</a></li>
 
-						<li><a class="dropdown-item"
-							href="mypageServlet?command=secret">비밀버튼</a></li>
-					</ul></li>
-			</ul>
+						<!-- 						<li><a class="dropdown-item" -->
+						<!-- 							href="mypageServlet?command=secret">비밀버튼</a></li> -->
+						<!-- 					</ul></li> -->
+					</ul>
 		</div>
 	</div>
 </nav>
@@ -145,12 +145,12 @@
 
 			<h5>커뮤니티 댓글소식</h5>
 			<div style="overflow: auto; height: 150px; width: 100%;">
-				<c:forEach var="board_list" items="${board_list}">
+				<c:forEach var="community_list" items="${community_list}">
 					<div class="container">
 						<div class="row">
 							<div class="alert alert-primary d-flex align-items-center"
 								role="alert">
-								<strong>${board_list.manageremail}</strong>님이 답변을 남겼어요!!
+								<strong>${community_list.user_email}</strong>님이 답변을 남겼어요!!
 								<!-- 							<button class="btn btn-warning">확인</button> -->
 							</div>
 						</div>

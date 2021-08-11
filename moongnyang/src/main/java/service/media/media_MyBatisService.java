@@ -43,6 +43,19 @@ public class media_MyBatisService {
 		return list;
 	}
 
+	public mediaVO most_recent_media() {
+		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
+		mediaVO list = null;
+		try {
+			list = dao.most_recent_media(session); // dao에 SqlSession 전송
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close(); // connection.close()와 비슷, 모든 함수마다 닫기
+		}
+		return list;
+	}
+
 	public mediaVO select_media(int num) {
 		SqlSession session = MybatisSessionFactory.getSqlSession(); // 접속 완료
 		mediaVO list = null;

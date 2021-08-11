@@ -100,7 +100,7 @@ public class CommunityDAO {
 		}
 	} // insertBoard() 메쏘드 끝
 
-	/*  게시글 조회수 +1 ! */
+	/* 게시글 조회수 +1 ! */
 	public void updateReadCount(String num) {
 		String sql = "update community_board set READ_COUNT=READ_COUNT+1 where BOARD_IDX=?";
 
@@ -137,7 +137,7 @@ public class CommunityDAO {
 			DBManager.close(conn, pstmt);
 		}
 	}
-	
+
 	/* 게시판 글 상세보기 : 글번호 board_idx로 찾아온다. 실패-> null */
 	public CommunityVO selectOneBoardByNum(String num) {
 		String sql = "select * from community_board where BOARD_IDX=?";
@@ -405,18 +405,16 @@ public class CommunityDAO {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/* 게시글 리스트에서 필터 적용하여 검색 */
-	//수정 중 .... !!! 
-	public List<CommunityVO> selectFilteredBoards(String x,String y) {
-		// x는 animal_tag=n 으로 이루어진 문자열, 
-		// y는 board_tag=n 으로 이루어진 문자열, 
-		
-		String sql = "select * from community_board "
-				+"where ("+x+")"
-				+ "and ("+y+")"
+	// 수정 중 .... !!!
+	public List<CommunityVO> selectFilteredBoards(String x, String y) {
+		// x는 animal_tag=n 으로 이루어진 문자열,
+		// y는 board_tag=n 으로 이루어진 문자열,
+
+		String sql = "select * from community_board " + "where (" + x + ")" + "and (" + y + ")"
 				+ "order by board_idx desc";
-		
+
 		////////////////////////////////////////////////
 		List<CommunityVO> list = new ArrayList<CommunityVO>();
 
@@ -455,5 +453,107 @@ public class CommunityDAO {
 			DBManager.close(conn, stmt, rs);
 		}
 		return list;
+	}
+
+	public int count_community(String email) {
+		String sql = "select count(*) from community_board_comment where USER_EMAIL='" + email
+				+ "' and check_comment=1";
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		try {
+			conn = DBManager.getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+
+			while (rs.next()) { // 이동은 행(로우) 단위로
+				// 모든 컬럼 다 가져올 필요는 없어서 화면에 표시되는것+값넘길때 필요한 값만 VO에 넣어줌
+				result = rs.getInt("count(*)");
+				System.out.println("결과 : " + result);
+			} // while문 끝
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, stmt, rs);
+		}
+		return result;
+	}// 끝
+
+	public List<Community_CommentVO> load_mypost_community(String email) {
+		String sql = "select * from community_board_comment where USER_EMAIL = '" + email
+				+ "' and check_comment =1 order by comment_idx desc";
+
+		List<Community_CommentVO> list = new ArrayList<Community_CommentVO>();
+
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = DBManager.getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+
+			while (rs.next()) { // 이동은 행(로우) 단위로
+				Community_CommentVO cVO = new Community_CommentVO();
+				// 모든 컬럼 다 가져올 필요는 없어서 화면에 표시되는것+값넘길때 필요한 값만 VO에 넣어줌
+				cVO.setComment_idx(rs.getInt("COMMENT_IDX"));
+				cVO.setUser_email(rs.getString("USER_EMAIL"));
+				cVO.setComment_content(rs.getString("COMMENT_CONTENT"));
+				cVO.setBoard_idx(rs.getInt("BOARD_IDX"));
+				cVO.setBoard_user_email(rs.getString("BOARD_USER_EMAIL"));
+
+				list.add(cVO);
+			} // while문 끝
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, stmt, rs);
+		}
+		return list;
+	}
+
+	public CommunityVO most_recent_community() {
+		String sql = "SELECT * FROM (SELECT * FROM community_board ORDER BY BOARD_IDX desc) WHERE rownum = 1";
+
+		CommunityVO cVO = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				cVO = new CommunityVO();
+
+				cVO.setBoard_idx(rs.getInt("BOARD_IDX"));
+				cVO.setUser_email(rs.getString("USER_EMAIL"));
+				cVO.setTitle(rs.getString("TITLE"));
+				cVO.setContents(rs.getString("CONTENTS"));
+				cVO.setAnimal_tag(rs.getInt("ANIMAL_TAG"));
+				cVO.setBoard_tag(rs.getInt("BOARD_TAG"));
+				cVO.setRead_count(rs.getInt("READ_COUNT"));
+				cVO.setLike_count(rs.getInt("LIKE_COUNT"));
+				cVO.setWrite_date(rs.getString("WRITE_DATE"));
+				// 사진 경로
+				cVO.setPic_url_1(rs.getString("PIC_URL_1"));
+				cVO.setPic_url_2(rs.getString("PIC_URL_2"));
+				cVO.setPic_url_3(rs.getString("PIC_URL_3"));
+				cVO.setPic_url_4(rs.getString("PIC_URL_4"));
+				cVO.setPic_url_5(rs.getString("PIC_URL_5"));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return cVO;
 	}
 }// CommunityDAO{

@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.Community.dao.CommunityDAO;
+import com.Community.dto.Community_CommentVO;
 import com.Login.controller.action.Action;
 import com.Login.dao.BoardDAO;
 import com.Login.dao.MemberDAO;
@@ -33,21 +35,26 @@ public class login_Action implements Action {
 			String pwd = request.getParameter("pwd");
 			MemberDAO dao = MemberDAO.getInstance();
 			BoardDAO bdao = BoardDAO.getInstance();
+			CommunityDAO cdao = CommunityDAO.getInstance();
 			StaffDAO_org sdao = StaffDAO_org.getInstance();
 			StaffVO_org svo = new StaffVO_org();
 			int answerboard_check = dao.count_answer(email);
-//			int answerboard_check = dao.count_answer(userid);
+			int community_check = cdao.count_community(email);
 			int media_check = media_service.count_media_comment(email);
-			int unread = answerboard_check + media_check;
+			int unread = answerboard_check + media_check + community_check;
 			System.out.println("댓글중 확인안된것  : " + media_check + "개");
 			// 만약 안읽은게 있다면 리스트를 생성해서 알림에 뿌려주자
 			List<mediaVO> unchecked_media_list = null;
 			List<boardVO> unchecked_board_list = null;
+			List<Community_CommentVO> unchecked_community_list = null;
 			if (answerboard_check != 0) {
 				unchecked_board_list = bdao.selectUserAnswerBoards(email);
 			}
 			if (media_check != 0) {
 				unchecked_media_list = media_service.load_mypost_media(email);
+			}
+			if (community_check != 0) {
+				unchecked_community_list = cdao.load_mypost_community(email);
 			}
 
 			int result = dao.userCheck(email, pwd);
@@ -66,6 +73,7 @@ public class login_Action implements Action {
 				session.setAttribute("unchecked", unread);
 				session.setAttribute("media_list", unchecked_media_list);
 				session.setAttribute("board_list", unchecked_board_list);
+				session.setAttribute("community_list", unchecked_community_list);
 				System.out.println("미확인 메세지 : " + unread);
 				url = "index.jsp";
 			} else if (result == 0) {
