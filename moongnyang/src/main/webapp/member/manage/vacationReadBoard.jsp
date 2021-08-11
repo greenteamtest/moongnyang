@@ -68,7 +68,7 @@
 				</nav>
 
 
-				<h1>시간외 근무내역 상세보기</h1>
+				<h1>휴가 신청내역 상세보기</h1>
 				<h2>글번호 : ${vacation.num_vacation}</h2>
 				<h4>신청자(별명) : ${vacation.user_nick_vacation}</h4>
 				<h4>신청자(이메일) : ${vacation.user_email_vacation}</h4>

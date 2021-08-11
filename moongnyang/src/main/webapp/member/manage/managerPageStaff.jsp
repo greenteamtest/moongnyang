@@ -167,7 +167,7 @@
 					</form>
 					<div class="table-responsive"
 						style="overflow: scroll; height: 200px;">
-						
+
 						<table class="table table-striped table-sm">
 							<thead>
 								<tr>
@@ -414,7 +414,8 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-bs-dismiss="modal">닫기</button>
-					<button type="button" onclick="start()" class="btn btn-primary">신청하기</button>
+					<!-- 					<button type="button" onclick="start()" class="btn btn-primary">신청하기</button> -->
+					<button type="submit" class="btn btn-primary">신청하기</button>
 					<button type="button"
 						onclick="location.href='staffServlet?command=end_timeover&email=${loginUser.email}'"
 						class="btn btn-primary">종료하기</button>

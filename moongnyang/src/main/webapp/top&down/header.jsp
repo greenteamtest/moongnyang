@@ -150,7 +150,7 @@
 						<div class="row">
 							<div class="alert alert-primary d-flex align-items-center"
 								role="alert">
-								<strong>${community_list.user_email}</strong>님이 답변을 남겼어요!!
+								<strong>${community_list.board_user_email}</strong>님이 답변을 남겼어요!!
 								<!-- 							<button class="btn btn-warning">확인</button> -->
 							</div>
 						</div>
