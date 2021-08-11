@@ -56,12 +56,11 @@
 			<div class="row gx-5">
 				<section class="col">
 					<div
-						class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm">
+						class="d-flex align-items-center p-3 my-3 text-black bg-purple rounded shadow-sm">
 						<img class="me-3" src="img/logo.png"
 							alt="" width="60" height="40">
 						<div class="lh-1">
-							<h1 class="h6 mb-0 text-white lh-1">내가 쓴 게시글</h1>
-							<!--<small>수정 & 삭제</small> -->
+							<strong class="d-block text-gray-dark">내가 쓴 게시글</strong>
 						</div>
 					</div>
 
@@ -119,7 +118,7 @@
 						<img class="me-3" src="img/logo.png"
 							alt="" width="60" height="40">
 						<div class="lh-1">
-							<h1 class="h6 mb-0 text-white lh-1">내가 단 댓글</h1>
+						<strong class="d-block text-gray-dark">내가 단 댓글 </strong>
 						</div>
 					</div>
 

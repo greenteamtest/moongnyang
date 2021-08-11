@@ -187,7 +187,9 @@
 								좋아요 🧡 ${board.like_count}</button>
 							<button type="button" class="btn btn-sm btn-outline-secondary">
 								조회수 ${board.read_count}</button>
-							<button type="button" class="btn btn-sm btn-outline-secondary">comment:
+							<button type="button" class="btn btn-sm btn-outline-secondary"
+							onclick="location.href='Community_BoardServlet?command=board_view&board_idx=${board.board_idx}'">
+							comment:
 								댓글</button>
 						</div>
 					</div>
@@ -211,37 +213,36 @@
 			</c:forEach>
 		</div>
 
-		<div class="position-relative">
-			<div class="position-absolute top-0 start-50 translate-middle">
-				<nav aria-label="Page navigation example">
-					<ul class="pagination">
-						<li class="page-item"><a class="page-link" href="#"
-							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-						</a></li>
-						<li class="page-item"><a class="page-link" href="#">1</a></li>
-						<li class="page-item"><a class="page-link" href="#">2</a></li>
-						<li class="page-item"><a class="page-link" href="#">3</a></li>
-						<li class="page-item"><a class="page-link" href="#"
-							aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-						</a></li>
-					</ul>
-				</nav>
-			</div>
-
-		</div>
+<!-- 페이지 이동 버튼, 아직 구현안해서 주석처리 해놓음 -->
+<!-- 		<div class="position-relative"> -->
+<!-- 			<div class="position-absolute top-0 start-50 translate-middle"> -->
+<!-- 				<nav aria-label="Page navigation example"> -->
+<!-- 					<ul class="pagination"> -->
+<!-- 						<li class="page-item"><a class="page-link" href="#" -->
+<!-- 							aria-label="Previous"> <span aria-hidden="true">&laquo;</span> -->
+<!-- 						</a></li> -->
+<!-- 						<li class="page-item"><a class="page-link" href="#">1</a></li> -->
+<!-- 						<li class="page-item"><a class="page-link" href="#">2</a></li> -->
+<!-- 						<li class="page-item"><a class="page-link" href="#">3</a></li> -->
+<!-- 						<li class="page-item"><a class="page-link" href="#" -->
+<!-- 							aria-label="Next"> <span aria-hidden="true">&raquo;</span> -->
+<!-- 						</a></li> -->
+<!-- 					</ul> -->
+<!-- 				</nav> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
 
 
 
 	</main>
 
 	<footer class="blog-footer">
-		<p>
-			Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a>
-			by <a href="https://twitter.com/mdo">@mdo</a>.
-		</p>
+ <div class="position-absolute start-50 ">
+		<p>뭉냥뭉냥</p>
 		<p>
 			<a href="#">Back to top</a>
 		</p>
+</div>
 	</footer>
 
 

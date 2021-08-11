@@ -407,7 +407,6 @@ public class CommunityDAO {
 	}
 
 	/* 게시글 리스트에서 필터 적용하여 검색 */
-	// 수정 중 .... !!!
 	public List<CommunityVO> selectFilteredBoards(String x, String y) {
 		// x는 animal_tag=n 으로 이루어진 문자열,
 		// y는 board_tag=n 으로 이루어진 문자열,

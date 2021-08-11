@@ -172,7 +172,8 @@ str1.innerHTML = Change_board_tag(${board.board_tag});
 
 			<!-- 좋아요/ 조회수/ 댓글 표시하는 부분 -->
 			<div class="btn-group">
-				<button type="button" class="btn btn-sm btn-outline-secondary">
+				<button type="button" class="btn btn-sm btn-outline-secondary"
+					onclick="location.href='Community_BoardServlet?command=board_like&board_idx=${board.board_idx}'">
 					좋아요 🧡 ${board.like_count}</button>
 				<button type="button" class="btn btn-sm btn-outline-secondary">
 					조회수 ${board.read_count}</button>
@@ -205,8 +206,8 @@ str1.innerHTML = Change_board_tag(${board.board_tag});
 							<input type="hidden" name="command" value="comment_write">
 							<input type="hidden" name="board_idx" value="${board.board_idx}">
 							<input type="hidden" name="user_email" value="${loginUser.email}">
-							   <input type="hidden" name="board_user_email" value="${board.user_email}">
-							<b>${loginUser.email}</b>
+							<input type="hidden" name="board_user_email"
+								value="${board.user_email}"> <b>${loginUser.email}</b>
 							<div class="row g-0">
 								<div class="col-sm-6 col-md-8">
 									<!-- Text Area -->
