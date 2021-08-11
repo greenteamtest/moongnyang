@@ -319,33 +319,13 @@ public class Health_MyBatisService {
 		return list;
 	}
 
-	// 사업장 신청 승인거절
-	public int rejectRegApplication(int[] arr) {
-		SqlSession session = MybatisSessionFactory.getSqlSession();
-		int rs = 0;
-		try {
-			rs = dao.rejectRegApplication(session, arr);
-
-			if (rs > 0) {
-				session.commit();
-				System.out.println("update reject success");
-			} else {
-				session.rollback();
-				System.out.println("update reject fail");
-			}
-		} finally {
-			session.close();
-		}
-		return rs;
-	}
-
-	// 사업장 신청 승인
-	public int apprRegApplication(int[] arr) {
+	// 사업장 신청 승인 / 거절
+	public int apprRegApplication(Map<String, Object> map) {
 		SqlSession session = MybatisSessionFactory.getSqlSession();
 		int rs = 0;
 
 		try {
-			rs = dao.apprRegApplication(session, arr);
+			rs = dao.apprRegApplication(session, map);
 
 			if (rs > 0) {
 				session.commit();

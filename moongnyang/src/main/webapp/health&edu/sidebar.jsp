@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
+
+
+
 <!-- 사이드바 -->
 <div class="ui left demo vertical inverted wide sidebar labeled icon menu">
 	<a class="item" href="${pageContext.request.contextPath}/index.jsp">
@@ -23,9 +26,6 @@
 		<input type="hidden" name="auth" value="${loginUser.getAuth()}" />
 		<input type="hidden" name="command" value="businessRegStatus" />
 	</form>
-
-
-
 </div>
 
 

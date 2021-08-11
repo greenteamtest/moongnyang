@@ -32,6 +32,7 @@ $('.ui.labeled.button').click((e) => {
 	reviewersCnt = $parent.find('.reviewersCnt').val();
 	sharingCnt = $parent.find('.sharingCnt').text();
 	imgURL = $parent.find('.imgURL').val();
+	console.log(imgURL);
 
 
 	Kakao.Link.createDefaultButton({ // 카톡 

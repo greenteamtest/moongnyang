@@ -83,12 +83,8 @@ public class HealthDAO {
 		return session.selectList("slcMyRegStatus", email);
 	}
 
-	public int rejectRegApplication(SqlSession session, int[] arr) { // 사업장 신청 승인거절
-		return session.update("udApproveReject", arr);
-	}
-
-	public int apprRegApplication(SqlSession session, int[] arr) { // 사업장 신청 승인거절
-		return session.update("udApproveSuc", arr);
+	public int apprRegApplication(SqlSession session, Map<String, Object> map) { // 사업장 신청 승인거절
+		return session.update("udApproveSuc", map);
 	}
 
 }

@@ -158,9 +158,7 @@ section {
 		<footer>
 			<%@ include file="../footer.jsp"%>
 		</footer>
-		<div id="sidebar">
-			<%@ include file="../sidebar.jsp"%>
-		</div>
+		
 	</div>
 
 </body>

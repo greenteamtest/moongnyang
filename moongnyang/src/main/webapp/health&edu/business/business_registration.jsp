@@ -53,8 +53,10 @@ section {
 		<%@ include file="/health&edu/logo.jsp"%>
 	</header>
 	<div id="maincontainer">
-		<%@ include file="/health&edu/nav.jsp"%>
-		<nav></nav>
+		<nav>
+			<%@ include file="/health&edu/nav.jsp"%>
+			
+		</nav>
 		<div id="subcontainer">
 			<main>
 				<section>
@@ -427,9 +429,6 @@ section {
 	<footer>
 		<%@ include file="../footer.jsp"%>
 	</footer>
-	<div id="sidebar">
-		<%@ include file="../sidebar.jsp"%>
-	</div>
 	<script>
 	
 	$('#find_zipcode').click(() => {

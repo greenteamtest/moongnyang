@@ -14,6 +14,7 @@
 				,sum_rating , reviewers, avg
 				from tot_view
 				order by 8 desc
+				
 			</otherwise>
 		</choose>
 	</select>
@@ -90,7 +91,7 @@
 			</otherwise>
 		</choose>
 		where place_list_id = #{idx}
-		and approve_state = 1;
+		and approve_state = 1
 	</update>
 
 
@@ -99,7 +100,7 @@
 		select dips_cont
 		from place_info
 		where place_list_id = #{idx}
-		and approve_state = 1;
+		and approve_state = 1
 	</select>
 
 
@@ -216,28 +217,22 @@
 	</select>
 
 
-
-	<!-- reject reg application -->
-	<update id="udApproveReject" parameterType="">
+	<!-- update reg application -->
+	<update id="udApproveSuc" parameterType="Hashmap">
 		update place_info
-		set approve_state = 2
+		<choose>
+			<when test="key eq 'reject'.toString()">
+				set approve_state = 2
+			</when>
+			<otherwise>
+				set approve_state = 1
+			</otherwise>
+		</choose>
 		where place_list_id in
-		<foreach collection="array" item="item" separator="," open="(" close=")">
+		<foreach collection="arrIdx" item="item" separator="," open="(" close=")">
 			#{item}
 		</foreach>
 	</update>
-
-
-	<!-- approv reg application -->
-	<update id="udApproveSuc" parameterType="">
-		update place_info
-		set approve_state = 1
-		where place_list_id in
-		<foreach collection="array" item="item" separator="," open="(" close=")">
-			#{item}
-		</foreach>
-	</update>
-
 
 </mapper>
 

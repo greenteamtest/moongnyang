@@ -19,7 +19,6 @@
 <title>Document</title>
 <style>
 body {
-	border: 2px solid red;
 	height: 100vh;
 }
 
@@ -37,7 +36,6 @@ section {
 }
 
 #maincontainer>main {
-	border: 2px solid red;
 	height: 100vh;
 	display: flex;
 	flex-direction: row;
@@ -69,13 +67,15 @@ section {
 				<br>
 				<br>
 				<div class="main-btn">
-					<button class="ui primary button" onclick="location.href='${pageContext.request.contextPath}/index.jsp'">홈으로</button>
-					<form name="frm" >
-						<input type="button" class="ui primary button reg">나의  사업장 신청 내역 />
+					<button class="ui primary button" onclick="location.href='${pageContext.request.contextPath}/index.jsp'" style="margin-bottom : 2rem;">홈으로</button>
+					
+					<form name="frm">
+						<button class="ui primary button reg" style="margin-bottom : 1.5rem;">나의 사업장 신청 내역</button>
 						<input type="hidden" name="email" value="${loginUser.getEmail()}" />
 						<input type="hidden" name="auth" value="${loginUser.getAuth()}" />
 						<input type="hidden" name="command" value="businessRegStatus" />
 					</form>
+					
 					<button class="ui primary button" onclick="location.href='controller.do?command=main'">헬스 & 에듀 바로가기</button>
 				</div>
 			</section>
@@ -84,12 +84,11 @@ section {
 		<footer>
 			<%@ include file="../footer.jsp"%>
 		</footer>
-		<div id="sidebar">
-			<%@ include file="../sidebar.jsp"%>
-		</div>
+
 	</div>
 	<script>
         $('.reg').click(()=>{
+            
             const frm = document.frm ;
             if(frm.email.value == null || frm.email.value=""){
                 alert('사업자 계정 로그인이 필요합니다');

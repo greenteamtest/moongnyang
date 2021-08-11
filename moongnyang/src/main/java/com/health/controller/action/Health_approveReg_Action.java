@@ -2,6 +2,8 @@ package com.health.controller.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -22,20 +24,16 @@ public class Health_approveReg_Action implements Action {
 
 		arr = arr[0].split(",");
 		arrInt = new int[arr.length];
+
 		for (int i = 0; i < arr.length; i++) {
 			arrInt[i] = Integer.parseInt(arr[i]);
 			System.out.println(arrInt[i]);
 		}
 
-		switch (key) {
-		case "reject":
-			rs = service.rejectRegApplication(arrInt);
-			break;
-
-		default:
-			rs = service.apprRegApplication(arrInt);
-			break;
-		}
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("arrIdx", arrInt);
+		map.put("key", key);
+		rs = service.apprRegApplication(map);
 
 		if (rs > 0) {
 			out.print(
