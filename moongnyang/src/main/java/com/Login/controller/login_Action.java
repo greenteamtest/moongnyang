@@ -27,6 +27,7 @@ public class login_Action implements Action {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
 		if (session.getAttribute("loginUser") != null) {
+
 			RequestDispatcher dispatcher = request.getRequestDispatcher("member/login.jsp");
 			dispatcher.forward(request, response);
 		} else {

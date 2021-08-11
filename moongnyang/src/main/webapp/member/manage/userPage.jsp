@@ -101,11 +101,11 @@
 						<div style="overflow: scroll; height: 400px;">
 							<div class="h-500 p-5 text-white bg-dark border rounded-3">
 								<img src="community/upload/${recent_community.pic_url_1}"
-									class="img-thumbnail" width="200" height="250" alt="...">
+									class="img-thumbnail" width="250" height="300" alt="...">
+								<hr>
 								<strong class="d-inline-block mb-3 text-success">
 									${recent_community.title}</strong>
-								<p>${recent_community.animal_tag}</p>
-								<p>${recent_community.board_tag}</p>
+								<hr>
 								<button class="btn btn-outline-secondary" type="button"
 									onclick="location.href='Community_BoardServlet?command=board_view&board_idx=${recent_community.board_idx}'">구경하기</button>
 							</div>

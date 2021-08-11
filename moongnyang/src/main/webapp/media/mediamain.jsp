@@ -60,16 +60,16 @@
 		<br> <br> <br> <br> <br>
 	</div>
 	<main class="container">
-		<div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
-			<div class="col-md-6 px-0">
-				<h1 class="display-4 fst-italic">파일업로드는 됩니다.</h1>
-				<p class="lead my-3">기능구현을 위해서는 DB가 필요합니다. 좋아요 기능도 구현됩니다. 그런데
-					댓글은 아직안됩니다. ajax가 필요한건지..</p>
-				<p class="lead mb-0">
-					<a href="#" class="text-white fw-bold"></a>
-				</p>
-			</div>
-		</div>
+		<!-- 		<div class="p-4 p-md-5 mb-4 text-white rounded bg-dark"> -->
+		<!-- 			<div class="col-md-6 px-0"> -->
+		<!-- 				<h1 class="display-4 fst-italic">파일업로드는 됩니다.</h1> -->
+		<!-- 				<p class="lead my-3">기능구현을 위해서는 DB가 필요합니다. 좋아요 기능도 구현됩니다. 그런데 -->
+		<!-- 					댓글은 아직안됩니다. ajax가 필요한건지..</p> -->
+		<!-- 				<p class="lead mb-0"> -->
+		<!-- 					<a href="#" class="text-white fw-bold"></a> -->
+		<!-- 				</p> -->
+		<!-- 			</div> -->
+		<!-- 		</div> -->
 		<div class="row g-5">
 			<div class="col-md-9">
 				<article class="blog-post">

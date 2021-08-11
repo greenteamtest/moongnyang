@@ -9,10 +9,8 @@
 
 	<select id="most_recent_media"
 		resultType="com.media.dto.mediaVO">
-		SELECT * FROM (SELECT * FROM
-		media_upload ORDER BY num_media
-		desc)
-		WHERE rownum = 1
+		SELECT * FROM (SELECT * FROM media_upload 
+		ORDER BY num_media desc) 	WHERE rownum = 1
 	</select>
 
 
@@ -20,16 +18,12 @@
 	<select id="load_mypost_community" parameterType="String"
 		resultType="com.media.dto.mediaVO">
 		select * from media_comment where comment_email_media =
-		#{value}
-		and read_check =1 order by num_media desc
+		#{value} and read_check =1 order by num_media desc
 	</select>
 	<select id="count_media_comment" parameterType="String"
 		resultType="int">
-		select count(*)
-		from
-		media_comment where comment_email_media
-		=#{value} and
-		read_check =1
+		select count(*) from media_comment 
+		where comment_email_media =#{value} and read_check =1
 	</select>
 	<select id="load_mypost_media" parameterType="String"
 		resultType="com.media.dto.mediaVO">
@@ -80,14 +74,9 @@
 		#{user_email_media},#{comment_user_email},#{comment_content},1)
 	</insert>
 	<insert id="click_like" parameterType="media">
-		merge into likecnt_media
-		using dual on (user_email=
-		#{user_email_media}
-		and
-		num_media=#{num_media})
-		when not matched then
-		insert
-		values(#{num_media},
+		merge into likecnt_media using dual on (user_email=
+		#{user_email_media} and num_media=#{num_media})
+		when not matched then insert values(#{num_media},
 		#{user_email_media})
 	</insert>
 	<update id="update_like" parameterType="media">
@@ -96,9 +85,8 @@
 		where num_media=#{num_media}
 	</update>
 	<update id="check_comment" parameterType="media">
-		update media_comment
-		set read_check =0 where num_media =#{num_media} and
-		comment_email_media
-		=#{comment_email_media}
+		update media_comment set read_check =0 
+		where num_media =#{num_media} and
+		comment_email_media =#{comment_email_media}
 	</update>
 </mapper>
