@@ -113,21 +113,7 @@ $('.submit-btn').click(
 			$('div').remove('.modal-backdrop.fade.show');
 		}
 
-		// 상세주소 
-		if ($('#user-detail-address').val() == "") {
-			modalContents.text("상세 주소를 입력하여 주시기 바랍니다.");
-			modal.modal('show');
-
-			divPasswordCheck.removeClass("has-success");
-			divPasswordCheck.addClass("has-error");
-			$('#user-detail-address').focus();
-			$('div').remove('.modal-backdrop.fade.show');
-			return false;
-		} else {
-			divPasswordCheck.removeClass("has-error");
-			divPasswordCheck.addClass("has-success");
-			$('div').remove('.modal-backdrop.fade.show');
-		}
+	
 
 		if ($('.start-sales >option:selected').text() == '영업시작' && $('.start-sales >option:selected').css('background-color') == 'white') {
 			modalContents.text("영업시작 시간을  선택 해 주시기 바랍니다.");

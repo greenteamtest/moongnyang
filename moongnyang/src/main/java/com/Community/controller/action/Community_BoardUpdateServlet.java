@@ -1,7 +1,9 @@
 package com.Community.controller.action;
 
 import java.io.IOException;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.Community.dao.CommunityDAO;
 import com.Community.dto.CommunityVO;
+import com.Community.dto.Community_CommentVO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -92,7 +95,29 @@ public class Community_BoardUpdateServlet extends HttpServlet {
 		CommunityDAO cDAO = CommunityDAO.getInstance();
 		cDAO.updateBoard(cVO);
 
-		new Community_BoardView_Action().execute(request, response); // 게시판 리스트 화면으로 이동
+		//////////////////////////////////////
+		String url="/community/community_board_view.jsp";
+		
+		
+		
+		CommunityDAO cDAO1=CommunityDAO.getInstance();
+	
+		/*클릭한 게시글의 번호를 통해 데이터 출력하는 메쏘드*/
+		CommunityVO cVO1=cDAO1.selectOneBoardByNum(Integer.toString(board_idx));
+		
+		request.setAttribute("board", cVO1);
+		
+		
+		//댓글............................................
+		List<Community_CommentVO> commentList = cDAO1.selectAllComments(Integer.toString(board_idx));
+
+		request.setAttribute("commentList", commentList);
+	
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+		dispatcher.forward(request, response);
+		
+	
 	}
 
 }

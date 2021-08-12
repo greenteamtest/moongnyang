@@ -138,7 +138,7 @@ str1.innerHTML = Change_board_tag(${board.board_tag});
 							<c:choose>
 								<c:when test="${empty board.pic_url_1}
 								">
-									<img src="community/upload/noImage.jpg">
+									<img src="community/upload/noImage">
 								</c:when>
 								<c:otherwise>
 									<img src="community/upload/${board.pic_url_1}"
@@ -147,25 +147,62 @@ str1.innerHTML = Change_board_tag(${board.board_tag});
 							</c:choose>
 
 						</div>
+						<div class="col">
+							<c:choose>
+								<c:when test="${empty board.pic_url_2}
+								">
+									<img src="community/upload/noImage">
+								</c:when>
+								<c:otherwise>
+									<img src="community/upload/${board.pic_url_2}"
+										class="img-thumbnail" alt="...">
+								</c:otherwise>
+							</c:choose>
+
+						</div>
+						<div class="col">
+							<c:choose>
+								<c:when test="${empty board.pic_url_3}
+								">
+									<img src="community/upload/noImage">
+								</c:when>
+								<c:otherwise>
+									<img src="community/upload/${board.pic_url_3}"
+										class="img-thumbnail" alt="...">
+								</c:otherwise>
+							</c:choose>
+
+						</div>
+						<div class="col">
+							<c:choose>
+								<c:when test="${empty board.pic_url_4}
+								">
+									<img src="community/upload/noImage">
+								</c:when>
+								<c:otherwise>
+									<img src="community/upload/${board.pic_url_4}"
+										class="img-thumbnail" alt="...">
+								</c:otherwise>
+							</c:choose>
+
+						</div>
+						<div class="col">
+							<c:choose>
+								<c:when test="${empty board.pic_url_5}
+								">
+									<img src="community/upload/noImage">
+								</c:when>
+								<c:otherwise>
+									<img src="community/upload/${board.pic_url_5}"
+										class="img-thumbnail" alt="...">
+								</c:otherwise>
+							</c:choose>
+
+						</div>
 
 
 
-						<div class="col">
-							<img src="community/upload/${board.pic_url_2}"
-								class="img-thumbnail" alt="noImage.jpg">
-						</div>
-						<div class="col">
-							<img src="community/upload/${board.pic_url_3}"
-								class="img-thumbnail" alt="...">
-						</div>
-						<div class="col">
-							<img src="community/upload/${board.pic_url_4}"
-								class="img-thumbnail" alt="...">
-						</div>
-						<div class="col">
-							<img src="community/upload/${board.pic_url_5}"
-								class="img-thumbnail" alt="...">
-						</div>
+		
 					</div>
 				</div>
 			</section>

@@ -24,14 +24,14 @@ body {
 
 section {
 	text-align: center;
-	height: 100vh;
 }
 
 .row {
 	display: flex;
 	flex-direction: row;
-	align-items: center;
 	justify-content: center;
+	width: 120rem;
+	padding: 0;
 }
 
 .unstackable.table {
@@ -39,9 +39,14 @@ section {
 }
 
 .table-frame {
-	border: 2px solid gray;
-	width: 130rem;
-	margin-left: 13rem;
+	border: 1px solid gray;
+	width: 115rem;
+	margin-left: 4rem;
+	text-align: center;
+}
+.table-frame thead {
+	background-color: #dcdada;
+	border : 2px solid red;
 }
 
 .ui.unstackable.table {
@@ -50,6 +55,27 @@ section {
 
 .ui.unstackable.table thead {
 	text-align: center;
+}
+
+.px-md-4 {
+	width: 100%;
+	margin: 0;
+}
+
+.out-border {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	width: 1920px;
+	margin-bottom: 4rem;
+}
+
+.cancle {
+	width: 8rem;
+	height: 2rem;
+}
+.center.aligned {
+	font-weight: bold;
 }
 </style>
 </head>
@@ -67,7 +93,7 @@ section {
 			<section>
 				<div class="container-fluid">
 					<div class="row">
-						<div class="col-md-9 ms-sm-auto col-lg-10 px-md-4" style="margin-right: 10rem;">
+						<div class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
 
 							<h1>사업장 신청 내역</h1>
@@ -77,88 +103,81 @@ section {
 
 							</div>
 							<div class="btn-toolbar mb-2 mb-md-0"></div>
-							<div class="table-responsive">
-								<table class="table table-striped table-sm">
-									<thead style="font-size: 1.2rem">
-
-									</thead>
-									<tbody>
-
-									</tbody>
-
-								</table>
-
-							</div>
+							<div class="table-responsive"></div>
 						</div>
 					</div>
 				</div>
+				<br>
+				<br>
+				<div class="out-border">
 
-
-				<div class="table-frame" style="overflow: scroll; height: 60rem;">
-					<table class="ui unstackable table">
-						<thead>
-							<tr>
-								<th style="width: 6rem;">카테고리</th>
-								<th>사업장명</th>
-								<th>전화번호</th>
-								<th style="width: 10rem;">주소</th>
-								<th>영업시간</th>
-								<th style="width: 35rem;">사업장 소개</th>
-								<th>동반가능 반려동물</th>
-								<th>대표 URL</th>
-								<th class="right aligned">승인 상태</th>
-							</tr>
-						</thead>
-
-						<tbody>
-							<c:forEach items="${status}" var="status">
+					<div class="table-frame" style="overflow: scroll; height: 50rem;">
+						<table class="ui unstackable table">
+							<thead >
 								<tr>
-
-									<c:choose>
-										<c:when test="${status.getField() eq 'hospital' }">
-											<td>병원</td>
-										</c:when>
-										<c:when test="${status.getField() eq 'beauty' }">
-											<td>미용</td>
-										</c:when>
-										<c:when test="${status.getField() eq 'kindergarten' }">
-											<td>유치원</td>
-										</c:when>
-									</c:choose>
-
-									<td>${status.getPlace()}</td>
-									<td>${status.getPhone_num()}</td>
-									<td>${status.getAddress()}</td>
-									<td>${status.getOpen_time()}</td>
-									<td>${status.getIntroduce()}</td>
-									<td>${status.getPet_kind()}</td>
-									<td>${status.getSharing_url()}</td>
-
-									<c:choose>
-										<c:when test="${status.getApprove_state() eq 0}">
-											<td class="right aligned" style="color: blue">승인 대기 중</td>
-										</c:when>
-										<c:when test="${status.getApprove_state() eq 1}">
-											<td class="right aligned">승인 완료</td>
-										</c:when>
-										<c:otherwise>
-											<td class="right aligned" style="color: red">승인 거절</td>
-										</c:otherwise>
-									</c:choose>
+									<th style="width: 6rem; background-color:#ececec">카테고리</th>
+									<th>사업장명</th>
+									<th style="background-color:#ececec">전화번호</th>
+									<th style="width: 10rem;">주소</th>
+									<th style="background-color:#ececec">영업시간</th>
+									<th style="width: 35rem;">사업장 소개</th>
+									<th style="width: 10rem;background-color:#ececec">동반가능 반려동물</th>
+									<th style="width: 2rem;">대표 URL</th>
+									<th style="width: 2rem;background-color:#ececec; border: 2px solid red">승인 상태</th>
 								</tr>
-							</c:forEach>
+							</thead>
 
-						</tbody>
-					</table>
+							<tbody>
+								<c:forEach items="${status}" var="status">
+									<tr>
+
+										<c:choose>
+											<c:when test="${status.getField() eq 'hospital' }">
+												<td>병원</td>
+											</c:when>
+											<c:when test="${status.getField() eq 'beauty' }">
+												<td>미용</td>
+											</c:when>
+											<c:when test="${status.getField() eq 'kindergarten' }">
+												<td>유치원</td>
+											</c:when>
+										</c:choose>
+
+										<td>${status.getPlace()}</td>
+										<td>${status.getPhone_num()}</td>
+										<td>${status.getAddress()}</td>
+										<td>${status.getOpen_time()}</td>
+										<td>${status.getIntroduce()}</td>
+										<td>${status.getPet_kind()}</td>
+										<td>${status.getSharing_url()}</td>
+
+										<c:choose>
+											<c:when test="${status.getApprove_state() eq 0}">
+												<td class="center aligned" style="color: blue; background-color: #d5d3d3;">승인 대기 중
+													<div class="ui button cancle" tabindex="0" style="margin-top: 1rem;border:1px solid gray;">요청 취소</div>
+												</td>
+											</c:when>
+											<c:when test="${status.getApprove_state() eq 1}">
+												<td class="center aligned" style="background-color: #d5d3d3;">승인 완료</td>
+											</c:when>
+											<c:otherwise>
+												<td class="center aligned" style="color: red; background-color: #d5d3d3;">승인 거절</td>
+											</c:otherwise>
+										</c:choose>
+									</tr>
+								</c:forEach>
+
+							</tbody>
+						</table>
+					</div>
 				</div>
-
 			</section>
 		</main>
 
 		<footer>
 			<%@ include file="../footer.jsp"%>
 		</footer>
-		
+
 	</div>
 
 </body>

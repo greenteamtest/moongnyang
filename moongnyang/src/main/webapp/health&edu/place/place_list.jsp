@@ -126,7 +126,7 @@ nav[class="navbar navbar-light"] {
 						<input type="hidden" value="${loginUser.getEmail()}" />
 					</div>
 					<div id="card-border" >
-						<c:if test="${empty placeList }">
+						<c:if test="${empty placeList}">
 							<span id="no-data">데이터가 없습니다 </span>
 						</c:if>
 						<c:forEach var="place" items="${ placeList }">
