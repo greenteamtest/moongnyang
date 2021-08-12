@@ -13,7 +13,9 @@
 			<otherwise>
 				,sum_rating , reviewers, avg
 				from tot_view
+				where field = #{value}
 				order by 8 desc
+				
 			</otherwise>
 		</choose>
 	</select>
@@ -28,7 +30,7 @@
 	<!-- 업체당 user review -->
 	<select id="slcUser_Review" parameterType="int" resultType="com.health.dto.HealthReviewVo">
 		select place_list_id, user_email, contents, write_date, write_time,like_count,
-		 manager_comment, my_rating
+		manager_comment, my_rating
 		from user_review
 		where place_list_id = #{value}
 		order by 1 , 4 desc, 5 desc
@@ -90,12 +92,16 @@
 			</otherwise>
 		</choose>
 		where place_list_id = #{idx}
+		and approve_state = 1
 	</update>
 
 
 	<!-- get placedips -->
 	<select id="getPlaceDips" parameterType="Hashmap" resultType="int">
-		select dips_cont from place_info where place_list_id = #{idx}
+		select dips_cont
+		from place_info
+		where place_list_id = #{idx}
+		and approve_state = 1
 	</select>
 
 
@@ -163,13 +169,71 @@
 		like '%'||#{keyword}||'%'
 	</select>
 
-	
-		<!-- select count total review -->
-	<select id="slcCntTotReview" resultType="int">
-	select count(*) from user_review
-	</select>
-	
 
+	<!-- select count total review -->
+	<select id="slcCntTotReview" resultType="int">
+		select count(*) from user_review
+	</select>
+
+
+	<!-- insert PlaceList for approve -->
+
+	<insert id="istPlaceList" parameterType="place">
+		insert into place_list (place_list_idx, user_email, category_id, place)
+		values (SEQ_PLACE_LIST.nextval,#{user_email}, #{category_id} , #{place})
+		<selectKey keyProperty="place_list_idx" resultType="int" order="AFTER">
+			select SEQ_PLACE_LIST.currVal from dual
+		</selectKey>
+	</insert>
+
+
+	<!-- select place_list_idx from place_list -->
+	<select id="slcPlaceListIdx" resultType="int">
+		select SEQ_PLACE_LIST.nextval from dual
+	</select>
+
+
+
+	<!-- insert PlaceInfo for approve -->
+	<insert id="istPlaceInfo" parameterType="com.health.dto.HealthPlaceVo">
+		insert into place_info
+		(place_info_idx,place_list_id,phone_num,address,open_time,introduce,pet_kind,sharing_url)
+		values
+		(SEQ_PLACE_INFO.nextval,#{place_list_idx},#{phone_num},#{address},#{open_time},#{introduce},#{pet_kind},#{sharing_url})
+	</insert>
+
+
+	<!-- select business registration status table -->
+	<select id="slcBuisnessRegStatus" resultType="com.health.dto.HealthPlaceVo">
+		  select idx,user_email, field, place, phone_num, address, open_time, introduce, pet_kind, sharing_url
+		from view_business_reg_status
+	</select>
+
+
+	<!-- select my reg status table -->
+	<select id="slcMyRegStatus" parameterType="String" resultType="com.health.dto.HealthPlaceVo">
+		select field, place, phone_num, address, open_time, introduce, pet_kind, sharing_url, approve_state
+		from view_my_appr_status
+		where user_email = #{value}
+	</select>
+
+
+	<!-- update reg application -->
+	<update id="udApproveSuc" parameterType="Hashmap">
+		update place_info
+		<choose>
+			<when test="key eq 'reject'.toString()">
+				set approve_state = 2
+			</when>
+			<otherwise>
+				set approve_state = 1
+			</otherwise>
+		</choose>
+		where place_list_id in
+		<foreach collection="arrIdx" item="item" separator="," open="(" close=")">
+			#{item}
+		</foreach>
+	</update>
 
 </mapper>
 

@@ -167,9 +167,11 @@ $(document).on('click', '.card-img-top', (e) => {
 		"idx": $(e.currentTarget).prev().val()
 	};
 	clickTarget = param.idx;
+	console.log(clickTarget);
 	showPlaceInfoAJAX(param);
 	showReviewsAJAX(param);
 	$('.title').next().hide();
+	
 
 })
 

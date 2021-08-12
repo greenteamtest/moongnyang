@@ -1,18 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page errorPage = "../picnic/error.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:include page="../../top&down/header.jsp" flush="ture" />
+
 <html>
 <br><br><br><br>
 <head>
 <meta charset="UTF-8">
 <title>유기 동물</title>
-<style type="text/css">
-
-</style>
-<script type="text/javascript" src="picnic/select.js"></script>
-<link rel="stylesheet" href="picnic\abandonment\css\abandonment.css" />
+<script type="text/javascript" src="picnic/abandonment/select.js"></script>
+<link rel="stylesheet" href="picnic/abandonment/css/abandonment.css?ver=123" />
 </head>
 <body>
 	<h1 align="center">유기 동물</h1>
@@ -76,10 +75,10 @@
 			<c:if test="${i%j == 0 }">
 				<tr>
 			</c:if>
-			<td width="450" height="450">
-				<a href="javascript:void(window.open('${list.popfile }', '팝업창 이름','width=500, height=500'))"><img src="${list.popfile }" width="450" height="450"></a><p></p>
+			<td width="400" height="400">
+				<a href="javascript:void(window.open('${list.popfile }', '팝업창 이름','width=500, height=500'))"><img src="${list.popfile }" width="400" height="400"></a><p></p>
 			</td>
-			<td width="450" height="450">			
+			<td width="400" height="400">			
 				<div class="input-group mb-3">
 					<span class="input-group-text" >접수일</span>
 					<input type="text" class="form-control" value="${list.happenDt}" readonly><br>
@@ -97,10 +96,6 @@
 					<input type="text" class="form-control" value="${list.colorCd}" readonly><br> 
 				</div> 
 				<div class="input-group mb-3">
-					<span class="input-group-text">보호소 명</span>
-					<input type="text" class="form-control" value="${list.careNm}" readonly><br> 
-				</div>
-				<div class="input-group mb-3">
 					<span class="input-group-text">나이</span>
 					<input type="text" class="form-control" value="${list.age}" readonly><br> 
 				</div>
@@ -117,26 +112,26 @@
 					<input type="text" class="form-control" value="${list.neuterYn}&nbsp;(Y:예,N:아니오,U:미상)" readonly><br> 
 				</div>
 				<div class="input-group mb-3">
+					<span class="input-group-text">보호소 명</span>
+					<input type="text" class="form-control" value="${list.careNm}" readonly><br> 
+				</div>
+				<div class="input-group mb-3">
 					<span class="input-group-text">담당자 연락처</span>
 					<input type="text" class="form-control" value="${list.officetel}" readonly><br> 
 				</div>
-				 
+				<%-- 
 				<div class="input-group mb-3">
 					<span class="input-group-text">보호소 연락처</span>
 					<input type="text" class="form-control" value="${list.careTel}" readonly><br> 
 				</div>
-				<%--
+				
 				<div class="input-group mb-3">
 					<span class="input-group-text">공고번호</span>
 					<input type="text" class="form-control" value="${list.noticeNo}" readonly><br> 
 				</div>--%>
 				<div class="input-group mb-3">
-					<span class="input-group-text">공고 시작일</span>
-					<input type="text" class="form-control" value="${list.noticeSdt}" readonly><br> 
-				</div>
-				<div class="input-group mb-3">
-					<span class="input-group-text">공고 종료일</span>
-					<input type="text" class="form-control" value="${list.noticeEdt}" readonly><br> 
+					<span class="input-group-text">공고 기간</span>
+					<input type="text" class="form-control" value="${list.noticeSdt} ~ ${list.noticeEdt}" readonly><br>
 				</div>
 				<p></p>
 			</td>

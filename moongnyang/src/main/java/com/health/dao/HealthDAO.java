@@ -67,4 +67,24 @@ public class HealthDAO {
 		return session.selectOne("slcCntTotReview");
 	}
 
+	public int insert_place_list(SqlSession session, HealthPlaceVo vo) { // insert place_list #사업장
+		return session.insert("istPlaceList", vo);
+	}
+
+	public int insert_place_info(SqlSession session, HealthPlaceVo vo) { // insert place_list #사업장
+		return session.insert("istPlaceInfo", vo);
+	}
+
+	public List<HealthPlaceVo> selectBuisnessRegStatus(SqlSession session) { // insert place_list #사업장
+		return session.selectList("slcBuisnessRegStatus");
+	}
+
+	public List<HealthPlaceVo> selectMyRegStatus(SqlSession session, String email) { // insert place_list #사업장
+		return session.selectList("slcMyRegStatus", email);
+	}
+
+	public int apprRegApplication(SqlSession session, Map<String, Object> map) { // 사업장 신청 승인거절
+		return session.update("udApproveSuc", map);
+	}
+
 }

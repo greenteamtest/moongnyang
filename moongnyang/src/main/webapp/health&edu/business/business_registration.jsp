@@ -53,8 +53,10 @@ section {
 		<%@ include file="/health&edu/logo.jsp"%>
 	</header>
 	<div id="maincontainer">
-		<%@ include file="/health&edu/nav.jsp"%>
-		<nav></nav>
+		<nav>
+			<%@ include file="/health&edu/nav.jsp"%>
+			
+		</nav>
 		<div id="subcontainer">
 			<main>
 				<section>
@@ -70,9 +72,7 @@ section {
 						<div class="modal fade" id="defaultModal">
 							<div class="modal-dialog">
 								<div class="modal-content">
-									<div class="modal-header">
-										알림
-									</div>
+									<div class="modal-header">알림</div>
 									<div class="modal-body">
 										<p class="modal-contents"></p>
 									</div>
@@ -231,14 +231,24 @@ section {
 									</div>
 								</div>
 							</div>
+
+							<label for="inputName" class="col-lg-2 control-label">
+								카테고리 선택
+								<span style="color: red"> * </span>
+							</label>
+							<select name="category" class="ui dropdown category" style="width: 20rem;">
+								<option value="beauty">미용</option>
+								<option value="hospital">병원</option>
+								<option value="kindergarten">유치원</option>
+							</select>
 							<div class="form-group" id="divId">
 								<label for="inputId" class="col-lg-2 control-label">
 									상호명
 									<span style="color: red"> * </span>
 								</label>
 								<div class="col-lg-10">
-									<input type="text" name="company-name" class="form-control onlyAlphabetAndNumber" id="company-name" data-rule-required="true"
-										placeholder="상호명을 작성 해 주세요 (30자 이내  한글,영어,특수문자_ 만  가능합니다)" maxlength="30">
+									<input type="text" name="company-name" class="form-control onlyAlphabetAndNumber" id="company-name"
+										data-rule-required="true" placeholder="상호명을 작성 해 주세요 (30자 이내  한글,영어,특수문자_ 만  가능합니다)" maxlength="30">
 								</div>
 							</div>
 							<div class="form-group" id="divPassword">
@@ -247,18 +257,21 @@ section {
 									<span style="color: red"> * </span>
 								</label>
 								<div class="col-lg-10">
-									<input type="text" name="userZipcode" class="form-control post-num" id="userZipcode" data-rule-required="true" placeholder="우편번호"
-										maxlength="30" style="width: 10rem; display: inline-block; margin-bottom: 0.5rem;" readonly="readonly">
+									<input type="text" name="userZipcode" class="form-control post-num" id="userZipcode" data-rule-required="true"
+										placeholder="우편번호" maxlength="30" style="width: 10rem; display: inline-block; margin-bottom: 0.5rem;"
+										readonly="readonly">
 									<span style="margin-left: 1rem;">
-										<input type="button" id="find_zipcode" value="우편번호찾기"/> 
+										<input type="button" id="find_zipcode" value="우편번호찾기" />
 									</span>
 									<br>
 									<div>
-										<input type="text" name="userAddress" class="form-control onlyAlphabetAndNumber" id="userAddress" data-rule-required="true"
-											placeholder="주소를 입력 해 주세요" maxlength="30" readonly="readonly" style="width: 25rem; display: inline-block;" />
+										<input type="text" name="userAddress" class="form-control onlyAlphabetAndNumber" id="userAddress"
+											data-rule-required="true" placeholder="주소를 입력 해 주세요" maxlength="30" readonly="readonly"
+											style="width: 25rem; display: inline-block;" />
 
-										<input type="text" name="user-detail-address" class="form-control address-detail" id="user-detail-address" data-rule-required="true"
-											placeholder="상세주소" maxlength="30" style="width: 31.9rem; display: inline-block; margin-left: 1rem;" />
+										<input type="text" name="user-detail-address" class="form-control address-detail" id="user-detail-address"
+											data-rule-required="true" placeholder="상세주소" maxlength="30"
+											style="width: 31.9rem; display: inline-block; margin-left: 1rem;" />
 									</div>
 								</div>
 							</div>
@@ -278,12 +291,10 @@ section {
 									<span style="color: red"> * </span>
 								</label>
 								<select name="date" class="ui dropdown date">
-									<option value="every">매일</option>
-									<option value="weekday">평일</option>
-									<option value="weekend">주말</option>
-								</select>
-								&ensp;&ensp;
-								<select name="open_time" class="ui search dropdown start-sales">
+									<option value="매일">매일</option>
+									<option value="평일">평일</option>
+									<option value="주말">주말</option>
+								</select> &ensp;&ensp; <select name="date" class="ui search dropdown start-sales">
 									<option value="" disabled>영업시작</option>
 									<option value="07">07 : 00</option>
 									<option value="08">08 : 00</option>
@@ -299,9 +310,7 @@ section {
 									<option value="18">18 : 00</option>
 									<option value="19">19 : 00</option>
 									<option value="20">20 : 00</option>
-								</select>
-								&nbsp;~&nbsp;
-								<select name="end_time" class="ui search dropdown end-sales" >
+								</select> &nbsp;~&nbsp; <select name="date" class="ui search dropdown end-sales">
 									<option value="" disabled>영업종료</option>
 									<option value="08">08: 00</option>
 									<option value="09">09: 00</option>
@@ -320,11 +329,15 @@ section {
 									<option value="22">22 : 00</option>
 									<option value="23">23 : 00</option>
 									<option value="24">24 : 00</option>
-								</select>
+								</select> &ensp;
+								<div class="form-check" style="display: inline-block">
+									<label class="form-check-label" for="all-day"> 24시간 영업 </label>
+									<input class="form-check-input all-day" type="checkbox" value="24시간 영업" id="all-day">
+								</div>
 								&ensp;
 								<div class="form-check" style="display: inline-block">
-									<label class="form-check-label" for="flexCheckDefault"> 24시간 영업 </label>
-									<input  class="form-check-input all-day" type="checkbox" value="all-day" id="flexCheckDefault" >
+									<label class="form-check-label" for="closed"> 코로나로 인한 임시 휴무</label>
+									<input class="form-check-input closed" type="checkbox" value="코로나로 인한 임시 휴무" id="closed">
 								</div>
 
 							</div>
@@ -333,7 +346,7 @@ section {
 								<label for="inputNickname" class="col-lg-2 control-label">동반가능 견종</label>
 								<select name="pet_kind" class="ui dropdown">
 									<option value="소형견">소형견</option>
-									<option value="소형견  / 중형견">소형견 , 중형견</option>
+									<option value="소형견 / 중형견">소형견 , 중형견</option>
 									<option value="소형견 / 중형견 / 대형견">소형견 , 중형견 , 대형견</option>
 								</select>
 							</div>
@@ -356,7 +369,9 @@ section {
 
 							<div class="mb-3">
 								<label for="formFile" class="form-label">대표 사진을 선택하세요 (최대 3개)</label>
-								<span style="color: red"> * </span> &ensp;&ensp;<span> ※ 1개 이상 대표 이미지를 첨부하세요 ※</span>
+								<span style="color: red"> * </span>
+								&ensp;&ensp;
+								<span> ※ 1개 이상 대표 이미지를 첨부하세요 ※</span>
 								<input name="store_photo" class="form-control" type="file" id="formFile">
 							</div>
 							<div class="mb-3">
@@ -403,7 +418,8 @@ section {
 									<button type="button" class="btn btn-primary submit-btn">사업장 신청</button>
 								</div>
 							</div>
-							<input type="hidden"  name="command" value="businessRegistration" />
+							<input type="hidden" name="command" value="businessRegistration" />
+							<input type="hidden" name="email" value="${loginUser.getEmail()}"/>
 						</form>
 					</div>
 				</section>
@@ -414,9 +430,6 @@ section {
 	<footer>
 		<%@ include file="../footer.jsp"%>
 	</footer>
-	<div id="sidebar">
-		<%@ include file="../sidebar.jsp"%>
-	</div>
 	<script>
 	
 	$('#find_zipcode').click(() => {

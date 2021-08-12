@@ -89,13 +89,24 @@ public class PlaceImgAPI {
 			}
 
 			JSONObject responseBody = new JSONObject(response.toString());
+			JSONArray items = null;
 
-			// 배열 item
-			JSONArray items = responseBody.getJSONArray("items");
+			try {
+				// 배열 item
+				items = responseBody.getJSONArray("items");
+				try {
+					// 객체 item[0]
+					JSONObject itemObj = (JSONObject) items.get(0);
+					imgURL = itemObj.get("link").toString();
+				} catch (Exception e) {
+					// TODO: handle exception
+					imgURL = "https://scontent-ssn1-1.xx.fbcdn.net/v/t1.6435-9/42903831_432309343963474_6413044088903303168_n.png?_nc_cat=100&ccb=1-4&_nc_sid=09cbfe&_nc_ohc=UDIgoHuPZO4AX_7uynE&_nc_ht=scontent-ssn1-1.xx&oh=747407ed2904254ff3019013cf8a588e&oe=61385DC8";
+				}
 
-			// 객체 item[0]
-			JSONObject itemObj = (JSONObject) items.get(0);
-			imgURL = itemObj.get("link").toString();
+			} catch (Exception e) {
+				// TODO: handle exception
+				imgURL = "https://scontent-ssn1-1.xx.fbcdn.net/v/t1.6435-9/42903831_432309343963474_6413044088903303168_n.png?_nc_cat=100&ccb=1-4&_nc_sid=09cbfe&_nc_ohc=UDIgoHuPZO4AX_7uynE&_nc_ht=scontent-ssn1-1.xx&oh=747407ed2904254ff3019013cf8a588e&oe=61385DC8";
+			}
 
 		} catch (IOException e) {
 			throw new RuntimeException("API 응답을 읽는데 실패했습니다.", e);

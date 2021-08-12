@@ -1,18 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page errorPage = "../picnic/error.jsp" %>
 <jsp:include page="../../top&down/header.jsp" flush="ture" />
 <!DOCTYPE html>
 <html>
-<br><br><br><br>
+<br><br>
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="picnic/cafe/assets/css/kakao.css" />
+<link rel="stylesheet" href="picnic/cafe/assets/css/kakao.css?ver=1234" />
 </head>
-<body>
+<body style="overflow:hidden;">
 <br><br>
 	<div class="map_wrap" align="center">
-		<div id="map" style="width: 90%; height: 100%; position: relative; overflow: hidden;"></div>
-		<div id="menu_wrap" class="bg_white" style="width: 400px;">
+		<div id="map" style="width: 90%; height: 70%; position: relative; overflow: hidden;"></div>
+		<div id="menu_wrap" class="bg_white" style="width: 400px; height: 730px;">
 
 			<div class="option">
 				<div>

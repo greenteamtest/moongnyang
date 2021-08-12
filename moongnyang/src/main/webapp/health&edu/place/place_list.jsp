@@ -117,14 +117,16 @@ nav[class="navbar navbar-light"] {
 			</div>
 		</nav>
 
+
 		<div id="subcontainer">
 			<main>
-				<section id="place_list">
+				<section id="place_list" style="">
+
 					<div id="user_email">
 						<input type="hidden" value="${loginUser.getEmail()}" />
 					</div>
-					<div id="card-border">
-						<c:if test="${empty placeList }">
+					<div id="card-border" >
+						<c:if test="${empty placeList}">
 							<span id="no-data">데이터가 없습니다 </span>
 						</c:if>
 						<c:forEach var="place" items="${ placeList }">
@@ -134,7 +136,7 @@ nav[class="navbar navbar-light"] {
 									<img
 										src="${pageContext.request.contextPath}/health&edu/place/place_img/${place.getPlace()}_${place.getIdx()}.png"
 										class="card-img-top" alt="place_photo" class="btn btn-primary" data-bs-toggle="modal"
-										data-bs-target="#place_info" />
+										data-bs-target="#place_info" onerror="this.src='health&edu/place/logo_img/뭉냥뭉냥.png'"  style="height : 15rem;"/>
 									<input type="hidden" value="${place.getImgURL()}" class="imgURL" />
 									<div class="card-body">
 										<h5 class="card-title">${place.getPlace() }</h5>
@@ -569,9 +571,6 @@ nav[class="navbar navbar-light"] {
 	<footer>
 		<%@ include file="../footer.jsp"%>
 	</footer>
-	<div id="sidebar">
-		<%@ include file="../sidebar.jsp"%>
-	</div>
 
 </body>
 </html>
