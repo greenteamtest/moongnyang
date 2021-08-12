@@ -69,13 +69,12 @@ div[class="col-lg-6 col-xxl-4 mb-5"] {
 	display: inline-block;
 }
 
-
-.enter-btn{
-	margin-top : 1.5rem;
+.enter-btn {
+	margin-top: 1.5rem;
 }
 
-.fs-4.fw-bold{
-	margin-top : 1rem;
+.fs-4.fw-bold {
+	margin-top: 1rem;
 }
 </style>
 
@@ -116,25 +115,20 @@ div[class="col-lg-6 col-xxl-4 mb-5"] {
 
 					<div class="container px-lg-5">
 						<!-- Page Features-->
-						<div class="row gx-lg-5" >
+						<div class="row gx-lg-5">
 
 
 							<div class="col-lg-6 col-xxl-4 mb-5">
 								<form name="frm" class="frm">
 									<div class="card bg-light border-0 h-100">
 										<div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
-											<a href="javascript:;" class="category" id="beauty">
-												<input type="hidden" name="email" value="${loginUser.getEmail()}" />
-												<input type="hidden" name="key" value="beauty" />
-												<input type="hidden" name="command" value="placeList" />
-												<h2 class="fs-4 fw-bold" >
-													<img class="icon" alt="beauty" src="health&edu/img/beauty.png">
-												</h2>
-											</a>
+											<input type="hidden" name="email" value="${loginUser.getEmail()}" />
+											<input type="hidden" name="key" value="beauty" />
+											<input type="hidden" name="command" value="placeList" />
+											<img class="icon" alt="beauty" src="health&edu/img/beauty.png">
 
 											<div class="enter-btn">
-												<div class="ui animated button" tabindex="0" >
-
+												<div class="ui animated button" tabindex="0">
 													<div class="visible content">예뻐질래요</div>
 													<div class="hidden content">
 														<i class="right arrow icon"></i>
@@ -153,14 +147,10 @@ div[class="col-lg-6 col-xxl-4 mb-5"] {
 								<form name="frm" class="frm">
 									<div class="card bg-light border-0 h-100">
 										<div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
-											<a href="javascript:;" class="category" id="hospital">
-												<input type="hidden" name="email" value="${loginUser.getEmail()}" />
-												<input type="hidden" name="key" value="hospital" />
-												<input type="hidden" name="command" value="placeList" />
-												<h2 class="fs-4 fw-bold">
-													<img class="icon" alt="hospital" src="health&edu/img/hospital.png">
-												</h2>
-											</a>
+											<input type="hidden" name="email" value="${loginUser.getEmail()}" />
+											<input type="hidden" name="key" value="hospital" />
+											<input type="hidden" name="command" value="placeList" />
+											<img class="icon" alt="hospital" src="health&edu/img/hospital.png">
 											<div class="enter-btn">
 												<div class="ui animated button" tabindex="0">
 
@@ -181,16 +171,12 @@ div[class="col-lg-6 col-xxl-4 mb-5"] {
 								<form name="frm" class="frm">
 									<div class="card bg-light border-0 h-100">
 										<div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
-											<a href="javascript:;" class="category" id="kindergaden">
-												<input type="hidden" name="email" value="${loginUser.getEmail()}" />
-												<input type="hidden" name="key" value="kindergaden" />
-												<input type="hidden" name="command" value="placeList" />
-												<h2 class="fs-4 fw-bold">
-													<img class="icon" alt="kindergaden" src="health&edu/img/dog-training.png">
-												</h2>
-											</a>
+											<input type="hidden" name="email" value="${loginUser.getEmail()}" />
+											<input type="hidden" name="key" value="kindergaden" />
+											<input type="hidden" name="command" value="placeList" />
+											<img class="icon" alt="kindergaden" src="health&edu/img/dog-training.png">
 											<div class="enter-btn">
-												<div class="ui animated button" tabindex="0" >
+												<div class="ui animated button" tabindex="0">
 
 													<div class="visible content">배우고 싶어요!</div>
 													<div class="hidden content">
@@ -210,12 +196,12 @@ div[class="col-lg-6 col-xxl-4 mb-5"] {
 		</main>
 	</div>
 	<footer>
-	<%@ include file="/health&edu/footer.jsp"%>
+		<%@ include file="/health&edu/footer.jsp"%>
 	</footer>
-	
+
 	<div id="sidebar">
 		<%@ include file="sidebar.jsp"%>
 	</div>
-	
+
 </body>
 </html>

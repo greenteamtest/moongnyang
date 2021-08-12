@@ -17,7 +17,6 @@ for (let index = 0; index < ct.length; index++) {
 
 
 $('.enter-btn').click((e) => {
-	alert('gg');
 	const frm = $(e.currentTarget).closest('.frm');
 
 	frm.method = 'post';
