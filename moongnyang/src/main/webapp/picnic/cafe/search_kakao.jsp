@@ -40,7 +40,7 @@
 						</select> 항목 : <select id="cafe&hotel">
 							<option value="카페">카페</option>
 							<option value="호텔">호텔</option>
-							<!-- <option value="식당">식당</option> -->
+							<option value="식당">식당</option>
 						</select>
 						<button type="submit">검색하기</button>
 					</form>

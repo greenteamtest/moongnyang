@@ -26,16 +26,13 @@ public class ActionFactory {
 	
 	public Action getAction(String command) {
 		Action action = null;
-		System.out.println("ActionFactory :" + command);
 		if(command.equals("picnic")) {
 			action = new Kakao_Search_Action();
 		} else if(command.equals("abandonment")) {
 			action = new Abandonment_Action();
-		} else if(command.equals("abandonment_search")) {
-			
+		} else if(command.equals("abandonment_search")) {			
 			action = new Abandonment_Search_Action();
-		} else if(command.equals("board_view_action")) {
-		
+		} else if(command.equals("board_view_action")) {	
 			action = new Board_View_Action();
 		} else if(command.equals("write")) {
 			action = new Review_Write_Action();
@@ -45,9 +42,7 @@ public class ActionFactory {
 			action = new Modify_Action();
 		} else if(command.equals("modify_write")) {
 			action = new Modify_Write_Action();
-		}
-		
-		else {
+		} else {
 			action = new Error_Action();
 		}
 		return action;

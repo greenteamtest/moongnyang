@@ -51,19 +51,19 @@
 						<!-- 이미지 업로드 -->
 						<div class="mb-3">
 							<label for="formFile" class="form-label">사진1</label>
-							<input class="form-control" type="file" id="formFile" name="file1" value="${file_name1 }">
+							<input class="form-control" type="file" id="formFile" name="file1" >
 						</div>
 						<div class="mb-3">
 							<label for="formFile" class="form-label">사진2</label>
-							<input class="form-control" type="file" id="formFile" name="file2" value="${file_name2 }">
+							<input class="form-control" type="file" id="formFile" name="file2" >
 						</div>
 						<div class="mb-3">
 							<label for="formFile" class="form-label">사진3</label>
-							<input class="form-control" type="file" id="formFile" name="file3" value="${file_name3 }">
+							<input class="form-control" type="file" id="formFile" name="file3" >
 						</div>
 						<div class="mb-3">
 							<label for="formFile" class="form-label">사진4</label>
-							<input class="form-control" type="file" id="formFile" name="file4" value="${file_name4 }">
+							<input class="form-control" type="file" id="formFile" name="file4" >
 						</div>
 						<hr class="my-4">
 
