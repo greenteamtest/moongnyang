@@ -16,6 +16,7 @@ public class Health_businessRegistration_Action implements Action {
 
 		PrintWriter out = response.getWriter();
 
+		String user_email = request.getParameter("email");
 		String category = request.getParameter("category");
 		String cpName = request.getParameter("company-name");
 		String userAdd = request.getParameter("userAddress") + " " + request.getParameter("user-detail-address");
@@ -60,6 +61,7 @@ public class Health_businessRegistration_Action implements Action {
 		}
 
 		// -> db
+		vo.setUser_email(user_email);
 		vo.setCategory_id(category);
 		vo.setPlace(cpName);
 		vo.setAddress(userAdd);

@@ -127,6 +127,7 @@
 					<thead>
 						<tr>
 							<th></th>
+							<th>사업자 ID</th>
 							<th>카테고리</th>
 							<th>사업장명</th>
 							<th>전화번호</th>
@@ -146,6 +147,7 @@
 										<input type="checkbox"> <label></label>
 									</div>
 								</td>
+								<td>${reg.getUser_email()}</td>
 								<td>${reg.getField()}</td>
 								<td>${reg.getPlace()}</td>
 								<td>${reg.getPhone_num()}</td>

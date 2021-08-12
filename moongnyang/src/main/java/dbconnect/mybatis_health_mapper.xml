@@ -13,6 +13,7 @@
 			<otherwise>
 				,sum_rating , reviewers, avg
 				from tot_view
+				where field = #{value}
 				order by 8 desc
 				
 			</otherwise>
@@ -178,8 +179,8 @@
 	<!-- insert PlaceList for approve -->
 
 	<insert id="istPlaceList" parameterType="place">
-		insert into place_list (place_list_idx, category_id, place)
-		values (SEQ_PLACE_LIST.nextval, #{category_id} , #{place})
+		insert into place_list (place_list_idx, user_email, category_id, place)
+		values (SEQ_PLACE_LIST.nextval,#{user_email}, #{category_id} , #{place})
 		<selectKey keyProperty="place_list_idx" resultType="int" order="AFTER">
 			select SEQ_PLACE_LIST.currVal from dual
 		</selectKey>
@@ -204,7 +205,7 @@
 
 	<!-- select business registration status table -->
 	<select id="slcBuisnessRegStatus" resultType="com.health.dto.HealthPlaceVo">
-		select idx, field, place, phone_num, address, open_time, introduce, pet_kind, sharing_url
+		  select idx,user_email, field, place, phone_num, address, open_time, introduce, pet_kind, sharing_url
 		from view_business_reg_status
 	</select>
 

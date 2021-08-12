@@ -172,9 +172,9 @@ div[class="col-lg-6 col-xxl-4 mb-5"] {
 									<div class="card bg-light border-0 h-100">
 										<div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
 											<input type="hidden" name="email" value="${loginUser.getEmail()}" />
-											<input type="hidden" name="key" value="kindergaden" />
+											<input type="hidden" name="key" value="kindergarten" />
 											<input type="hidden" name="command" value="placeList" />
-											<img class="icon" alt="kindergaden" src="health&edu/img/dog-training.png">
+											<img class="icon" alt="kindergarten" src="health&edu/img/dog-training.png">
 											<div class="enter-btn">
 												<div class="ui animated button" tabindex="0">
 
@@ -199,9 +199,6 @@ div[class="col-lg-6 col-xxl-4 mb-5"] {
 		<%@ include file="/health&edu/footer.jsp"%>
 	</footer>
 
-	<div id="sidebar">
-		<%@ include file="sidebar.jsp"%>
-	</div>
 
 </body>
 </html>

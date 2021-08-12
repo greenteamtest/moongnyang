@@ -45,22 +45,20 @@ public class Health_placeList_Action implements Action {
 
 			placeList = service.selectPlace_List(key);
 
-			if (placeList.size() != 0) {
-				request.setAttribute("placeList", placeList);
-				request.setAttribute("key", key);
+			request.setAttribute("placeList", placeList);
+			request.setAttribute("key", key);
 
-				for (int i = 0; i < placeList.size(); i++) {
-					placeList.get(i).setImgURL(PlaceImgAPI.requestAPI(placeList.get(i).getPlace()));
-				}
-
-				if (email != null && email.trim().length() != 0) {
-					dipsList = service.selectUser_dips(email);
-					request.setAttribute("dipsList", dipsList);
-				}
-
-				RequestDispatcher disp = request.getRequestDispatcher(url);
-				disp.forward(request, response);
+			for (int i = 0; i < placeList.size(); i++) {
+				placeList.get(i).setImgURL(PlaceImgAPI.requestAPI(placeList.get(i).getPlace()));
 			}
+
+			if (email != null && email.trim().length() != 0) {
+				dipsList = service.selectUser_dips(email);
+				request.setAttribute("dipsList", dipsList);
+			}
+
+			RequestDispatcher disp = request.getRequestDispatcher(url);
+			disp.forward(request, response);
 
 		}
 	}

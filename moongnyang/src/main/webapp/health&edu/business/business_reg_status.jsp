@@ -28,10 +28,14 @@ section {
 }
 
 .row {
+	
 	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: center;
+	flex-direction :row;
+	justify-content : center;
+	
+	margin-right: 10rem;
+	width: 150rem;
+	padding : 0;
 }
 
 .unstackable.table {
@@ -41,7 +45,7 @@ section {
 .table-frame {
 	border: 2px solid gray;
 	width: 130rem;
-	margin-left: 13rem;
+	margin-left: 23rem;
 }
 
 .ui.unstackable.table {
@@ -50,6 +54,10 @@ section {
 
 .ui.unstackable.table thead {
 	text-align: center;
+}
+.px-md-4{
+	width : 100%;
+	margin : 0;
 }
 </style>
 </head>
@@ -67,7 +75,7 @@ section {
 			<section>
 				<div class="container-fluid">
 					<div class="row">
-						<div class="col-md-9 ms-sm-auto col-lg-10 px-md-4" style="margin-right: 10rem;">
+						<div class="col-md-9 ms-sm-auto col-lg-10 px-md-4" >
 
 
 							<h1>사업장 신청 내역</h1>
@@ -78,21 +86,14 @@ section {
 							</div>
 							<div class="btn-toolbar mb-2 mb-md-0"></div>
 							<div class="table-responsive">
-								<table class="table table-striped table-sm">
-									<thead style="font-size: 1.2rem">
-
-									</thead>
-									<tbody>
-
-									</tbody>
-
-								</table>
+								
 
 							</div>
 						</div>
 					</div>
 				</div>
-
+				<br>
+				<br>
 
 				<div class="table-frame" style="overflow: scroll; height: 60rem;">
 					<table class="ui unstackable table">
