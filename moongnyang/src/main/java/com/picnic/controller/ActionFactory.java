@@ -2,6 +2,7 @@ package com.picnic.controller;
 
 import com.picnic.controller.action.Action;
 import com.picnic.controller.action.Board_View_Action;
+import com.picnic.controller.action.Error_Action;
 import com.picnic.controller.action.Kakao_Search_Action;
 import com.picnic.controller.action.Modify_Action;
 import com.picnic.controller.action.Modify_Write_Action;
@@ -31,8 +32,10 @@ public class ActionFactory {
 		} else if(command.equals("abandonment")) {
 			action = new Abandonment_Action();
 		} else if(command.equals("abandonment_search")) {
+			
 			action = new Abandonment_Search_Action();
 		} else if(command.equals("board_view_action")) {
+		
 			action = new Board_View_Action();
 		} else if(command.equals("write")) {
 			action = new Review_Write_Action();
@@ -45,7 +48,7 @@ public class ActionFactory {
 		}
 		
 		else {
-			System.out.println("ActionFactroy : action이 선택되지 않았어!!");
+			action = new Error_Action();
 		}
 		return action;
 	}

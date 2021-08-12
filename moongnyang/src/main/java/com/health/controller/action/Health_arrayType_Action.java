@@ -28,7 +28,7 @@ public class Health_arrayType_Action implements Action {
 				JSONObject jo = (JSONObject) new JSONParser().parse(jsonData);
 
 				String type = jo.get("type").toString();
-
+				
 				place = service.selectPlaceListForArrayType(type);
 
 				response.getWriter().write(JSONArray.toJSONString(place));

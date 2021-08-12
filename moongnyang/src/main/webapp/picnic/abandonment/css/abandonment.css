@@ -3,20 +3,21 @@ table {
 	height: 0px;
 	margin: auto;
 }
-span{
-	width: 120px;
-	text-align:center;
-}
-.mb-3{
-	 margin-top: 0 !important;
-	 margin-bottom: 0 !important;
-	 margin-left: -25 !important;
-	 margin-right: 50 !important;
-	 height: 34px;
-}
-
 .form-select{
 	width: 80%; 
 	float:none; 
 	margin:0 auto;
+}
+
+.mb-3{
+	 margin-top: 0 !important;
+	 margin-bottom: 0 !important;
+	 margin-left: 0 !important;
+	 margin-right: 10 !important;
+ 	 height: 36px;
+ 	 width: 400px;	 
+}
+
+span{
+	width:120;
 }
