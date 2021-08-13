@@ -15,7 +15,7 @@
 				from tot_view
 				where field = #{value}
 				order by 8 desc
-				
+
 			</otherwise>
 		</choose>
 	</select>
@@ -205,14 +205,14 @@
 
 	<!-- select business registration status table -->
 	<select id="slcBuisnessRegStatus" resultType="com.health.dto.HealthPlaceVo">
-		  select idx,user_email, field, place, phone_num, address, open_time, introduce, pet_kind, sharing_url
+		select idx,user_email, field, place, phone_num, address, open_time, introduce, pet_kind, sharing_url
 		from view_business_reg_status
 	</select>
 
 
 	<!-- select my reg status table -->
 	<select id="slcMyRegStatus" parameterType="String" resultType="com.health.dto.HealthPlaceVo">
-		select field, place, phone_num, address, open_time, introduce, pet_kind, sharing_url, approve_state
+		select  user_email,place_list_idx, field, place, phone_num, address, open_time, introduce, pet_kind, sharing_url, approve_state
 		from view_my_appr_status
 		where user_email = #{value}
 	</select>
@@ -235,6 +235,35 @@
 		</foreach>
 	</update>
 
+
+	<!-- cancle Business Registration #place_info -->
+	<delete id="cancleBusiRegInfo" parameterType="place">
+		delete from place_info where place_list_id = #{place_list_idx}
+	</delete>
+
+	<!-- cancle Business Registration #place_list-->
+	<delete id="cancleBusiRegList" parameterType="place">
+		delete from place_list
+		where user_email = #{user_email}
+		and place_list_idx = #{place_list_idx}
+	</delete>
+	
+	
+	<!-- cancle Business Registration #place_list-->
+	<delete id="cancleBusiReg" parameterType="place">
+		  {call
+        declare
+        begin
+        		delete from place_info where place_list_id = #{place_list_idx};
+        		delete from place_list
+				where user_email = #{user_email}
+				and place_list_idx = #{place_list_idx};
+        end
+    }
+	</delete>
+	
+	
+	
 </mapper>
 
 

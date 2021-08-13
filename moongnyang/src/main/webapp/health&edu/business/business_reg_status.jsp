@@ -44,9 +44,10 @@ section {
 	margin-left: 4rem;
 	text-align: center;
 }
+
 .table-frame thead {
 	background-color: #dcdada;
-	border : 2px solid red;
+	border: 2px solid red;
 }
 
 .ui.unstackable.table {
@@ -74,6 +75,7 @@ section {
 	width: 8rem;
 	height: 2rem;
 }
+
 .center.aligned {
 	font-weight: bold;
 }
@@ -113,24 +115,23 @@ section {
 
 					<div class="table-frame" style="overflow: scroll; height: 50rem;">
 						<table class="ui unstackable table">
-							<thead >
+							<thead>
 								<tr>
-									<th style="width: 6rem; background-color:#ececec">카테고리</th>
+									<th style="width: 6rem; background-color: #ececec">카테고리</th>
 									<th>사업장명</th>
-									<th style="background-color:#ececec">전화번호</th>
+									<th style="background-color: #ececec">전화번호</th>
 									<th style="width: 10rem;">주소</th>
-									<th style="background-color:#ececec">영업시간</th>
+									<th style="background-color: #ececec">영업시간</th>
 									<th style="width: 35rem;">사업장 소개</th>
-									<th style="width: 10rem;background-color:#ececec">동반가능 반려동물</th>
+									<th style="width: 10rem; background-color: #ececec">동반가능 반려동물</th>
 									<th style="width: 2rem;">대표 URL</th>
-									<th style="width: 2rem;background-color:#ececec; border: 2px solid red">승인 상태</th>
+									<th style="width: 10rem; background-color: #ececec; border: 2px solid red">승인 상태</th>
 								</tr>
 							</thead>
 
 							<tbody>
 								<c:forEach items="${status}" var="status">
-									<tr>
-
+									<tr class="tr">
 										<c:choose>
 											<c:when test="${status.getField() eq 'hospital' }">
 												<td>병원</td>
@@ -142,7 +143,6 @@ section {
 												<td>유치원</td>
 											</c:when>
 										</c:choose>
-
 										<td>${status.getPlace()}</td>
 										<td>${status.getPhone_num()}</td>
 										<td>${status.getAddress()}</td>
@@ -154,7 +154,7 @@ section {
 										<c:choose>
 											<c:when test="${status.getApprove_state() eq 0}">
 												<td class="center aligned" style="color: blue; background-color: #d5d3d3;">승인 대기 중
-													<div class="ui button cancle" tabindex="0" style="margin-top: 1rem;border:1px solid gray;">요청 취소</div>
+													<div class="ui button cancle" tabindex="0" style="margin-top: 1rem; border: 1px solid gray;">요청 취소</div>
 												</td>
 											</c:when>
 											<c:when test="${status.getApprove_state() eq 1}">
@@ -165,6 +165,8 @@ section {
 											</c:otherwise>
 										</c:choose>
 									</tr>
+									<input type="hidden" name="idx" value="${status.getPlace_list_idx()}" />
+									<input type="hidden" name="email" value="${status.getUser_email()}" />
 								</c:forEach>
 
 							</tbody>
@@ -178,7 +180,67 @@ section {
 			<%@ include file="../footer.jsp"%>
 		</footer>
 
+		<!-- Modal -->
+		<div class="modal fade alert" id="alert" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">알림</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body"></div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary yes" data-bs-dismiss="modal">네</button>
+						<button type="button" class="btn btn-primary no">아니요</button>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
+	<script>
+	
+			let idx ;
+			let email ;
+			let target ;
+			
+     	   $('.cancle').click((e)=>{
+     	       idx = $(e.currentTarget).closest('.tr').next().val();
+     	       email =   $(e.currentTarget).closest('.tr').next().next().val();
+     	       target = $(e.currentTarget);
+     	       console.log(idx);
+     	       console.log(email);
+     	       
+            $('.alert').modal('show');
+            $('.alert .modal-body').text('승인 대기 중 입니다. 요청을 취소하시겠습니까 ?');
+      		  })
+        
+			$('.yes').click((e) => {
+		            
+		            const param = {
+		    		"idx": idx,
+		    		"email": email,
+		    	}
+		            
+		    	$.ajax({
+		    		url: "controller.do?command=cancleBusiReg",
+		    		data: { "jsonData": JSON.stringify(param) },
+		    		method: "post",
+		    		success: (result) => {
+		    		    
+		    		    if(result != 'null'){
+		    		        alert('승인요청 취소완료');
+		    		        target.closest('.tr').remove();
+		    		    }else{
+		    		        alert('승인요청 취소실패 <관리자문의>);')
+		    		    }
+		    		       	
+		    		},
+		    	});
+			})
 
+			$('.no').click((e) => {
+				$('.alert').modal('hide');
+			})
+    </script>
 </body>
 </html>

@@ -87,4 +87,16 @@ public class HealthDAO {
 		return session.update("udApproveSuc", map);
 	}
 
+	public int cancleBusiReg_INFO(SqlSession session, HealthPlaceVo list) { // 사업장 신청 승인 취소
+		return session.delete("cancleBusiRegInfo", list);
+	}
+
+	public int cancleBusiReg_LIST(SqlSession session, HealthPlaceVo list) { // 사업장 신청 승인 취소
+		return session.delete("cancleBusiRegList", list);
+	}
+
+	public int cancleBusiReg(SqlSession session, HealthPlaceVo list) { // 사업장 신청 승인 취소
+		return session.delete("cancleBusiReg", list);
+	}
+
 }

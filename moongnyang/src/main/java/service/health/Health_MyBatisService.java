@@ -339,4 +339,67 @@ public class Health_MyBatisService {
 		}
 		return rs;
 	}
+
+	// delete place info
+	public int cancleBusiReg_INFO(HealthPlaceVo list) {
+		SqlSession session = MybatisSessionFactory.getSqlSession();
+		int rs = 0;
+
+		try {
+			rs = dao.cancleBusiReg_INFO(session, list);
+
+			if (rs > 0) {
+				session.commit();
+				System.out.println("delete review success");
+			} else {
+				session.rollback();
+				System.out.println("delete review fail");
+			}
+		} finally {
+			session.close();
+		}
+		return rs;
+	}
+
+	// delete review
+	public int cancleBusiReg_LIST(HealthPlaceVo list) {
+		SqlSession session = MybatisSessionFactory.getSqlSession();
+		int rs = 0;
+
+		try {
+			rs = dao.cancleBusiReg_LIST(session, list);
+
+			if (rs > 0) {
+				session.commit();
+				System.out.println("delete review success");
+			} else {
+				session.rollback();
+				System.out.println("delete review fail");
+			}
+		} finally {
+			session.close();
+		}
+		return rs;
+	}
+
+	// delete review
+	public int cancleBusiReg(HealthPlaceVo list) {
+		SqlSession session = MybatisSessionFactory.getSqlSession();
+		int rs = 0;
+
+		try {
+			rs = dao.cancleBusiReg(session, list);
+
+			if (rs > 0) {
+				session.commit();
+				System.out.println("delete review success");
+			} else {
+				session.rollback();
+				System.out.println("delete review fail");
+			}
+		} finally {
+			session.close();
+		}
+		return rs;
+	}
 }
