@@ -17,9 +17,38 @@ public class Review_Delete_Action implements Action{
 		int num = Integer.parseInt(request.getParameter("num"));
 		service.picnic_Delete(num);
 		
-		PicnicVO pVo = service.picnic_Select(request.getParameter("key"));
+		PicnicVO vo = service.picnic_Select(request.getParameter("key"));
+		PicnicVO voF = service.image_Select(request.getParameter("key"));
+		//String savePath = request.getSession().getServletContext().getRealPath("/upload");
+		if (voF != null) {
+			if (voF.getFile_name1() != null) {
+				vo.setFile_name1(voF.getFile_name1());
+			} else {
+				vo.setFile_name1("test.jpg");
+			}
+			if (voF.getFile_name2() != null) {
+				vo.setFile_name2(voF.getFile_name2());
+			} else {
+				vo.setFile_name2("test.jpg");
+			}
+			if (voF.getFile_name3() != null) {
+				vo.setFile_name3(voF.getFile_name3());
+			} else {
+				vo.setFile_name3("test.jpg");
+			}
+			if (voF.getFile_name4() != null) {
+				vo.setFile_name4(voF.getFile_name4());
+			} else {
+				vo.setFile_name4("test.jpg");
+			}
+		}else {
+			vo.setFile_name1("test.jpg");
+			vo.setFile_name2("test.jpg");
+			vo.setFile_name3("test.jpg");
+			vo.setFile_name4("test.jpg");
+		}
 		List<PicnicVO> list =  service.picnic_Select2(request.getParameter("key"));
-		request.setAttribute("vo", pVo);
+		request.setAttribute("vo", vo);
 		request.setAttribute("list", list);
 		
 		

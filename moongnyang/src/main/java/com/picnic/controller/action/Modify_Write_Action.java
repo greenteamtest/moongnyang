@@ -24,7 +24,7 @@ public class Modify_Write_Action implements Action {
 	        // 업로드 될 파일의 최대 사이즈 (10메가)
 	        int sizeLimit = 5 * 1024 * 1024;
 	 
-	        // 파일이 업로드될 실제 tomcat 폴더의 경로 (WebContent 기준)
+	        // 파일이 업로드될 실제 tomcat 폴더의 경로
 	    
 	       String savePath = request.getSession().getServletContext().getRealPath("/picnic/upload"); 
 	      

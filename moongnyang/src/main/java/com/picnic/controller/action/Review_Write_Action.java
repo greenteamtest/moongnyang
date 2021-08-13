@@ -15,15 +15,44 @@ public class Review_Write_Action implements Action{
 		throws ServletException, IOException{
 		String url = "picnic/cafe/board_view.jsp";
 		
-		PicnicVO vo = new PicnicVO();
-		vo.setKey(request.getParameter("key"));
-		vo.setUser_email(request.getParameter("email"));
-		vo.setComment_content(request.getParameter("content_re"));
-		service.picnic_Write(vo);
+		PicnicVO pVo = new PicnicVO();
+		pVo.setKey(request.getParameter("key"));
+		pVo.setUser_email(request.getParameter("email"));
+		pVo.setComment_content(request.getParameter("content_re"));
+		service.picnic_Write(pVo);
 		
-		PicnicVO pVo = service.picnic_Select(request.getParameter("key"));
+		PicnicVO vo = service.picnic_Select(request.getParameter("key"));
+		PicnicVO voF = service.image_Select(request.getParameter("key"));
+		//String savePath = request.getSession().getServletContext().getRealPath("/upload");
+		if (voF != null) {
+			if (voF.getFile_name1() != null) {
+				vo.setFile_name1(voF.getFile_name1());
+			} else {
+				vo.setFile_name1("test.jpg");
+			}
+			if (voF.getFile_name2() != null) {
+				vo.setFile_name2(voF.getFile_name2());
+			} else {
+				vo.setFile_name2("test.jpg");
+			}
+			if (voF.getFile_name3() != null) {
+				vo.setFile_name3(voF.getFile_name3());
+			} else {
+				vo.setFile_name3("test.jpg");
+			}
+			if (voF.getFile_name4() != null) {
+				vo.setFile_name4(voF.getFile_name4());
+			} else {
+				vo.setFile_name4("test.jpg");
+			}
+		}else {
+			vo.setFile_name1("test.jpg");
+			vo.setFile_name2("test.jpg");
+			vo.setFile_name3("test.jpg");
+			vo.setFile_name4("test.jpg");
+		}
 		List<PicnicVO> list =  service.picnic_Select2(request.getParameter("key"));
-		request.setAttribute("vo", pVo);
+		request.setAttribute("vo", vo);
 		request.setAttribute("list", list);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
