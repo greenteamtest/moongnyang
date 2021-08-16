@@ -419,7 +419,7 @@ section {
 								</div>
 							</div>
 							<input type="hidden" name="command" value="businessRegistration" />
-							<input type="hidden" name="email" value="${loginUser.getEmail()}"/>
+							<input type="hidden" name="email"  value="${loginUser.getEmail()}" class="session"/>
 						</form>
 					</div>
 				</section>

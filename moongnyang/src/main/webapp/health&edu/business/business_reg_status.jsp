@@ -166,7 +166,7 @@ section {
 										</c:choose>
 									</tr>
 									<input type="hidden" name="idx" value="${status.getPlace_list_idx()}" />
-									<input type="hidden" name="email" value="${status.getUser_email()}" />
+									<input type="hidden" name="email" value="${status.getUser_email()}" class="session" />
 								</c:forEach>
 
 							</tbody>
@@ -202,6 +202,7 @@ section {
 			let idx ;
 			let email ;
 			let target ;
+			let session;
 			
      	   $('.cancle').click((e)=>{
      	       idx = $(e.currentTarget).closest('.tr').next().val();
@@ -215,6 +216,12 @@ section {
       		  })
         
 			$('.yes').click((e) => {
+			    
+			    if(email == null || email.trim().length == 0){
+			        alert('세션이 만료되었습니다. 로그인 페이지로 이동합니다');
+					location.href='mypageServlet?command=loginpage';
+					return;
+			    }
 		            
 		            const param = {
 		    		"idx": idx,

@@ -47,8 +47,15 @@ $('.submit-btn').click(
 		var memberInfo = $('#memberInfo');
 		var divId = $('#divId');
 		var divPassword = $('#divPassword');
-		var divPasswordCheck = $('#divPasswordCheck');
 		var divPhoneNumber = $('#divPhoneNumber');
+		var session = $('.session').val();
+		
+		if(session == null || session.trim().length == 0){
+			alert('세션이 만료되었습니다. 로그인 페이지로 이동합니다');
+			location.href='mypageServlet?command=loginpage';
+			return;
+		}
+		
 
 		//회원가입약관
 		if ($('#provisionYn:checked').val() == "N") {
@@ -189,7 +196,7 @@ $('.submit-btn').click(
 
 
 		// 대표 url
-		if ((link_url.match(/(http(s)?:\/\/)([a-z0-9\w]+\.*)+[a-z0-9]{2,4}/gi)) == null) {
+		if ((link_url.match(/(http(s)?:\/\/)([a-z0-9\w]+\.*)+[a-z0-9]{2,4}/gi)) == null && link_url.trim().length != 0) {
 			$('.link_url').val(link_url.replace(link_url, ''));
 			$('.link_url').focus();
 			modalContents.text("대표 URL 을  형식에 맞추어 입력 해 주시기 바랍니다.");
