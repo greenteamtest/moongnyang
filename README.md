@@ -21,7 +21,8 @@ https://github.com/greenteamtest/moongnyang/blob/master/2%EC%B0%A8_%EB%B0%98%EB%
 
 ![image](https://user-images.githubusercontent.com/82789634/167620865-6b574c5b-6400-4a73-8e0a-61a76cc33e1d.png)
 
-![image](https://user-images.githubusercontent.com/82789634/167620894-d737232c-5aec-4674-b2c2-f2536b56c1cc.png)
+![image](https://user-images.githubusercontent.com/82789634/167620993-a5ba3b1c-8466-4a1d-be2d-43c977891a7d.png)
+
 
 
 
